@@ -1,13 +1,13 @@
 <template>
-  <HelloWorld />
+  <Players />
 </template>
 
 <script>
-import HelloWorld from '../components/HelloWorld';
+import Players from '../components/Players'
 
 export default {
   components: {
-    HelloWorld,
-  },
-};
+    Players
+  }
+}
 </script>
