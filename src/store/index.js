@@ -10,6 +10,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     currentPlayer: null,
+    players: [],
     showPlayerDialog: false
   },
   actions,

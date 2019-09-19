@@ -2,7 +2,7 @@
   <v-container fluid class="grey lighten-5 container-main">
     <v-row no-gutters>
       <template v-for="player in players">
-        <v-col :key="`${player.firstName}${player.lastName}`" sm="4" md="3">
+        <v-col :key="`${player.firstName}${player.lastName}`" xs="2" sm="6" md="4" lg="3">
           <v-card
             class="d-flex justify-center player-card"
             :style="stylePlayerImage(player)"
@@ -14,21 +14,15 @@
             </div>
           </v-card>
         </v-col>
-        <!-- <v-responsive
-          v-if="i === 2"
-          :key="`width-${i}`"
-          width="100%"
-        ></v-responsive> -->
       </template>
     </v-row>
 
     <v-dialog
+      ref="playerDialog"
       :value="showPlayerDialog"
-      fullscreen
-      scrollable
       light
-      @click:outside="setShowPlayerDialog(false)"
-      @keydown.esc="setShowPlayerDialog(false)"
+      @click:outside="closeDialog"
+      @keydown.esc="closeDialog"
     >
       <PlayerStats :player="currentPlayer" />
     </v-dialog>
@@ -36,7 +30,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapState } from 'vuex'
+import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
 import PlayerStats from '@/components/PlayerStats.vue'
 
 export default {
@@ -44,29 +38,6 @@ export default {
   components: { PlayerStats },
   data () {
     return {
-      players: [
-        { firstName: 'Doug', lastName: 'Brown', gender: 'm', ranking: '', img: '' },
-        { firstName: 'Andrea', lastName: 'Burkhardt', gender: 'w', ranking: '', img: '' },
-        { firstName: 'Kourtney', lastName: 'Cogdill', gender: 'w', ranking: '', img: '' },
-        { firstName: 'Alex', lastName: 'Fohl', gender: 'm', ranking: '', img: '' },
-        { firstName: 'Chris', lastName: 'Layton', gender: 'm', ranking: '', img: '' },
-        { firstName: 'Maddie', lastName: 'Lee', gender: 'w', ranking: '', img: '' },
-        { firstName: 'Daniel', lastName: 'Lomelino', gender: 'm', ranking: '', img: '' },
-        { firstName: 'Dax', lastName: 'Lowery', gender: 'm', ranking: '', img: '' },
-        { firstName: 'Lisa', lastName: 'Martin', gender: 'w', ranking: '', img: '' },
-        { firstName: 'Kessa', lastName: 'McNaught', gender: 'w', ranking: '', img: '' },
-        { firstName: 'Stephanie', lastName: 'Smith', gender: 'w', ranking: '', img: '' },
-        { firstName: 'Dan', lastName: 'Somers', gender: 'm', ranking: '', img: '' },
-        { firstName: 'Heidi', lastName: 'Somers', gender: 'w', ranking: '', img: '' },
-        { firstName: 'David', lastName: 'Strom', gender: 'm', ranking: '', img: '' },
-        { firstName: 'Sara', lastName: 'Tokoly', gender: 'w', ranking: '', img: '' },
-        { firstName: 'Ed', lastName: 'Ventura', gender: 'm', ranking: '', img: '' },
-        { firstName: 'Elise', lastName: 'Vestal', gender: 'w', ranking: '', img: '' },
-        { firstName: 'Emily', lastName: 'Wandel', gender: 'w', ranking: '', img: '' },
-        { firstName: 'Brandon', lastName: 'Wiley', gender: 'm', ranking: '', img: '' },
-        { firstName: 'Tony', lastName: 'Winkler', gender: 'm', ranking: '', img: '' },
-        { firstName: 'Erin', lastName: 'Wolski', gender: 'w', ranking: '', img: '' }
-      ],
       zIndex: 10
     }
   },
@@ -76,15 +47,24 @@ export default {
     ]),
     ...mapState([
       'currentPlayer',
+      'players',
       'showPlayerDialog'
     ])
   },
   methods: {
+    ...mapActions([
+      'getPlayers',
+      'getStats'
+    ]),
     ...mapMutations([
       'setCurrentPlayer',
       'setShowPlayerDialog'
     ]),
-    showPlayer (player) {
+    closeDialog () {
+      this.setShowPlayerDialog(false)
+    },
+    async showPlayer (player) {
+      await this.getStats(player.id)
       this.setCurrentPlayer(player)
       this.setShowPlayerDialog(true)
     },
@@ -113,6 +93,8 @@ export default {
     }
   },
   created () {
+    this.getPlayers()
+
     this.players.forEach(player => {
       let image = player.img
 

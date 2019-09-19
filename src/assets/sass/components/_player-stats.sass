@@ -1,4 +1,5 @@
 .container-player-stats
+  height: 100%
   .toolbar-player-stats
     &.men
       color: $text-color-men
@@ -11,3 +12,17 @@
     font-weight: bold
   .row-player-stats
     margin: 0
+    height: 100vh
+
+.col-left
+  padding: 30px
+  border-right: 2px solid #eee
+
+.col-right
+  padding: 30px
+  .stats-left
+    line-height: $bar-height
+    font-weight: bold
+  .stats-right
+    .v-progress-linear
+      height: $bar-height !important
