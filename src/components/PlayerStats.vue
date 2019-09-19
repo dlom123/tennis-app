@@ -242,13 +242,13 @@ export default {
     },
     getColor (value) {
       if (value <= 25) {
-        return 'rgba(255,0, 0, 0.8)'
+        return 'rgba(230,0, 0, 0.8)'
       } else if (value <= 50) {
-        return 'rgba(255, 165, 0, 0.8)'
+        return 'rgba(255, 145, 0, 0.8)'
       } else if (value <= 75) {
-        return 'rgba(255, 240, 0, 0.8)'
+        return 'rgba(255, 230, 0, 0.8)'
       } else {
-        return 'rgba(0, 255, 0, 0.8)'
+        return 'rgba(0, 200, 0, 0.8)'
       }
     },
     getPercentage (value) {

@@ -23,6 +23,7 @@
       light
       @click:outside="closeDialog"
       @keydown.esc="closeDialog"
+      :fullscreen="$vuetify.breakpoint.xsOnly"
     >
       <PlayerStats :player="currentPlayer" />
     </v-dialog>
