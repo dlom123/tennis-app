@@ -71,7 +71,7 @@ export default {
     },
     stylePlayerImage (player) {
       return {
-        'background-image': `url(${require('@/assets/images/headshots/' + player.img)})`
+        'background-image': `url(${require('@/assets/images/headshots/' + player.avatarUrl)})`
       }
     },
     stylePlayerName (player) {
@@ -95,27 +95,6 @@ export default {
   },
   created () {
     this.getPlayers()
-
-    this.players.forEach(player => {
-      let image = player.img
-
-      if (!player.img) {
-        // if the player does not have a headshot of their own, grab a random placeholder headshot for the player's gender
-        const men = ['anderson', 'berdych', 'dimitrov', 'djokovic', 'federer', 'isner', 'kyrgios', 'mcenroe', 'nadal', 'nishikori', 'raonic', 'simon', 'wawrinka', 'zverev']
-        const women = ['azarenka', 'barty', 'bouchard', 'clijsters', 'halep', 'hingis', 'kerber', 'keys', 'muguruza', 'osaka', 'sharapova', 'stephens', 'venus', 'wozniacki']
-        let randomPlayer
-
-        if (player.gender === 'm') {
-          randomPlayer = men[Math.floor(Math.random() * men.length)]
-          image = `placeholders/men/${randomPlayer}.png`
-        } else {
-          randomPlayer = women[Math.floor(Math.random() * women.length)]
-          image = `placeholders/women/${randomPlayer}.png`
-        }
-      }
-
-      player.img = image
-    })
   }
 }
 </script>

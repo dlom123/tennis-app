@@ -1,7 +1,12 @@
 <template>
   <v-container fluid class="container-player-stats">
 
-    <v-toolbar dark dense :class="['toolbar-player-stats', classToolbar]">
+    <v-toolbar
+      dark
+      dense
+      flat
+      :class="['toolbar-player-stats', classToolbar]"
+    >
       <v-btn icon dark @click="closeDialog">
         <v-icon>mdi-close</v-icon>
       </v-btn>
@@ -217,7 +222,7 @@ export default {
         if (this.player.gender === 'm') {
           if (men.some(m => m === playerName)) playerImage = `placeholders/men/${playerName}.png`
           else playerImage = 'placeholders/men/silhouette.png'
-        } else if (this.player.gender === 'w') {
+        } else if (this.player.gender === 'f') {
           if (women.some(w => w === playerName)) playerImage = `placeholders/women/${playerName}.png`
           else playerImage = 'placeholders/women/silhouette.png'
         }

@@ -1,28 +1,36 @@
+import axios from 'axios'
+
+const HTTP = axios.create({
+  baseURL: process.env.VUE_APP_API_BASE_URL
+})
+
 export default {
   getPlayers: async ({ commit }) => {
-    const players = [
-      { id: 1, firstName: 'Doug', lastName: 'Brown', gender: 'm', ranking: '', img: '', stats: {} },
-      { id: 2, firstName: 'Andrea', lastName: 'Burkhardt', gender: 'w', ranking: '', img: '', stats: {} },
-      { id: 3, firstName: 'Kourtney', lastName: 'Cogdill', gender: 'w', ranking: '', img: '', stats: {} },
-      { id: 4, firstName: 'Alex', lastName: 'Fohl', gender: 'm', ranking: '', img: '', stats: {} },
-      { id: 5, firstName: 'Chris', lastName: 'Layton', gender: 'm', ranking: '', img: '', stats: {} },
-      { id: 6, firstName: 'Maddie', lastName: 'Lee', gender: 'w', ranking: '', img: '', stats: {} },
-      { id: 7, firstName: 'Daniel', lastName: 'Lomelino', gender: 'm', ranking: '', img: '', stats: {} },
-      { id: 8, firstName: 'Dax', lastName: 'Lowery', gender: 'm', ranking: '', img: '', stats: {} },
-      { id: 9, firstName: 'Lisa', lastName: 'Martin', gender: 'w', ranking: '', img: '', stats: {} },
-      { id: 10, firstName: 'Kessa', lastName: 'McNaught', gender: 'w', ranking: '', img: '', stats: {} },
-      { id: 11, firstName: 'Stephanie', lastName: 'Smith', gender: 'w', ranking: '', img: '', stats: {} },
-      { id: 12, firstName: 'Dan', lastName: 'Somers', gender: 'm', ranking: '', img: '', stats: {} },
-      { id: 13, firstName: 'Heidi', lastName: 'Somers', gender: 'w', ranking: '', img: '', stats: {} },
-      { id: 14, firstName: 'David', lastName: 'Strom', gender: 'm', ranking: '', img: '', stats: {} },
-      { id: 15, firstName: 'Sara', lastName: 'Tokoly', gender: 'w', ranking: '', img: '', stats: {} },
-      { id: 16, firstName: 'Ed', lastName: 'Ventura', gender: 'm', ranking: '', img: '', stats: {} },
-      { id: 17, firstName: 'Elise', lastName: 'Vestal', gender: 'w', ranking: '', img: '', stats: {} },
-      { id: 18, firstName: 'Emily', lastName: 'Wandel', gender: 'w', ranking: '', img: '', stats: {} },
-      { id: 19, firstName: 'Brandon', lastName: 'Wiley', gender: 'm', ranking: '', img: '', stats: {} },
-      { id: 20, firstName: 'Tony', lastName: 'Winkler', gender: 'm', ranking: '', img: '', stats: {} },
-      { id: 21, firstName: 'Erin', lastName: 'Wolski', gender: 'w', ranking: '', img: '', stats: {} }
-    ]
+    const results = await HTTP.get('/players?isActive=true&sort=lastName')
+
+    const players = results.data.data
+
+    players.forEach(player => {
+      let image = player.avatarUrl
+
+      if (!image) {
+        // if the player does not have a headshot of their own, grab a random placeholder headshot for the player's gender
+        const men = ['anderson', 'berdych', 'dimitrov', 'djokovic', 'federer', 'isner', 'kyrgios', 'mcenroe', 'nadal', 'nishikori', 'raonic', 'simon', 'wawrinka', 'zverev']
+        const women = ['azarenka', 'barty', 'bouchard', 'clijsters', 'halep', 'hingis', 'kerber', 'keys', 'muguruza', 'osaka', 'sharapova', 'stephens', 'venus', 'wozniacki']
+        let randomPlayer
+
+        if (player.gender === 'm') {
+          randomPlayer = men[Math.floor(Math.random() * men.length)]
+          image = `placeholders/men/${randomPlayer}.png`
+        } else {
+          randomPlayer = women[Math.floor(Math.random() * women.length)]
+          image = `placeholders/women/${randomPlayer}.png`
+        }
+      }
+
+      player.avatarUrl = image
+      player.stats = {}
+    })
 
     commit('setPlayers', players)
   },
