@@ -65,7 +65,7 @@ export default {
       this.setShowPlayerDialog(false)
     },
     async showPlayer (player) {
-      await this.getStats(player.id)
+      await this.getStats({ playerId: player.id })
       this.setCurrentPlayer(player)
       this.setShowPlayerDialog(true)
     },

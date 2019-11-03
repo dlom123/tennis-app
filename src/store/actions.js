@@ -35,22 +35,14 @@ export default {
     commit('setPlayers', players)
   },
   getStats: async ({ commit }, payload) => {
-    const playerStats = {
-      aces: Math.floor(Math.random() * 40),
-      doubleFaults: Math.floor(Math.random() * 60),
-      winners: Math.floor(Math.random() * 50),
-      unforcedErrors: Math.floor(Math.random() * 80),
-      firstServeReturn: [Math.floor(Math.random() * 30), Math.floor(Math.random() * 30) + 30],
-      secondServeReturn: [Math.floor(Math.random() * 30), Math.floor(Math.random() * 30) + 30],
-      firstServePointsWon: [Math.floor(Math.random() * 30), Math.floor(Math.random() * 30) + 30],
-      secondServePointsWon: [Math.floor(Math.random() * 30), Math.floor(Math.random() * 30) + 30],
-      netPointsWon: [Math.floor(Math.random() * 30), Math.floor(Math.random() * 30) + 30],
-      breakPointsWon: [Math.floor(Math.random() * 30), Math.floor(Math.random() * 30) + 30]
-    }
+    const results = await HTTP.get(`/players/${payload.playerId}/stats`)
+
+    const stats = results.data.data
+    console.log('GOT STATS', stats)
 
     commit('updatePlayerStats', {
       playerId: payload,
-      stats: playerStats
+      stats
     })
   }
 }

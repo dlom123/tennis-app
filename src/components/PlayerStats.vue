@@ -24,149 +24,28 @@
       </v-col>
 
       <v-col class="col-right">
-        <v-row>
-
+        <v-row v-for="stat in player.stats" :key="stat.name">
           <v-col cols="3" class="stats-left" align="right">
-            Aces
+            {{formatDisplayName(stat.name)}}
           </v-col>
 
           <v-col cols="9" class="stats-right">
             <v-progress-linear
-              :value="player.stats.aces"
-              color="rgba(33, 150, 243, 0.8)"
+              :value="getValue(stat.num, stat.denom)"
+              :color="getColor(stat.num, stat.denom)"
               reactive
             >
-              <strong>{{player.stats.aces}}</strong>
+              <strong>{{getDisplayValue(stat.num, stat.denom)}}</strong>
             </v-progress-linear>
           </v-col>
-
-          <v-col cols="3" class="stats-left" align="right">
-            Double Faults
-          </v-col>
-
-          <v-col cols="9" class="stats-right">
-            <v-progress-linear
-              :value="player.stats.doubleFaults"
-              color="rgba(33, 150, 243, 0.8)"
-              reactive
-            >
-              <strong>{{player.stats.doubleFaults}}</strong>
-            </v-progress-linear>
-          </v-col>
-
-          <v-col cols="3" class="stats-left" align="right">
-            Winners
-          </v-col>
-
-          <v-col cols="9" class="stats-right">
-            <v-progress-linear
-              :value="player.stats.winners"
-              color="rgba(33, 150, 243, 0.8)"
-              reactive
-            >
-              <strong>{{player.stats.winners}}</strong>
-            </v-progress-linear>
-          </v-col>
-
-          <v-col cols="3" class="stats-left" align="right">
-            Unforced Errors
-          </v-col>
-
-          <v-col cols="9" class="stats-right">
-            <v-progress-linear
-              :value="player.stats.unforcedErrors"
-              color="rgba(33, 150, 243, 0.8)"
-              reactive
-            >
-              <strong>{{player.stats.unforcedErrors}}</strong>
-            </v-progress-linear>
-          </v-col>
-
-          <v-col cols="3" class="stats-left" align="right">
-            1st Serve Return %
-          </v-col>
-
-          <v-col cols="9" class="stats-right">
-            <v-progress-linear
-              :value="firstServeReturnPct"
-              :color="getColor(firstServeReturnPct)"
-              reactive
-            >
-              <strong>{{firstServeReturnPct}}%</strong>
-            </v-progress-linear>
-          </v-col>
-
-          <v-col cols="3" class="stats-left" align="right">
-            2nd Serve Return %
-          </v-col>
-
-          <v-col cols="9" class="stats-right">
-            <v-progress-linear
-              :value="secondServeReturnPct"
-              :color="getColor(secondServeReturnPct)"
-              reactive
-            >
-              <strong>{{secondServeReturnPct}}%</strong>
-            </v-progress-linear>
-          </v-col>
-
-          <v-col cols="3" class="stats-left" align="right">
-            1st Serve Points Won %
-          </v-col>
-
-          <v-col cols="9" class="stats-right">
-            <v-progress-linear
-              :value="firstServePointsWonPct"
-              :color="getColor(firstServePointsWonPct)"
-              reactive
-            >
-              <strong>{{firstServePointsWonPct}}%</strong>
-            </v-progress-linear>
-          </v-col>
-
-          <v-col cols="3" class="stats-left" align="right">
-            2nd Serve Points Won %
-          </v-col>
-
-          <v-col cols="9" class="stats-right">
-            <v-progress-linear
-              :value="secondServePointsWonPct"
-              :color="getColor(secondServePointsWonPct)"
-              reactive
-            >
-              <strong>{{secondServePointsWonPct}}%</strong>
-            </v-progress-linear>
-          </v-col>
-
-          <v-col cols="3" class="stats-left" align="right">
-            Net Points Won %
-          </v-col>
-
-          <v-col cols="9" class="stats-right">
-            <v-progress-linear
-              :value="netPointsWonPct"
-              :color="getColor(netPointsWonPct)"
-              reactive
-            >
-              <strong>{{netPointsWonPct}}%</strong>
-            </v-progress-linear>
-          </v-col>
-
-          <v-col cols="3" class="stats-left" align="right">
-            Break Points Won %
-          </v-col>
-
-          <v-col cols="9" class="stats-right">
-            <v-progress-linear
-              :value="breakPointsWonPct"
-              :color="getColor(breakPointsWonPct)"
-              reactive
-            >
-              <strong>{{breakPointsWonPct}}%</strong>
-            </v-progress-linear>
-          </v-col>
-
         </v-row>
+
+        <v-row class="row-last-played">
+          <v-col cols="12">
+            <strong>Last Played:</strong> {{lastPlayedDate}}
+          </v-col>
+        </v-row>
+
       </v-col>
 
     </v-row>
@@ -176,13 +55,15 @@
 
 <script>
 import { mapMutations } from 'vuex'
+import moment from 'moment'
 
 export default {
   name: 'playerStats',
   props: ['player'],
   data () {
     return {
-      aces: 10
+      aces: 10,
+      lastPlayed: '2019-10-01'
     }
   },
   computed: {
@@ -198,6 +79,9 @@ export default {
     },
     firstServeReturnPct () {
       return this.getPercentage(this.player.stats.firstServeReturn[0] / this.player.stats.firstServeReturn[1])
+    },
+    lastPlayedDate () {
+      return moment(this.lastPlayed).format('dddd, MMMM Do, YYYY')
     },
     netPointsWonPct () {
       return this.getPercentage(this.player.stats.netPointsWon[0] / this.player.stats.netPointsWon[1])
@@ -245,20 +129,54 @@ export default {
     closeDialog () {
       this.setShowPlayerDialog(false)
     },
-    getColor (value) {
-      if (value <= 25) {
-        return 'rgba(230,0, 0, 0.8)'
-      } else if (value <= 50) {
-        return 'rgba(255, 145, 0, 0.8)'
-      } else if (value <= 75) {
-        return 'rgba(255, 230, 0, 0.8)'
-      } else {
-        return 'rgba(0, 200, 0, 0.8)'
+    formatDisplayName (name) {
+      const splitName = name.split(' ')
+      let formattedName = []
+
+      splitName.forEach(n => {
+        formattedName.push(`${n.substring(0, 1).toUpperCase()}${n.substring(1)}`)
+      })
+      formattedName = formattedName.join(' ')
+
+      return formattedName
+    },
+    getColor (num, denom) {
+      const value = this.getValue(num, denom)
+
+      if (denom) {
+        if (value < 30) {
+          return 'rgba(230,0, 0, 0.8)'
+        } else if (value <= 50) {
+          return 'rgba(255, 145, 0, 0.8)'
+        } else {
+          return 'rgba(33, 150, 243, 0.8)'
+        }
       }
+
+      return 'rgba(33, 150, 243, 0.8)'
     },
     getPercentage (value) {
       return Math.round(100 * value)
+    },
+    getDisplayValue (num, denom) {
+      const displayValue = this.getValue(num, denom)
+
+      if (denom) {
+        return `${displayValue}%`
+      }
+
+      return displayValue
+    },
+    getValue (num, denom) {
+      if (denom) {
+        return this.getPercentage(num / denom)
+      }
+
+      return num
     }
+  },
+  created () {
+    console.log('PLAYER', this.player)
   }
 }
 </script>
