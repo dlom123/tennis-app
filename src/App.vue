@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-app>
 
     <v-toolbar>
       <v-toolbar-title>TennisStats</v-toolbar-title>
@@ -27,5 +27,15 @@
       <router-view/>
     </v-content>
 
-  </div>
+  </v-app>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      blah: false
+    }
+  }
+}
+</script>
