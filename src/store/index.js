@@ -9,9 +9,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    currentPlayer: null,
-    players: [],
-    showPlayerDialog: false
+    player: {},
+    players: [
+      { id: 1, firstName: 'Daniel', lastName: 'Lomelino', gender: 'm', avatarUrl: '' },
+      { id: 2, firstName: 'Dax', lastName: 'Lowery', gender: 'm', avatarUrl: '' }
+    ]
   },
   actions,
   getters,

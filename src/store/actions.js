@@ -5,6 +5,11 @@ const HTTP = axios.create({
 })
 
 export default {
+  getPlayer: async ({ state, commit }, playerId) => {
+    const player = await state.players.filter(player => player.id.toString() === playerId)[0]
+
+    commit('setPlayer', player)
+  },
   getPlayers: async ({ commit }) => {
     const results = await HTTP.get('/players?isActive=true&sort=lastName')
 
