@@ -31,7 +31,7 @@
             <v-row no-gutters style="margin-top: 20px;">
 
               <v-col sm="12">
-                <h3 :class="textHeaderClass(player.gender)">Points</h3>
+                <h3 :class="textHeaderClass(player.gender)">Ranking Points</h3>
               </v-col>
               <v-col sm="12">
                 540

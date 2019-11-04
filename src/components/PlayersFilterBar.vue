@@ -1,7 +1,9 @@
 <template>
   <v-expansion-panels>
     <v-expansion-panel>
-      <v-expansion-panel-header>Filters</v-expansion-panel-header>
+      <v-expansion-panel-header>
+        <PlayersFilterBarHeader/>
+      </v-expansion-panel-header>
       <v-expansion-panel-content>
         <v-container fluid>
           <v-row no-gutters>
@@ -16,14 +18,11 @@
                 :label="filterType.toString()"
                 true-value="doubles"
                 false-value="singles"
+                @change="onChangeType"
               ></v-switch>
             </v-col>
             <v-col sm="4">
-              <v-radio-group v-model="filterFormat">
-                <v-radio
-                  label="mixed"
-                  value="mixed"
-                />
+              <v-radio-group v-model="filterFormat" @change="onChangeFormat">
                 <v-radio
                   label="men"
                   value="men"
@@ -46,7 +45,7 @@
                     <template v-slot:activator="{ on }">
                       <v-text-field
                         v-model="dateRange.from"
-                        label="From date"
+                        label="From"
                         prepend-icon="mdi-calendar"
                         readonly
                         v-on="on"
@@ -83,7 +82,7 @@
                     <template v-slot:activator="{ on }">
                       <v-text-field
                         v-model="dateRange.to"
-                        label="To date"
+                        label="To"
                         prepend-icon="mdi-calendar"
                         readonly
                         v-on="on"
@@ -118,8 +117,14 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+import PlayersFilterBarHeader from './PlayersFilterBarHeader.vue'
+
 export default {
   name: 'playersFilterBar',
+  components: {
+    PlayersFilterBarHeader
+  },
   data () {
     return {
       date: null,
@@ -127,8 +132,22 @@ export default {
         from: null,
         to: null
       },
-      filterFormat: 'mixed',
-      filterType: 'doubles'
+      filterFormat: null,
+      filterType: 'singles'
+    }
+  },
+  methods: {
+    ...mapMutations([
+      'updateFilter'
+    ]),
+    onChangeDateRange (value) {
+      this.updateFilter({ name: 'playersDateRange', value })
+    },
+    onChangeFormat (value) {
+      this.updateFilter({ name: 'playersFormat', value })
+    },
+    onChangeType (value) {
+      this.updateFilter({ name: 'playersType', value })
     }
   }
 }

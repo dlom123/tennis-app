@@ -9,6 +9,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    filters: [],
     player: {},
     players: [
       { id: 1, firstName: 'Daniel', lastName: 'Lomelino', gender: 'm', avatarUrl: '' },
