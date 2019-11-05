@@ -43,7 +43,6 @@ export default {
     const results = await HTTP.get(`/players/${payload.playerId}/stats`)
 
     const stats = results.data.data
-    console.log('GOT STATS', stats)
 
     commit('updatePlayerStats', {
       playerId: payload,

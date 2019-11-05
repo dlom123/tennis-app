@@ -1,4 +1,7 @@
 export default {
+  removeFilter: (state, payload) => {
+    state.filters = state.filters.filter(f => f.name !== payload)
+  },
   setPlayer: (state, payload) => {
     state.player = payload
   },

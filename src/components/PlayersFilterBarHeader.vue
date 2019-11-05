@@ -2,31 +2,54 @@
   <v-row no-gutters align="center">
     <v-col cols="1">Filters</v-col>
     <v-col cols="1" v-if="isFilterSet('playersType')">
-      <v-chip close>Type: {{ getFilterValue('playersType') }}</v-chip>
+      <v-chip
+        close
+        @click:close="removeFilter('playersType')"
+      >Type: {{ getFilterValue('playersType') }}</v-chip>
     </v-col>
     <v-col cols="1" v-if="isFilterSet('playersFormat')">
-      <v-chip close>Format: {{ getFilterValue('playersFormat') }}</v-chip>
+      <v-chip
+        close
+        @click:close="removeFilter('playersFormat')"
+      >Format: {{ getFilterValue('playersFormat') }}</v-chip>
     </v-col>
-    <v-col cols="1" v-if="isFilterSet('playersDateRange')">
-      <v-chip close>Date Range: {{ dateRange }}</v-chip>
+    <v-col cols="2" v-if="isFilterSet('playersDateRange')">
+      <v-chip
+        close
+        @click:close="removeFilter('playersDateRange')"
+      >Date Range: {{ getDateRangeValue('playersDateRange') }}</v-chip>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   name: 'playersFilterBarHeader',
   computed: {
     ...mapState([
       'filters'
-    ]),
-    dateRange () {
-      return 'test'
-    }
+    ])
   },
   methods: {
+    ...mapMutations([
+      'removeFilter'
+    ]),
+    getDateRangeValue (filterName) {
+      const f = this.filters.find(f => f.name === filterName)
+      let dateRangeText
+
+      if (!f.from && f.to) {
+        dateRangeText = `through ${f.to}`
+      } else if (f.from && !f.to) {
+        dateRangeText = `from ${f.from}`
+      } else {
+        dateRangeText = `${f.from} - ${f.to}`
+      }
+
+      return dateRangeText
+    },
     getFilterValue (filterName) {
       const f = this.filters.find(f => f.name === filterName)
 
@@ -38,3 +61,8 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="sass">
+.v-expansion-panel-header:not(.v-expansion-panel-header--mousedown):focus::before
+  background-color: red !important
+</style>
