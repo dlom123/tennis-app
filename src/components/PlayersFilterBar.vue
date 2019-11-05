@@ -2,7 +2,12 @@
   <v-expansion-panels>
     <v-expansion-panel>
       <v-expansion-panel-header>
-        <PlayersFilterBarHeader/>
+        <PlayersFilterBarHeader
+          :clearFilterDateRange="clearFilterDateRange"
+          :clearFilterFormat="clearFilterFormat"
+          :clearFilterType="clearFilterType"
+          :defaultType="defaultType"
+        />
       </v-expansion-panel-header>
       <v-expansion-panel-content>
         <v-container fluid>
@@ -15,7 +20,7 @@
             <v-col sm="4">
               <v-switch
                 v-model="type"
-                :label="type.toString()"
+                :label="type ? type.toString() : defaultType"
                 true-value="doubles"
                 false-value="singles"
                 @change="onChangeType"
@@ -131,8 +136,9 @@ export default {
     return {
       dateFrom: null,
       dateTo: null,
+      defaultType: 'singles',
       format: null,
-      type: 'singles'
+      type: null
     }
   },
   computed: {
@@ -142,8 +148,25 @@ export default {
   },
   methods: {
     ...mapMutations([
+      'removeFilter',
       'updateFilter'
     ]),
+    clearFilterDateRange () {
+      this.dateFrom = null
+      this.dateTo = null
+
+      this.removeFilter('playersDateRange')
+    },
+    clearFilterFormat () {
+      this.format = null
+
+      this.removeFilter('playersFormat')
+    },
+    clearFilterType () {
+      this.type = this.defaultType
+
+      this.removeFilter('playersType')
+    },
     onChangeDateFrom (value) {
       let dateRange = this.filters.find(f => f.name === 'playersDateRange')
       if (dateRange) {

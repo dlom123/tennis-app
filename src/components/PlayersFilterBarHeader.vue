@@ -1,22 +1,22 @@
 <template>
   <v-row no-gutters align="center">
     <v-col cols="1">Filters</v-col>
-    <v-col cols="1" v-if="isFilterSet('playersType')">
+    <v-col cols="1" v-if="isFilterSet('playersType') && getFilterValue('playersType') !== defaultType">
       <v-chip
         close
-        @click:close="removeFilter('playersType')"
+        @click:close="clearFilterType"
       >Type: {{ getFilterValue('playersType') }}</v-chip>
     </v-col>
     <v-col cols="1" v-if="isFilterSet('playersFormat')">
       <v-chip
         close
-        @click:close="removeFilter('playersFormat')"
+        @click:close="clearFilterFormat"
       >Format: {{ getFilterValue('playersFormat') }}</v-chip>
     </v-col>
     <v-col cols="2" v-if="isFilterSet('playersDateRange')">
       <v-chip
         close
-        @click:close="removeFilter('playersDateRange')"
+        @click:close="clearFilterDateRange"
       >Date Range: {{ getDateRangeValue('playersDateRange') }}</v-chip>
     </v-col>
   </v-row>
@@ -27,6 +27,12 @@ import { mapMutations, mapState } from 'vuex'
 
 export default {
   name: 'playersFilterBarHeader',
+  props: [
+    'clearFilterDateRange',
+    'clearFilterFormat',
+    'clearFilterType',
+    'defaultType'
+  ],
   computed: {
     ...mapState([
       'filters'
@@ -61,8 +67,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="sass">
-.v-expansion-panel-header:not(.v-expansion-panel-header--mousedown):focus::before
-  background-color: red !important
-</style>
