@@ -1,5 +1,5 @@
 <template>
-  <v-row class="player-row">
+  <v-row class="player-row-doubles">
     <v-col :key="`${team.id}`" sm="12" class="col-players">
       <v-row no-gutters>
 
@@ -14,66 +14,70 @@
         >
           <v-img
             :src="require(`../assets/images/headshots/placeholders/${player.gender === 'm' ? 'men' : 'women'}/${player.gender === 'm' ? 'federer' : 'halep'}.png`)"
-            width="280"
-            max-height="230"
-            contain
+            width="230"
             class="avatar"
           >
           </v-img>
         </v-col>
 
-        <!-- <v-col sm="9">
+        <v-col sm="6" class="col-info">
 
           <v-row no-gutters>
 
-            <v-col sm="12" style="margin-top: 20px;">
-              <h1 :class="getTextHeaderClass(player.gender)">{{player.firstName}} {{player.lastName}}</h1>
+            <v-col
+              sm="12"
+              class="player-names"
+            >
+              <h1>
+                <span
+                  v-for="(player, i) in team.players"
+                  :key="player.id"
+                  :class="getTextHeaderClass(player.gender)"
+                >
+                  <span v-if="i > 0" class="doubles-separator">/</span>
+                  {{player.firstName}} {{player.lastName}}
+                </span>
+              </h1>
             </v-col>
 
-            <v-col sm="6">
+            <v-col sm="4">
 
-              <v-row no-gutters style="margin-top: 20px;">
-
+              <v-row no-gutters class="row-player-info">
                 <v-col sm="12">
-                  <h3 :class="getTextHeaderClass(player.gender)">Ranking Points</h3>
+                  <h3>Ranking Points</h3>
                 </v-col>
                 <v-col sm="12">
                   540
                 </v-col>
-
               </v-row>
 
-              <v-row no-gutters style="margin-top: 20px;">
-
+              <v-row no-gutters class="row-player-info">
                 <v-col sm="12">
-                  <h3 :class="getTextHeaderClass(player.gender)">Matches Played</h3>
+                  <h3>Matches Played</h3>
                 </v-col>
                 <v-col sm="12">
                   35
                 </v-col>
-
               </v-row>
 
             </v-col>
 
-            <v-col sm="6">
+            <v-col sm="4">
 
-              <v-row no-gutters style="margin-top: 20px;">
-
+              <v-row no-gutters class="row-player-info">
                 <v-col sm="12">
-                  <h3 :class="getTextHeaderClass(player.gender)">Rating</h3>
+                  <h3>Rating</h3>
                 </v-col>
                 <v-col sm="12">
-                  4.0
+                  8.0
                 </v-col>
-
               </v-row>
 
             </v-col>
 
           </v-row>
 
-        </v-col> -->
+        </v-col>
 
       </v-row>
     </v-col>

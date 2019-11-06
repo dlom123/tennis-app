@@ -78,8 +78,6 @@
                     </v-date-picker>
                   </v-menu>
                 </v-col>
-              </v-row>
-              <v-row no-gutters>
                 <v-col cols="4">
                   <v-menu
                     ref="toDateMenu"

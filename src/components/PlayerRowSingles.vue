@@ -1,5 +1,5 @@
 <template>
-  <v-row class="player-row">
+  <v-row class="player-row-singles">
     <v-col :key="`${player.id}`" sm="12" class="col-player">
       <v-row no-gutters>
 
@@ -21,51 +21,45 @@
 
         </v-col>
 
-        <v-col sm="9">
+        <v-col sm="9" class="col-info">
 
           <v-row no-gutters>
 
-            <v-col sm="12" style="margin-top: 20px;">
+            <v-col sm="12">
               <h1 :class="getTextHeaderClass(player.gender)">{{player.firstName}} {{player.lastName}}</h1>
             </v-col>
 
-            <v-col sm="6">
+            <v-col sm="3">
 
-              <v-row no-gutters style="margin-top: 20px;">
-
+              <v-row no-gutters class="row-player-info">
                 <v-col sm="12">
                   <h3 :class="getTextHeaderClass(player.gender)">Ranking Points</h3>
                 </v-col>
                 <v-col sm="12">
                   {{ player.points }}
                 </v-col>
-
               </v-row>
 
-              <v-row no-gutters style="margin-top: 20px;">
-
+              <v-row no-gutters class="row-player-info">
                 <v-col sm="12">
                   <h3 :class="getTextHeaderClass(player.gender)">Matches Played</h3>
                 </v-col>
                 <v-col sm="12">
                   35
                 </v-col>
-
               </v-row>
 
             </v-col>
 
-            <v-col sm="6">
+            <v-col sm="3">
 
-              <v-row no-gutters style="margin-top: 20px;">
-
+              <v-row no-gutters class="row-player-info">
                 <v-col sm="12">
                   <h3 :class="getTextHeaderClass(player.gender)">Rating</h3>
                 </v-col>
                 <v-col sm="12">
                   4.0
                 </v-col>
-
               </v-row>
 
             </v-col>

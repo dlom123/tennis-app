@@ -112,7 +112,7 @@ export default {
       'filters'
     ]),
     isFilterDoubles () {
-      return this.filters.find(f => f.name === FILTERS.PLAYERS.TYPE && f.value === 'doubles') || true
+      return this.filters.find(f => f.name === FILTERS.PLAYERS.TYPE && f.value === 'doubles')
     },
     playersDoublesSorted () {
       const teams = this.playersDoubles

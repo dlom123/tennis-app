@@ -1,24 +1,25 @@
 <template>
   <v-row no-gutters align="center">
+
     <v-col cols="1">Filters</v-col>
-    <v-col cols="1" v-if="isFilterSet(filterPlayersType) && getFilterValue(filterPlayersType) !== defaultType">
-      <v-chip
-        close
-        @click:close="clearFilterType"
-      >Type: {{ getFilterValue(filterPlayersType) }}</v-chip>
-    </v-col>
-    <v-col cols="1" v-if="isFilterSet(filterPlayersFormat)">
-      <v-chip
-        close
-        @click:close="clearFilterFormat"
-      >Format: {{ getFilterValue(filterPlayersFormat) }}</v-chip>
-    </v-col>
-    <v-col cols="2" v-if="isFilterSet(filterPlayersDateRange)">
-      <v-chip
-        close
-        @click:close="clearFilterDateRange"
-      >Date Range: {{ getDateRangeValue(filterPlayersDateRange) }}</v-chip>
-    </v-col>
+
+    <v-chip
+      v-if="isFilterSet(filterPlayersType) && getFilterValue(filterPlayersType) !== defaultType"
+      close
+      @click:close="clearFilterType"
+    >Type: {{ getFilterValue(filterPlayersType) }}</v-chip>
+    <v-chip
+      v-if="isFilterSet(filterPlayersFormat)"
+      close
+      @click:close="clearFilterFormat"
+      class="chip-header"
+    >Format: {{ getFilterValue(filterPlayersFormat) }}</v-chip>
+    <v-chip
+      v-if="isFilterSet(filterPlayersDateRange)"
+      close
+      @click:close="clearFilterDateRange"
+      class="chip-header"
+    >Date Range: {{ getDateRangeValue(filterPlayersDateRange) }}</v-chip>
   </v-row>
 </template>
 
