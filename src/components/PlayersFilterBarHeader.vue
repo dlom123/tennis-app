@@ -1,29 +1,30 @@
 <template>
   <v-row no-gutters align="center">
     <v-col cols="1">Filters</v-col>
-    <v-col cols="1" v-if="isFilterSet('playersType') && getFilterValue('playersType') !== defaultType">
+    <v-col cols="1" v-if="isFilterSet(filterPlayersType) && getFilterValue(filterPlayersType) !== defaultType">
       <v-chip
         close
         @click:close="clearFilterType"
-      >Type: {{ getFilterValue('playersType') }}</v-chip>
+      >Type: {{ getFilterValue(filterPlayersType) }}</v-chip>
     </v-col>
-    <v-col cols="1" v-if="isFilterSet('playersFormat')">
+    <v-col cols="1" v-if="isFilterSet(filterPlayersFormat)">
       <v-chip
         close
         @click:close="clearFilterFormat"
-      >Format: {{ getFilterValue('playersFormat') }}</v-chip>
+      >Format: {{ getFilterValue(filterPlayersFormat) }}</v-chip>
     </v-col>
-    <v-col cols="2" v-if="isFilterSet('playersDateRange')">
+    <v-col cols="2" v-if="isFilterSet(filterPlayersDateRange)">
       <v-chip
         close
         @click:close="clearFilterDateRange"
-      >Date Range: {{ getDateRangeValue('playersDateRange') }}</v-chip>
+      >Date Range: {{ getDateRangeValue(filterPlayersDateRange) }}</v-chip>
     </v-col>
   </v-row>
 </template>
 
 <script>
 import { mapMutations, mapState } from 'vuex'
+import { FILTERS } from '@/utils/constants'
 
 export default {
   name: 'playersFilterBarHeader',
@@ -36,7 +37,16 @@ export default {
   computed: {
     ...mapState([
       'filters'
-    ])
+    ]),
+    filterPlayersDateRange () {
+      return FILTERS.PLAYERS.DATE_RANGE
+    },
+    filterPlayersFormat () {
+      return FILTERS.PLAYERS.FORMAT
+    },
+    filterPlayersType () {
+      return FILTERS.PLAYERS.TYPE
+    }
   },
   methods: {
     ...mapMutations([

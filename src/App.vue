@@ -1,7 +1,7 @@
 <template>
   <v-app>
 
-    <v-toolbar>
+    <v-app-bar app short>
       <v-toolbar-title>TennisStats</v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -21,7 +21,7 @@
           </v-btn>
         </template>
 
-    </v-toolbar>
+    </v-app-bar>
 
     <v-content>
       <router-view/>

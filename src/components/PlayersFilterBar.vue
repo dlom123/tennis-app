@@ -54,6 +54,8 @@
                         prepend-icon="mdi-calendar"
                         readonly
                         v-on="on"
+                        clearable
+                        @click:clear="clearFilterDateRangeFrom"
                       ></v-text-field>
                     </template>
                     <v-date-picker
@@ -92,6 +94,8 @@
                         prepend-icon="mdi-calendar"
                         readonly
                         v-on="on"
+                        clearable
+                        @click:clear="clearFilterDateRangeTo"
                       ></v-text-field>
                     </template>
                     <v-date-picker
@@ -126,6 +130,7 @@
 <script>
 import { mapMutations, mapState } from 'vuex'
 import PlayersFilterBarHeader from './PlayersFilterBarHeader.vue'
+import { FILTERS } from '@/utils/constants'
 
 export default {
   name: 'playersFilterBar',
@@ -155,45 +160,74 @@ export default {
       this.dateFrom = null
       this.dateTo = null
 
-      this.removeFilter('playersDateRange')
+      this.removeFilter(FILTERS.PLAYERS.DATE_RANGE)
+    },
+    clearFilterDateRangeFrom () {
+      this.dateFrom = null
+
+      const dateRange = this.filters.find(f => f.name === FILTERS.PLAYERS.DATE_RANGE)
+      delete dateRange.from
+      if (dateRange.hasOwnProperty('to')) {
+        console.log('keeping date range filter alive', dateRange)
+        // the date range filter still has a 'to' value to keep
+        this.updateFilter(dateRange)
+      } else {
+        console.log('removing empty date range filter', dateRange)
+        // there are no more values set on this filter...remove it
+        this.removeFilter(FILTERS.PLAYERS.DATE_RANGE)
+      }
+    },
+    clearFilterDateRangeTo () {
+      this.dateTo = null
+
+      const dateRange = this.filters.find(f => f.name === FILTERS.PLAYERS.DATE_RANGE)
+      delete dateRange.to
+
+      if (dateRange.hasOwnProperty('from')) {
+        // the date range filter still has a 'from' value to keep
+        this.updateFilter(dateRange)
+      } else {
+        // there are no more values set on this filter...remove it
+        this.removeFilter(FILTERS.PLAYERS.DATE_RANGE)
+      }
     },
     clearFilterFormat () {
       this.format = null
 
-      this.removeFilter('playersFormat')
+      this.removeFilter(FILTERS.PLAYERS.FORMAT)
     },
     clearFilterType () {
       this.type = this.defaultType
 
-      this.removeFilter('playersType')
+      this.removeFilter(FILTERS.PLAYERS.TYPE)
     },
     onChangeDateFrom (value) {
-      let dateRange = this.filters.find(f => f.name === 'playersDateRange')
+      let dateRange = this.filters.find(f => f.name === FILTERS.PLAYERS.DATE_RANGE)
       if (dateRange) {
         // Date range filter is already set. Update it with new 'from' date.
         dateRange.from = value
       } else {
         // Date range filter is not already set. Create it.
-        dateRange = { name: 'playersDateRange', from: value }
+        dateRange = { name: FILTERS.PLAYERS.DATE_RANGE, from: value }
       }
       this.updateFilter(dateRange)
     },
     onChangeDateTo (value) {
-      let dateRange = this.filters.find(f => f.name === 'playersDateRange')
+      let dateRange = this.filters.find(f => f.name === FILTERS.PLAYERS.DATE_RANGE)
       if (dateRange) {
         // Date range filter is already set. Update it with new 'to' date.
         dateRange.to = value
       } else {
         // Date range filter is not already set. Create it.
-        dateRange = { name: 'playersDateRange', to: value }
+        dateRange = { name: FILTERS.PLAYERS.DATE_RANGE, to: value }
       }
       this.updateFilter(dateRange)
     },
     onChangeFormat (value) {
-      this.updateFilter({ name: 'playersFormat', value })
+      this.updateFilter({ name: FILTERS.PLAYERS.FORMAT, value })
     },
     onChangeType (value) {
-      this.updateFilter({ name: 'playersType', value })
+      this.updateFilter({ name: FILTERS.PLAYERS.TYPE, value })
     },
     onSaveDateFrom () {
       this.$refs.fromDateMenu.save(this.dateFrom)
