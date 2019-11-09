@@ -30,7 +30,7 @@ import PlayersFilterBar from '@/components/PlayersFilterBar.vue'
 import PlayerRowDoubles from '@/components/PlayerRowDoubles.vue'
 import PlayerRowSingles from '@/components/PlayerRowSingles.vue'
 import { FILTERS } from '@/utils/constants'
-import { filterPlayersSingles, sortPlayersSingles } from '@/utils/functions'
+import { filterTeams, filterPlayers, sortPlayers } from '@/utils/functions'
 
 export default {
   name: 'home',
@@ -51,15 +51,18 @@ export default {
     },
     playersSorted () {
       // apply filters
-      const playersFiltered = filterPlayersSingles(this.players, this.filters)
+      const playersFiltered = filterPlayers(this.players, this.filters)
 
       // apply sorting
-      const playersSorted = sortPlayersSingles(playersFiltered, this.sort)
+      const playersSorted = sortPlayers(playersFiltered, this.sort)
 
       return playersSorted
     },
     teamsSorted () {
-      return this.teams
+      // apply filters
+      const teamsFiltered = filterTeams(this.teams, this.filters)
+
+      return teamsFiltered
     }
   },
   methods: {

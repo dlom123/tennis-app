@@ -1,6 +1,23 @@
 import { FILTERS } from '@/utils/constants'
 
-export function filterPlayersSingles (players, filters) {
+export function filterTeams (teams, filters) {
+  let teamsFiltered = teams
+
+  const filterFormat = filters.find(filter => filter.name === FILTERS.PLAYERS.FORMAT)
+  if (filterFormat) {
+    if (filterFormat.value === 'men') {
+      teamsFiltered = teams.filter(team => team.players.every(player => player.gender === 'm'))
+    } else if (filterFormat.value === 'women') {
+      teamsFiltered = teams.filter(team => team.players.every(player => player.gender === 'f'))
+    }
+  }
+
+  // TODO: date filter logic
+
+  return teamsFiltered
+}
+
+export function filterPlayers (players, filters) {
   let playersFiltered = players
 
   const filterFormat = filters.find(filter => filter.name === FILTERS.PLAYERS.FORMAT)
@@ -12,6 +29,8 @@ export function filterPlayersSingles (players, filters) {
     }
   }
 
+  // TODO: date filter logic
+
   return playersFiltered
 }
 
@@ -19,7 +38,7 @@ export function getGenderTextClass (gender) {
   return { textMen: gender === 'm', textWomen: gender === 'f' }
 }
 
-export function sortPlayersSingles (players, sortBy) {
+export function sortPlayers (players, sortBy) {
   if (!sortBy) {
     // default sort order: rank
     sortBy = 'rank'

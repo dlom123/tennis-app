@@ -166,11 +166,9 @@ export default {
       const dateRange = this.filters.find(f => f.name === FILTERS.PLAYERS.DATE_RANGE)
       delete dateRange.from
       if (dateRange.hasOwnProperty('to')) {
-        console.log('keeping date range filter alive', dateRange)
         // the date range filter still has a 'to' value to keep
         this.updateFilter(dateRange)
       } else {
-        console.log('removing empty date range filter', dateRange)
         // there are no more values set on this filter...remove it
         this.removeFilter(FILTERS.PLAYERS.DATE_RANGE)
       }
