@@ -43,6 +43,7 @@ export default {
     ...mapState([
       'filters',
       'players',
+      'sort',
       'teams'
     ]),
     isFilterDoubles () {
@@ -53,7 +54,7 @@ export default {
       const playersFiltered = filterPlayersSingles(this.players, this.filters)
 
       // apply sorting
-      const playersSorted = sortPlayersSingles(playersFiltered)
+      const playersSorted = sortPlayersSingles(playersFiltered, this.sort)
 
       return playersSorted
     },

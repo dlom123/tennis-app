@@ -24,7 +24,6 @@ export default {
   },
   created () {
     this.getPlayer(this.$route.params.playerId)
-    console.log('PLAYER', this.player)
   }
 }
 </script>

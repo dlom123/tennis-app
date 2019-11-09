@@ -8,6 +8,9 @@ export default {
   setPlayers: (state, payload) => {
     state.players = payload
   },
+  setSort: (state, payload) => {
+    state.sort = payload
+  },
   setTeam: (state, payload) => {
     state.team = payload
   },

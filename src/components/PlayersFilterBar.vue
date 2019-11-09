@@ -1,7 +1,7 @@
 <template>
-  <v-expansion-panels>
+  <v-expansion-panels class="players-filter-bar">
     <v-expansion-panel>
-      <v-expansion-panel-header>
+      <v-expansion-panel-header class="header">
         <PlayersFilterBarHeader
           :clearFilterDateRange="clearFilterDateRange"
           :clearFilterFormat="clearFilterFormat"

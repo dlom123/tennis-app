@@ -3,23 +3,43 @@
 
     <v-col cols="1">Filters</v-col>
 
-    <v-chip
-      v-if="isFilterSet(filterPlayersType) && getFilterValue(filterPlayersType) !== defaultType"
-      close
-      @click:close="clearFilterType"
-    >Type: {{ getFilterValue(filterPlayersType) }}</v-chip>
-    <v-chip
-      v-if="isFilterSet(filterPlayersFormat)"
-      close
-      @click:close="clearFilterFormat"
-      class="chip-header"
-    >Format: {{ getFilterValue(filterPlayersFormat) }}</v-chip>
-    <v-chip
-      v-if="isFilterSet(filterPlayersDateRange)"
-      close
-      @click:close="clearFilterDateRange"
-      class="chip-header"
-    >Date Range: {{ getDateRangeValue(filterPlayersDateRange) }}</v-chip>
+    <v-col cols="9">
+      <v-chip
+        v-if="isFilterSet(filterPlayersType) && getFilterValue(filterPlayersType) !== defaultType"
+        close
+        @click:close="clearFilterType"
+      >Type: {{ getFilterValue(filterPlayersType) }}</v-chip>
+      <v-chip
+        v-if="isFilterSet(filterPlayersFormat)"
+        close
+        @click:close="clearFilterFormat"
+        class="chip-header"
+      >Format: {{ getFilterValue(filterPlayersFormat) }}</v-chip>
+      <v-chip
+        v-if="isFilterSet(filterPlayersDateRange)"
+        close
+        @click:close="clearFilterDateRange"
+        class="chip-header"
+      >Date Range: {{ getDateRangeValue(filterPlayersDateRange) }}</v-chip>
+    </v-col>
+
+    <v-col
+      v-if="!isFilterSet(filterPlayersType) || (isFilterSet(filterPlayersType) && getFilterValue(filterPlayersType) !== 'doubles')"
+      cols="auto"
+      @click.stop
+      class="select-sort"
+    >
+      <v-select
+        hide-details
+        dense
+        outlined
+        label="Sort By"
+        :items="sortOptions"
+        @change="setSort"
+        value="rank"
+      ></v-select>
+    </v-col>
+
   </v-row>
 </template>
 
@@ -35,6 +55,14 @@ export default {
     'clearFilterType',
     'defaultType'
   ],
+  data () {
+    return {
+      sortOptions: [
+        { text: 'Last Name', value: 'name' },
+        { text: 'Rank', value: 'rank' }
+      ]
+    }
+  },
   computed: {
     ...mapState([
       'filters'
@@ -51,7 +79,8 @@ export default {
   },
   methods: {
     ...mapMutations([
-      'removeFilter'
+      'removeFilter',
+      'setSort'
     ]),
     getDateRangeValue (filterName) {
       const f = this.filters.find(f => f.name === filterName)

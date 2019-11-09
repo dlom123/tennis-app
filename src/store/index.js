@@ -19,6 +19,7 @@ export default new Vuex.Store({
     filters: [],
     player: {},
     players: [],
+    sort: undefined,
     team: [],
     teams: []
   },
