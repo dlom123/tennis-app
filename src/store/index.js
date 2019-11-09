@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexPersist from 'vuex-persist'
 
 import actions from './actions'
 import getters from './getters'
@@ -7,14 +8,19 @@ import mutations from './mutations'
 
 Vue.use(Vuex)
 
+const vuexLocalStorage = new VuexPersist({
+  key: 'vuex',
+  storage: window.localStorage
+})
+
 export default new Vuex.Store({
+  plugins: [vuexLocalStorage.plugin],
   state: {
     filters: [],
     player: {},
-    players: [
-      { id: 1, firstName: 'Daniel', lastName: 'Lomelino', gender: 'm', avatarUrl: '' },
-      { id: 2, firstName: 'Dax', lastName: 'Lowery', gender: 'm', avatarUrl: '' }
-    ]
+    players: [],
+    team: [],
+    teams: []
   },
   actions,
   getters,

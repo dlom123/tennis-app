@@ -12,14 +12,11 @@
         <v-btn text to="/leaderboard">leaderboard</v-btn>
       </v-toolbar-items>
 
-        <template v-if="$vuetify.breakpoint.smAndUp">
-          <v-btn icon>
-            <v-icon>mdi-magnify</v-icon>
-          </v-btn>
-          <v-btn icon>
-            <v-icon>mdi-account-circle</v-icon>
-          </v-btn>
-        </template>
+      <!-- <template v-if="$vuetify.breakpoint.smAndUp">
+        <v-btn icon>
+          <v-icon>mdi-account-circle</v-icon>
+        </v-btn>
+      </template> -->
 
     </v-app-bar>
 

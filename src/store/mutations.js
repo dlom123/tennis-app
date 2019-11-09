@@ -5,6 +5,15 @@ export default {
   setPlayer: (state, payload) => {
     state.player = payload
   },
+  setPlayers: (state, payload) => {
+    state.players = payload
+  },
+  setTeam: (state, payload) => {
+    state.team = payload
+  },
+  setTeams: (state, payload) => {
+    state.teams = payload
+  },
   updateFilter: (state, payload) => {
     // remove the filter
     state.filters = state.filters.filter(f => f.name !== payload.name)

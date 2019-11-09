@@ -1,5 +1,5 @@
 <template>
-  <v-row class="player-row-doubles">
+  <v-row class="player-row-doubles" @click="goToTeam">
     <v-col :key="`${team.id}`" sm="12" class="col-players">
       <v-row no-gutters>
 
@@ -93,6 +93,9 @@ export default {
   methods: {
     getTextHeaderClass (gender) {
       return getGenderTextClass(gender)
+    },
+    goToTeam () {
+      this.$router.push({ name: 'team', params: { teamId: this.team.id } })
     }
   }
 }

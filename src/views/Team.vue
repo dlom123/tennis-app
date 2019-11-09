@@ -1,6 +1,6 @@
 <template>
   <v-container fluid class="grey lighten-5 container-main">
-    <v-row no-gutters>
+    <v-row no-gutters v-for="player in team.players" :key="player.id">
       <v-col>{{ player.firstName }} {{ player.lastName }}</v-col>
     </v-row>
 
@@ -11,20 +11,19 @@
 import { mapActions, mapState } from 'vuex'
 
 export default {
-  name: 'player',
+  name: 'team',
   computed: {
     ...mapState([
-      'player'
+      'team'
     ])
   },
   methods: {
     ...mapActions([
-      'getPlayer'
+      'getTeam'
     ])
   },
   created () {
-    this.getPlayer(this.$route.params.playerId)
-    console.log('PLAYER', this.player)
+    this.getTeam(this.$route.params.teamId)
   }
 }
 </script>

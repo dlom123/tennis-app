@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Leaderboard from './views/Leaderboard.vue'
 import Matches from './views/Matches.vue'
 import Player from './views/Player.vue'
+import Team from './views/Team.vue'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ const router = new Router({
       path: '/player/:playerId',
       name: 'player',
       component: Player
+    },
+    {
+      path: '/team/:teamId',
+      name: 'team',
+      component: Team
     }
   ]
 })
