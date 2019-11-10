@@ -16,13 +16,11 @@
             max-height="230"
             contain
             class="avatar"
-          >
-          </v-img>
+          ></v-img>
 
         </v-col>
 
         <v-col sm="9" class="col-info">
-
           <v-row no-gutters>
 
             <v-col sm="12">
@@ -33,7 +31,7 @@
 
               <v-row no-gutters class="row-player-info">
                 <v-col sm="12">
-                  <h3 :class="getTextHeaderClass(player.gender)">Ranking Points</h3>
+                  <h3>Ranking Points</h3>
                 </v-col>
                 <v-col sm="12">
                   {{ player.points }}
@@ -42,7 +40,7 @@
 
               <v-row no-gutters class="row-player-info">
                 <v-col sm="12">
-                  <h3 :class="getTextHeaderClass(player.gender)">Matches Played</h3>
+                  <h3>Matches Played</h3>
                 </v-col>
                 <v-col sm="12">
                   35
@@ -52,20 +50,20 @@
             </v-col>
 
             <v-col sm="3">
-
               <v-row no-gutters class="row-player-info">
+
                 <v-col sm="12">
-                  <h3 :class="getTextHeaderClass(player.gender)">Rating</h3>
+                  <h3>Rating</h3>
                 </v-col>
+
                 <v-col sm="12">
                   4.0
                 </v-col>
-              </v-row>
 
+              </v-row>
             </v-col>
 
           </v-row>
-
         </v-col>
 
       </v-row>

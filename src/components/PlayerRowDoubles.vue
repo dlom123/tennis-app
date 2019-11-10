@@ -16,8 +16,7 @@
             :src="require(`../assets/images/headshots/placeholders/${player.gender === 'm' ? 'men' : 'women'}/${player.gender === 'm' ? 'federer' : 'halep'}.png`)"
             width="230"
             class="avatar"
-          >
-          </v-img>
+          ></v-img>
         </v-col>
 
         <v-col sm="6" class="col-info">
