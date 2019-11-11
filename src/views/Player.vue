@@ -82,13 +82,27 @@
                   </v-row>
                 </v-col>
 
-                <v-col sm="6">
+                <v-col sm="12">
                   <v-row no-gutters class="row-player-info">
                     <v-col sm="12">
                       <h3>Right-handed</h3>
                       <v-icon>mdi-hand-left</v-icon>
                       <v-icon color="green">mdi-hand-right</v-icon>
                     </v-col>
+                  </v-row>
+                </v-col>
+
+                <v-col sm="12">
+                  <v-row no-gutters class="row-player-info">
+
+                    <v-col sm="12">
+                      <h3>Last Played</h3>
+                    </v-col>
+
+                    <v-col sm="12">
+                      8/1/2019
+                    </v-col>
+
                   </v-row>
                 </v-col>
 
