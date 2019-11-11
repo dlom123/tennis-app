@@ -34,8 +34,12 @@ export function filterPlayers (players, filters) {
   return playersFiltered
 }
 
+export function getGenderBorderClass (gender) {
+  return { 'border-men': gender === 'm', 'border-women': gender === 'f' }
+}
+
 export function getGenderTextClass (gender) {
-  return { textMen: gender === 'm', textWomen: gender === 'f' }
+  return { 'text-men': gender === 'm', 'text-women': gender === 'f' }
 }
 
 export function sortPlayers (players, sortBy) {
