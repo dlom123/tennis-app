@@ -2,9 +2,7 @@
   <v-container fluid class="grey lighten-5 container-main">
     <v-row no-gutters>
 
-      <v-col cols="1"></v-col>
-
-      <v-col cols="10">
+      <v-col cols="10" offset-sm="1">
         <v-container class="container-player">
           <v-row>
 
@@ -82,7 +80,7 @@
                   </v-row>
                 </v-col>
 
-                <v-col sm="12">
+                <v-col sm="6">
                   <v-row no-gutters class="row-player-info">
                     <v-col sm="12">
                       <h3>Right-handed</h3>
@@ -92,7 +90,7 @@
                   </v-row>
                 </v-col>
 
-                <v-col sm="12">
+                <v-col sm="6">
                   <v-row no-gutters class="row-player-info">
 
                     <v-col sm="12">
@@ -311,8 +309,6 @@
           </v-row>
         </v-container>
       </v-col>
-
-      <v-col cols="1"></v-col>
 
     </v-row>
 
