@@ -1,31 +1,19 @@
 <template>
-  <v-expansion-panels class="players-filter-bar">
+  <v-expansion-panels class="filter-bar">
     <v-expansion-panel>
       <v-expansion-panel-header class="header">
-        <PlayersFilterBarHeader
+        <FilterBarHeaderTeams
           :clearFilterDateRange="clearFilterDateRange"
           :clearFilterFormat="clearFilterFormat"
-          :clearFilterType="clearFilterType"
-          :defaultType="defaultType"
         />
       </v-expansion-panel-header>
       <v-expansion-panel-content>
         <v-container fluid>
           <v-row no-gutters>
-            <v-col sm="4">Type</v-col>
             <v-col sm="4">Format</v-col>
             <v-col sm="4">Date Range</v-col>
           </v-row>
           <v-row no-gutters>
-            <v-col sm="4">
-              <v-switch
-                v-model="type"
-                :label="type ? type.toString() : defaultType"
-                true-value="doubles"
-                false-value="singles"
-                @change="onChangeType"
-              ></v-switch>
-            </v-col>
             <v-col sm="4">
               <v-radio-group v-model="format" @change="onChangeFormat">
                 <v-radio
@@ -127,21 +115,19 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex'
-import PlayersFilterBarHeader from './PlayersFilterBarHeader.vue'
+import FilterBarHeaderTeams from './FilterBarHeaderTeams.vue'
 import { FILTERS } from '@/utils/constants'
 
 export default {
-  name: 'playersFilterBar',
+  name: 'filterBarTeams',
   components: {
-    PlayersFilterBarHeader
+    FilterBarHeaderTeams
   },
   data () {
     return {
       dateFrom: null,
       dateTo: null,
-      defaultType: 'singles',
-      format: null,
-      type: null
+      format: null
     }
   },
   computed: {
@@ -158,25 +144,25 @@ export default {
       this.dateFrom = null
       this.dateTo = null
 
-      this.removeFilter(FILTERS.PLAYERS.DATE_RANGE)
+      this.removeFilter(FILTERS.TEAMS.DATE_RANGE)
     },
     clearFilterDateRangeFrom () {
       this.dateFrom = null
 
-      const dateRange = this.filters.find(f => f.name === FILTERS.PLAYERS.DATE_RANGE)
+      const dateRange = this.filters.find(f => f.name === FILTERS.TEAMS.DATE_RANGE)
       delete dateRange.from
       if (dateRange.hasOwnProperty('to')) {
         // the date range filter still has a 'to' value to keep
         this.updateFilter(dateRange)
       } else {
         // there are no more values set on this filter...remove it
-        this.removeFilter(FILTERS.PLAYERS.DATE_RANGE)
+        this.removeFilter(FILTERS.TEAMS.DATE_RANGE)
       }
     },
     clearFilterDateRangeTo () {
       this.dateTo = null
 
-      const dateRange = this.filters.find(f => f.name === FILTERS.PLAYERS.DATE_RANGE)
+      const dateRange = this.filters.find(f => f.name === FILTERS.TEAMS.DATE_RANGE)
       delete dateRange.to
 
       if (dateRange.hasOwnProperty('from')) {
@@ -184,46 +170,38 @@ export default {
         this.updateFilter(dateRange)
       } else {
         // there are no more values set on this filter...remove it
-        this.removeFilter(FILTERS.PLAYERS.DATE_RANGE)
+        this.removeFilter(FILTERS.TEAMS.DATE_RANGE)
       }
     },
     clearFilterFormat () {
       this.format = null
 
-      this.removeFilter(FILTERS.PLAYERS.FORMAT)
-    },
-    clearFilterType () {
-      this.type = this.defaultType
-
-      this.removeFilter(FILTERS.PLAYERS.TYPE)
+      this.removeFilter(FILTERS.TEAMS.FORMAT)
     },
     onChangeDateFrom (value) {
-      let dateRange = this.filters.find(f => f.name === FILTERS.PLAYERS.DATE_RANGE)
+      let dateRange = this.filters.find(f => f.name === FILTERS.TEAMS.DATE_RANGE)
       if (dateRange) {
         // Date range filter is already set. Update it with new 'from' date.
         dateRange.from = value
       } else {
         // Date range filter is not already set. Create it.
-        dateRange = { name: FILTERS.PLAYERS.DATE_RANGE, from: value }
+        dateRange = { name: FILTERS.TEAMS.DATE_RANGE, from: value }
       }
       this.updateFilter(dateRange)
     },
     onChangeDateTo (value) {
-      let dateRange = this.filters.find(f => f.name === FILTERS.PLAYERS.DATE_RANGE)
+      let dateRange = this.filters.find(f => f.name === FILTERS.TEAMS.DATE_RANGE)
       if (dateRange) {
         // Date range filter is already set. Update it with new 'to' date.
         dateRange.to = value
       } else {
         // Date range filter is not already set. Create it.
-        dateRange = { name: FILTERS.PLAYERS.DATE_RANGE, to: value }
+        dateRange = { name: FILTERS.TEAMS.DATE_RANGE, to: value }
       }
       this.updateFilter(dateRange)
     },
     onChangeFormat (value) {
-      this.updateFilter({ name: FILTERS.PLAYERS.FORMAT, value })
-    },
-    onChangeType (value) {
-      this.updateFilter({ name: FILTERS.PLAYERS.TYPE, value })
+      this.updateFilter({ name: FILTERS.TEAMS.FORMAT, value })
     },
     onSaveDateFrom () {
       this.$refs.fromDateMenu.save(this.dateFrom)

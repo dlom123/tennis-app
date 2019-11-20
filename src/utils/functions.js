@@ -3,7 +3,7 @@ import { FILTERS } from '@/utils/constants'
 export function filterTeams (teams, filters) {
   let teamsFiltered = teams
 
-  const filterFormat = filters.find(filter => filter.name === FILTERS.PLAYERS.FORMAT)
+  const filterFormat = filters.find(filter => filter.name === FILTERS.FORMAT)
   if (filterFormat) {
     if (filterFormat.value === 'men') {
       teamsFiltered = teams.filter(team => team.players.every(player => player.gender === 'm'))
@@ -20,7 +20,7 @@ export function filterTeams (teams, filters) {
 export function filterPlayers (players, filters) {
   let playersFiltered = players
 
-  const filterFormat = filters.find(filter => filter.name === FILTERS.PLAYERS.FORMAT)
+  const filterFormat = filters.find(filter => filter.name === FILTERS.FORMAT)
   if (filterFormat) {
     if (filterFormat.value === 'men') {
       playersFiltered = players.filter(player => player.gender === 'm')

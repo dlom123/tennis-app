@@ -5,39 +5,17 @@
 
     <v-col cols="9">
       <v-chip
-        v-if="isFilterSet(filterPlayersType) && getFilterValue(filterPlayersType) !== defaultType"
-        close
-        @click:close="clearFilterType"
-      >Type: {{ getFilterValue(filterPlayersType) }}</v-chip>
-      <v-chip
-        v-if="isFilterSet(filterPlayersFormat)"
+        v-if="isFilterSet(filterTeamsFormat)"
         close
         @click:close="clearFilterFormat"
         class="chip-header"
-      >Format: {{ getFilterValue(filterPlayersFormat) }}</v-chip>
+      >Format: {{ getFilterValue(filterTeamsFormat) }}</v-chip>
       <v-chip
-        v-if="isFilterSet(filterPlayersDateRange)"
+        v-if="isFilterSet(filterTeamsDateRange)"
         close
         @click:close="clearFilterDateRange"
         class="chip-header"
-      >Date Range: {{ getDateRangeValue(filterPlayersDateRange) }}</v-chip>
-    </v-col>
-
-    <v-col
-      v-if="!isFilterSet(filterPlayersType) || (isFilterSet(filterPlayersType) && getFilterValue(filterPlayersType) !== 'doubles')"
-      cols="auto"
-      @click.stop
-      class="select-sort"
-    >
-      <v-select
-        hide-details
-        dense
-        outlined
-        label="Sort By"
-        :items="sortOptions"
-        @change="setSort"
-        value="rank"
-      ></v-select>
+      >Date Range: {{ getDateRangeValue(filterTeamsDateRange) }}</v-chip>
     </v-col>
 
   </v-row>
@@ -48,7 +26,7 @@ import { mapMutations, mapState } from 'vuex'
 import { FILTERS } from '@/utils/constants'
 
 export default {
-  name: 'playersFilterBarHeader',
+  name: 'filterBarHeaderTeams',
   props: [
     'clearFilterDateRange',
     'clearFilterFormat',
@@ -67,14 +45,11 @@ export default {
     ...mapState([
       'filters'
     ]),
-    filterPlayersDateRange () {
-      return FILTERS.PLAYERS.DATE_RANGE
+    filterTeamsDateRange () {
+      return FILTERS.TEAMS.DATE_RANGE
     },
-    filterPlayersFormat () {
-      return FILTERS.PLAYERS.FORMAT
-    },
-    filterPlayersType () {
-      return FILTERS.PLAYERS.TYPE
+    filterTeamsFormat () {
+      return FILTERS.TEAMS.FORMAT
     }
   },
   methods: {

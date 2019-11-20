@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
 import Leaderboard from './views/Leaderboard.vue'
 import Matches from './views/Matches.vue'
 import Player from './views/Player.vue'
+import Players from './views/Players.vue'
 import Team from './views/Team.vue'
+import Teams from './views/Teams.vue'
 
 Vue.use(Router)
 
@@ -14,8 +15,8 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'players',
+      component: Players
     },
     {
       path: '/leaderboard',
@@ -28,14 +29,19 @@ const router = new Router({
       component: Matches
     },
     {
-      path: '/player/:playerId',
+      path: '/players/:playerId',
       name: 'player',
       component: Player
     },
     {
-      path: '/team/:teamId',
+      path: '/teams/:teamId',
       name: 'team',
       component: Team
+    },
+    {
+      path: '/teams',
+      name: 'teams',
+      component: Teams
     }
   ]
 })

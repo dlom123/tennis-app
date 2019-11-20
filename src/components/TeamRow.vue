@@ -1,6 +1,6 @@
 <template>
-  <v-row class="player-row-doubles" @click="goToTeam">
-    <v-col :key="`${team.id}`" sm="12" class="col-players">
+  <v-row class="team-row" @click="goToTeam">
+    <v-col :key="`${team.id}`" sm="12" class="col-team">
       <v-row no-gutters>
 
         <h1 class="ranking">{{ team.id }}</h1>
@@ -87,7 +87,7 @@
 import { getGenderTextClass } from '@/utils/functions'
 
 export default {
-  name: 'playerRowDoubles',
+  name: 'teamRow',
   props: ['team'],
   methods: {
     getTextHeaderClass (gender) {

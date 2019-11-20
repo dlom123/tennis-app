@@ -1,5 +1,5 @@
 <template>
-  <v-row class="player-row-singles" @click="goToPlayer">
+  <v-row class="player-row" @click="goToPlayer">
     <v-col :key="`${player.id}`" sm="12" class="col-player">
       <v-row no-gutters>
 
@@ -75,7 +75,7 @@
 import { getGenderTextClass } from '@/utils/functions'
 
 export default {
-  name: 'playerRowSingles',
+  name: 'playerRow',
   props: [
     'player',
     'ranking'
