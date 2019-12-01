@@ -7,9 +7,20 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
-        <v-btn text to="/">players</v-btn>
-        <v-btn text to="/matches">matches</v-btn>
+
+        <v-menu offset-y open-on-hover>
+          <template v-slot:activator="{ on }">
+            <v-btn v-on="on" text to="/players" :ripple="false">players</v-btn>
+          </template>
+          <v-list subheader>
+            <v-list-item to="/players" exact>singles</v-list-item>
+            <v-list-item to="/players?doubles" exact>doubles</v-list-item>
+          </v-list>
+        </v-menu>
+
+        <v-btn text to="/teams">teams</v-btn>
         <v-btn text to="/leaderboard">leaderboard</v-btn>
+
       </v-toolbar-items>
 
       <!-- <template v-if="$vuetify.breakpoint.smAndUp">

@@ -4,7 +4,7 @@ export const FILTERS = {
     FORMAT: 'playersFormat'
   },
   TEAMS: {
-    DATE_RANGE: 'playersDateRange',
-    FORMAT: 'playersFormat'
+    DATE_RANGE: 'teamsDateRange',
+    FORMAT: 'teamsFormat'
   }
 }

@@ -24,6 +24,10 @@
                   label="women"
                   value="women"
                 />
+                <v-radio
+                  label="mixed"
+                  value="mixed"
+                />
               </v-radio-group>
             </v-col>
             <v-col sm="4">

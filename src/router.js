@@ -15,6 +15,11 @@ const router = new Router({
   routes: [
     {
       path: '/',
+      name: 'home',
+      component: Players
+    },
+    {
+      path: '/players',
       name: 'players',
       component: Players
     },
