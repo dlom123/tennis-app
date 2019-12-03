@@ -5,10 +5,10 @@
 
         <v-col sm="3" class="col-avatar" align="center">
 
-          <h1
+          <!-- <h1
             :class="getTextHeaderClass(player.gender)"
             class="ranking"
-          >{{ ranking }}</h1>
+          >{{ ranking }}</h1> -->
 
           <v-img
             :src="require(`../assets/images/headshots/placeholders/${player.gender === 'm' ? 'men' : 'women'}/${player.gender === 'm' ? 'federer' : 'halep'}.png`)"
@@ -29,21 +29,21 @@
 
             <v-col sm="3">
 
-              <v-row no-gutters class="row-player-info">
+              <!-- <v-row no-gutters class="row-player-info">
                 <v-col sm="12">
                   <h3>Ranking Points</h3>
                 </v-col>
                 <v-col sm="12">
                   {{ player.points }}
                 </v-col>
-              </v-row>
+              </v-row> -->
 
               <v-row no-gutters class="row-player-info">
                 <v-col sm="12">
-                  <h3>Matches Played</h3>
+                  <h3>Rating</h3>
                 </v-col>
                 <v-col sm="12">
-                  35
+                  4.0
                 </v-col>
               </v-row>
 
@@ -51,15 +51,12 @@
 
             <v-col sm="3">
               <v-row no-gutters class="row-player-info">
-
                 <v-col sm="12">
-                  <h3>Rating</h3>
+                  <h3>Matches Played</h3>
                 </v-col>
-
                 <v-col sm="12">
-                  4.0
+                  35
                 </v-col>
-
               </v-row>
             </v-col>
 
@@ -78,14 +75,15 @@ export default {
   name: 'playerRow',
   props: [
     'player',
-    'ranking'
+    'ranking',
+    'type'
   ],
   methods: {
     getTextHeaderClass (gender) {
       return getGenderTextClass(gender)
     },
     goToPlayer () {
-      this.$router.push({ name: 'player', params: { playerId: this.player.id } })
+      this.$router.push({ name: 'player', params: { playerId: this.player.id, type: this.type } })
     }
   }
 }

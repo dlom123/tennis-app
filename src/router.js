@@ -3,7 +3,8 @@ import Router from 'vue-router'
 import Leaderboard from './views/Leaderboard.vue'
 import Matches from './views/Matches.vue'
 import Player from './views/Player.vue'
-import Players from './views/Players.vue'
+import PlayersDoubles from './views/PlayersDoubles.vue'
+import PlayersSingles from './views/PlayersSingles.vue'
 import Team from './views/Team.vue'
 import Teams from './views/Teams.vue'
 
@@ -16,12 +17,12 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Players
+      component: PlayersSingles
     },
     {
-      path: '/players',
-      name: 'players',
-      component: Players
+      path: '/doubles',
+      name: 'doubles',
+      component: PlayersDoubles
     },
     {
       path: '/leaderboard',
@@ -37,6 +38,11 @@ const router = new Router({
       path: '/players/:playerId',
       name: 'player',
       component: Player
+    },
+    {
+      path: '/singles',
+      name: 'singles',
+      component: PlayersSingles
     },
     {
       path: '/teams/:teamId',

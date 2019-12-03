@@ -1,5 +1,22 @@
 import { FILTERS } from '@/utils/constants'
 
+export function filterPlayers (players, filters) {
+  let playersFiltered = players
+
+  const filterFormat = filters.find(filter => filter.name === FILTERS.PLAYERS.FORMAT)
+  if (filterFormat) {
+    if (filterFormat.value === 'men') {
+      playersFiltered = players.filter(player => player.gender === 'm')
+    } else if (filterFormat.value === 'women') {
+      playersFiltered = players.filter(player => player.gender === 'f')
+    }
+  }
+
+  // TODO: year filter logic
+
+  return playersFiltered
+}
+
 export function filterTeams (teams, filters) {
   let teamsFiltered = teams
 
@@ -14,26 +31,9 @@ export function filterTeams (teams, filters) {
     }
   }
 
-  // TODO: date filter logic
+  // TODO: year filter logic
 
   return teamsFiltered
-}
-
-export function filterPlayers (players, filters) {
-  let playersFiltered = players
-
-  const filterFormat = filters.find(filter => filter.name === FILTERS.PLAYERS.FORMAT)
-  if (filterFormat) {
-    if (filterFormat.value === 'men') {
-      playersFiltered = players.filter(player => player.gender === 'm')
-    } else if (filterFormat.value === 'women') {
-      playersFiltered = players.filter(player => player.gender === 'f')
-    }
-  }
-
-  // TODO: date filter logic
-
-  return playersFiltered
 }
 
 export function getGenderBorderClass (gender) {
@@ -46,8 +46,8 @@ export function getGenderTextClass (gender) {
 
 export function sortPlayers (players, sortBy) {
   if (!sortBy) {
-    // default sort order: rank
-    sortBy = 'rank'
+    // default sort order: name
+    sortBy = 'name'
   }
 
   if (sortBy === 'name') {
@@ -64,4 +64,26 @@ export function sortPlayers (players, sortBy) {
   }
 
   return players
+}
+
+export function sortTeams (teams) {
+  // sort the players within each team by last name, first name alphabetically
+  teams.forEach(team => {
+    team.players.sort((a, b) => (a.lastName > b.lastName)
+      ? 1
+      : (a.lastName === b.lastName)
+        ? ((a.firstName > b.firstName) ? 1 : -1)
+        : -1
+    )
+  })
+
+  // sort the teams alphabetically based on the last name, first name of the first player of each team
+  teams.sort((a, b) => (a.players[0].lastName > b.players[0].lastName)
+    ? 1
+    : (a.players[0].lastName === b.players[0].lastName)
+      ? ((a.players[0].firstName > b.players[0].firstName) ? 1 : -1)
+      : -1
+  )
+
+  return teams
 }

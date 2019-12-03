@@ -1,13 +1,14 @@
 <template>
   <v-container fluid>
 
-    <FilterBarPlayers/>
+    <FilterBarPlayers type="doubles" />
 
     <PlayerRow
       v-for="(player, i) in playersSorted"
       :key="player.id"
       :player="player"
       :ranking="i + 1"
+      type="doubles"
     />
 
   </v-container>

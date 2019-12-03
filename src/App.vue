@@ -2,19 +2,19 @@
   <v-app>
 
     <v-app-bar app short>
-      <v-toolbar-title>TennisStats</v-toolbar-title>
+      <v-toolbar-title @click="$router.push('/')" class="title-link">TennisStats</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
 
-        <v-menu offset-y open-on-hover>
+        <v-menu offset-y>
           <template v-slot:activator="{ on }">
-            <v-btn v-on="on" text to="/players" :ripple="false">players</v-btn>
+            <v-btn v-on="on" text :ripple="false">players</v-btn>
           </template>
           <v-list subheader>
-            <v-list-item to="/players" exact>singles</v-list-item>
-            <v-list-item to="/players?doubles" exact>doubles</v-list-item>
+            <v-list-item to="/singles" exact>singles</v-list-item>
+            <v-list-item to="/doubles" exact>doubles</v-list-item>
           </v-list>
         </v-menu>
 
@@ -42,7 +42,6 @@
 export default {
   data () {
     return {
-      blah: false
     }
   }
 }

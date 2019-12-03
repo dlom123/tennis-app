@@ -18,7 +18,7 @@
       >Date Range: {{ getDateRangeValue(filterPlayersDateRange) }}</v-chip>
     </v-col>
 
-    <v-col
+    <!-- <v-col
       cols="auto"
       @click.stop
       class="select-sort"
@@ -32,7 +32,7 @@
         @change="setSort"
         value="rank"
       ></v-select>
-    </v-col>
+    </v-col> -->
 
   </v-row>
 </template>

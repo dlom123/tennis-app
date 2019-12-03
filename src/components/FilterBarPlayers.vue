@@ -11,7 +11,7 @@
         <v-container fluid>
           <v-row no-gutters>
             <v-col sm="4">Format</v-col>
-            <v-col sm="4">Date Range</v-col>
+            <!-- <v-col sm="4">Year</v-col> -->
           </v-row>
           <v-row no-gutters>
             <v-col sm="4">
@@ -24,88 +24,26 @@
                   label="women"
                   value="women"
                 />
+                <v-radio v-if="type === 'doubles'"
+                  label="mixed"
+                  value="mixed"
+                />
               </v-radio-group>
             </v-col>
-            <v-col sm="4">
+            <!-- <v-col sm="4">
               <v-row no-gutters>
                 <v-col cols="4">
-                  <v-menu
-                    ref="fromDateMenu"
-                    :close-on-content-click="false"
-                    :return-value.sync="dateFrom"
-                    offset-y
-                  >
-                    <template v-slot:activator="{ on }">
-                      <v-text-field
-                        v-model="dateFrom"
-                        label="From"
-                        prepend-icon="mdi-calendar"
-                        readonly
-                        v-on="on"
-                        clearable
-                        @click:clear="clearFilterDateRangeFrom"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      v-model="dateFrom"
-                      no-title
-                      scrollable
-                      first-day-of-week="1"
-                    >
-                      <v-spacer></v-spacer>
-                      <v-btn
-                        text
-                        color="primary"
-                        @click="$refs.fromDateMenu.isActive = false"
-                      >Cancel</v-btn>
-                      <v-btn
-                        text
-                        color="primary"
-                        @click="onSaveDateFrom"
-                      >OK</v-btn>
-                    </v-date-picker>
-                  </v-menu>
-                </v-col>
-                <v-col cols="4">
-                  <v-menu
-                    ref="toDateMenu"
-                    :close-on-content-click="false"
-                    :return-value.sync="dateTo"
-                    offset-y
-                  >
-                    <template v-slot:activator="{ on }">
-                      <v-text-field
-                        v-model="dateTo"
-                        label="To"
-                        prepend-icon="mdi-calendar"
-                        readonly
-                        v-on="on"
-                        clearable
-                        @click:clear="clearFilterDateRangeTo"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      v-model="dateTo"
-                      no-title
-                      scrollable
-                      first-day-of-week="1"
-                    >
-                      <v-spacer></v-spacer>
-                      <v-btn
-                        text
-                        color="primary"
-                        @click="$refs.toDateMenu.isActive = false"
-                      >Cancel</v-btn>
-                      <v-btn
-                        text
-                        color="primary"
-                        @click="onSaveDateTo"
-                      >OK</v-btn>
-                    </v-date-picker>
-                  </v-menu>
+                  <v-select
+                    hide-details
+                    dense
+                    outlined
+                    :items="optionsYears"
+                    @change="onChangeYear"
+                    value="all"
+                  ></v-select>
                 </v-col>
               </v-row>
-            </v-col>
+            </v-col> -->
           </v-row>
         </v-container>
       </v-expansion-panel-content>
@@ -123,6 +61,7 @@ export default {
   components: {
     FilterBarHeaderPlayers
   },
+  props: ['type'],
   data () {
     return {
       dateFrom: null,
@@ -133,7 +72,20 @@ export default {
   computed: {
     ...mapState([
       'filters'
-    ])
+    ]),
+    optionsYears () {
+      // generate the year options based on stats data and the current year
+      const firstYear = new Date().getFullYear() - 2 // TODO: replace this with the actual first year from stats data
+      const currentYear = new Date().getFullYear()
+      const years = new Array(currentYear - firstYear + 1).fill().map((y, i) => currentYear - i)
+
+      const options = [{ text: 'All', value: 'all' }]
+      years.forEach(year => {
+        options.push({ text: year, value: year })
+      })
+
+      return options
+    }
   },
   methods: {
     ...mapMutations([

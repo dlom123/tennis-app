@@ -17,7 +17,7 @@
 import { mapActions, mapState } from 'vuex'
 import FilterBarTeams from '@/components/FilterBarTeams.vue'
 import TeamRow from '@/components/TeamRow.vue'
-import { filterTeams } from '@/utils/functions'
+import { filterTeams, sortTeams } from '@/utils/functions'
 
 export default {
   name: 'teams',
@@ -28,13 +28,17 @@ export default {
   computed: {
     ...mapState([
       'filters',
+      'sort',
       'teams'
     ]),
     teamsSorted () {
       // apply filters
       const teamsFiltered = filterTeams(this.teams, this.filters)
 
-      return teamsFiltered
+      // apply sorting
+      const teamsSorted = sortTeams(teamsFiltered, this.sort)
+
+      return teamsSorted
     }
   },
   methods: {
