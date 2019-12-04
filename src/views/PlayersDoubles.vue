@@ -16,7 +16,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import FilterBarPlayers from '@/components/FilterBarPlayers.vue'
+import FilterBarPlayers from '@/components/filters/FilterBarPlayers.vue'
 import PlayerRow from '@/components/PlayerRow.vue'
 import { filterPlayers, sortPlayers } from '@/utils/functions'
 

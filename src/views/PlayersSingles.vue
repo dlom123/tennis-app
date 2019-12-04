@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
-import FilterBarPlayers from '@/components/FilterBarPlayers.vue'
+import { mapActions, mapState, mapMutations } from 'vuex'
+import FilterBarPlayers from '@/components/filters/FilterBarPlayers.vue'
 import PlayerRow from '@/components/PlayerRow.vue'
 import { filterPlayers, sortPlayers } from '@/utils/functions'
 
@@ -45,6 +45,9 @@ export default {
   methods: {
     ...mapActions([
       'getPlayers'
+    ]),
+    ...mapMutations([
+      'removeAllFilters'
     ])
   },
   created () {

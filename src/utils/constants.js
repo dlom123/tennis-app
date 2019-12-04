@@ -1,4 +1,8 @@
 export const FILTERS = {
+  PLAYER: {
+    FORMAT: 'playerFormat',
+    YEAR: 'playerYear'
+  },
   PLAYERS: {
     DATE_RANGE: 'playersDateRange',
     FORMAT: 'playersFormat'

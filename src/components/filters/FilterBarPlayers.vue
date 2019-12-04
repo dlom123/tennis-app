@@ -1,5 +1,5 @@
 <template>
-  <v-expansion-panels class="players-filter-bar">
+  <v-expansion-panels class="filter-bar">
     <v-expansion-panel>
       <v-expansion-panel-header class="header">
         <FilterBarHeaderPlayers
@@ -53,7 +53,7 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex'
-import FilterBarHeaderPlayers from './FilterBarHeaderPlayers.vue'
+import FilterBarHeaderPlayers from '@/components/filters/FilterBarHeaderPlayers.vue'
 import { FILTERS } from '@/utils/constants'
 
 export default {

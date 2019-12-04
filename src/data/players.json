@@ -1,18 +1,277 @@
 {
   "singles": [
-    { "id": 3, "firstName": "Alex", "lastName": "Fohl", "gender": "m", "avatarUrl": "", "points": 90 },
-    { "id": 6, "firstName": "Daniel", "lastName": "Lomelino", "gender": "m", "avatarUrl": "", "points": 150 },
-    { "id": 12, "firstName": "Emily", "lastName": "Wandel", "gender": "f", "avatarUrl": "", "points": 40 },
-    { "id": 4, "firstName": "Chris", "lastName": "Layton", "gender": "m", "avatarUrl": "", "points": 50 },
-    { "id": 13, "firstName": "Tony", "lastName": "Winkler", "gender": "m", "avatarUrl": "", "points": 110 },
-    { "id": 1, "firstName": "Doug", "lastName": "Brown", "gender": "m", "avatarUrl": "", "points": 60 },
-    { "id": 7, "firstName": "Dax", "lastName": "Lowery", "gender": "m", "avatarUrl": "", "points": 140 },
-    { "id": 2, "firstName": "Andrea", "lastName": "Burkhardt", "gender": "f", "avatarUrl": "", "points": 120 },
-    { "id": 5, "firstName": "Maddie", "lastName": "Lee", "gender": "f", "avatarUrl": "", "points": 130 },
-    { "id": 10, "firstName": "Heidi", "lastName": "Somers", "gender": "f", "avatarUrl": "", "points": 70 },
-    { "id": 9, "firstName": "Dan", "lastName": "Somers", "gender": "m", "avatarUrl": "", "points": 30 },
-    { "id": 8, "firstName": "Kessa", "lastName": "McNaught", "gender": "f", "avatarUrl": "", "points": 100 },
-    { "id": 11, "firstName": "David", "lastName": "Strom", "gender": "m", "avatarUrl": "", "points": 80 }
+    {
+      "id": 3,
+      "firstName": "Alex",
+      "lastName": "Fohl",
+      "gender": "m",
+      "avatarUrl": "",
+      "points": 90,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
+    },
+    {
+      "id": 6,
+      "firstName": "Daniel",
+      "lastName": "Lomelino",
+      "gender": "m",
+      "avatarUrl": "",
+      "points": 150,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
+    },
+    { "id": 12,
+      "firstName": "Emily",
+      "lastName": "Wandel",
+      "gender": "f",
+      "avatarUrl": "",
+      "points": 40,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
+    },
+    {
+      "id": 4,
+      "firstName": "Chris",
+      "lastName": "Layton",
+      "gender": "m",
+      "avatarUrl": "",
+      "points": 50,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
+    },
+    {
+      "id": 13,
+      "firstName": "Tony",
+      "lastName": "Winkler",
+      "gender": "m",
+      "avatarUrl": "",
+      "points": 110,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
+    },
+    {
+      "id": 1,
+      "firstName": "Doug",
+      "lastName": "Brown",
+      "gender": "m",
+      "avatarUrl": "",
+      "points": 60,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
+    },
+    {
+      "id": 7,
+      "firstName": "Dax",
+      "lastName": "Lowery",
+      "gender": "m",
+      "avatarUrl": "",
+      "points": 140,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
+    },
+    {
+      "id": 2,
+      "firstName": "Andrea",
+      "lastName": "Burkhardt",
+      "gender": "f",
+      "avatarUrl": "",
+      "points": 120,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
+    },
+    {
+      "id": 5,
+      "firstName": "Maddie",
+      "lastName": "Lee",
+      "gender": "f",
+      "avatarUrl": "",
+      "points": 130,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
+    },
+    {
+      "id": 10,
+      "firstName": "Heidi",
+      "lastName": "Somers",
+      "gender": "f",
+      "avatarUrl": "",
+      "points": 70,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
+    },
+    {
+      "id": 9,
+      "firstName": "Dan",
+      "lastName": "Somers",
+      "gender": "m",
+      "avatarUrl": "",
+      "points": 30,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
+    },
+    {
+      "id": 8,
+      "firstName": "Kessa",
+      "lastName": "McNaught",
+      "gender": "f",
+      "avatarUrl": "",
+      "points": 100,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
+    },
+    {
+      "id": 11,
+      "firstName": "David",
+      "lastName": "Strom",
+      "gender": "m",
+      "avatarUrl": "",
+      "points": 80,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
+    }
 ],
   "doubles": [
     {
@@ -21,7 +280,20 @@
         { "id": 3, "firstName": "Alex", "lastName": "Fohl", "gender": "m", "avatarUrl": "" },
         { "id": 6, "firstName": "Daniel", "lastName": "Lomelino", "gender": "m", "avatarUrl": "" }
       ],
-      "points": 150
+      "points": 150,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
     },
     {
       "id": 4,
@@ -29,7 +301,20 @@
         { "id": 7, "firstName": "Dax", "lastName": "Lowery", "gender": "m", "avatarUrl": "" },
         { "id": 8, "firstName": "Kessa", "lastName": "McNaught", "gender": "f", "avatarUrl": "" }
       ],
-      "points": 60
+      "points": 60,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
     },
     {
       "id": 2,
@@ -37,7 +322,20 @@
         { "id": 9, "firstName": "Dan", "lastName": "Somers", "gender": "m", "avatarUrl": "" },
         { "id": 4, "firstName": "Chris", "lastName": "Layton", "gender": "m", "avatarUrl": "" }
       ],
-      "points": 120
+      "points": 120,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
     },
     {
       "id": 3,
@@ -45,7 +343,20 @@
         { "id": 13, "firstName": "Tony", "lastName": "Winkler", "gender": "m", "avatarUrl": "" },
         { "id": 1, "firstName": "Doug", "lastName": "Brown", "gender": "m", "avatarUrl": "" }
       ],
-      "points": 90
+      "points": 90,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
     },
     {
       "id": 6,
@@ -53,7 +364,20 @@
         { "id": 12, "firstName": "Emily", "lastName": "Wandel", "gender": "f", "avatarUrl": "" },
         { "id": 2, "firstName": "Andrea", "lastName": "Burkhardt", "gender": "f", "avatarUrl": "" }
       ],
-      "points": 30
+      "points": 30,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
     },
     {
       "id": 5,
@@ -61,7 +385,20 @@
         { "id": 5, "firstName": "Maddie", "lastName": "Lee", "gender": "f", "avatarUrl": "" },
         { "id": 11, "firstName": "David", "lastName": "Strom", "gender": "m", "avatarUrl": "" }
       ],
-      "points": 50
+      "points": 50,
+      "stats": {
+        "aces": 5,
+        "winners": 24,
+        "doubleFaults": 11,
+        "unforcedErrors": 19,
+        "firstServeIn": { "in": 36, "of": 58 },
+        "firstServeReturn": { "in": 52, "of": 71 },
+        "secondServeReturn": { "in": 68, "of": 99 },
+        "firstServePointsWon": { "in": 21, "of": 36 },
+        "secondServePointsWon": { "in": 9, "of": 11 },
+        "netPointsWon": { "in": 25, "of": 52 },
+        "breakPointsWon": { "in": 3, "of": 7 }
+      }
     }
 ]
 }

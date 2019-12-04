@@ -107,16 +107,14 @@
 
             <v-col cols="8" class="col-stats">
 
+              <FilterBarPlayer/>
+
               <v-row no-gutters class="section">
-                <PlayerStats/>
+                <PlayerStats :stats="player.stats" />
               </v-row>
 
               <v-row no-gutters class="section">
-                <PlayerStats/>
-              </v-row>
-
-              <v-row no-gutters class="section">
-                <PlayerStats/>
+                <PlayerMatches/>
               </v-row>
 
             </v-col>
@@ -133,6 +131,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
+import FilterBarPlayer from '@/components/filters/FilterBarPlayer.vue'
 import PlayerMatches from '@/components/PlayerMatches'
 import PlayerStats from '@/components/PlayerStats'
 import { getGenderBorderClass, getGenderTextClass } from '@/utils/functions'
@@ -140,6 +139,7 @@ import { getGenderBorderClass, getGenderTextClass } from '@/utils/functions'
 export default {
   name: 'player',
   components: {
+    FilterBarPlayer,
     PlayerMatches,
     PlayerStats
   },
@@ -150,7 +150,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getPlayer'
+      'getPlayer',
+      'removePlayerFilters'
     ]),
     getBorderClass (gender) {
       return getGenderBorderClass(gender)
@@ -161,6 +162,9 @@ export default {
   },
   created () {
     this.getPlayer(this.$route.params.playerId)
+  },
+  destroyed () {
+    this.removePlayerFilters()
   }
 }
 </script>

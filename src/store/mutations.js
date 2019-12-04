@@ -1,4 +1,7 @@
 export default {
+  removeAllFilters: (state) => {
+    state.filters = []
+  },
   removeFilter: (state, payload) => {
     state.filters = state.filters.filter(f => f.name !== payload)
   },

@@ -26,11 +26,11 @@
         <v-row>
 
           <v-col cols="12">
-            22
+            {{ stats.aces }}
           </v-col>
 
           <v-col cols="12">
-            24
+            {{ stats.winners }}
           </v-col>
 
         </v-row>
@@ -54,11 +54,11 @@
         <v-row>
 
           <v-col cols="12">
-            13
+            {{ stats.doubleFaults }}
           </v-col>
 
           <v-col cols="12">
-            19
+            {{ stats.unforcedErrors }}
           </v-col>
 
         </v-row>
@@ -115,84 +115,37 @@
 
       <v-col sm="10" class="col-stat">
 
-        <v-row>
-          <v-col cols="12">
-            <v-progress-linear
-              height="25"
-              value="62"
-            >
-              <strong>62%</strong>
-            </v-progress-linear>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col cols="12">
-            <v-progress-linear
-              height="25"
-              value="78"
-            >
-              <strong>78%</strong>
-            </v-progress-linear>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col cols="12">
-            <v-progress-linear
-              height="25"
-              value="96"
-            >
-              <strong>96%</strong>
-            </v-progress-linear>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col cols="12">
-            <v-progress-linear
-              height="25"
-              value="72"
-            >
-              <strong>72%</strong>
-            </v-progress-linear>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col cols="12">
-            <v-progress-linear
-              height="25"
-              value="53"
-            >
-              <strong>53%</strong>
-            </v-progress-linear>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col cols="12">
-            <v-progress-linear
-              height="25"
-              value="35"
-            >
-              <strong>35%</strong>
-            </v-progress-linear>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col cols="12">
-            <v-progress-linear
-              height="25"
-              value="60"
-            >
-              <strong>60%</strong>
-            </v-progress-linear>
-          </v-col>
-        </v-row>
+        <StatBar :stat="stats.firstServeIn" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
+        <StatBar :stat="stats.firstServeReturn" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
+        <StatBar :stat="stats.secondServeReturn" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
+        <StatBar :stat="stats.firstServePointsWon" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
+        <StatBar :stat="stats.secondServePointsWon" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
+        <StatBar :stat="stats.netPointsWon" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
+        <StatBar :stat="stats.breakPointsWon" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
 
       </v-col>
     </v-row>
   </v-col>
 </template>
+
+<script>
+import StatBar from '@/components/StatBar.vue'
+
+export default {
+  name: 'playerStats',
+  components: {
+    StatBar
+  },
+  props: ['stats'],
+  data () {
+    return {
+      showPercent: true
+    }
+  },
+  methods: {
+    toggleShowPercent () {
+      this.showPercent = !this.showPercent
+    }
+  }
+}
+</script>

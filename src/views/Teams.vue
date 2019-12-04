@@ -15,7 +15,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import FilterBarTeams from '@/components/FilterBarTeams.vue'
+import FilterBarTeams from '@/components/filters/FilterBarTeams.vue'
 import TeamRow from '@/components/TeamRow.vue'
 import { filterTeams, sortTeams } from '@/utils/functions'
 

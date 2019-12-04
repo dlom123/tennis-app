@@ -119,7 +119,7 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex'
-import FilterBarHeaderTeams from './FilterBarHeaderTeams.vue'
+import FilterBarHeaderTeams from '@/components/filters/FilterBarHeaderTeams.vue'
 import { FILTERS } from '@/utils/constants'
 
 export default {

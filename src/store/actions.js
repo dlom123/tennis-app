@@ -1,5 +1,6 @@
 import axios from 'axios'
 import playersData from '@/data/players.json'
+import { FILTERS } from '@/utils/constants'
 
 const HTTP = axios.create({
   baseURL: process.env.VUE_APP_API_BASE_URL
@@ -7,7 +8,10 @@ const HTTP = axios.create({
 
 export default {
   getPlayer: async ({ state, commit }, playerId) => {
-    const player = await state.players.filter(player => player.id.toString() === playerId.toString())[0]
+    // TODO: get player data from the API
+    // const results = await HTTP.get('/player/1')
+    const players = playersData.singles
+    const player = await players.filter(player => player.id.toString() === playerId.toString())[0]
 
     commit('setPlayer', player)
   },
@@ -38,5 +42,10 @@ export default {
     const teams = playersData.doubles
 
     commit('setTeams', teams)
+  },
+  removePlayerFilters: ({ commit }) => {
+    Object.values(FILTERS.PLAYER).forEach(filter => {
+      commit('removeFilter', filter)
+    })
   }
 }
