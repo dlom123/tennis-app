@@ -23,7 +23,7 @@
                   <h1 :class="getTextHeaderClass(player.gender)">{{player.firstName}} {{player.lastName}}</h1>
                 </v-col>
 
-                <v-col sm="6">
+                <!-- <v-col sm="6">
                   <v-row no-gutters class="row-player-info">
 
                     <v-col sm="12">
@@ -35,9 +35,9 @@
                     </v-col>
 
                   </v-row>
-                </v-col>
+                </v-col> -->
 
-                <v-col sm="6">
+                <!-- <v-col sm="6">
                   <v-row no-gutters class="row-player-info">
 
                     <v-col sm="12">
@@ -49,7 +49,7 @@
                     </v-col>
 
                   </v-row>
-                </v-col>
+                </v-col> -->
 
                 <v-col sm="6">
                   <v-row no-gutters class="row-player-info">

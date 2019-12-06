@@ -2,7 +2,7 @@
   <v-col cols="12" class="container-stats">
     <v-expansion-panels
       multiple
-      :value="[]"
+      :value="[0]"
     >
       <v-expansion-panel>
 
