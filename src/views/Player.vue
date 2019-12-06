@@ -6,10 +6,11 @@
         <v-container class="container-player">
 
           <v-row no-gutters class="row-toggle">
-            <v-col cols="8" offset-sm="3" align="right">
+            <v-col cols="9" offset-sm="3" align="right">
               <v-btn-toggle
                 group
-                :value="$route.params.type || 'singles'"
+                :value="viewType"
+                @change="onChangeViewToggle"
               >
                 <v-btn value="singles">Singles</v-btn>
                 <v-btn value="doubles">Doubles</v-btn>
@@ -105,16 +106,16 @@
               </v-row>
             </v-col>
 
-            <v-col cols="8" class="col-stats">
+            <v-col cols="9" class="col-stats">
 
               <FilterBarPlayer/>
 
               <v-row no-gutters class="section">
-                <PlayerStats :stats="player.stats" />
+                <PlayerStats :stats="player.stats" :view="viewType" />
               </v-row>
 
               <v-row no-gutters class="section">
-                <PlayerMatches/>
+                <PlayerMatches :matches="player.matches" :view="viewType" />
               </v-row>
 
             </v-col>
@@ -143,10 +144,18 @@ export default {
     PlayerMatches,
     PlayerStats
   },
+  data () {
+    return {
+      isViewToggleSingles: true
+    }
+  },
   computed: {
     ...mapState([
       'player'
-    ])
+    ]),
+    viewType () {
+      return this.isViewToggleSingles ? 'singles' : 'doubles'
+    }
   },
   methods: {
     ...mapActions([
@@ -158,9 +167,15 @@ export default {
     },
     getTextHeaderClass (gender) {
       return getGenderTextClass(gender)
+    },
+    onChangeViewToggle (value) {
+      this.isViewToggleSingles = !this.isViewToggleSingles
     }
   },
   created () {
+    // set the view based on where the user arrived from
+    this.isViewToggleSingles = !(this.$route.params.type && this.$route.params.type === 'doubles')
+
     this.getPlayer(this.$route.params.playerId)
   },
   destroyed () {

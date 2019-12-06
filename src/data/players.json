@@ -19,7 +19,311 @@
         "secondServePointsWon": { "in": 9, "of": 11 },
         "netPointsWon": { "in": 25, "of": 52 },
         "breakPointsWon": { "in": 3, "of": 7 }
-      }
+      },
+      "matches": [
+        {
+          "date": "2019-09-20",
+          "location": "Park Tudor High School",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Tony",
+            "lastName": "Winkler"
+          }
+        },
+        {
+          "date": "2019-09-25",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Chris",
+            "lastName": "Layton"
+          }
+        },
+        {
+          "date": "2019-09-15",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-11",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-18",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-27",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            },
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-23",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-18",
+          "location": "Broad Ripple Park",
+          "type": "singles",
+          "opponent": {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+          }
+        },
+        {
+          "date": "2019-11-22",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            },
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-28",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            },
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-02",
+          "location": "Carmel Racquet Club",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            },
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-08",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            },
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-04",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            },
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-01",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 6,
@@ -40,7 +344,311 @@
         "secondServePointsWon": { "in": 9, "of": 11 },
         "netPointsWon": { "in": 25, "of": 52 },
         "breakPointsWon": { "in": 3, "of": 7 }
-      }
+      },
+      "matches": [
+        {
+          "date": "2019-09-20",
+          "location": "Park Tudor High School",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Tony",
+            "lastName": "Winkler"
+          }
+        },
+        {
+          "date": "2019-09-25",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Chris",
+            "lastName": "Layton"
+          }
+        },
+        {
+          "date": "2019-09-15",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-11",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-18",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-27",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-23",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-18",
+          "location": "Broad Ripple Park",
+          "type": "singles",
+          "opponent": {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+          }
+        },
+        {
+          "date": "2019-11-22",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-28",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-02",
+          "location": "Carmel Racquet Club",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-08",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-04",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-01",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ]
+        }
+      ]
     },
     { "id": 12,
       "firstName": "Emily",
@@ -60,7 +668,311 @@
         "secondServePointsWon": { "in": 9, "of": 11 },
         "netPointsWon": { "in": 25, "of": 52 },
         "breakPointsWon": { "in": 3, "of": 7 }
-      }
+      },
+      "matches": [
+        {
+          "date": "2019-09-20",
+          "location": "Park Tudor High School",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Tony",
+            "lastName": "Winkler"
+          }
+        },
+        {
+          "date": "2019-09-25",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Chris",
+            "lastName": "Layton"
+          }
+        },
+        {
+          "date": "2019-09-15",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-11",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-18",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-27",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-23",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-18",
+          "location": "Broad Ripple Park",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Tony",
+            "lastName": "Winkler"
+          }
+        },
+        {
+          "date": "2019-11-22",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-28",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-02",
+          "location": "Carmel Racquet Club",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-08",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-04",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-01",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 4,
@@ -81,7 +993,311 @@
         "secondServePointsWon": { "in": 9, "of": 11 },
         "netPointsWon": { "in": 25, "of": 52 },
         "breakPointsWon": { "in": 3, "of": 7 }
-      }
+      },
+      "matches": [
+        {
+          "date": "2019-09-20",
+          "location": "Park Tudor High School",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Tony",
+            "lastName": "Winkler"
+          }
+        },
+        {
+          "date": "2019-09-25",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Alex",
+            "lastName": "Fohl"
+          }
+        },
+        {
+          "date": "2019-09-15",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-11",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-18",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-27",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-23",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-18",
+          "location": "Broad Ripple Park",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Tony",
+            "lastName": "Winkler"
+          }
+        },
+        {
+          "date": "2019-11-22",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-28",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-02",
+          "location": "Carmel Racquet Club",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-08",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-04",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-01",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 13,
@@ -102,7 +1318,311 @@
         "secondServePointsWon": { "in": 9, "of": 11 },
         "netPointsWon": { "in": 25, "of": 52 },
         "breakPointsWon": { "in": 3, "of": 7 }
-      }
+      },
+      "matches": [
+        {
+          "date": "2019-09-20",
+          "location": "Park Tudor High School",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Daniel",
+            "lastName": "Lomelino"
+          }
+        },
+        {
+          "date": "2019-09-25",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Alex",
+            "lastName": "Fohl"
+          }
+        },
+        {
+          "date": "2019-09-15",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-11",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-18",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-27",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-23",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-18",
+          "location": "Broad Ripple Park",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Dax",
+            "lastName": "Lowery"
+          }
+        },
+        {
+          "date": "2019-11-22",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-28",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-02",
+          "location": "Carmel Racquet Club",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-08",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-04",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-01",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 1,
@@ -123,7 +1643,311 @@
         "secondServePointsWon": { "in": 9, "of": 11 },
         "netPointsWon": { "in": 25, "of": 52 },
         "breakPointsWon": { "in": 3, "of": 7 }
-      }
+      },
+      "matches": [
+        {
+          "date": "2019-09-20",
+          "location": "Park Tudor High School",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Daniel",
+            "lastName": "Lomelino"
+          }
+        },
+        {
+          "date": "2019-09-25",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Alex",
+            "lastName": "Fohl"
+          }
+        },
+        {
+          "date": "2019-09-15",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-11",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-18",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-27",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-23",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-18",
+          "location": "Broad Ripple Park",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Dax",
+            "lastName": "Lowery"
+          }
+        },
+        {
+          "date": "2019-11-22",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-28",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-02",
+          "location": "Carmel Racquet Club",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-08",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-04",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-01",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 7,
@@ -144,7 +1968,311 @@
         "secondServePointsWon": { "in": 9, "of": 11 },
         "netPointsWon": { "in": 25, "of": 52 },
         "breakPointsWon": { "in": 3, "of": 7 }
-      }
+      },
+      "matches": [
+        {
+          "date": "2019-09-20",
+          "location": "Park Tudor High School",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Daniel",
+            "lastName": "Lomelino"
+          }
+        },
+        {
+          "date": "2019-09-25",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Alex",
+            "lastName": "Fohl"
+          }
+        },
+        {
+          "date": "2019-09-15",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-11",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-18",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-27",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-23",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-18",
+          "location": "Broad Ripple Park",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Tony",
+            "lastName": "Winkler"
+          }
+        },
+        {
+          "date": "2019-11-22",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-28",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-02",
+          "location": "Carmel Racquet Club",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-08",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-04",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-01",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 2,
@@ -165,11 +2293,315 @@
         "secondServePointsWon": { "in": 9, "of": 11 },
         "netPointsWon": { "in": 25, "of": 52 },
         "breakPointsWon": { "in": 3, "of": 7 }
-      }
+      },
+      "matches": [
+        {
+          "date": "2019-09-20",
+          "location": "Park Tudor High School",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Dax",
+            "lastName": "Lowery"
+          }
+        },
+        {
+          "date": "2019-09-25",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Alex",
+            "lastName": "Fohl"
+          }
+        },
+        {
+          "date": "2019-09-15",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-11",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-18",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-27",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-23",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-18",
+          "location": "Broad Ripple Park",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Tony",
+            "lastName": "Winkler"
+          }
+        },
+        {
+          "date": "2019-11-22",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-28",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-02",
+          "location": "Carmel Racquet Club",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-08",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-04",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-01",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 5,
-      "firstName": "Maddie",
+      "firstName": "Madelyn",
       "lastName": "Lee",
       "gender": "f",
       "avatarUrl": "",
@@ -186,7 +2618,311 @@
         "secondServePointsWon": { "in": 9, "of": 11 },
         "netPointsWon": { "in": 25, "of": 52 },
         "breakPointsWon": { "in": 3, "of": 7 }
-      }
+      },
+      "matches": [
+        {
+          "date": "2019-09-20",
+          "location": "Park Tudor High School",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Daniel",
+            "lastName": "Lomelino"
+          }
+        },
+        {
+          "date": "2019-09-25",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Alex",
+            "lastName": "Fohl"
+          }
+        },
+        {
+          "date": "2019-09-15",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            },
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-11",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-18",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            },
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-27",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-23",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            },
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-18",
+          "location": "Broad Ripple Park",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Tony",
+            "lastName": "Winkler"
+          }
+        },
+        {
+          "date": "2019-11-22",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-28",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            },
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-02",
+          "location": "Carmel Racquet Club",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-08",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            },
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-04",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-01",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 10,
@@ -207,7 +2943,311 @@
         "secondServePointsWon": { "in": 9, "of": 11 },
         "netPointsWon": { "in": 25, "of": 52 },
         "breakPointsWon": { "in": 3, "of": 7 }
-      }
+      },
+      "matches": [
+        {
+          "date": "2019-09-20",
+          "location": "Park Tudor High School",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Daniel",
+            "lastName": "Lomelino"
+          }
+        },
+        {
+          "date": "2019-09-25",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Alex",
+            "lastName": "Fohl"
+          }
+        },
+        {
+          "date": "2019-09-15",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-11",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-18",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-27",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-23",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-18",
+          "location": "Broad Ripple Park",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Tony",
+            "lastName": "Winkler"
+          }
+        },
+        {
+          "date": "2019-11-22",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-28",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-02",
+          "location": "Carmel Racquet Club",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-08",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-04",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-01",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 9,
@@ -228,7 +3268,311 @@
         "secondServePointsWon": { "in": 9, "of": 11 },
         "netPointsWon": { "in": 25, "of": 52 },
         "breakPointsWon": { "in": 3, "of": 7 }
-      }
+      },
+      "matches": [
+        {
+          "date": "2019-09-20",
+          "location": "Park Tudor High School",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Daniel",
+            "lastName": "Lomelino"
+          }
+        },
+        {
+          "date": "2019-09-25",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Alex",
+            "lastName": "Fohl"
+          }
+        },
+        {
+          "date": "2019-09-15",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-11",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-18",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-27",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-23",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-18",
+          "location": "Broad Ripple Park",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Tony",
+            "lastName": "Winkler"
+          }
+        },
+        {
+          "date": "2019-11-22",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-28",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-02",
+          "location": "Carmel Racquet Club",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-08",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-04",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-01",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 8,
@@ -249,7 +3593,311 @@
         "secondServePointsWon": { "in": 9, "of": 11 },
         "netPointsWon": { "in": 25, "of": 52 },
         "breakPointsWon": { "in": 3, "of": 7 }
-      }
+      },
+      "matches": [
+        {
+          "date": "2019-09-20",
+          "location": "Park Tudor High School",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Daniel",
+            "lastName": "Lomelino"
+          }
+        },
+        {
+          "date": "2019-09-25",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Alex",
+            "lastName": "Fohl"
+          }
+        },
+        {
+          "date": "2019-09-15",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-11",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-18",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-27",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-23",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-18",
+          "location": "Broad Ripple Park",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Tony",
+            "lastName": "Winkler"
+          }
+        },
+        {
+          "date": "2019-11-22",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-28",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-02",
+          "location": "Carmel Racquet Club",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-08",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-04",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            },
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-01",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 11,
@@ -270,7 +3918,311 @@
         "secondServePointsWon": { "in": 9, "of": 11 },
         "netPointsWon": { "in": 25, "of": 52 },
         "breakPointsWon": { "in": 3, "of": 7 }
-      }
+      },
+      "matches": [
+        {
+          "date": "2019-09-20",
+          "location": "Park Tudor High School",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Doug",
+            "lastName": "Brown"
+          }
+        },
+        {
+          "date": "2019-09-25",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "singles",
+          "opponent": {
+            "firstName": "Chris",
+            "lastName": "Layton"
+          }
+        },
+        {
+          "date": "2019-09-15",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-11",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            },
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-18",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-27",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-23",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Andrea",
+              "lastName": "Burkhardt"
+            },
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-18",
+          "location": "Broad Ripple Park",
+          "type": "singles",
+          "opponent": {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+          }
+        },
+        {
+          "date": "2019-11-22",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Alex",
+              "lastName": "Fohl"
+            },
+            {
+              "firstName": "Madelyn",
+              "lastName": "Lee"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-28",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-02",
+          "location": "Carmel Racquet Club",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Chris",
+              "lastName": "Layton"
+            },
+            {
+              "firstName": "Heidi",
+              "lastName": "Somers"
+            }
+          ]
+        },
+        {
+          "date": "2019-11-08",
+          "location": "Park Tudor High School",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Dan",
+              "lastName": "Somers"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Tony",
+              "lastName": "Winkler"
+            },
+            {
+              "firstName": "Dax",
+              "lastName": "Lowery"
+            }
+          ]
+        },
+        {
+          "date": "2019-12-04",
+          "location": "Indianapolis Racquet Club (East)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Daniel",
+              "lastName": "Lomelino"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Kessa",
+              "lastName": "McNaught"
+            },
+            {
+              "firstName": "Emily",
+              "lastName": "Wandel"
+            }
+          ]
+        },
+        {
+          "date": "2019-10-01",
+          "location": "Indianapolis Racquet Club (Dean Rd)",
+          "type": "doubles",
+          "team": [
+            {
+              "firstName": "David",
+              "lastName": "Strom"
+            },
+            {
+              "firstName": "Lisa",
+              "lastName": "Martin"
+            }
+          ],
+          "opponent": [
+            {
+              "firstName": "Doug",
+              "lastName": "Brown"
+            },
+            {
+              "firstName": "Brandon",
+              "lastName": "Wiley"
+            }
+          ]
+        }
+      ]
     }
 ],
   "doubles": [
@@ -382,7 +4334,7 @@
     {
       "id": 5,
       "players": [
-        { "id": 5, "firstName": "Maddie", "lastName": "Lee", "gender": "f", "avatarUrl": "" },
+        { "id": 5, "firstName": "Madelyn", "lastName": "Lee", "gender": "f", "avatarUrl": "" },
         { "id": 11, "firstName": "David", "lastName": "Strom", "gender": "m", "avatarUrl": "" }
       ],
       "points": 50,
