@@ -10,14 +10,14 @@
         close
         @click:close="clearFilterFormat"
         class="chip-header"
-      >Format: {{ getFilterByName(filterPlayerFormat) }}</v-chip>
+      >Format: {{ getFilterValueByName(filterPlayerFormat) }}</v-chip>
 
       <v-chip
         v-if="isFilterSet(filterPlayerYear)"
         close
         @click:close="clearFilterYear"
         class="chip-header"
-      >Format: {{ getFilterByName(filterPlayerYear) }}</v-chip>
+      >Format: {{ getFilterValueByName(filterPlayerYear) }}</v-chip>
 
     </v-col>
 
@@ -25,18 +25,14 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters, mapMutations, mapState } from 'vuex'
 import { FILTERS } from '@/utils/constants'
 
 export default {
   name: 'filterBarHeaderPlayer',
-  props: [
-    'clearFilterFormat',
-    'clearFilterYear'
-  ],
   computed: {
     ...mapGetters([
-      'getFilterByName'
+      'getFilterValueByName'
     ]),
     ...mapState([
       'filters'
@@ -49,8 +45,17 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([
+      'removeFilter'
+    ]),
+    clearFilterFormat () {
+      this.removeFilter(this.filterPlayerFormat)
+    },
+    clearFilterYear () {
+      this.removeFilter(this.filterPlayerYear)
+    },
     isFilterSet (filterName) {
-      return this.filters.filter(f => f.name === filterName).length
+      return !!this.getFilterValueByName(filterName)
     }
   }
 }

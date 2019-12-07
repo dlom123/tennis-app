@@ -9,32 +9,21 @@
         close
         @click:close="clearFilterFormat"
         class="chip-header"
-      >Format: {{ getFilterByName(filterTeamsFormat) }}</v-chip>
+      >Format: {{ getFilterValueByName(filterTeamsFormat) }}</v-chip>
     </v-col>
 
   </v-row>
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters, mapMutations, mapState } from 'vuex'
 import { FILTERS } from '@/utils/constants'
 
 export default {
   name: 'filterBarHeaderTeams',
-  props: [
-    'clearFilterFormat'
-  ],
-  data () {
-    return {
-      sortOptions: [
-        { text: 'Last Name', value: 'name' },
-        { text: 'Rank', value: 'rank' }
-      ]
-    }
-  },
   computed: {
     ...mapGetters([
-      'getFilterByName'
+      'getFilterValueByName'
     ]),
     ...mapState([
       'filters'
@@ -44,8 +33,14 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([
+      'removeFilter'
+    ]),
+    clearFilterFormat () {
+      this.removeFilter(this.filterTeamsFormat)
+    },
     isFilterSet (filterName) {
-      return this.getFilterByName(filterName).length
+      return !!this.getFilterValueByName(filterName)
     }
   }
 }

@@ -9,7 +9,7 @@
         close
         @click:close="clearFilterFormat"
         class="chip-header"
-      >Format: {{ getFilterByName(filterPlayersFormat) }}</v-chip>
+      >Format: {{ getFilterValueByName(filterPlayersFormat) }}</v-chip>
     </v-col>
 
     <!-- <v-col
@@ -37,9 +37,6 @@ import { FILTERS } from '@/utils/constants'
 
 export default {
   name: 'filterBarHeaderPlayers',
-  props: [
-    'clearFilterFormat'
-  ],
   data () {
     return {
       sortOptions: [
@@ -50,7 +47,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getFilterByName'
+      'getFilterValueByName'
     ]),
     ...mapState([
       'filters'
@@ -61,10 +58,14 @@ export default {
   },
   methods: {
     ...mapMutations([
+      'removeFilter',
       'setSort'
     ]),
+    clearFilterFormat () {
+      this.removeFilter(this.filterPlayersFormat)
+    },
     isFilterSet (filterName) {
-      return this.getFilterByName(filterName).length
+      return !!this.getFilterValueByName(filterName)
     }
   }
 }
