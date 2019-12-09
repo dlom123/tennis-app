@@ -3,15 +3,19 @@
     <v-card
       class="pa-2"
       outlined
-      tile
     >
-      test
+
+      <v-card-title>
+        {{ leaders.stat }}
+      </v-card-title>
+
     </v-card>
   </v-col>
 </template>
 
 <script>
 export default {
-  name: 'leaderboardCard'
+  name: 'leaderboardCard',
+  props: ['leaders']
 }
 </script>

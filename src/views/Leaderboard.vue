@@ -13,12 +13,11 @@
           <v-col cols="12">
 
             <v-row class="container-leaderboard-cards">
-              <LeaderboardCard/>
-              <LeaderboardCard/>
-              <LeaderboardCard/>
-              <LeaderboardCard/>
-              <LeaderboardCard/>
-              <LeaderboardCard/>
+              <LeaderboardCard
+                v-for="leaders in leaderboard"
+                :key="leaders.stat"
+                :leaders="leaders"
+              />
             </v-row>
 
           </v-col>
@@ -30,13 +29,18 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import LeaderboardCard from '@/components/LeaderboardCard'
 
 export default {
   name: 'leaderboard',
   components: {
     LeaderboardCard
+  },
+  computed: {
+    ...mapState([
+      'leaderboard'
+    ])
   },
   methods: {
     ...mapActions([

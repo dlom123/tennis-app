@@ -1,430 +1,442 @@
-{
-  "aces": [
-    {
-      "player": {
-        "firstName": "Daniel",
-        "lastName": "Lomelino"
+[
+  {
+    "stat": "Aces",
+    "players": [
+      {
+        "player": {
+          "firstName": "Daniel",
+          "lastName": "Lomelino"
+        },
+        "total": 55
       },
-      "total": 55
-    },
-    {
-      "player": {
-        "firstName": "Dax",
-        "lastName": "Lowery"
+      {
+        "player": {
+          "firstName": "Dax",
+          "lastName": "Lowery"
+        },
+        "total": 52
       },
-      "total": 52
-    },
-    {
-      "player": {
-        "firstName": "Madelyn",
-        "lastName": "Lee"
+      {
+        "player": {
+          "firstName": "Madelyn",
+          "lastName": "Lee"
+        },
+        "total": 51
       },
-      "total": 51
-    },
-    {
-      "player": {
-        "firstName": "Chris",
-        "lastName": "Layton"
+      {
+        "player": {
+          "firstName": "Chris",
+          "lastName": "Layton"
+        },
+        "total": 42
       },
-      "total": 42
-    },
-    {
-      "player": {
-        "firstName": "Kessa",
-        "lastName": "McNaught"
+      {
+        "player": {
+          "firstName": "Kessa",
+          "lastName": "McNaught"
+        },
+        "total": 38
       },
-      "total": 38
-    },
-    {
-      "player": {
-        "firstName": "Andrea",
-        "lastName": "Burkhardt"
+      {
+        "player": {
+          "firstName": "Andrea",
+          "lastName": "Burkhardt"
+        },
+        "total": 35
       },
-      "total": 35
-    },
-    {
-      "player": {
-        "firstName": "Brandon",
-        "lastName": "Wiley"
+      {
+        "player": {
+          "firstName": "Brandon",
+          "lastName": "Wiley"
+        },
+        "total": 30
       },
-      "total": 30
-    },
-    {
-      "player": {
-        "firstName": "David",
-        "lastName": "Strom"
+      {
+        "player": {
+          "firstName": "David",
+          "lastName": "Strom"
+        },
+        "total": 19
       },
-      "total": 19
-    },
-    {
-      "player": {
-        "firstName": "Doug",
-        "lastName": "Brown"
+      {
+        "player": {
+          "firstName": "Doug",
+          "lastName": "Brown"
+        },
+        "total": 12
       },
-      "total": 12
-    },
-    {
-      "player": {
-        "firstName": "Emily",
-        "lastName": "Wandel"
+      {
+        "player": {
+          "firstName": "Emily",
+          "lastName": "Wandel"
+        },
+        "total": 10
       },
-      "total": 10
-    },
-    {
-      "player": {
-        "firstName": "Heidi",
-        "lastName": "Somers"
+      {
+        "player": {
+          "firstName": "Heidi",
+          "lastName": "Somers"
+        },
+        "total": 9
       },
-      "total": 9
-    },
-    {
-      "player": {
-        "firstName": "Dan",
-        "lastName": "Somers"
+      {
+        "player": {
+          "firstName": "Dan",
+          "lastName": "Somers"
+        },
+        "total": 4
       },
-      "total": 4
-    },
-    {
-      "player": {
-        "firstName": "Tony",
-        "lastName": "Winkler"
+      {
+        "player": {
+          "firstName": "Tony",
+          "lastName": "Winkler"
+        },
+        "total": 2
       },
-      "total": 2
-    },
-    {
-      "player": {
-        "firstName": "Alex",
-        "lastName": "Fohl"
+      {
+        "player": {
+          "firstName": "Alex",
+          "lastName": "Fohl"
+        },
+        "total": 0
       },
-      "total": 0
-    },
-    {
-      "player": {
-        "firstName": "Lisa",
-        "lastName": "Martin"
+      {
+        "player": {
+          "firstName": "Lisa",
+          "lastName": "Martin"
+        },
+        "total": 0
+      }
+    ]
+  },
+  {
+    "stat": "Double Faults",
+    "players": [
+      {
+        "player": {
+          "firstName": "Daniel",
+          "lastName": "Lomelino"
+        },
+        "total": 13
       },
-      "total": 0
-    }
-  ],
-  "doublesFaults": [
-    {
-      "player": {
-        "firstName": "Daniel",
-        "lastName": "Lomelino"
+      {
+        "player": {
+          "firstName": "Dax",
+          "lastName": "Lowery"
+        },
+        "total": 18
       },
-      "total": 13
-    },
-    {
-      "player": {
-        "firstName": "Dax",
-        "lastName": "Lowery"
+      {
+        "player": {
+          "firstName": "Madelyn",
+          "lastName": "Lee"
+        },
+        "total": 22
       },
-      "total": 18
-    },
-    {
-      "player": {
-        "firstName": "Madelyn",
-        "lastName": "Lee"
+      {
+        "player": {
+          "firstName": "Chris",
+          "lastName": "Layton"
+        },
+        "total": 14
       },
-      "total": 22
-    },
-    {
-      "player": {
-        "firstName": "Chris",
-        "lastName": "Layton"
+      {
+        "player": {
+          "firstName": "Kessa",
+          "lastName": "McNaught"
+        },
+        "total": 20
       },
-      "total": 14
-    },
-    {
-      "player": {
-        "firstName": "Kessa",
-        "lastName": "McNaught"
+      {
+        "player": {
+          "firstName": "Andrea",
+          "lastName": "Burkhardt"
+        },
+        "total": 33
       },
-      "total": 20
-    },
-    {
-      "player": {
-        "firstName": "Andrea",
-        "lastName": "Burkhardt"
+      {
+        "player": {
+          "firstName": "Brandon",
+          "lastName": "Wiley"
+        },
+        "total": 22
       },
-      "total": 33
-    },
-    {
-      "player": {
-        "firstName": "Brandon",
-        "lastName": "Wiley"
+      {
+        "player": {
+          "firstName": "David",
+          "lastName": "Strom"
+        },
+        "total": 6
       },
-      "total": 22
-    },
-    {
-      "player": {
-        "firstName": "David",
-        "lastName": "Strom"
+      {
+        "player": {
+          "firstName": "Doug",
+          "lastName": "Brown"
+        },
+        "total": 32
       },
-      "total": 6
-    },
-    {
-      "player": {
-        "firstName": "Doug",
-        "lastName": "Brown"
+      {
+        "player": {
+          "firstName": "Emily",
+          "lastName": "Wandel"
+        },
+        "total": 11
       },
-      "total": 32
-    },
-    {
-      "player": {
-        "firstName": "Emily",
-        "lastName": "Wandel"
+      {
+        "player": {
+          "firstName": "Heidi",
+          "lastName": "Somers"
+        },
+        "total": 8
       },
-      "total": 11
-    },
-    {
-      "player": {
-        "firstName": "Heidi",
-        "lastName": "Somers"
+      {
+        "player": {
+          "firstName": "Dan",
+          "lastName": "Somers"
+        },
+        "total": 26
       },
-      "total": 8
-    },
-    {
-      "player": {
-        "firstName": "Dan",
-        "lastName": "Somers"
+      {
+        "player": {
+          "firstName": "Tony",
+          "lastName": "Winkler"
+        },
+        "total": 14
       },
-      "total": 26
-    },
-    {
-      "player": {
-        "firstName": "Tony",
-        "lastName": "Winkler"
+      {
+        "player": {
+          "firstName": "Alex",
+          "lastName": "Fohl"
+        },
+        "total": 29
       },
-      "total": 14
-    },
-    {
-      "player": {
-        "firstName": "Alex",
-        "lastName": "Fohl"
+      {
+        "player": {
+          "firstName": "Lisa",
+          "lastName": "Martin"
+        },
+        "total": 13
+      }
+    ]
+  },
+  {
+    "stat": "Winners",
+    "players": [
+      {
+        "player": {
+          "firstName": "Daniel",
+          "lastName": "Lomelino"
+        },
+        "total": 71
       },
-      "total": 29
-    },
-    {
-      "player": {
-        "firstName": "Lisa",
-        "lastName": "Martin"
+      {
+        "player": {
+          "firstName": "Dax",
+          "lastName": "Lowery"
+        },
+        "total": 78
       },
-      "total": 13
-    }
-  ],
-  "winners": [
-    {
-      "player": {
-        "firstName": "Daniel",
-        "lastName": "Lomelino"
+      {
+        "player": {
+          "firstName": "Madelyn",
+          "lastName": "Lee"
+        },
+        "total": 72
       },
-      "total": 71
-    },
-    {
-      "player": {
-        "firstName": "Dax",
-        "lastName": "Lowery"
+      {
+        "player": {
+          "firstName": "Chris",
+          "lastName": "Layton"
+        },
+        "total": 45
       },
-      "total": 78
-    },
-    {
-      "player": {
-        "firstName": "Madelyn",
-        "lastName": "Lee"
+      {
+        "player": {
+          "firstName": "Kessa",
+          "lastName": "McNaught"
+        },
+        "total": 37
       },
-      "total": 72
-    },
-    {
-      "player": {
-        "firstName": "Chris",
-        "lastName": "Layton"
+      {
+        "player": {
+          "firstName": "Andrea",
+          "lastName": "Burkhardt"
+        },
+        "total": 44
       },
-      "total": 45
-    },
-    {
-      "player": {
-        "firstName": "Kessa",
-        "lastName": "McNaught"
+      {
+        "player": {
+          "firstName": "Brandon",
+          "lastName": "Wiley"
+        },
+        "total": 39
       },
-      "total": 37
-    },
-    {
-      "player": {
-        "firstName": "Andrea",
-        "lastName": "Burkhardt"
+      {
+        "player": {
+          "firstName": "David",
+          "lastName": "Strom"
+        },
+        "total": 25
       },
-      "total": 44
-    },
-    {
-      "player": {
-        "firstName": "Brandon",
-        "lastName": "Wiley"
+      {
+        "player": {
+          "firstName": "Doug",
+          "lastName": "Brown"
+        },
+        "total": 21
       },
-      "total": 39
-    },
-    {
-      "player": {
-        "firstName": "David",
-        "lastName": "Strom"
+      {
+        "player": {
+          "firstName": "Emily",
+          "lastName": "Wandel"
+        },
+        "total": 18
       },
-      "total": 25
-    },
-    {
-      "player": {
-        "firstName": "Doug",
-        "lastName": "Brown"
+      {
+        "player": {
+          "firstName": "Heidi",
+          "lastName": "Somers"
+        },
+        "total": 22
       },
-      "total": 21
-    },
-    {
-      "player": {
-        "firstName": "Emily",
-        "lastName": "Wandel"
+      {
+        "player": {
+          "firstName": "Dan",
+          "lastName": "Somers"
+        },
+        "total": 14
       },
-      "total": 18
-    },
-    {
-      "player": {
-        "firstName": "Heidi",
-        "lastName": "Somers"
+      {
+        "player": {
+          "firstName": "Tony",
+          "lastName": "Winkler"
+        },
+        "total": 52
       },
-      "total": 22
-    },
-    {
-      "player": {
-        "firstName": "Dan",
-        "lastName": "Somers"
+      {
+        "player": {
+          "firstName": "Alex",
+          "lastName": "Fohl"
+        },
+        "total": 30
       },
-      "total": 14
-    },
-    {
-      "player": {
-        "firstName": "Tony",
-        "lastName": "Winkler"
+      {
+        "player": {
+          "firstName": "Lisa",
+          "lastName": "Martin"
+        },
+        "total": 25
+      }
+    ]
+  },
+  {
+    "stat": "Unforced Errors",
+    "players": [
+      {
+        "player": {
+          "firstName": "Daniel",
+          "lastName": "Lomelino"
+        },
+        "total": 85
       },
-      "total": 52
-    },
-    {
-      "player": {
-        "firstName": "Alex",
-        "lastName": "Fohl"
+      {
+        "player": {
+          "firstName": "Dax",
+          "lastName": "Lowery"
+        },
+        "total": 68
       },
-      "total": 30
-    },
-    {
-      "player": {
-        "firstName": "Lisa",
-        "lastName": "Martin"
+      {
+        "player": {
+          "firstName": "Madelyn",
+          "lastName": "Lee"
+        },
+        "total": 74
       },
-      "total": 25
-    }
-  ],
-  "unforcedErrors": [
-    {
-      "player": {
-        "firstName": "Daniel",
-        "lastName": "Lomelino"
+      {
+        "player": {
+          "firstName": "Chris",
+          "lastName": "Layton"
+        },
+        "total": 58
       },
-      "total": 85
-    },
-    {
-      "player": {
-        "firstName": "Dax",
-        "lastName": "Lowery"
+      {
+        "player": {
+          "firstName": "Kessa",
+          "lastName": "McNaught"
+        },
+        "total": 33
       },
-      "total": 68
-    },
-    {
-      "player": {
-        "firstName": "Madelyn",
-        "lastName": "Lee"
+      {
+        "player": {
+          "firstName": "Andrea",
+          "lastName": "Burkhardt"
+        },
+        "total": 97
       },
-      "total": 74
-    },
-    {
-      "player": {
-        "firstName": "Chris",
-        "lastName": "Layton"
+      {
+        "player": {
+          "firstName": "Brandon",
+          "lastName": "Wiley"
+        },
+        "total": 46
       },
-      "total": 58
-    },
-    {
-      "player": {
-        "firstName": "Kessa",
-        "lastName": "McNaught"
+      {
+        "player": {
+          "firstName": "David",
+          "lastName": "Strom"
+        },
+        "total": 59
       },
-      "total": 33
-    },
-    {
-      "player": {
-        "firstName": "Andrea",
-        "lastName": "Burkhardt"
+      {
+        "player": {
+          "firstName": "Doug",
+          "lastName": "Brown"
+        },
+        "total": 68
       },
-      "total": 97
-    },
-    {
-      "player": {
-        "firstName": "Brandon",
-        "lastName": "Wiley"
+      {
+        "player": {
+          "firstName": "Emily",
+          "lastName": "Wandel"
+        },
+        "total": 70
       },
-      "total": 46
-    },
-    {
-      "player": {
-        "firstName": "David",
-        "lastName": "Strom"
+      {
+        "player": {
+          "firstName": "Heidi",
+          "lastName": "Somers"
+        },
+        "total": 43
       },
-      "total": 59
-    },
-    {
-      "player": {
-        "firstName": "Doug",
-        "lastName": "Brown"
+      {
+        "player": {
+          "firstName": "Dan",
+          "lastName": "Somers"
+        },
+        "total": 66
       },
-      "total": 68
-    },
-    {
-      "player": {
-        "firstName": "Emily",
-        "lastName": "Wandel"
+      {
+        "player": {
+          "firstName": "Tony",
+          "lastName": "Winkler"
+        },
+        "total": 80
       },
-      "total": 70
-    },
-    {
-      "player": {
-        "firstName": "Heidi",
-        "lastName": "Somers"
+      {
+        "player": {
+          "firstName": "Alex",
+          "lastName": "Fohl"
+        },
+        "total": 94
       },
-      "total": 43
-    },
-    {
-      "player": {
-        "firstName": "Dan",
-        "lastName": "Somers"
-      },
-      "total": 66
-    },
-    {
-      "player": {
-        "firstName": "Tony",
-        "lastName": "Winkler"
-      },
-      "total": 80
-    },
-    {
-      "player": {
-        "firstName": "Alex",
-        "lastName": "Fohl"
-      },
-      "total": 94
-    },
-    {
-      "player": {
-        "firstName": "Lisa",
-        "lastName": "Martin"
-      },
-      "total": 29
-    }
-  ]
-}
+      {
+        "player": {
+          "firstName": "Lisa",
+          "lastName": "Martin"
+        },
+        "total": 29
+      }
+    ]
+  }
+]
