@@ -29,13 +29,13 @@ import { mapMutations } from 'vuex'
 export default {
   name: 'filterYear',
   props: ['filterName'],
-  data () {
+  data() {
     return {
       year: ''
     }
   },
   computed: {
-    optionsYears () {
+    optionsYears() {
       // generate the year options based on stats data and the current year
       const firstYear = new Date().getFullYear() - 2 // TODO: replace this with the actual first year from stats data
       const currentYear = new Date().getFullYear()
@@ -53,7 +53,7 @@ export default {
     ...mapMutations([
       'updateFilter'
     ]),
-    onChangeFormat (value) {
+    onChangeFormat(value) {
       this.updateFilter({ name: this.filterName, value })
     }
   }

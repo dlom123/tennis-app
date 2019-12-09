@@ -31,7 +31,7 @@ export default {
     ...mapGetters([
       'getFilterValueByName'
     ]),
-    filterValue () {
+    filterValue() {
       return this.getFilterValueByName(this.filterName)
     }
   },
@@ -39,7 +39,7 @@ export default {
     ...mapMutations([
       'updateFilter'
     ]),
-    onChangeFormat (value) {
+    onChangeFormat(value) {
       this.updateFilter({ name: this.filterName, value })
     }
   }

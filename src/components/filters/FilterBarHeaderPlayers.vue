@@ -37,7 +37,7 @@ import { FILTERS } from '@/utils/constants'
 
 export default {
   name: 'filterBarHeaderPlayers',
-  data () {
+  data() {
     return {
       sortOptions: [
         { text: 'Last Name', value: 'name' },
@@ -52,7 +52,7 @@ export default {
     ...mapState([
       'filters'
     ]),
-    filterPlayersFormat () {
+    filterPlayersFormat() {
       return FILTERS.PLAYERS.FORMAT
     }
   },
@@ -61,10 +61,10 @@ export default {
       'removeFilter',
       'setSort'
     ]),
-    clearFilterFormat () {
+    clearFilterFormat() {
       this.removeFilter(this.filterPlayersFormat)
     },
-    isFilterSet (filterName) {
+    isFilterSet(filterName) {
       return !!this.getFilterValueByName(filterName)
     }
   }

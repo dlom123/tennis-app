@@ -143,7 +143,7 @@ export default {
     PlayerMatches,
     PlayerStats
   },
-  data () {
+  data() {
     return {
       isViewToggleSingles: true
     }
@@ -152,7 +152,7 @@ export default {
     ...mapState([
       'player'
     ]),
-    viewType () {
+    viewType() {
       return this.isViewToggleSingles ? 'singles' : 'doubles'
     }
   },
@@ -161,23 +161,23 @@ export default {
       'getPlayer',
       'removePlayerFilters'
     ]),
-    getBorderClass (gender) {
+    getBorderClass(gender) {
       return getGenderBorderClass(gender)
     },
-    getTextHeaderClass (gender) {
+    getTextHeaderClass(gender) {
       return getGenderTextClass(gender)
     },
-    onChangeViewToggle (value) {
+    onChangeViewToggle(value) {
       this.isViewToggleSingles = !this.isViewToggleSingles
     }
   },
-  created () {
+  created() {
     // set the view based on where the user arrived from
     this.isViewToggleSingles = !(this.$route.params.type && this.$route.params.type === 'doubles')
 
     this.getPlayer(this.$route.params.playerId)
   },
-  destroyed () {
+  destroyed() {
     this.removePlayerFilters()
   }
 }

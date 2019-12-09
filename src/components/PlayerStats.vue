@@ -150,23 +150,23 @@ export default {
     StatBar
   },
   props: ['stats', 'view'],
-  data () {
+  data() {
     return {
       showPercent: true
     }
   },
   computed: {
-    statsDoubles () {
+    statsDoubles() {
       // TODO: filter stats by view type (singles/doubles) using 'view' prop
       return this.stats
     },
-    statsSingles () {
+    statsSingles() {
       // TODO: filter stats by view type (singles/doubles) using 'view' prop
       return this.stats
     }
   },
   methods: {
-    toggleShowPercent () {
+    toggleShowPercent() {
       this.showPercent = !this.showPercent
     }
   }

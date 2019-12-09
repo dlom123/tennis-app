@@ -41,7 +41,7 @@ export default {
       'sort',
       'teams'
     ]),
-    teamsSorted () {
+    teamsSorted() {
       // apply filters
       const teamsFiltered = filterTeams(this.teams, this.filters)
 
@@ -56,7 +56,7 @@ export default {
       'getTeams'
     ])
   },
-  created () {
+  created() {
     this.getTeams()
   }
 }

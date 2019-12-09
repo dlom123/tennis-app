@@ -9,13 +9,42 @@
           </v-col>
         </v-row>
 
+        <v-row no-gutters>
+          <v-col cols="12">
+
+            <v-row class="container-leaderboard-cards">
+              <LeaderboardCard/>
+              <LeaderboardCard/>
+              <LeaderboardCard/>
+              <LeaderboardCard/>
+              <LeaderboardCard/>
+              <LeaderboardCard/>
+            </v-row>
+
+          </v-col>
+        </v-row>
+
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import LeaderboardCard from '@/components/LeaderboardCard'
+
 export default {
-  name: 'leaderboard'
+  name: 'leaderboard',
+  components: {
+    LeaderboardCard
+  },
+  methods: {
+    ...mapActions([
+      'getLeaderboard'
+    ])
+  },
+  created() {
+    this.getLeaderboard()
+  }
 }
 </script>

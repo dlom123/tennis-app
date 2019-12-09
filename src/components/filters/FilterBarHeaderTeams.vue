@@ -28,7 +28,7 @@ export default {
     ...mapState([
       'filters'
     ]),
-    filterTeamsFormat () {
+    filterTeamsFormat() {
       return FILTERS.TEAMS.FORMAT
     }
   },
@@ -36,10 +36,10 @@ export default {
     ...mapMutations([
       'removeFilter'
     ]),
-    clearFilterFormat () {
+    clearFilterFormat() {
       this.removeFilter(this.filterTeamsFormat)
     },
-    isFilterSet (filterName) {
+    isFilterSet(filterName) {
       return !!this.getFilterValueByName(filterName)
     }
   }

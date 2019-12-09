@@ -36,7 +36,7 @@ import moment from 'moment'
 export default {
   name: 'teamMatches',
   props: ['matches'],
-  data () {
+  data() {
     return {
       formatMatchDate: 'M/DD/YYYY',
       headers: [
@@ -47,7 +47,7 @@ export default {
     }
   },
   computed: {
-    items () {
+    items() {
       const items = this.matches.map(match => {
         const opponentsFormatted = match.opponent.map(opponent => `${opponent.firstName} ${opponent.lastName}`)
 

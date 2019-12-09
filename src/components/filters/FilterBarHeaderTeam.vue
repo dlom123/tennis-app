@@ -34,10 +34,10 @@ export default {
     ...mapGetters([
       'getFilterValueByName'
     ]),
-    filterTeamFormat () {
+    filterTeamFormat() {
       return FILTERS.TEAM.FORMAT
     },
-    filterTeamYear () {
+    filterTeamYear() {
       return FILTERS.TEAM.YEAR
     }
   },
@@ -45,13 +45,13 @@ export default {
     ...mapMutations([
       'removeFilter'
     ]),
-    clearFilterFormat () {
+    clearFilterFormat() {
       this.removeFilter(this.filterTeamFormat)
     },
-    clearFilterYear () {
+    clearFilterYear() {
       this.removeFilter(this.filterTeamYear)
     },
-    isFilterSet (filterName) {
+    isFilterSet(filterName) {
       return !!this.getFilterValueByName(filterName)
     }
   }

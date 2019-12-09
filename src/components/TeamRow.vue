@@ -90,10 +90,10 @@ export default {
   name: 'teamRow',
   props: ['ranking', 'team'],
   methods: {
-    getTextHeaderClass (gender) {
+    getTextHeaderClass(gender) {
       return getGenderTextClass(gender)
     },
-    goToTeam () {
+    goToTeam() {
       this.$router.push({ name: 'team', params: { teamId: this.team.id } })
     }
   }

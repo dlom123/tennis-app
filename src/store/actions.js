@@ -1,4 +1,5 @@
 import axios from 'axios'
+import leaderboardData from '@/data/leaderboard.json'
 import playersData from '@/data/players.json'
 import { FILTERS } from '@/utils/constants'
 
@@ -7,7 +8,14 @@ const HTTP = axios.create({
 })
 
 export default {
-  getPlayer: async ({ state, commit }, playerId) => {
+  getLeaderboard: async ({ commit }, payload) => {
+    // TODO: get leaderboard data from the API
+    // const results = await HTTP.get('/leaderboard')
+    const leaderboard = leaderboardData
+
+    commit('setLeaderboard', leaderboard)
+  },
+  getPlayer: async ({ commit }, playerId) => {
     // TODO: get player data from the API
     // const results = await HTTP.get('/player/1')
     const players = playersData.singles
@@ -22,7 +30,7 @@ export default {
 
     commit('setPlayers', players)
   },
-  getStats: async ({ commit }, payload) => {
+  getPlayerStats: async ({ commit }, payload) => {
     const results = await HTTP.get(`/players/${payload.playerId}/stats`)
 
     const stats = results.data.data

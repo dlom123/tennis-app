@@ -1,6 +1,6 @@
 import { FILTERS } from '@/utils/constants'
 
-export function filterPlayers (players, filters) {
+export function filterPlayers(players, filters) {
   let playersFiltered = players
 
   const filterFormat = filters.find(filter => filter.name === FILTERS.PLAYERS.FORMAT)
@@ -17,7 +17,7 @@ export function filterPlayers (players, filters) {
   return playersFiltered
 }
 
-export function filterTeams (teams, filters) {
+export function filterTeams(teams, filters) {
   let teamsFiltered = teams
 
   const filterFormat = filters.find(filter => filter.name === FILTERS.TEAMS.FORMAT)
@@ -36,15 +36,15 @@ export function filterTeams (teams, filters) {
   return teamsFiltered
 }
 
-export function getGenderBorderClass (gender) {
+export function getGenderBorderClass(gender) {
   return { 'border-men': gender === 'm', 'border-women': gender === 'f' }
 }
 
-export function getGenderTextClass (gender) {
+export function getGenderTextClass(gender) {
   return { 'text-men': gender === 'm', 'text-women': gender === 'f' }
 }
 
-export function sortPlayers (players, sortBy) {
+export function sortPlayers(players, sortBy) {
   if (!sortBy) {
     // default sort order: name
     sortBy = 'name'
@@ -66,7 +66,7 @@ export function sortPlayers (players, sortBy) {
   return players
 }
 
-export function sortTeams (teams) {
+export function sortTeams(teams) {
   // sort the players within each team by last name, first name alphabetically
   teams.forEach(team => {
     team.players.sort((a, b) => (a.lastName > b.lastName)

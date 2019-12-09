@@ -33,7 +33,7 @@ export default {
   },
   props: ['type'],
   computed: {
-    filterFormat () {
+    filterFormat() {
       return FILTERS.PLAYERS.FORMAT
     }
   }

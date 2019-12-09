@@ -27,10 +27,10 @@ export default {
       'removeFilter',
       'updateFilter'
     ]),
-    clearFilterDateRange () {
+    clearFilterDateRange() {
       this.removeFilter(this.filterName)
     },
-    clearFilterDateRangeFrom () {
+    clearFilterDateRangeFrom() {
       this.dateFrom = null
 
       const dateRange = this.filters.find(f => f.name === this.filterName)
@@ -43,7 +43,7 @@ export default {
         this.removeFilter(this.filterName)
       }
     },
-    clearFilterDateRangeTo () {
+    clearFilterDateRangeTo() {
       this.dateTo = null
 
       const dateRange = this.filters.find(f => f.name === this.filterName)
@@ -57,10 +57,10 @@ export default {
         this.removeFilter(this.filterName)
       }
     },
-    onChangeFormat (value) {
+    onChangeFormat(value) {
       this.updateFilter({ name: this.filterName, value })
     },
-    onChangeDateFrom (value) {
+    onChangeDateFrom(value) {
       let dateRange = this.filters.find(f => f.name === this.filterName)
       if (dateRange) {
         // Date range filter is already set. Update it with new 'from' date.
@@ -71,7 +71,7 @@ export default {
       }
       this.updateFilter(dateRange)
     },
-    onChangeDateTo (value) {
+    onChangeDateTo(value) {
       let dateRange = this.filters.find(f => f.name === this.filterName)
       if (dateRange) {
         // Date range filter is already set. Update it with new 'to' date.
@@ -82,11 +82,11 @@ export default {
       }
       this.updateFilter(dateRange)
     },
-    onSaveDateFrom () {
+    onSaveDateFrom() {
       this.$refs.fromDateMenu.save(this.dateFrom)
       this.onChangeDateFrom(this.dateFrom)
     },
-    onSaveDateTo () {
+    onSaveDateTo() {
       this.$refs.toDateMenu.save(this.dateTo)
       this.onChangeDateTo(this.dateTo)
     }

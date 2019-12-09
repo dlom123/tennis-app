@@ -17,10 +17,10 @@ export default {
   name: 'statBar',
   props: ['stat', 'showPercent', 'toggleShowPercent'],
   computed: {
-    statPercent () {
+    statPercent() {
       return Math.round(this.stat.in / this.stat.of * 100)
     },
-    statRatio () {
+    statRatio() {
       return `${this.stat.in}/${this.stat.of}`
     }
   }

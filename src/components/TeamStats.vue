@@ -150,13 +150,13 @@ export default {
     StatBar
   },
   props: ['stats'],
-  data () {
+  data() {
     return {
       showPercent: true
     }
   },
   methods: {
-    toggleShowPercent () {
+    toggleShowPercent() {
       this.showPercent = !this.showPercent
     }
   }

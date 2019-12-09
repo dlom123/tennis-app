@@ -29,7 +29,7 @@ export default {
     FilterFormatDoubles
   },
   computed: {
-    filterFormat () {
+    filterFormat() {
       return FILTERS.TEAM.FORMAT
     }
   }

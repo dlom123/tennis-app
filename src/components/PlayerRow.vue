@@ -79,10 +79,10 @@ export default {
     'type'
   ],
   methods: {
-    getTextHeaderClass (gender) {
+    getTextHeaderClass(gender) {
       return getGenderTextClass(gender)
     },
-    goToPlayer () {
+    goToPlayer() {
       this.$router.push({ name: 'player', params: { playerId: this.player.id, type: this.type } })
     }
   }

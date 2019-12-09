@@ -42,7 +42,7 @@ export default {
       'players',
       'sort'
     ]),
-    playersSorted () {
+    playersSorted() {
       // apply filters
       const playersFiltered = filterPlayers(this.players, this.filters)
 
@@ -60,7 +60,7 @@ export default {
       'removeAllFilters'
     ])
   },
-  created () {
+  created() {
     this.getPlayers()
   }
 }

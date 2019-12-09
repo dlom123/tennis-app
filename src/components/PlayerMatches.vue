@@ -36,7 +36,7 @@ import moment from 'moment'
 export default {
   name: 'playerMatches',
   props: ['matches', 'view'],
-  data () {
+  data() {
     return {
       formatMatchDate: 'M/DD/YYYY',
       headersDoubles: [
@@ -53,10 +53,10 @@ export default {
     }
   },
   computed: {
-    isViewSingles () {
+    isViewSingles() {
       return this.view !== 'doubles'
     },
-    itemsDoubles () {
+    itemsDoubles() {
       const matches = this.matches.filter(match => match.type === 'doubles')
       const items = matches.map(match => {
         const opponentsFormatted = match.opponent.map(opponent => `${opponent.firstName} ${opponent.lastName}`)
@@ -71,7 +71,7 @@ export default {
 
       return items
     },
-    itemsSingles () {
+    itemsSingles() {
       const matches = this.matches.filter(match => match.type === 'singles')
 
       const items = matches.map(match => {

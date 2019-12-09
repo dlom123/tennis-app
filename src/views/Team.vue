@@ -151,14 +151,14 @@ export default {
     ...mapActions([
       'getTeam'
     ]),
-    getBorderClass (gender) {
+    getBorderClass(gender) {
       return getGenderBorderClass(gender)
     },
-    getTextHeaderClass (gender) {
+    getTextHeaderClass(gender) {
       return getGenderTextClass(gender)
     }
   },
-  created () {
+  created() {
     this.getTeam(this.$route.params.teamId)
   }
 }
