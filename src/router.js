@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Leaderboard from './views/Leaderboard.vue'
-import Matches from './views/Matches.vue'
-import Player from './views/Player.vue'
-import PlayersDoubles from './views/PlayersDoubles.vue'
-import PlayersSingles from './views/PlayersSingles.vue'
-import Team from './views/Team.vue'
-import Teams from './views/Teams.vue'
+import Leaderboard from './views/Leaderboard'
+import Matches from './views/Matches'
+import Player from './views/Player'
+import PlayersDoubles from './views/PlayersDoubles'
+import PlayersSingles from './views/PlayersSingles'
+import Team from './views/Team'
+import Teams from './views/Teams'
 
 Vue.use(Router)
 

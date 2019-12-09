@@ -1,5 +1,5 @@
 <template>
-  <v-row class="player-row" @click="goToPlayer">
+  <v-row no-gutters class="player-row" @click="goToPlayer">
     <v-col :key="`${player.id}`" sm="12" class="col-player">
       <v-row no-gutters>
 

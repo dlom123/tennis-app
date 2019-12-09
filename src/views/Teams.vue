@@ -1,22 +1,32 @@
 <template>
-  <v-container fluid>
+  <v-container fluid class="container-main">
+    <v-row no-gutters>
+      <v-col sm="10" offset-sm="1">
 
-    <FilterBarTeams/>
+        <v-row no-gutters class="row-title">
+          <v-col cols="12">
+            <h1>Teams</h1>
+          </v-col>
+        </v-row>
 
-    <TeamRow
-      v-for="(team, i) in teamsSorted"
-      :key="team.id"
-      :team="team"
-      :ranking="i + 1"
-    />
+        <FilterBarTeams/>
 
+        <TeamRow
+          v-for="(team, i) in teamsSorted"
+          :key="team.id"
+          :team="team"
+          :ranking="i + 1"
+        />
+
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import FilterBarTeams from '@/components/filters/FilterBarTeams.vue'
-import TeamRow from '@/components/TeamRow.vue'
+import FilterBarTeams from '@/components/filters/FilterBarTeams'
+import TeamRow from '@/components/TeamRow'
 import { filterTeams, sortTeams } from '@/utils/functions'
 
 export default {

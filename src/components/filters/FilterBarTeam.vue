@@ -2,7 +2,7 @@
   <v-expansion-panels class="filter-bar">
     <v-expansion-panel>
       <v-expansion-panel-header class="header">
-        <FilterBarHeaderTeams/>
+        <FilterBarHeaderTeam/>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
         <v-container fluid class="filter-content">
@@ -18,19 +18,19 @@
 </template>
 
 <script>
-import FilterBarHeaderTeams from '@/components/filters/FilterBarHeaderTeams'
+import FilterBarHeaderTeam from '@/components/filters/FilterBarHeaderTeam'
 import FilterFormatDoubles from '@/components/filters/FilterFormatDoubles'
 import { FILTERS } from '@/utils/constants'
 
 export default {
-  name: 'filterBarTeams',
+  name: 'filterBarTeam',
   components: {
-    FilterBarHeaderTeams,
+    FilterBarHeaderTeam,
     FilterFormatDoubles
   },
   computed: {
     filterFormat () {
-      return FILTERS.TEAMS.FORMAT
+      return FILTERS.TEAM.FORMAT
     }
   }
 }

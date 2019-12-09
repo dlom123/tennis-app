@@ -142,7 +142,7 @@
 </template>
 
 <script>
-import StatBar from '@/components/StatBar.vue'
+import StatBar from '@/components/StatBar'
 
 export default {
   name: 'playerStats',

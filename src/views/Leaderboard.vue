@@ -1,9 +1,16 @@
 <template>
-  <v-container fluid>
+  <v-container fluid class="container-main">
     <v-row no-gutters>
-      <v-col>LEADERBOARD</v-col>
-    </v-row>
+      <v-col sm="10" offset-sm="1">
 
+        <v-row no-gutters class="row-title">
+          <v-col cols="12">
+            <h1>Leaderboard</h1>
+          </v-col>
+        </v-row>
+
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 

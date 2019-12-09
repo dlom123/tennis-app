@@ -1,23 +1,33 @@
 <template>
-  <v-container fluid>
+  <v-container fluid class="container-main">
+    <v-row no-gutters>
+      <v-col sm="10" offset-sm="1">
 
-    <FilterBarPlayers type="doubles" />
+        <v-row no-gutters class="row-title">
+          <v-col cols="12">
+            <h1>Players : Doubles</h1>
+          </v-col>
+        </v-row>
 
-    <PlayerRow
-      v-for="(player, i) in playersSorted"
-      :key="player.id"
-      :player="player"
-      :ranking="i + 1"
-      type="doubles"
-    />
+        <FilterBarPlayers type="doubles" />
 
+        <PlayerRow
+          v-for="(player, i) in playersSorted"
+          :key="player.id"
+          :player="player"
+          :ranking="i + 1"
+          type="doubles"
+        />
+
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import FilterBarPlayers from '@/components/filters/FilterBarPlayers.vue'
-import PlayerRow from '@/components/PlayerRow.vue'
+import FilterBarPlayers from '@/components/filters/FilterBarPlayers'
+import PlayerRow from '@/components/PlayerRow'
 import { filterPlayers, sortPlayers } from '@/utils/functions'
 
 export default {

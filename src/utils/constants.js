@@ -7,6 +7,10 @@ export const FILTERS = {
     DATE_RANGE: 'playersDateRange',
     FORMAT: 'playersFormat'
   },
+  TEAM: {
+    FORMAT: 'teamFormat',
+    YEAR: 'teamYear'
+  },
   TEAMS: {
     DATE_RANGE: 'teamsDateRange',
     FORMAT: 'teamsFormat'

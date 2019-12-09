@@ -1,11 +1,11 @@
 <template>
-  <v-container fluid>
+  <v-container fluid class="filter-body">
     <v-row no-gutters>
-      <v-col sm="12">
-        Date Range
-      </v-col>
-      <v-col sm="12">
-      </v-col>
+
+      <v-col sm="12">Date Range</v-col>
+
+      <v-col sm="12"></v-col>
+
     </v-row>
   </v-container>
 </template>

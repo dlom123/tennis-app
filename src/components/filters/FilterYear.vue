@@ -1,9 +1,9 @@
 <template>
-  <v-container fluid>
+  <v-container fluid class="filter-body">
     <v-row no-gutters>
-      <v-col sm="12">
-        Year
-      </v-col>
+
+      <v-col sm="12">Year</v-col>
+
       <v-col sm="12">
         <v-row no-gutters>
           <v-col cols="4">
@@ -18,6 +18,7 @@
           </v-col>
         </v-row>
       </v-col>
+
     </v-row>
   </v-container>
 </template>
@@ -47,7 +48,7 @@ export default {
 
       return options
     }
-  }
+  },
   methods: {
     ...mapMutations([
       'updateFilter'

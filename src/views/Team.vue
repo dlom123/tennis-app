@@ -1,8 +1,9 @@
 <template>
-  <v-container fluid class="grey lighten-5 container-main">
+  <v-container fluid class="grey lighten-5">
     <v-row no-gutters>
       <v-col cols="10" offset-sm="1">
         <v-container class="container-team">
+
           <v-row>
 
             <v-col sm="3" class="col-info">
@@ -106,8 +107,18 @@
               </v-row>
             </v-col>
 
-            <v-col cols="8" class="col-stats">
-              <TeamStats/>
+            <v-col cols="9" class="col-stats">
+
+              <FilterBarTeam/>
+
+              <v-row no-gutters class="section">
+                <TeamStats :stats="team.stats" />
+              </v-row>
+
+              <v-row no-gutters class="section">
+                <TeamMatches :matches="team.matches" />
+              </v-row>
+
             </v-col>
 
           </v-row>
@@ -119,12 +130,16 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
+import FilterBarTeam from '@/components/filters/FilterBarTeam'
+import TeamMatches from '@/components/TeamMatches'
 import TeamStats from '@/components/TeamStats'
 import { getGenderBorderClass, getGenderTextClass } from '@/utils/functions'
 
 export default {
   name: 'team',
   components: {
+    FilterBarTeam,
+    TeamMatches,
     TeamStats
   },
   computed: {

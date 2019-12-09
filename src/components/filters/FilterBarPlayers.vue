@@ -5,7 +5,7 @@
         <FilterBarHeaderPlayers/>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
-        <v-container fluid>
+        <v-container fluid class="filter-content">
           <v-row no-gutters>
             <v-col sm="4">
               <FilterFormatSingles v-if="type !== 'doubles'" :filterName="filterFormat" />
@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import FilterBarHeaderPlayers from '@/components/filters/FilterBarHeaderPlayers.vue'
-import FilterFormatDoubles from '@/components/filters/FilterFormatDoubles.vue'
-import FilterFormatSingles from '@/components/filters/FilterFormatSingles.vue'
+import FilterBarHeaderPlayers from '@/components/filters/FilterBarHeaderPlayers'
+import FilterFormatDoubles from '@/components/filters/FilterFormatDoubles'
+import FilterFormatSingles from '@/components/filters/FilterFormatSingles'
 import { FILTERS } from '@/utils/constants'
 
 export default {

@@ -1,7 +1,6 @@
 <template>
-  <v-container fluid class="grey lighten-5 container-main">
+  <v-container fluid class="grey lighten-5">
     <v-row no-gutters>
-
       <v-col cols="10" offset-sm="1">
         <v-container class="container-player">
 
@@ -132,7 +131,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import FilterBarPlayer from '@/components/filters/FilterBarPlayer.vue'
+import FilterBarPlayer from '@/components/filters/FilterBarPlayer'
 import PlayerMatches from '@/components/PlayerMatches'
 import PlayerStats from '@/components/PlayerStats'
 import { getGenderBorderClass, getGenderTextClass } from '@/utils/functions'

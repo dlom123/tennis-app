@@ -5,7 +5,7 @@
         <FilterBarHeaderPlayer/>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
-        <v-container fluid>
+        <v-container fluid class="filter-content">
           <v-row no-gutters>
             <v-col sm="4">
               <FilterFormatSingles v-if="type !== 'doubles'" :filterName="filterFormat" />
@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import FilterBarHeaderPlayer from '@/components/filters/FilterBarHeaderPlayer.vue'
-import FilterFormatDoubles from '@/components/filters/FilterFormatDoubles.vue'
-import FilterFormatSingles from '@/components/filters/FilterFormatSingles.vue'
+import FilterBarHeaderPlayer from '@/components/filters/FilterBarHeaderPlayer'
+import FilterFormatDoubles from '@/components/filters/FilterFormatDoubles'
+import FilterFormatSingles from '@/components/filters/FilterFormatSingles'
 import { FILTERS } from '@/utils/constants'
 
 export default {
@@ -35,19 +35,6 @@ export default {
   computed: {
     filterFormat () {
       return FILTERS.PLAYER.FORMAT
-    },
-    optionsYears () {
-      // generate the year options based on stats data and the current year
-      const firstYear = new Date().getFullYear() - 2 // TODO: replace this with the actual first year from stats data
-      const currentYear = new Date().getFullYear()
-      const years = new Array(currentYear - firstYear + 1).fill().map((y, i) => currentYear - i)
-
-      const options = [{ text: 'All', value: 'all' }]
-      years.forEach(year => {
-        options.push({ text: year, value: year })
-      })
-
-      return options
     }
   }
 }

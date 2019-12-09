@@ -6,18 +6,18 @@
     <v-col cols="8">
 
       <v-chip
-        v-if="isFilterSet(filterPlayerFormat)"
+        v-if="isFilterSet(filterTeamFormat)"
         close
         @click:close="clearFilterFormat"
         class="chip-header"
-      >Format: {{ getFilterValueByName(filterPlayerFormat) }}</v-chip>
+      >Format: {{ getFilterValueByName(filterTeamFormat) }}</v-chip>
 
       <v-chip
-        v-if="isFilterSet(filterPlayerYear)"
+        v-if="isFilterSet(filterTeamYear)"
         close
         @click:close="clearFilterYear"
         class="chip-header"
-      >Format: {{ getFilterValueByName(filterPlayerYear) }}</v-chip>
+      >Format: {{ getFilterValueByName(filterTeamYear) }}</v-chip>
 
     </v-col>
 
@@ -29,16 +29,16 @@ import { mapGetters, mapMutations } from 'vuex'
 import { FILTERS } from '@/utils/constants'
 
 export default {
-  name: 'filterBarHeaderPlayer',
+  name: 'filterBarHeaderTeam',
   computed: {
     ...mapGetters([
       'getFilterValueByName'
     ]),
-    filterPlayerFormat () {
-      return FILTERS.PLAYER.FORMAT
+    filterTeamFormat () {
+      return FILTERS.TEAM.FORMAT
     },
-    filterPlayerYear () {
-      return FILTERS.PLAYER.YEAR
+    filterTeamYear () {
+      return FILTERS.TEAM.YEAR
     }
   },
   methods: {
@@ -46,10 +46,10 @@ export default {
       'removeFilter'
     ]),
     clearFilterFormat () {
-      this.removeFilter(this.filterPlayerFormat)
+      this.removeFilter(this.filterTeamFormat)
     },
     clearFilterYear () {
-      this.removeFilter(this.filterPlayerYear)
+      this.removeFilter(this.filterTeamYear)
     },
     isFilterSet (filterName) {
       return !!this.getFilterValueByName(filterName)
