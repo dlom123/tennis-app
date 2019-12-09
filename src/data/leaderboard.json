@@ -438,5 +438,33 @@
         "total": 29
       }
     ]
+  },
+  {
+    "stat": "1st Serve In",
+    "players": []
+  },
+  {
+    "stat": "1st Serve Return",
+    "players": []
+  },
+  {
+    "stat": "2nd Serve Return",
+    "players": []
+  },
+  {
+    "stat": "1st Serve Points Won",
+    "players": []
+  },
+  {
+    "stat": "2nd Serve Points Won",
+    "players": []
+  },
+  {
+    "stat": "Net Points Won",
+    "players": []
+  },
+  {
+    "stat": "Break Points Won",
+    "players": []
   }
 ]
