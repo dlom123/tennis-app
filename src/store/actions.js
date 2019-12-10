@@ -15,6 +15,30 @@ export default {
 
     commit('setLeaderboard', leaderboard)
   },
+  getLeaderboardTopThree: async ({ commit }, payload) => {
+    // TODO: get leaderboard data from the API
+    // const results = await HTTP.get('/leaderboard')
+    const leaderboard = leaderboardData.map(stat => {
+      if (stat.players.every(player => player.total)) {
+        // integer-based stat
+        stat.players.sort((a, b) => (a.total < b.total) ? 1 : -1)
+      } else if (stat.players.every(player => player.in && player.of)) {
+        // percentage-based stat
+        stat.players.sort((a, b) => ((a.in / a.of) < (b.in / b.of) ? 1 : -1))
+      }
+
+      return stat
+    })
+
+    const topThree = leaderboard.map(stat => {
+      return {
+        ...stat,
+        players: stat.players.slice(0, 3)
+      }
+    })
+
+    return topThree
+  },
   getPlayer: async ({ commit }, playerId) => {
     // TODO: get player data from the API
     // const results = await HTTP.get('/player/1')

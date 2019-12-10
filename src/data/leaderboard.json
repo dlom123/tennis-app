@@ -1,470 +1,1493 @@
 [
   {
+    "id": 1,
     "stat": "Aces",
     "players": [
       {
         "player": {
           "firstName": "Daniel",
-          "lastName": "Lomelino"
+          "lastName": "Lomelino",
+          "gender": "m"
         },
         "total": 55
       },
       {
         "player": {
           "firstName": "Dax",
-          "lastName": "Lowery"
+          "lastName": "Lowery",
+          "gender": "m"
         },
         "total": 52
       },
       {
         "player": {
           "firstName": "Madelyn",
-          "lastName": "Lee"
+          "lastName": "Lee",
+          "gender": "f"
         },
         "total": 51
       },
       {
         "player": {
           "firstName": "Chris",
-          "lastName": "Layton"
+          "lastName": "Layton",
+          "gender": "m"
         },
         "total": 42
       },
       {
         "player": {
           "firstName": "Kessa",
-          "lastName": "McNaught"
+          "lastName": "McNaught",
+          "gender": "f"
         },
         "total": 38
       },
       {
         "player": {
           "firstName": "Andrea",
-          "lastName": "Burkhardt"
+          "lastName": "Burkhardt",
+          "gender": "f"
         },
         "total": 35
       },
       {
         "player": {
           "firstName": "Brandon",
-          "lastName": "Wiley"
+          "lastName": "Wiley",
+          "gender": "m"
         },
         "total": 30
       },
       {
         "player": {
           "firstName": "David",
-          "lastName": "Strom"
+          "lastName": "Strom",
+          "gender": "m"
         },
         "total": 19
       },
       {
         "player": {
           "firstName": "Doug",
-          "lastName": "Brown"
+          "lastName": "Brown",
+          "gender": "m"
         },
         "total": 12
       },
       {
         "player": {
           "firstName": "Emily",
-          "lastName": "Wandel"
+          "lastName": "Wandel",
+          "gender": "f"
         },
         "total": 10
       },
       {
         "player": {
           "firstName": "Heidi",
-          "lastName": "Somers"
+          "lastName": "Somers",
+          "gender": "f"
         },
         "total": 9
       },
       {
         "player": {
           "firstName": "Dan",
-          "lastName": "Somers"
+          "lastName": "Somers",
+          "gender": "m"
         },
         "total": 4
       },
       {
         "player": {
           "firstName": "Tony",
-          "lastName": "Winkler"
+          "lastName": "Winkler",
+          "gender": "m"
         },
         "total": 2
       },
       {
         "player": {
           "firstName": "Alex",
-          "lastName": "Fohl"
+          "lastName": "Fohl",
+          "gender": "m"
         },
         "total": 0
       },
       {
         "player": {
           "firstName": "Lisa",
-          "lastName": "Martin"
+          "lastName": "Martin",
+          "gender": "f"
         },
         "total": 0
       }
     ]
   },
   {
+    "id": 2,
     "stat": "Double Faults",
     "players": [
       {
         "player": {
           "firstName": "Daniel",
-          "lastName": "Lomelino"
+          "lastName": "Lomelino",
+          "gender": "m"
         },
         "total": 13
       },
       {
         "player": {
           "firstName": "Dax",
-          "lastName": "Lowery"
+          "lastName": "Lowery",
+          "gender": "m"
         },
         "total": 18
       },
       {
         "player": {
           "firstName": "Madelyn",
-          "lastName": "Lee"
+          "lastName": "Lee",
+          "gender": "f"
         },
         "total": 22
       },
       {
         "player": {
           "firstName": "Chris",
-          "lastName": "Layton"
+          "lastName": "Layton",
+          "gender": "m"
         },
         "total": 14
       },
       {
         "player": {
           "firstName": "Kessa",
-          "lastName": "McNaught"
+          "lastName": "McNaught",
+          "gender": "f"
         },
         "total": 20
       },
       {
         "player": {
           "firstName": "Andrea",
-          "lastName": "Burkhardt"
+          "lastName": "Burkhardt",
+          "gender": "f"
         },
-        "total": 33
+        "total": 27
       },
       {
         "player": {
           "firstName": "Brandon",
-          "lastName": "Wiley"
+          "lastName": "Wiley",
+          "gender": "m"
         },
         "total": 22
       },
       {
         "player": {
           "firstName": "David",
-          "lastName": "Strom"
+          "lastName": "Strom",
+          "gender": "m"
         },
         "total": 6
       },
       {
         "player": {
           "firstName": "Doug",
-          "lastName": "Brown"
+          "lastName": "Brown",
+          "gender": "m"
         },
         "total": 32
       },
       {
         "player": {
           "firstName": "Emily",
-          "lastName": "Wandel"
+          "lastName": "Wandel",
+          "gender": "f"
         },
         "total": 11
       },
       {
         "player": {
           "firstName": "Heidi",
-          "lastName": "Somers"
+          "lastName": "Somers",
+          "gender": "f"
         },
         "total": 8
       },
       {
         "player": {
           "firstName": "Dan",
-          "lastName": "Somers"
+          "lastName": "Somers",
+          "gender": "m"
         },
         "total": 26
       },
       {
         "player": {
           "firstName": "Tony",
-          "lastName": "Winkler"
+          "lastName": "Winkler",
+          "gender": "m"
         },
         "total": 14
       },
       {
         "player": {
           "firstName": "Alex",
-          "lastName": "Fohl"
+          "lastName": "Fohl",
+          "gender": "m"
         },
         "total": 29
       },
       {
         "player": {
           "firstName": "Lisa",
-          "lastName": "Martin"
+          "lastName": "Martin",
+          "gender": "f"
         },
         "total": 13
       }
     ]
   },
   {
+    "id": 3,
     "stat": "Winners",
     "players": [
       {
         "player": {
           "firstName": "Daniel",
-          "lastName": "Lomelino"
+          "lastName": "Lomelino",
+          "gender": "m"
         },
         "total": 71
       },
       {
         "player": {
           "firstName": "Dax",
-          "lastName": "Lowery"
+          "lastName": "Lowery",
+          "gender": "m"
         },
         "total": 78
       },
       {
         "player": {
           "firstName": "Madelyn",
-          "lastName": "Lee"
+          "lastName": "Lee",
+          "gender": "f"
         },
-        "total": 72
+        "total": 51
       },
       {
         "player": {
           "firstName": "Chris",
-          "lastName": "Layton"
+          "lastName": "Layton",
+          "gender": "m"
         },
         "total": 45
       },
       {
         "player": {
           "firstName": "Kessa",
-          "lastName": "McNaught"
+          "lastName": "McNaught",
+          "gender": "f"
         },
         "total": 37
       },
       {
         "player": {
           "firstName": "Andrea",
-          "lastName": "Burkhardt"
+          "lastName": "Burkhardt",
+          "gender": "f"
         },
         "total": 44
       },
       {
         "player": {
           "firstName": "Brandon",
-          "lastName": "Wiley"
+          "lastName": "Wiley",
+          "gender": "m"
         },
         "total": 39
       },
       {
         "player": {
           "firstName": "David",
-          "lastName": "Strom"
+          "lastName": "Strom",
+          "gender": "m"
         },
         "total": 25
       },
       {
         "player": {
           "firstName": "Doug",
-          "lastName": "Brown"
+          "lastName": "Brown",
+          "gender": "m"
         },
         "total": 21
       },
       {
         "player": {
           "firstName": "Emily",
-          "lastName": "Wandel"
+          "lastName": "Wandel",
+          "gender": "f"
         },
         "total": 18
       },
       {
         "player": {
           "firstName": "Heidi",
-          "lastName": "Somers"
+          "lastName": "Somers",
+          "gender": "f"
         },
         "total": 22
       },
       {
         "player": {
           "firstName": "Dan",
-          "lastName": "Somers"
+          "lastName": "Somers",
+          "gender": "m"
         },
         "total": 14
       },
       {
         "player": {
           "firstName": "Tony",
-          "lastName": "Winkler"
+          "lastName": "Winkler",
+          "gender": "m"
         },
         "total": 52
       },
       {
         "player": {
           "firstName": "Alex",
-          "lastName": "Fohl"
+          "lastName": "Fohl",
+          "gender": "m"
         },
         "total": 30
       },
       {
         "player": {
           "firstName": "Lisa",
-          "lastName": "Martin"
+          "lastName": "Martin",
+          "gender": "f"
         },
         "total": 25
       }
     ]
   },
   {
+    "id": 4,
     "stat": "Unforced Errors",
     "players": [
       {
         "player": {
           "firstName": "Daniel",
-          "lastName": "Lomelino"
+          "lastName": "Lomelino",
+          "gender": "m"
         },
         "total": 85
       },
       {
         "player": {
           "firstName": "Dax",
-          "lastName": "Lowery"
+          "lastName": "Lowery",
+          "gender": "m"
         },
         "total": 68
       },
       {
         "player": {
           "firstName": "Madelyn",
-          "lastName": "Lee"
+          "lastName": "Lee",
+          "gender": "f"
         },
         "total": 74
       },
       {
         "player": {
           "firstName": "Chris",
-          "lastName": "Layton"
+          "lastName": "Layton",
+          "gender": "m"
         },
         "total": 58
       },
       {
         "player": {
           "firstName": "Kessa",
-          "lastName": "McNaught"
+          "lastName": "McNaught",
+          "gender": "f"
         },
         "total": 33
       },
       {
         "player": {
           "firstName": "Andrea",
-          "lastName": "Burkhardt"
+          "lastName": "Burkhardt",
+          "gender": "f"
         },
         "total": 97
       },
       {
         "player": {
           "firstName": "Brandon",
-          "lastName": "Wiley"
+          "lastName": "Wiley",
+          "gender": "m"
         },
         "total": 46
       },
       {
         "player": {
           "firstName": "David",
-          "lastName": "Strom"
+          "lastName": "Strom",
+          "gender": "m"
         },
         "total": 59
       },
       {
         "player": {
           "firstName": "Doug",
-          "lastName": "Brown"
+          "lastName": "Brown",
+          "gender": "m"
         },
         "total": 68
       },
       {
         "player": {
           "firstName": "Emily",
-          "lastName": "Wandel"
+          "lastName": "Wandel",
+          "gender": "f"
         },
         "total": 70
       },
       {
         "player": {
           "firstName": "Heidi",
-          "lastName": "Somers"
+          "lastName": "Somers",
+          "gender": "f"
         },
         "total": 43
       },
       {
         "player": {
           "firstName": "Dan",
-          "lastName": "Somers"
+          "lastName": "Somers",
+          "gender": "m"
         },
         "total": 66
       },
       {
         "player": {
           "firstName": "Tony",
-          "lastName": "Winkler"
+          "lastName": "Winkler",
+          "gender": "m"
         },
         "total": 80
       },
       {
         "player": {
           "firstName": "Alex",
-          "lastName": "Fohl"
+          "lastName": "Fohl",
+          "gender": "m"
         },
         "total": 94
       },
       {
         "player": {
           "firstName": "Lisa",
-          "lastName": "Martin"
+          "lastName": "Martin",
+          "gender": "f"
         },
         "total": 29
       }
     ]
   },
   {
+    "id": 5,
     "stat": "1st Serve In",
-    "players": []
+    "players": [
+      {
+        "player": {
+          "firstName": "Daniel",
+          "lastName": "Lomelino",
+          "gender": "m"
+        },
+        "in": 85,
+        "of": 110
+      },
+      {
+        "player": {
+          "firstName": "Dax",
+          "lastName": "Lowery",
+          "gender": "m"
+        },
+        "in": 93,
+        "of": 129
+      },
+      {
+        "player": {
+          "firstName": "Madelyn",
+          "lastName": "Lee",
+          "gender": "f"
+        },
+        "in": 97,
+        "of": 132
+      },
+      {
+        "player": {
+          "firstName": "Chris",
+          "lastName": "Layton",
+          "gender": "m"
+        },
+        "in": 86,
+        "of": 99
+      },
+      {
+        "player": {
+          "firstName": "Kessa",
+          "lastName": "McNaught",
+          "gender": "f"
+        },
+        "in": 67,
+        "of": 88
+      },
+      {
+        "player": {
+          "firstName": "Andrea",
+          "lastName": "Burkhardt",
+          "gender": "f"
+        },
+        "in": 78,
+        "of": 121
+      },
+      {
+        "player": {
+          "firstName": "Brandon",
+          "lastName": "Wiley",
+          "gender": "m"
+        },
+        "in": 101,
+        "of": 143
+      },
+      {
+        "player": {
+          "firstName": "David",
+          "lastName": "Strom",
+          "gender": "m"
+        },
+        "in": 79,
+        "of": 113
+      },
+      {
+        "player": {
+          "firstName": "Doug",
+          "lastName": "Brown",
+          "gender": "m"
+        },
+        "in": 55,
+        "of": 103
+      },
+      {
+        "player": {
+          "firstName": "Emily",
+          "lastName": "Wandel",
+          "gender": "f"
+        },
+        "in": 77,
+        "of": 98
+      },
+      {
+        "player": {
+          "firstName": "Heidi",
+          "lastName": "Somers",
+          "gender": "f"
+        },
+        "in": 45,
+        "of": 68
+      },
+      {
+        "player": {
+          "firstName": "Dan",
+          "lastName": "Somers",
+          "gender": "m"
+        },
+        "in": 39,
+        "of": 72
+      },
+      {
+        "player": {
+          "firstName": "Tony",
+          "lastName": "Winkler",
+          "gender": "m"
+        },
+        "in": 80,
+        "of": 100
+      },
+      {
+        "player": {
+          "firstName": "Alex",
+          "lastName": "Fohl",
+          "gender": "m"
+        },
+        "in": 51,
+        "of": 124
+      },
+      {
+        "player": {
+          "firstName": "Lisa",
+          "lastName": "Martin",
+          "gender": "f"
+        },
+        "in": 62,
+        "of": 110
+      }
+    ]
   },
   {
+    "id": 6,
     "stat": "1st Serve Return",
-    "players": []
+    "players": [
+      {
+        "player": {
+          "firstName": "Daniel",
+          "lastName": "Lomelino",
+          "gender": "m"
+        },
+        "in": 72,
+        "of": 88
+      },
+      {
+        "player": {
+          "firstName": "Dax",
+          "lastName": "Lowery",
+          "gender": "m"
+        },
+        "in": 82,
+        "of": 91
+      },
+      {
+        "player": {
+          "firstName": "Madelyn",
+          "lastName": "Lee",
+          "gender": "f"
+        },
+        "in": 68,
+        "of": 90
+      },
+      {
+        "player": {
+          "firstName": "Chris",
+          "lastName": "Layton",
+          "gender": "m"
+        },
+        "in": 70,
+        "of": 83
+      },
+      {
+        "player": {
+          "firstName": "Kessa",
+          "lastName": "McNaught",
+          "gender": "f"
+        },
+        "in": 91,
+        "of": 122
+      },
+      {
+        "player": {
+          "firstName": "Andrea",
+          "lastName": "Burkhardt",
+          "gender": "f"
+        },
+        "in": 68,
+        "of": 99
+      },
+      {
+        "player": {
+          "firstName": "Brandon",
+          "lastName": "Wiley",
+          "gender": "m"
+        },
+        "in": 63,
+        "of": 121
+      },
+      {
+        "player": {
+          "firstName": "David",
+          "lastName": "Strom",
+          "gender": "m"
+        },
+        "in": 49,
+        "of": 89
+      },
+      {
+        "player": {
+          "firstName": "Doug",
+          "lastName": "Brown",
+          "gender": "m"
+        },
+        "in": 62,
+        "of": 102
+      },
+      {
+        "player": {
+          "firstName": "Emily",
+          "lastName": "Wandel",
+          "gender": "f"
+        },
+        "in": 55,
+        "of": 90
+      },
+      {
+        "player": {
+          "firstName": "Heidi",
+          "lastName": "Somers",
+          "gender": "f"
+        },
+        "in": 67,
+        "of": 79
+      },
+      {
+        "player": {
+          "firstName": "Dan",
+          "lastName": "Somers",
+          "gender": "m"
+        },
+        "in": 28,
+        "of": 80
+      },
+      {
+        "player": {
+          "firstName": "Tony",
+          "lastName": "Winkler",
+          "gender": "m"
+        },
+        "in": 71,
+        "of": 120
+      },
+      {
+        "player": {
+          "firstName": "Alex",
+          "lastName": "Fohl",
+          "gender": "m"
+        },
+        "in": 68,
+        "of": 130
+      },
+      {
+        "player": {
+          "firstName": "Lisa",
+          "lastName": "Martin",
+          "gender": "f"
+        },
+        "in": 52,
+        "of": 102
+      }
+    ]
   },
   {
+    "id": 7,
     "stat": "2nd Serve Return",
-    "players": []
+    "players": [
+      {
+        "player": {
+          "firstName": "Daniel",
+          "lastName": "Lomelino",
+          "gender": "m"
+        },
+        "in": 72,
+        "of": 98
+      },
+      {
+        "player": {
+          "firstName": "Dax",
+          "lastName": "Lowery",
+          "gender": "m"
+        },
+        "in": 90,
+        "of": 101
+      },
+      {
+        "player": {
+          "firstName": "Madelyn",
+          "lastName": "Lee",
+          "gender": "f"
+        },
+        "in": 88,
+        "of": 94
+      },
+      {
+        "player": {
+          "firstName": "Chris",
+          "lastName": "Layton",
+          "gender": "m"
+        },
+        "in": 72,
+        "of": 83
+      },
+      {
+        "player": {
+          "firstName": "Kessa",
+          "lastName": "McNaught",
+          "gender": "f"
+        },
+        "in": 45,
+        "of": 79
+      },
+      {
+        "player": {
+          "firstName": "Andrea",
+          "lastName": "Burkhardt",
+          "gender": "f"
+        },
+        "in": 83,
+        "of": 115
+      },
+      {
+        "player": {
+          "firstName": "Brandon",
+          "lastName": "Wiley",
+          "gender": "m"
+        },
+        "in": 67,
+        "of": 92
+      },
+      {
+        "player": {
+          "firstName": "David",
+          "lastName": "Strom",
+          "gender": "m"
+        },
+        "in": 70,
+        "of": 121
+      },
+      {
+        "player": {
+          "firstName": "Doug",
+          "lastName": "Brown",
+          "gender": "m"
+        },
+        "in": 33,
+        "of": 100
+      },
+      {
+        "player": {
+          "firstName": "Emily",
+          "lastName": "Wandel",
+          "gender": "f"
+        },
+        "in": 51,
+        "of": 83
+      },
+      {
+        "player": {
+          "firstName": "Heidi",
+          "lastName": "Somers",
+          "gender": "f"
+        },
+        "in": 67,
+        "of": 92
+      },
+      {
+        "player": {
+          "firstName": "Dan",
+          "lastName": "Somers",
+          "gender": "m"
+        },
+        "in": 21,
+        "of": 80
+      },
+      {
+        "player": {
+          "firstName": "Tony",
+          "lastName": "Winkler",
+          "gender": "m"
+        },
+        "in": 59,
+        "of": 108
+      },
+      {
+        "player": {
+          "firstName": "Alex",
+          "lastName": "Fohl",
+          "gender": "m"
+        },
+        "in": 62,
+        "of": 139
+      },
+      {
+        "player": {
+          "firstName": "Lisa",
+          "lastName": "Martin",
+          "gender": "f"
+        },
+        "in": 48,
+        "of": 71
+      }
+    ]
   },
   {
+    "id": 8,
     "stat": "1st Serve Points Won",
-    "players": []
+    "players": [
+      {
+        "player": {
+          "firstName": "Daniel",
+          "lastName": "Lomelino",
+          "gender": "m"
+        },
+        "in": 72,
+        "of": 92
+      },
+      {
+        "player": {
+          "firstName": "Dax",
+          "lastName": "Lowery",
+          "gender": "m"
+        },
+        "in": 83,
+        "of": 109
+      },
+      {
+        "player": {
+          "firstName": "Madelyn",
+          "lastName": "Lee",
+          "gender": "f"
+        },
+        "in": 78,
+        "of": 110
+      },
+      {
+        "player": {
+          "firstName": "Chris",
+          "lastName": "Layton",
+          "gender": "m"
+        },
+        "in": 72,
+        "of": 80
+      },
+      {
+        "player": {
+          "firstName": "Kessa",
+          "lastName": "McNaught",
+          "gender": "f"
+        },
+        "in": 59,
+        "of": 80
+      },
+      {
+        "player": {
+          "firstName": "Andrea",
+          "lastName": "Burkhardt",
+          "gender": "f"
+        },
+        "in": 80,
+        "of": 95
+      },
+      {
+        "player": {
+          "firstName": "Brandon",
+          "lastName": "Wiley",
+          "gender": "m"
+        },
+        "in": 68,
+        "of": 91
+      },
+      {
+        "player": {
+          "firstName": "David",
+          "lastName": "Strom",
+          "gender": "m"
+        },
+        "in": 80,
+        "of": 115
+      },
+      {
+        "player": {
+          "firstName": "Doug",
+          "lastName": "Brown",
+          "gender": "m"
+        },
+        "in": 33,
+        "of": 83
+      },
+      {
+        "player": {
+          "firstName": "Emily",
+          "lastName": "Wandel",
+          "gender": "f"
+        },
+        "in": 56,
+        "of": 92
+      },
+      {
+        "player": {
+          "firstName": "Heidi",
+          "lastName": "Somers",
+          "gender": "f"
+        },
+        "in": 47,
+        "of": 92
+      },
+      {
+        "player": {
+          "firstName": "Dan",
+          "lastName": "Somers",
+          "gender": "m"
+        },
+        "in": 22,
+        "of": 83
+      },
+      {
+        "player": {
+          "firstName": "Tony",
+          "lastName": "Winkler",
+          "gender": "m"
+        },
+        "in": 72,
+        "of": 100
+      },
+      {
+        "player": {
+          "firstName": "Alex",
+          "lastName": "Fohl",
+          "gender": "m"
+        },
+        "in": 68,
+        "of": 103
+      },
+      {
+        "player": {
+          "firstName": "Lisa",
+          "lastName": "Martin",
+          "gender": "f"
+        },
+        "in": 57,
+        "of": 99
+      }
+    ]
   },
   {
+    "id": 9,
     "stat": "2nd Serve Points Won",
-    "players": []
+    "players": [
+      {
+        "player": {
+          "firstName": "Daniel",
+          "lastName": "Lomelino",
+          "gender": "m"
+        },
+        "in": 72,
+        "of": 123
+      },
+      {
+        "player": {
+          "firstName": "Dax",
+          "lastName": "Lowery",
+          "gender": "m"
+        },
+        "in": 81,
+        "of": 144
+      },
+      {
+        "player": {
+          "firstName": "Madelyn",
+          "lastName": "Lee",
+          "gender": "f"
+        },
+        "in": 78,
+        "of": 129
+      },
+      {
+        "player": {
+          "firstName": "Chris",
+          "lastName": "Layton",
+          "gender": "m"
+        },
+        "in": 79,
+        "of": 129
+      },
+      {
+        "player": {
+          "firstName": "Kessa",
+          "lastName": "McNaught",
+          "gender": "f"
+        },
+        "in": 48,
+        "of": 92
+      },
+      {
+        "player": {
+          "firstName": "Andrea",
+          "lastName": "Burkhardt",
+          "gender": "f"
+        },
+        "in": 33,
+        "of": 108
+      },
+      {
+        "player": {
+          "firstName": "Brandon",
+          "lastName": "Wiley",
+          "gender": "m"
+        },
+        "in": 68,
+        "of": 79
+      },
+      {
+        "player": {
+          "firstName": "David",
+          "lastName": "Strom",
+          "gender": "m"
+        },
+        "in": 72,
+        "of": 88
+      },
+      {
+        "player": {
+          "firstName": "Doug",
+          "lastName": "Brown",
+          "gender": "m"
+        },
+        "in": 42,
+        "of": 88
+      },
+      {
+        "player": {
+          "firstName": "Emily",
+          "lastName": "Wandel",
+          "gender": "f"
+        },
+        "in": 29,
+        "of": 87
+      },
+      {
+        "player": {
+          "firstName": "Heidi",
+          "lastName": "Somers",
+          "gender": "f"
+        },
+        "in": 44,
+        "of": 72
+      },
+      {
+        "player": {
+          "firstName": "Dan",
+          "lastName": "Somers",
+          "gender": "m"
+        },
+        "in": 12,
+        "of": 56
+      },
+      {
+        "player": {
+          "firstName": "Tony",
+          "lastName": "Winkler",
+          "gender": "m"
+        },
+        "in": 70,
+        "of": 91
+      },
+      {
+        "player": {
+          "firstName": "Alex",
+          "lastName": "Fohl",
+          "gender": "m"
+        },
+        "in": 56,
+        "of": 75
+      },
+      {
+        "player": {
+          "firstName": "Lisa",
+          "lastName": "Martin",
+          "gender": "f"
+        },
+        "in": 49,
+        "of": 63
+      }
+    ]
   },
   {
+    "id": 10,
     "stat": "Net Points Won",
-    "players": []
+    "players": [
+      {
+        "player": {
+          "firstName": "Daniel",
+          "lastName": "Lomelino",
+          "gender": "m"
+        },
+        "in": 44,
+        "of": 125
+      },
+      {
+        "player": {
+          "firstName": "Dax",
+          "lastName": "Lowery",
+          "gender": "m"
+        },
+        "in": 73,
+        "of": 130
+      },
+      {
+        "player": {
+          "firstName": "Madelyn",
+          "lastName": "Lee",
+          "gender": "f"
+        },
+        "in": 98,
+        "of": 132
+      },
+      {
+        "player": {
+          "firstName": "Chris",
+          "lastName": "Layton",
+          "gender": "m"
+        },
+        "in": 78,
+        "of": 132
+      },
+      {
+        "player": {
+          "firstName": "Kessa",
+          "lastName": "McNaught",
+          "gender": "f"
+        },
+        "in": 55,
+        "of": 92
+      },
+      {
+        "player": {
+          "firstName": "Andrea",
+          "lastName": "Burkhardt",
+          "gender": "f"
+        },
+        "in": 49,
+        "of": 108
+      },
+      {
+        "player": {
+          "firstName": "Brandon",
+          "lastName": "Wiley",
+          "gender": "m"
+        },
+        "in": 60,
+        "of": 90
+      },
+      {
+        "player": {
+          "firstName": "David",
+          "lastName": "Strom",
+          "gender": "m"
+        },
+        "in": 43,
+        "of": 73
+      },
+      {
+        "player": {
+          "firstName": "Doug",
+          "lastName": "Brown",
+          "gender": "m"
+        },
+        "in": 39,
+        "of": 94
+      },
+      {
+        "player": {
+          "firstName": "Emily",
+          "lastName": "Wandel",
+          "gender": "f"
+        },
+        "in": 58,
+        "of": 121
+      },
+      {
+        "player": {
+          "firstName": "Heidi",
+          "lastName": "Somers",
+          "gender": "f"
+        },
+        "in": 71,
+        "of": 95
+      },
+      {
+        "player": {
+          "firstName": "Dan",
+          "lastName": "Somers",
+          "gender": "m"
+        },
+        "in": 56,
+        "of": 95
+      },
+      {
+        "player": {
+          "firstName": "Tony",
+          "lastName": "Winkler",
+          "gender": "m"
+        },
+        "in": 73,
+        "of": 93
+      },
+      {
+        "player": {
+          "firstName": "Alex",
+          "lastName": "Fohl",
+          "gender": "m"
+        },
+        "in": 77,
+        "of": 90
+      },
+      {
+        "player": {
+          "firstName": "Lisa",
+          "lastName": "Martin",
+          "gender": "f"
+        },
+        "in": 41,
+        "of": 68
+      }
+    ]
   },
   {
+    "id": 11,
     "stat": "Break Points Won",
-    "players": []
+    "players": [
+      {
+        "player": {
+          "firstName": "Daniel",
+          "lastName": "Lomelino",
+          "gender": "m"
+        },
+        "in": 25,
+        "of": 56
+      },
+      {
+        "player": {
+          "firstName": "Dax",
+          "lastName": "Lowery",
+          "gender": "m"
+        },
+        "in": 33,
+        "of": 70
+      },
+      {
+        "player": {
+          "firstName": "Madelyn",
+          "lastName": "Lee",
+          "gender": "f"
+        },
+        "in": 40,
+        "of": 82
+      },
+      {
+        "player": {
+          "firstName": "Chris",
+          "lastName": "Layton",
+          "gender": "m"
+        },
+        "in": 33,
+        "of": 83
+      },
+      {
+        "player": {
+          "firstName": "Kessa",
+          "lastName": "McNaught",
+          "gender": "f"
+        },
+        "in": 29,
+        "of": 70
+      },
+      {
+        "player": {
+          "firstName": "Andrea",
+          "lastName": "Burkhardt",
+          "gender": "f"
+        },
+        "in": 22,
+        "of": 79
+      },
+      {
+        "player": {
+          "firstName": "Brandon",
+          "lastName": "Wiley",
+          "gender": "m"
+        },
+        "in": 40,
+        "of": 90
+      },
+      {
+        "player": {
+          "firstName": "David",
+          "lastName": "Strom",
+          "gender": "m"
+        },
+        "in": 42,
+        "of": 103
+      },
+      {
+        "player": {
+          "firstName": "Doug",
+          "lastName": "Brown",
+          "gender": "m"
+        },
+        "in": 22,
+        "of": 104
+      },
+      {
+        "player": {
+          "firstName": "Emily",
+          "lastName": "Wandel",
+          "gender": "f"
+        },
+        "in": 31,
+        "of": 94
+      },
+      {
+        "player": {
+          "firstName": "Heidi",
+          "lastName": "Somers",
+          "gender": "f"
+        },
+        "in": 67,
+        "of": 90
+      },
+      {
+        "player": {
+          "firstName": "Dan",
+          "lastName": "Somers",
+          "gender": "m"
+        },
+        "in": 40,
+        "of": 100
+      },
+      {
+        "player": {
+          "firstName": "Tony",
+          "lastName": "Winkler",
+          "gender": "m"
+        },
+        "in": 14,
+        "of": 52
+      },
+      {
+        "player": {
+          "firstName": "Alex",
+          "lastName": "Fohl",
+          "gender": "m"
+        },
+        "in": 51,
+        "of": 68
+      },
+      {
+        "player": {
+          "firstName": "Lisa",
+          "lastName": "Martin",
+          "gender": "f"
+        },
+        "in": 62,
+        "of": 72
+      }
+    ]
   }
 ]

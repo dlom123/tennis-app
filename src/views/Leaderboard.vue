@@ -14,9 +14,9 @@
 
             <v-row class="container-leaderboard-cards">
               <LeaderboardCard
-                v-for="leaders in leaderboard"
-                :key="leaders.stat"
-                :leaders="leaders"
+                v-for="stat in leaders"
+                :key="stat.stat"
+                :stat="stat"
               />
             </v-row>
 
@@ -37,6 +37,11 @@ export default {
   components: {
     LeaderboardCard
   },
+  data() {
+    return {
+      leaders: []
+    }
+  },
   computed: {
     ...mapState([
       'leaderboard'
@@ -44,11 +49,11 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getLeaderboard'
+      'getLeaderboardTopThree'
     ])
   },
-  created() {
-    this.getLeaderboard()
+  async created() {
+    this.leaders = await this.getLeaderboardTopThree()
   }
 }
 </script>
