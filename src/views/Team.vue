@@ -4,6 +4,12 @@
       <v-col cols="10" offset-sm="1">
         <v-container class="container-team">
 
+          <v-row no-gutters class="row-title">
+            <v-col>
+              <h1>Team : {{ getFullNames(team) }}</h1>
+            </v-col>
+          </v-row>
+
           <v-row>
 
             <v-col sm="3" class="col-info">
@@ -21,7 +27,7 @@
                 </v-col>
 
                 <v-col sm="12">
-                  <h1 :class="getTextHeaderClass(player.gender)">{{player.firstName}} {{player.lastName}}</h1>
+                  <h1 :class="getTextHeaderClass(player.gender)">{{ getFullName(player) }}</h1>
                 </v-col>
 
                 <!-- <v-col sm="6">
@@ -153,6 +159,14 @@ export default {
     ]),
     getBorderClass(gender) {
       return getGenderBorderClass(gender)
+    },
+    getFullName(player) {
+      return `${player.firstName} ${player.lastName}`
+    },
+    getFullNames(team) {
+      const names = team.players.map(player => `${player.firstName} ${player.lastName}`)
+
+      return names.join('/')
     },
     getTextHeaderClass(gender) {
       return getGenderTextClass(gender)

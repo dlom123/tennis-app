@@ -4,8 +4,15 @@
       <v-col cols="10" offset-sm="1">
         <v-container class="container-player">
 
-          <v-row no-gutters class="row-toggle">
-            <v-col cols="9" offset-sm="3" align="right">
+          <v-row no-gutters class="row-title">
+
+            <v-col>
+              <h1>Players : {{ fullName }}</h1>
+            </v-col>
+
+            <v-spacer></v-spacer>
+
+            <v-col align="right">
               <v-btn-toggle
                 group
                 :value="viewType"
@@ -15,6 +22,7 @@
                 <v-btn value="doubles">Doubles</v-btn>
               </v-btn-toggle>
             </v-col>
+
           </v-row>
 
           <v-row>
@@ -34,7 +42,7 @@
                 </v-col>
 
                 <v-col sm="12">
-                  <h1 :class="getTextHeaderClass(player.gender)">{{player.firstName}} {{player.lastName}}</h1>
+                  <h1 :class="getTextHeaderClass(player.gender)">{{ fullName }}</h1>
                 </v-col>
 
                 <!-- <v-col sm="6">
@@ -152,6 +160,9 @@ export default {
     ...mapState([
       'player'
     ]),
+    fullName() {
+      return `${this.player.firstName} ${this.player.lastName}`
+    },
     viewType() {
       return this.isViewToggleSingles ? 'singles' : 'doubles'
     }

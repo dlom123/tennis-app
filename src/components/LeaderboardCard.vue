@@ -3,7 +3,7 @@
     <v-card outlined>
 
       <v-toolbar dark>
-        <v-toolbar-title v-html="`<h3>${stat.stat}</h3>`"></v-toolbar-title>
+        <v-toolbar-title v-html="stat.stat" class="stat-name"></v-toolbar-title>
       </v-toolbar>
 
       <v-divider></v-divider>
