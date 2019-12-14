@@ -16,7 +16,11 @@
             :class="['row-leader', { 'row-leader-divider': i + 1 < stat.players.length }]"
           >
 
-            <v-list-item-avatar :size="i === 0 ? 100 : 60">
+            <v-list-item-icon class="container-rank">
+              <span :class="['rank', { 'rank-top': i === 0 }]">#{{ i + 1 }}</span>
+            </v-list-item-icon>
+
+            <v-list-item-avatar :size="i === 0 ? 100 : 60" class="container-avatar">
               <v-img
                 :src="require(`../assets/images/headshots/placeholders/${player.player.gender === 'm' ? 'men' : 'women'}/${player.player.gender === 'm' ? 'federer' : 'halep'}.png`)"
                 width="280"
@@ -26,7 +30,7 @@
               ></v-img>
             </v-list-item-avatar>
 
-            <v-list-item-content>
+            <v-list-item-content class="container-info">
               <v-list-item-title
                 v-html="`${player.player.firstName} ${player.player.lastName}`"
                 :class="['leader-name', getTextHeaderClass(player.player.gender), { 'leader-top': i === 0 }]"

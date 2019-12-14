@@ -15,10 +15,30 @@ export default {
 
     commit('setLeaderboard', leaderboard)
   },
-  getLeaderboardTopThree: async ({ commit }, payload) => {
+  getLeaderboardTopThree: async ({ commit, state }, payload) => {
     // TODO: get leaderboard data from the API
+    // TODO: use filters from state to modify API request
     // const results = await HTTP.get('/leaderboard')
-    const leaderboard = leaderboardData.map(stat => {
+    const leaderboard = JSON.parse(JSON.stringify(leaderboardData))
+    const leaderboardFiltered = leaderboard.map(stat => {
+      const filterFormat = state.filters.find(filter => filter.name === 'leaderboardFormat')
+      if (filterFormat) {
+        switch (filterFormat.value) {
+          case 'men':
+            stat.players = stat.players.filter(player => player.player.gender === 'm')
+            break
+          case 'women':
+            stat.players = stat.players.filter(player => player.player.gender === 'f')
+            break
+        }
+      }
+
+      return stat
+    })
+
+    // sort the filtered list of players for each stat
+    const leaderboardSorted = leaderboardFiltered.map(stat => {
+      // sort by stat rank, descending
       if (stat.players.every(player => player.total)) {
         // integer-based stat
         stat.players.sort((a, b) => (a.total < b.total) ? 1 : -1)
@@ -30,14 +50,15 @@ export default {
       return stat
     })
 
-    const topThree = leaderboard.map(stat => {
+    // truncate the full list of players for each stat to just the top 3
+    const leaderboardTopThree = leaderboardSorted.map(stat => {
       return {
         ...stat,
         players: stat.players.slice(0, 3)
       }
     })
 
-    return topThree
+    return leaderboardTopThree
   },
   getPlayer: async ({ commit }, playerId) => {
     // TODO: get player data from the API
@@ -64,7 +85,7 @@ export default {
       stats
     })
   },
-  getTeam: async ({ state, commit }, teamId) => {
+  getTeam: async ({ commit, state }, teamId) => {
     const team = await state.teams.filter(team => team.id.toString() === teamId.toString())[0]
 
     commit('setTeam', team)

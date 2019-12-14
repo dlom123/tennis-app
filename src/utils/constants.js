@@ -1,4 +1,7 @@
 export const FILTERS = {
+  LEADERBOARD: {
+    FORMAT: 'leaderboardFormat'
+  },
   PLAYER: {
     FORMAT: 'playerFormat',
     YEAR: 'playerYear'
