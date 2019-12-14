@@ -17,6 +17,9 @@ export default {
   setSort: (state, payload) => {
     state.sort = payload
   },
+  setStat: (state, payload) => {
+    state.stat = payload
+  },
   setTeam: (state, payload) => {
     state.team = payload
   },

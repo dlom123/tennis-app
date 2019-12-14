@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "stat": "Aces",
+    "name": "Aces",
     "players": [
       {
         "player": {
@@ -127,7 +127,7 @@
   },
   {
     "id": 2,
-    "stat": "Double Faults",
+    "name": "Double Faults",
     "players": [
       {
         "player": {
@@ -253,7 +253,7 @@
   },
   {
     "id": 3,
-    "stat": "Winners",
+    "name": "Winners",
     "players": [
       {
         "player": {
@@ -379,7 +379,7 @@
   },
   {
     "id": 4,
-    "stat": "Unforced Errors",
+    "name": "Unforced Errors",
     "players": [
       {
         "player": {
@@ -505,7 +505,7 @@
   },
   {
     "id": 5,
-    "stat": "1st Serve In",
+    "name": "1st Serve In",
     "players": [
       {
         "player": {
@@ -646,7 +646,7 @@
   },
   {
     "id": 6,
-    "stat": "1st Serve Return",
+    "name": "1st Serve Return",
     "players": [
       {
         "player": {
@@ -787,7 +787,7 @@
   },
   {
     "id": 7,
-    "stat": "2nd Serve Return",
+    "name": "2nd Serve Return",
     "players": [
       {
         "player": {
@@ -928,7 +928,7 @@
   },
   {
     "id": 8,
-    "stat": "1st Serve Points Won",
+    "name": "1st Serve Points Won",
     "players": [
       {
         "player": {
@@ -1069,7 +1069,7 @@
   },
   {
     "id": 9,
-    "stat": "2nd Serve Points Won",
+    "name": "2nd Serve Points Won",
     "players": [
       {
         "player": {
@@ -1210,7 +1210,7 @@
   },
   {
     "id": 10,
-    "stat": "Net Points Won",
+    "name": "Net Points Won",
     "players": [
       {
         "player": {
@@ -1351,7 +1351,7 @@
   },
   {
     "id": 11,
-    "stat": "Break Points Won",
+    "name": "Break Points Won",
     "players": [
       {
         "player": {

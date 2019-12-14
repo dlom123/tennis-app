@@ -1,5 +1,8 @@
 <template>
   <v-container fluid class="container-main">
+    <v-overlay :value="isLoading">
+      <v-progress-circular indeterminate size="64"></v-progress-circular>
+    </v-overlay>
     <v-row no-gutters>
       <v-col sm="10" offset-sm="1">
 
@@ -31,7 +34,7 @@
             <v-row class="container-leaderboard-cards">
               <LeaderboardCard
                 v-for="stat in leaders"
-                :key="stat.stat"
+                :key="stat.name"
                 :stat="stat"
               />
             </v-row>
@@ -45,7 +48,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapMutations, mapState } from 'vuex'
 import FilterBarLeaderboard from '@/components/filters/FilterBarLeaderboard'
 import LeaderboardCard from '@/components/LeaderboardCard'
 
@@ -57,9 +60,10 @@ export default {
   },
   data() {
     return {
-      unsubMutations: null,
+      isLoading: true,
       isViewToggleSingles: true,
-      leaders: []
+      leaders: [],
+      unsubMutations: null
     }
   },
   computed: {
@@ -74,24 +78,34 @@ export default {
     ...mapActions([
       'getLeaderboardTopThree'
     ]),
+    ...mapMutations([
+      'setLeaderboard'
+    ]),
     onChangeViewToggle(value) {
       this.isViewToggleSingles = !this.isViewToggleSingles
+    },
+    async loadData() {
+      this.isLoading = true
+      this.leaders = await this.getLeaderboardTopThree()
+      this.isLoading = false
     }
   },
   async created() {
     // subscribe to filter mutations so we can perform async API calls
     this.unsubMutations = this.$store.subscribe(async (mutation, state) => {
+      // if we are modifying a filter that begins with the string 'leaderboard'
       if ((mutation.type === 'removeFilter' && mutation.payload.substring(0, 11) === 'leaderboard') ||
         (mutation.type === 'updateFilter' && mutation.payload.name.substring(0, 11) === 'leaderboard')
       ) {
-        // we are modifying a filter that begins with the string 'leaderboard'
-        this.leaders = await this.getLeaderboardTopThree()
+        await this.loadData()
       }
     })
-    this.leaders = await this.getLeaderboardTopThree()
+
+    await this.loadData()
   },
-  async destroyed() {
-    await this.unsubMutations()
+  destroyed() {
+    this.unsubMutations()
+    this.setLeaderboard([])
   }
 }
 </script>

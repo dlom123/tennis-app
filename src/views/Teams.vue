@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapMutations, mapState } from 'vuex'
 import FilterBarTeams from '@/components/filters/FilterBarTeams'
 import TeamRow from '@/components/TeamRow'
 import { filterTeams, sortTeams } from '@/utils/functions'
@@ -54,10 +54,16 @@ export default {
   methods: {
     ...mapActions([
       'getTeams'
+    ]),
+    ...mapMutations([
+      'setTeams'
     ])
   },
   created() {
     this.getTeams()
+  },
+  destroyed() {
+    this.setTeams([])
   }
 }
 </script>

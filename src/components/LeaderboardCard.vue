@@ -3,7 +3,7 @@
     <v-card outlined>
 
       <v-toolbar dark>
-        <v-toolbar-title v-html="stat.stat" class="stat-name"></v-toolbar-title>
+        <v-toolbar-title v-html="stat.name" class="stat-name"></v-toolbar-title>
       </v-toolbar>
 
       <v-divider></v-divider>
@@ -52,7 +52,7 @@
           text
           color="blue"
           class="btn-view-all"
-          :to="`/stats/${stat.id}`"
+          :to="{ name: 'stat', params: { statId: stat.id }}"
         >View All</v-btn>
       </v-card-actions>
 

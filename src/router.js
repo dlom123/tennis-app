@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Leaderboard from './views/Leaderboard'
-import Matches from './views/Matches'
-import Player from './views/Player'
-import PlayersDoubles from './views/PlayersDoubles'
-import PlayersSingles from './views/PlayersSingles'
-import Team from './views/Team'
-import Teams from './views/Teams'
+import Leaderboard from '@/views/Leaderboard'
+import Matches from '@/views/Matches'
+import Player from '@/views/Player'
+import PlayersDoubles from '@/views/PlayersDoubles'
+import PlayersSingles from '@/views/PlayersSingles'
+import Stat from '@/views/Stat'
+import Team from '@/views/Team'
+import Teams from '@/views/Teams'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ const router = new Router({
       path: '/singles',
       name: 'singles',
       component: PlayersSingles
+    },
+    {
+      path: '/stats/:statId',
+      name: 'stat',
+      component: Stat
     },
     {
       path: '/teams/:teamId',

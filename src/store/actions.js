@@ -85,6 +85,12 @@ export default {
       stats
     })
   },
+  getStat: async ({ commit }, statId) => {
+    // TODO: get stat data from the API
+    const stat = JSON.parse(JSON.stringify(leaderboardData)).find(stat => stat.id === parseInt(statId, 10))
+
+    commit('setStat', stat)
+  },
   getTeam: async ({ commit, state }, teamId) => {
     const team = await state.teams.filter(team => team.id.toString() === teamId.toString())[0]
 

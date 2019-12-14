@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapActions, mapState, mapMutations } from 'vuex'
+import { mapActions, mapMutations, mapState } from 'vuex'
 import FilterBarPlayers from '@/components/filters/FilterBarPlayers'
 import PlayerRow from '@/components/PlayerRow'
 import { filterPlayers, sortPlayers } from '@/utils/functions'
@@ -57,11 +57,17 @@ export default {
       'getPlayers'
     ]),
     ...mapMutations([
-      'removeAllFilters'
+      'removeAllFilters',
+      'setPlayers'
     ])
   },
   created() {
     this.getPlayers()
+  },
+  beforeRouteLeave(to, from, next) {
+    this.setPlayers([])
+
+    next()
   }
 }
 </script>
