@@ -21,7 +21,7 @@
 
         </v-row>
 
-        <FilterBarLeaderboard/>
+        <FilterBarStat/>
 
         <v-row no-gutters>
           <v-col cols="12">
@@ -37,7 +37,7 @@
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import FilterBarLeaderboard from '@/components/filters/FilterBarLeaderboard'
+import FilterBarStat from '@/components/filters/FilterBarStat'
 import Spinner from '@/components/Spinner'
 import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
 
@@ -45,7 +45,7 @@ export default {
   name: 'stat',
   components: {
     Breadcrumbs,
-    FilterBarLeaderboard,
+    FilterBarStat,
     Spinner,
     ToggleSinglesDoubles
   },
