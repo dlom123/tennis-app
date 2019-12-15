@@ -1,13 +1,17 @@
 <template>
   <v-container fluid class="grey lighten-5">
-    <v-row no-gutters>
+
+    <Spinner :isLoading="isLoading" />
+
+    <v-row v-if="!isLoading" no-gutters>
       <v-col cols="10" offset-sm="1">
         <v-container class="container-player">
 
           <v-row no-gutters class="row-title">
 
             <v-col>
-              <h1>Players : {{ fullName }}</h1>
+              <h1>{{ fullName }}</h1>
+              <Breadcrumbs :items="breadcrumbItems"></Breadcrumbs>
             </v-col>
 
             <v-spacer></v-spacer>
@@ -138,18 +142,22 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapMutations, mapState } from 'vuex'
+import Breadcrumbs from '@/components/Breadcrumbs'
 import FilterBarPlayer from '@/components/filters/FilterBarPlayer'
 import PlayerMatches from '@/components/PlayerMatches'
 import PlayerStats from '@/components/PlayerStats'
+import Spinner from '@/components/Spinner'
 import { getGenderBorderClass, getGenderTextClass } from '@/utils/functions'
 
 export default {
   name: 'player',
   components: {
+    Breadcrumbs,
     FilterBarPlayer,
     PlayerMatches,
-    PlayerStats
+    PlayerStats,
+    Spinner
   },
   data() {
     return {
@@ -158,8 +166,15 @@ export default {
   },
   computed: {
     ...mapState([
+      'isLoading',
       'player'
     ]),
+    breadcrumbItems() {
+      return [
+        { text: 'Players', to: { name: this.viewType }, exact: true },
+        { text: this.fullName, disabled: true }
+      ]
+    },
     fullName() {
       return `${this.player.firstName} ${this.player.lastName}`
     },
@@ -172,6 +187,9 @@ export default {
       'getPlayer',
       'removePlayerFilters'
     ]),
+    ...mapMutations([
+      'setLoading'
+    ]),
     getBorderClass(gender) {
       return getGenderBorderClass(gender)
     },
@@ -182,11 +200,13 @@ export default {
       this.isViewToggleSingles = !this.isViewToggleSingles
     }
   },
-  created() {
+  async created() {
     // set the view based on where the user arrived from
     this.isViewToggleSingles = !(this.$route.params.type && this.$route.params.type === 'doubles')
 
-    this.getPlayer(this.$route.params.playerId)
+    this.setLoading(true)
+    await this.getPlayer(this.$route.params.playerId)
+    this.setLoading(false)
   },
   destroyed() {
     this.removePlayerFilters()

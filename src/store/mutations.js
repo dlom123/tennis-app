@@ -5,6 +5,9 @@ export default {
   removeFilter: (state, payload) => {
     state.filters = state.filters.filter(f => f.name !== payload)
   },
+  setLoading: (state, payload) => {
+    state.isLoading = payload
+  },
   setLeaderboard: (state, payload) => {
     state.leaderboard = payload
   },

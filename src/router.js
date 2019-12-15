@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Leaderboard from '@/views/Leaderboard'
-import Matches from '@/views/Matches'
 import Player from '@/views/Player'
 import PlayersDoubles from '@/views/PlayersDoubles'
 import PlayersSingles from '@/views/PlayersSingles'
@@ -32,11 +31,6 @@ const router = new Router({
       path: '/leaderboard',
       name: 'leaderboard',
       component: Leaderboard
-    },
-    {
-      path: '/matches',
-      name: 'matches',
-      component: Matches
     },
     {
       path: '/players/:playerId',

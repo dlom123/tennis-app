@@ -1,9 +1,9 @@
 <template>
   <v-container fluid class="container-main">
-    <v-overlay :value="isLoading">
-      <v-progress-circular indeterminate size="64"></v-progress-circular>
-    </v-overlay>
-    <v-row no-gutters>
+
+    <Spinner :isLoading="isLoading" />
+
+    <v-row v-if="!isLoading" no-gutters>
       <v-col sm="10" offset-sm="1">
 
         <v-row no-gutters class="row-title">
@@ -51,12 +51,14 @@
 import { mapActions, mapMutations, mapState } from 'vuex'
 import FilterBarLeaderboard from '@/components/filters/FilterBarLeaderboard'
 import LeaderboardCard from '@/components/LeaderboardCard'
+import Spinner from '@/components/Spinner'
 
 export default {
   name: 'leaderboard',
   components: {
     FilterBarLeaderboard,
-    LeaderboardCard
+    LeaderboardCard,
+    Spinner
   },
   data() {
     return {

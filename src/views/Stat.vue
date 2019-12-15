@@ -1,11 +1,15 @@
 <template>
   <v-container fluid class="container-main">
-    <v-row no-gutters>
+
+    <Spinner :isLoading="isLoading" />
+
+    <v-row v-if="!isLoading" no-gutters>
       <v-col sm="10" offset-sm="1">
 
         <v-row no-gutters class="row-title">
           <v-col>
-            <h1>Leaderboard : {{ stat.name }}</h1>
+            <h1>{{ stat.name }}</h1>
+            <Breadcrumbs :items="breadcrumbItems" />
           </v-col>
 
           <v-spacer></v-spacer>
@@ -38,17 +42,28 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
+import Breadcrumbs from '@/components/Breadcrumbs'
 import FilterBarLeaderboard from '@/components/filters/FilterBarLeaderboard'
+import Spinner from '@/components/Spinner'
 
 export default {
   name: 'stat',
   components: {
-    FilterBarLeaderboard
+    Breadcrumbs,
+    FilterBarLeaderboard,
+    Spinner
   },
   computed: {
     ...mapState([
+      'isLoading',
       'stat'
     ]),
+    breadcrumbItems() {
+      return [
+        { text: 'Leaderboard', to: { name: 'leaderboard' }, exact: true },
+        { text: this.stat.name, disabled: true }
+      ]
+    },
     viewType() {
       return this.isViewToggleSingles ? 'singles' : 'doubles'
     }
@@ -58,14 +73,17 @@ export default {
       'getStat'
     ]),
     ...mapMutations([
+      'setLoading',
       'setStat'
     ]),
     onChangeViewToggle(value) {
       this.isViewToggleSingles = !this.isViewToggleSingles
     }
   },
-  created() {
-    this.getStat(this.$route.params.statId)
+  async created() {
+    this.setLoading(true)
+    await this.getStat(this.$route.params.statId)
+    this.setLoading(false)
   },
   destroyed() {
     this.setStat({})

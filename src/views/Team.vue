@@ -1,12 +1,17 @@
 <template>
   <v-container fluid class="grey lighten-5">
-    <v-row no-gutters>
+
+    <Spinner :isLoading="isLoading" />
+
+    <v-row v-if="!isLoading" no-gutters>
       <v-col cols="10" offset-sm="1">
+
         <v-container class="container-team">
 
           <v-row no-gutters class="row-title">
             <v-col>
-              <h1>Team : {{ getFullNames(team) }}</h1>
+              <h1>{{ getFullNames(team) }}</h1>
+              <Breadcrumbs :items="breadcrumbItems"></Breadcrumbs>
             </v-col>
           </v-row>
 
@@ -135,8 +140,10 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapMutations, mapState } from 'vuex'
+import Breadcrumbs from '@/components/Breadcrumbs'
 import FilterBarTeam from '@/components/filters/FilterBarTeam'
+import Spinner from '@/components/Spinner'
 import TeamMatches from '@/components/TeamMatches'
 import TeamStats from '@/components/TeamStats'
 import { getGenderBorderClass, getGenderTextClass } from '@/utils/functions'
@@ -144,18 +151,30 @@ import { getGenderBorderClass, getGenderTextClass } from '@/utils/functions'
 export default {
   name: 'team',
   components: {
+    Breadcrumbs,
     FilterBarTeam,
+    Spinner,
     TeamMatches,
     TeamStats
   },
   computed: {
     ...mapState([
+      'isLoading',
       'team'
-    ])
+    ]),
+    breadcrumbItems() {
+      return [
+        { text: 'Teams', to: { name: 'teams' }, exact: true },
+        { text: this.getFullNames(this.team), disabled: true }
+      ]
+    }
   },
   methods: {
     ...mapActions([
       'getTeam'
+    ]),
+    ...mapMutations([
+      'setLoading'
     ]),
     getBorderClass(gender) {
       return getGenderBorderClass(gender)
@@ -172,8 +191,10 @@ export default {
       return getGenderTextClass(gender)
     }
   },
-  created() {
-    this.getTeam(this.$route.params.teamId)
+  async created() {
+    this.setLoading(true)
+    await this.getTeam(this.$route.params.teamId)
+    this.setLoading(false)
   }
 }
 </script>

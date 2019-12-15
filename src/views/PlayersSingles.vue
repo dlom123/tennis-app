@@ -1,6 +1,9 @@
 <template>
   <v-container fluid class="container-main">
-    <v-row no-gutters>
+
+    <Spinner :isLoading="isLoading" />
+
+    <v-row v-if="!isLoading" no-gutters>
       <v-col sm="10" offset-sm="1">
 
         <v-row no-gutters class="row-title">
@@ -28,17 +31,20 @@
 import { mapActions, mapMutations, mapState } from 'vuex'
 import FilterBarPlayers from '@/components/filters/FilterBarPlayers'
 import PlayerRow from '@/components/PlayerRow'
+import Spinner from '@/components/Spinner'
 import { filterPlayers, sortPlayers } from '@/utils/functions'
 
 export default {
   name: 'players',
   components: {
     FilterBarPlayers,
-    PlayerRow
+    PlayerRow,
+    Spinner
   },
   computed: {
     ...mapState([
       'filters',
+      'isLoading',
       'players',
       'sort'
     ]),
@@ -58,11 +64,14 @@ export default {
     ]),
     ...mapMutations([
       'removeAllFilters',
+      'setLoading',
       'setPlayers'
     ])
   },
-  created() {
-    this.getPlayers()
+  async created() {
+    this.setLoading(true)
+    await this.getPlayers()
+    this.setLoading(false)
   },
   beforeRouteLeave(to, from, next) {
     this.setPlayers([])

@@ -92,9 +92,10 @@ export default {
     commit('setStat', stat)
   },
   getTeam: async ({ commit, state }, teamId) => {
-    const team = await state.teams.filter(team => team.id.toString() === teamId.toString())[0]
+    const teams = playersData.doubles
+    const team = await teams.filter(team => team.id.toString() === teamId.toString())[0]
 
-    commit('setTeam', team)
+    return commit('setTeam', team)
   },
   getTeams: async ({ commit }, payload) => {
     // TODO: get team data from the API
