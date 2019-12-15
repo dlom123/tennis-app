@@ -17,14 +17,7 @@
             <v-spacer></v-spacer>
 
             <v-col align="right">
-              <v-btn-toggle
-                group
-                :value="viewType"
-                @change="onChangeViewToggle"
-              >
-                <v-btn value="singles">Singles</v-btn>
-                <v-btn value="doubles">Doubles</v-btn>
-              </v-btn-toggle>
+              <ToggleSinglesDoubles/>
             </v-col>
 
           </v-row>
@@ -122,11 +115,11 @@
               <FilterBarPlayer/>
 
               <v-row no-gutters class="section">
-                <PlayerStats :stats="player.stats" :view="viewType" />
+                <PlayerStats :stats="player.stats" :view="view" />
               </v-row>
 
               <v-row no-gutters class="section">
-                <PlayerMatches :matches="player.matches" :view="viewType" />
+                <PlayerMatches :matches="player.matches" :view="view" />
               </v-row>
 
             </v-col>
@@ -148,6 +141,7 @@ import FilterBarPlayer from '@/components/filters/FilterBarPlayer'
 import PlayerMatches from '@/components/PlayerMatches'
 import PlayerStats from '@/components/PlayerStats'
 import Spinner from '@/components/Spinner'
+import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
 import { getGenderBorderClass, getGenderTextClass } from '@/utils/functions'
 
 export default {
@@ -157,29 +151,23 @@ export default {
     FilterBarPlayer,
     PlayerMatches,
     PlayerStats,
-    Spinner
-  },
-  data() {
-    return {
-      isViewToggleSingles: true
-    }
+    Spinner,
+    ToggleSinglesDoubles
   },
   computed: {
     ...mapState([
       'isLoading',
-      'player'
+      'player',
+      'view'
     ]),
     breadcrumbItems() {
       return [
-        { text: 'Players', to: { name: this.viewType }, exact: true },
+        { text: 'Players', to: { name: 'players' }, exact: true },
         { text: this.fullName, disabled: true }
       ]
     },
     fullName() {
       return `${this.player.firstName} ${this.player.lastName}`
-    },
-    viewType() {
-      return this.isViewToggleSingles ? 'singles' : 'doubles'
     }
   },
   methods: {
@@ -188,22 +176,17 @@ export default {
       'removePlayerFilters'
     ]),
     ...mapMutations([
-      'setLoading'
+      'setLoading',
+      'setView'
     ]),
     getBorderClass(gender) {
       return getGenderBorderClass(gender)
     },
     getTextHeaderClass(gender) {
       return getGenderTextClass(gender)
-    },
-    onChangeViewToggle(value) {
-      this.isViewToggleSingles = !this.isViewToggleSingles
     }
   },
   async created() {
-    // set the view based on where the user arrived from
-    this.isViewToggleSingles = !(this.$route.params.type && this.$route.params.type === 'doubles')
-
     this.setLoading(true)
     await this.getPlayer(this.$route.params.playerId)
     this.setLoading(false)

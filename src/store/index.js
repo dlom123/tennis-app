@@ -24,7 +24,8 @@ export default new Vuex.Store({
     sort: undefined,
     stat: {},
     team: [],
-    teams: []
+    teams: [],
+    view: 'singles'
   },
   actions,
   getters,

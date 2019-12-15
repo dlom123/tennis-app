@@ -7,6 +7,7 @@
       <v-col sm="10" offset-sm="1">
 
         <v-row no-gutters class="row-title">
+
           <v-col>
             <h1>{{ stat.name }}</h1>
             <Breadcrumbs :items="breadcrumbItems" />
@@ -15,14 +16,7 @@
           <v-spacer></v-spacer>
 
           <v-col align="right">
-            <v-btn-toggle
-              group
-              :value="viewType"
-              @change="onChangeViewToggle"
-            >
-              <v-btn value="singles">Singles</v-btn>
-              <v-btn value="doubles">Doubles</v-btn>
-            </v-btn-toggle>
+            <ToggleSinglesDoubles/>
           </v-col>
 
         </v-row>
@@ -45,13 +39,15 @@ import { mapActions, mapMutations, mapState } from 'vuex'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import FilterBarLeaderboard from '@/components/filters/FilterBarLeaderboard'
 import Spinner from '@/components/Spinner'
+import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
 
 export default {
   name: 'stat',
   components: {
     Breadcrumbs,
     FilterBarLeaderboard,
-    Spinner
+    Spinner,
+    ToggleSinglesDoubles
   },
   computed: {
     ...mapState([
@@ -63,9 +59,6 @@ export default {
         { text: 'Leaderboard', to: { name: 'leaderboard' }, exact: true },
         { text: this.stat.name, disabled: true }
       ]
-    },
-    viewType() {
-      return this.isViewToggleSingles ? 'singles' : 'doubles'
     }
   },
   methods: {
@@ -75,10 +68,7 @@ export default {
     ...mapMutations([
       'setLoading',
       'setStat'
-    ]),
-    onChangeViewToggle(value) {
-      this.isViewToggleSingles = !this.isViewToggleSingles
-    }
+    ])
   },
   async created() {
     this.setLoading(true)

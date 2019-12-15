@@ -7,6 +7,7 @@
       <v-col sm="10" offset-sm="1">
 
         <v-row no-gutters class="row-title">
+
           <v-col>
             <h1>Leaderboard</h1>
           </v-col>
@@ -14,14 +15,7 @@
           <v-spacer></v-spacer>
 
           <v-col align="right">
-            <v-btn-toggle
-              group
-              :value="viewType"
-              @change="onChangeViewToggle"
-            >
-              <v-btn value="singles">Singles</v-btn>
-              <v-btn value="doubles">Doubles</v-btn>
-            </v-btn-toggle>
+            <ToggleSinglesDoubles/>
           </v-col>
 
         </v-row>
@@ -52,29 +46,28 @@ import { mapActions, mapMutations, mapState } from 'vuex'
 import FilterBarLeaderboard from '@/components/filters/FilterBarLeaderboard'
 import LeaderboardCard from '@/components/LeaderboardCard'
 import Spinner from '@/components/Spinner'
+import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
 
 export default {
   name: 'leaderboard',
   components: {
     FilterBarLeaderboard,
     LeaderboardCard,
-    Spinner
+    Spinner,
+    ToggleSinglesDoubles
   },
   data() {
     return {
       isLoading: true,
-      isViewToggleSingles: true,
       leaders: [],
       unsubMutations: null
     }
   },
   computed: {
     ...mapState([
-      'leaderboard'
-    ]),
-    viewType() {
-      return this.isViewToggleSingles ? 'singles' : 'doubles'
-    }
+      'leaderboard',
+      'view'
+    ])
   },
   methods: {
     ...mapActions([
@@ -83,9 +76,6 @@ export default {
     ...mapMutations([
       'setLeaderboard'
     ]),
-    onChangeViewToggle(value) {
-      this.isViewToggleSingles = !this.isViewToggleSingles
-    },
     async loadData() {
       this.isLoading = true
       this.leaders = await this.getLeaderboardTopThree()

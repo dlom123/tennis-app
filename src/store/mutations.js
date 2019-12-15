@@ -29,6 +29,9 @@ export default {
   setTeams: (state, payload) => {
     state.teams = payload
   },
+  setView: (state, payload) => {
+    state.view = payload
+  },
   updateFilter: (state, payload) => {
     // remove the filter
     state.filters = state.filters.filter(f => f.name !== payload.name)

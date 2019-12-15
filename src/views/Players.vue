@@ -7,9 +7,17 @@
       <v-col sm="10" offset-sm="1">
 
         <v-row no-gutters class="row-title">
-          <v-col cols="12">
-            <h1>Players : Singles</h1>
+
+          <v-col>
+            <h1>Players</h1>
           </v-col>
+
+          <v-spacer></v-spacer>
+
+          <v-col align="right">
+            <ToggleSinglesDoubles/>
+          </v-col>
+
         </v-row>
 
         <FilterBarPlayers/>
@@ -32,6 +40,7 @@ import { mapActions, mapMutations, mapState } from 'vuex'
 import FilterBarPlayers from '@/components/filters/FilterBarPlayers'
 import PlayerRow from '@/components/PlayerRow'
 import Spinner from '@/components/Spinner'
+import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
 import { filterPlayers, sortPlayers } from '@/utils/functions'
 
 export default {
@@ -39,7 +48,8 @@ export default {
   components: {
     FilterBarPlayers,
     PlayerRow,
-    Spinner
+    Spinner,
+    ToggleSinglesDoubles
   },
   computed: {
     ...mapState([
@@ -63,9 +73,9 @@ export default {
       'getPlayers'
     ]),
     ...mapMutations([
-      'removeAllFilters',
       'setLoading',
-      'setPlayers'
+      'setPlayers',
+      'setView'
     ])
   },
   async created() {
