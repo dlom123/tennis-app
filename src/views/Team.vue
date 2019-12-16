@@ -174,6 +174,7 @@ export default {
       'getTeam'
     ]),
     ...mapMutations([
+      'removeAllFiltersExcept',
       'setLoading'
     ]),
     getBorderClass(gender) {
@@ -192,6 +193,9 @@ export default {
     }
   },
   async created() {
+    // clear all filters except for the ones for this screen (in case of a refresh)
+    this.removeAllFiltersExcept(['team', 'teams'])
+
     this.setLoading(true)
     await this.getTeam(this.$route.params.teamId)
     this.setLoading(false)

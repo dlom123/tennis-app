@@ -6,18 +6,18 @@
     <v-col cols="8">
 
       <v-chip
-        v-if="isFilterSet(filterTeamFormat)"
+        v-if="isFilterSet(filterFormat)"
         close
         @click:close="clearFilterFormat"
         class="chip-header"
-      >Format: {{ getFilterValueByName(filterTeamFormat) }}</v-chip>
+      >Format: {{ getFilterValueByName(filterFormat) }}</v-chip>
 
       <v-chip
-        v-if="isFilterSet(filterTeamYear)"
+        v-if="isFilterSet(filterYear)"
         close
         @click:close="clearFilterYear"
         class="chip-header"
-      >Format: {{ getFilterValueByName(filterTeamYear) }}</v-chip>
+      >Format: {{ getFilterValueByName(filterYear) }}</v-chip>
 
     </v-col>
 
@@ -32,13 +32,13 @@ export default {
   name: 'filterBarHeaderTeam',
   computed: {
     ...mapGetters([
-      'getFilterValueByName'
+      'getFilterValue'
     ]),
-    filterTeamFormat() {
-      return FILTERS.TEAM.FORMAT
+    filterFormat() {
+      return FILTERS.FORMAT
     },
-    filterTeamYear() {
-      return FILTERS.TEAM.YEAR
+    filterYear() {
+      return FILTERS.YEAR
     }
   },
   methods: {
@@ -46,10 +46,13 @@ export default {
       'removeFilter'
     ]),
     clearFilterFormat() {
-      this.removeFilter(this.filterTeamFormat)
+      this.removeFilter({ screen: this.$route.name, name: this.filterFormat })
     },
     clearFilterYear() {
-      this.removeFilter(this.filterTeamYear)
+      this.removeFilter({ screen: this.$route.name, name: this.filterYear })
+    },
+    getFilterValueByName(filterName) {
+      return this.getFilterValue({ screen: this.$route.name, name: filterName })
     },
     isFilterSet(filterName) {
       return !!this.getFilterValueByName(filterName)

@@ -172,10 +172,10 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getPlayer',
-      'removePlayerFilters'
+      'getPlayer'
     ]),
     ...mapMutations([
+      'removeAllFiltersExcept',
       'setLoading',
       'setView'
     ]),
@@ -187,12 +187,12 @@ export default {
     }
   },
   async created() {
+    // clear all filters except for the ones for this screen (in case of a refresh)
+    this.removeAllFiltersExcept(['player', 'players'])
+
     this.setLoading(true)
     await this.getPlayer(this.$route.params.playerId)
     this.setLoading(false)
-  },
-  destroyed() {
-    this.removePlayerFilters()
   }
 }
 </script>

@@ -14,10 +14,6 @@
             label="women"
             value="women"
           />
-          <v-radio
-            label="mixed"
-            value="mixed"
-          />
         </v-radio-group>
       </v-col>
 
@@ -29,14 +25,14 @@
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
-  name: 'filterFormatDoubles',
+  name: 'filterFormat',
   props: ['filterName'],
   computed: {
     ...mapGetters([
-      'getFilterValueByName'
+      'getFilterValue'
     ]),
     filterValue() {
-      return this.getFilterValueByName(this.filterName)
+      return this.getFilterValue({ screen: this.$route.name, name: this.filterName })
     }
   },
   methods: {
@@ -44,7 +40,7 @@ export default {
       'updateFilter'
     ]),
     onChangeFormat(value) {
-      this.updateFilter({ name: this.filterName, value })
+      this.updateFilter({ screen: this.$route.name, name: this.filterName, value })
     }
   }
 }

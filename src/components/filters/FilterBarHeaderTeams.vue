@@ -5,11 +5,11 @@
 
     <v-col cols="9">
       <v-chip
-        v-if="isFilterSet(filterTeamsFormat)"
+        v-if="isFilterSet(filterFormat)"
         close
         @click:close="clearFilterFormat"
         class="chip-header"
-      >Format: {{ getFilterValueByName(filterTeamsFormat) }}</v-chip>
+      >Format: {{ getFilterValueByName(filterFormat) }}</v-chip>
     </v-col>
 
   </v-row>
@@ -23,13 +23,13 @@ export default {
   name: 'filterBarHeaderTeams',
   computed: {
     ...mapGetters([
-      'getFilterValueByName'
+      'getFilterValue'
     ]),
     ...mapState([
       'filters'
     ]),
-    filterTeamsFormat() {
-      return FILTERS.TEAMS.FORMAT
+    filterFormat() {
+      return FILTERS.FORMAT
     }
   },
   methods: {
@@ -37,7 +37,10 @@ export default {
       'removeFilter'
     ]),
     clearFilterFormat() {
-      this.removeFilter(this.filterTeamsFormat)
+      this.removeFilter({ screen: this.$route.name, name: this.filterFormat })
+    },
+    getFilterValueByName(filterName) {
+      return this.getFilterValue({ screen: this.$route.name, name: filterName })
     },
     isFilterSet(filterName) {
       return !!this.getFilterValueByName(filterName)

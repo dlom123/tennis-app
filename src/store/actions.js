@@ -21,7 +21,7 @@ export default {
     // const results = await HTTP.get('/leaderboard')
     const leaderboard = JSON.parse(JSON.stringify(leaderboardData))
     const leaderboardFiltered = leaderboard.map(stat => {
-      const filterFormat = state.filters.find(filter => filter.name === 'leaderboardFormat')
+      const filterFormat = state.filters.find(filter => filter.screen === 'leaderboard' && filter.name === FILTERS.FORMAT)
       if (filterFormat) {
         switch (filterFormat.value) {
           case 'men':
@@ -102,10 +102,5 @@ export default {
     const teams = playersData.doubles
 
     commit('setTeams', teams)
-  },
-  removePlayerFilters: ({ commit }) => {
-    Object.values(FILTERS.PLAYER).forEach(filter => {
-      commit('removeFilter', filter)
-    })
   }
 }

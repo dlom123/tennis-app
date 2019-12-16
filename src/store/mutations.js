@@ -2,8 +2,13 @@ export default {
   removeAllFilters: (state) => {
     state.filters = []
   },
+  removeAllFiltersExcept: (state, payload) => {
+    state.filters = state.filters.filter(f => {
+      return payload.includes(f.screen)
+    })
+  },
   removeFilter: (state, payload) => {
-    state.filters = state.filters.filter(f => f.name !== payload)
+    state.filters = state.filters.filter(f => f.screen !== payload.screen && f.name !== payload.name)
   },
   setLoading: (state, payload) => {
     state.isLoading = payload
@@ -34,7 +39,7 @@ export default {
   },
   updateFilter: (state, payload) => {
     // remove the filter
-    state.filters = state.filters.filter(f => f.name !== payload.name)
+    state.filters = state.filters.filter(f => !(f.screen === payload.screen && f.name === payload.name))
 
     // re-add the filter with the new value
     state.filters.push(payload)

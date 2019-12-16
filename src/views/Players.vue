@@ -73,12 +73,15 @@ export default {
       'getPlayers'
     ]),
     ...mapMutations([
+      'removeAllFiltersExcept',
       'setLoading',
-      'setPlayers',
-      'setView'
+      'setPlayers'
     ])
   },
   async created() {
+    // clear all filters except for the ones for this screen (in case of a refresh)
+    this.removeAllFiltersExcept(['players'])
+
     this.setLoading(true)
     await this.getPlayers()
     this.setLoading(false)

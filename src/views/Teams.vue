@@ -62,11 +62,15 @@ export default {
       'getTeams'
     ]),
     ...mapMutations([
+      'removeAllFiltersExcept',
       'setLoading',
       'setTeams'
     ])
   },
   async created() {
+    // clear all filters except for the ones for this screen (in case of a refresh)
+    this.removeAllFiltersExcept(['teams'])
+
     this.setLoading(true)
     await this.getTeams()
     this.setLoading(false)

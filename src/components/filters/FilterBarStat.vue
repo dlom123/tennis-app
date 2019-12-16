@@ -8,8 +8,7 @@
         <v-container fluid class="filter-content">
           <v-row no-gutters>
             <v-col sm="4">
-              <FilterFormatSingles v-if="view !== 'doubles'" :filterName="filterFormat" />
-              <FilterFormatDoubles v-else :filterName="filterFormat" />
+              <FilterFormat :filterName="filterFormat" />
             </v-col>
           </v-row>
         </v-container>
@@ -21,23 +20,21 @@
 <script>
 import { mapState } from 'vuex'
 import FilterBarHeaderStat from '@/components/filters/FilterBarHeaderStat'
-import FilterFormatSingles from '@/components/filters/FilterFormatSingles'
-import FilterFormatDoubles from '@/components/filters/FilterFormatDoubles'
+import FilterFormat from '@/components/filters/FilterFormat'
 import { FILTERS } from '@/utils/constants'
 
 export default {
   name: 'filterBarStat',
   components: {
     FilterBarHeaderStat,
-    FilterFormatDoubles,
-    FilterFormatSingles
+    FilterFormat
   },
   computed: {
     ...mapState([
       'view'
     ]),
     filterFormat() {
-      return FILTERS.STAT.FORMAT
+      return FILTERS.FORMAT
     }
   }
 }

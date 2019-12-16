@@ -5,11 +5,11 @@
 
     <v-col cols="8">
       <v-chip
-        v-if="isFilterSet(filterLeaderboardFormat)"
+        v-if="isFilterSet(filterFormat)"
         close
         @click:close="clearFilterFormat"
         class="chip-header"
-      >Format: {{ getFilterValueByName(filterLeaderboardFormat) }}</v-chip>
+      >Format: {{ getFilterValueByName(filterFormat) }}</v-chip>
     </v-col>
 
   </v-row>
@@ -23,10 +23,10 @@ export default {
   name: 'filterBarHeaderLeaderboard',
   computed: {
     ...mapGetters([
-      'getFilterValueByName'
+      'getFilterValue'
     ]),
-    filterLeaderboardFormat() {
-      return FILTERS.LEADERBOARD.FORMAT
+    filterFormat() {
+      return FILTERS.FORMAT
     }
   },
   methods: {
@@ -34,7 +34,10 @@ export default {
       'removeFilter'
     ]),
     clearFilterFormat() {
-      this.removeFilter(this.filterLeaderboardFormat)
+      this.removeFilter({ screen: this.$route.name, name: this.filterFormat })
+    },
+    getFilterValueByName(filterName) {
+      return this.getFilterValue({ screen: this.$route.name, name: filterName })
     },
     isFilterSet(filterName) {
       return !!this.getFilterValueByName(filterName)

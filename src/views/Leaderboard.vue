@@ -74,6 +74,7 @@ export default {
       'getLeaderboardTopThree'
     ]),
     ...mapMutations([
+      'removeAllFiltersExcept',
       'setLeaderboard'
     ]),
     async loadData() {
@@ -83,11 +84,13 @@ export default {
     }
   },
   async created() {
-    // subscribe to filter mutations so we can perform async API calls
+    // clear all filters except for the ones for this screen (in case of a refresh)
+    this.removeAllFiltersExcept(['leaderboard'])
+
+    // subscribe to leaderboard filter mutations so we can perform async API calls
     this.unsubMutations = this.$store.subscribe(async (mutation, state) => {
-      // if we are modifying a filter that begins with the string 'leaderboard'
-      if ((mutation.type === 'removeFilter' && mutation.payload.substring(0, 11) === 'leaderboard') ||
-        (mutation.type === 'updateFilter' && mutation.payload.name.substring(0, 11) === 'leaderboard')
+      if ((mutation.type === 'removeFilter' && mutation.payload.screen === 'leaderboard') ||
+        (mutation.type === 'updateFilter' && mutation.payload.screen === 'leaderboard')
       ) {
         await this.loadData()
       }

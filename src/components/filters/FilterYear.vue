@@ -54,7 +54,7 @@ export default {
       'updateFilter'
     ]),
     onChangeFormat(value) {
-      this.updateFilter({ name: this.filterName, value })
+      this.updateFilter({ screen: this.$route.name, name: this.filterName, value })
     }
   }
 }

@@ -66,11 +66,15 @@ export default {
       'getStat'
     ]),
     ...mapMutations([
+      'removeAllFiltersExcept',
       'setLoading',
       'setStat'
     ])
   },
   async created() {
+    // clear all filters except for the ones for this screen (in case of a refresh)
+    this.removeAllFiltersExcept(['stat', 'leaderboard'])
+
     this.setLoading(true)
     await this.getStat(this.$route.params.statId)
     this.setLoading(false)

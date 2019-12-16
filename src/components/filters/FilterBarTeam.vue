@@ -8,7 +8,7 @@
         <v-container fluid class="filter-content">
           <v-row no-gutters>
             <v-col sm="4">
-              <FilterFormatDoubles :filterName="filterFormat" />
+              <FilterFormat :filterName="filterFormat" />
             </v-col>
           </v-row>
         </v-container>
@@ -19,18 +19,18 @@
 
 <script>
 import FilterBarHeaderTeam from '@/components/filters/FilterBarHeaderTeam'
-import FilterFormatDoubles from '@/components/filters/FilterFormatDoubles'
+import FilterFormat from '@/components/filters/FilterFormat'
 import { FILTERS } from '@/utils/constants'
 
 export default {
   name: 'filterBarTeam',
   components: {
     FilterBarHeaderTeam,
-    FilterFormatDoubles
+    FilterFormat
   },
   computed: {
     filterFormat() {
-      return FILTERS.TEAM.FORMAT
+      return FILTERS.FORMAT
     }
   }
 }

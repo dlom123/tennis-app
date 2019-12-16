@@ -5,11 +5,11 @@
 
     <v-col cols="8">
       <v-chip
-        v-if="isFilterSet(filterPlayersFormat)"
+        v-if="isFilterSet(filterFormat)"
         close
         @click:close="clearFilterFormat"
         class="chip-header"
-      >Format: {{ getFilterValueByName(filterPlayersFormat) }}</v-chip>
+      >Format: {{ getFilterValueByName(filterFormat) }}</v-chip>
     </v-col>
 
     <!-- <v-col
@@ -47,13 +47,13 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getFilterValueByName'
+      'getFilterValue'
     ]),
     ...mapState([
       'filters'
     ]),
-    filterPlayersFormat() {
-      return FILTERS.PLAYERS.FORMAT
+    filterFormat() {
+      return FILTERS.FORMAT
     }
   },
   methods: {
@@ -62,7 +62,10 @@ export default {
       'setSort'
     ]),
     clearFilterFormat() {
-      this.removeFilter(this.filterPlayersFormat)
+      this.removeFilter({ screen: this.$route.name, name: this.filterFormat })
+    },
+    getFilterValueByName(filterName) {
+      return this.getFilterValue({ screen: this.$route.name, name: filterName })
     },
     isFilterSet(filterName) {
       return !!this.getFilterValueByName(filterName)
