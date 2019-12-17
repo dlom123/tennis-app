@@ -23,9 +23,9 @@ export function filterStatLeaders(leaders, filters) {
   const filterFormat = filters.find(filter => filter.screen === 'stat' && filter.name === FILTERS.FORMAT)
   if (filterFormat) {
     if (filterFormat.value === 'men') {
-      leadersFiltered = leaders.filter(player => player.gender === 'm')
+      leadersFiltered = leaders.filter(player => player.player.gender === 'm')
     } else if (filterFormat.value === 'women') {
-      leadersFiltered = leaders.filter(player => player.gender === 'f')
+      leadersFiltered = leaders.filter(player => player.player.gender === 'f')
     }
   }
 
