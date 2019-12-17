@@ -1,8 +1,9 @@
 import { FILTERS } from '@/utils/constants'
 
 export function filterPlayers(players, filters) {
-  let playersFiltered = players
+  let playersFiltered = [...players]
 
+  // filter: format
   const filterFormat = filters.find(filter => filter.screen === 'players' && filter.name === FILTERS.FORMAT)
   if (filterFormat) {
     if (filterFormat.value === 'men') {
@@ -12,14 +13,29 @@ export function filterPlayers(players, filters) {
     }
   }
 
-  // TODO: year filter logic
-
   return playersFiltered
 }
 
-export function filterTeams(teams, filters) {
-  let teamsFiltered = teams
+export function filterStatLeaders(leaders, filters) {
+  let leadersFiltered = [...leaders]
 
+  // filter: format
+  const filterFormat = filters.find(filter => filter.screen === 'stat' && filter.name === FILTERS.FORMAT)
+  if (filterFormat) {
+    if (filterFormat.value === 'men') {
+      leadersFiltered = leaders.filter(player => player.gender === 'm')
+    } else if (filterFormat.value === 'women') {
+      leadersFiltered = leaders.filter(player => player.gender === 'f')
+    }
+  }
+
+  return leadersFiltered
+}
+
+export function filterTeams(teams, filters) {
+  let teamsFiltered = [...teams]
+
+  // filter: format
   const filterFormat = filters.find(filter => filter.screen === 'teams' && filter.name === FILTERS.FORMAT)
   if (filterFormat) {
     if (filterFormat.value === 'men') {
@@ -30,8 +46,6 @@ export function filterTeams(teams, filters) {
       teamsFiltered = teams.filter(team => team.players.find(player => player.gender === 'm') && team.players.find(player => player.gender === 'f'))
     }
   }
-
-  // TODO: year filter logic
 
   return teamsFiltered
 }
@@ -60,7 +74,7 @@ export function sortPlayers(players, sortBy) {
     )
   } else if (sortBy === 'rank') {
     // sort by ranking points descending
-    players.sort((a, b) => (a.points < b.points) ? 1 : -1)
+    players.sort((a, b) => (a.points > b.points) ? -1 : 1)
   }
 
   return players

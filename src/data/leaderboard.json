@@ -269,7 +269,7 @@
           "lastName": "Lowery",
           "gender": "m"
         },
-        "total": 78
+        "total": 0
       },
       {
         "player": {
@@ -639,8 +639,8 @@
           "lastName": "Martin",
           "gender": "f"
         },
-        "in": 62,
-        "of": 110
+        "in": 0,
+        "of": 0
       }
     ]
   },

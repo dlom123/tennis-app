@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { mapActions, mapMutations, mapState } from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
 import FilterBarLeaderboard from '@/components/filters/FilterBarLeaderboard'
 import LeaderboardCard from '@/components/LeaderboardCard'
 import Spinner from '@/components/Spinner'
@@ -62,12 +62,6 @@ export default {
       leaders: [],
       unsubMutations: null
     }
-  },
-  computed: {
-    ...mapState([
-      'leaderboard',
-      'view'
-    ])
   },
   methods: {
     ...mapActions([

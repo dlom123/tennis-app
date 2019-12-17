@@ -39,12 +39,16 @@ export default {
     // sort the filtered list of players for each stat
     const leaderboardSorted = leaderboardFiltered.map(stat => {
       // sort by stat rank, descending
-      if (stat.players.every(player => player.total)) {
+      if (stat.players.every(player => player.hasOwnProperty('total'))) {
         // integer-based stat
-        stat.players.sort((a, b) => (a.total < b.total) ? 1 : -1)
-      } else if (stat.players.every(player => player.in && player.of)) {
+        stat.players.sort((a, b) => (a.total > b.total) ? -1 : 1)
+      } else if (stat.players.every(player => player.hasOwnProperty('in') && player.hasOwnProperty('of'))) {
         // percentage-based stat
-        stat.players.sort((a, b) => ((a.in / a.of) < (b.in / b.of) ? 1 : -1))
+        const zeros = stat.players.filter(player => player.of === 0)
+        const nonzeros = stat.players.filter(player => player.of > 0)
+
+        nonzeros.sort((a, b) => ((a.in / a.of) > (b.in / b.of)) ? -1 : 1)
+        stat.players = [...nonzeros, ...zeros]
       }
 
       return stat
@@ -88,6 +92,19 @@ export default {
   getStat: async ({ commit }, statId) => {
     // TODO: get stat data from the API
     const stat = JSON.parse(JSON.stringify(leaderboardData)).find(stat => stat.id === parseInt(statId, 10))
+
+    // sort the list of players by stat rank, descending
+    if (stat.players.every(player => player.hasOwnProperty('total'))) {
+      // integer-based stat
+      stat.players.sort((a, b) => (a.total > b.total) ? -1 : 1)
+    } else if (stat.players.every(player => player.hasOwnProperty('in') && player.hasOwnProperty('of'))) {
+      // percentage-based stat
+      const zeros = stat.players.filter(player => player.of === 0)
+      const nonzeros = stat.players.filter(player => player.of > 0)
+
+      nonzeros.sort((a, b) => ((a.in / a.of) > (b.in / b.of)) ? -1 : 1)
+      stat.players = [...nonzeros, ...zeros]
+    }
 
     commit('setStat', stat)
   },

@@ -36,7 +36,7 @@
                 :class="['leader-name', getTextHeaderClass(player.player.gender), { 'leader-top': i === 0 }]"
               ></v-list-item-title>
               <v-list-item-subtitle
-                v-html="player.total ? `${player.total}` : displayPercentage(player)"
+                v-html="player.hasOwnProperty('total') ? `${player.total}` : displayPercentage(player)"
                 :class="['leader-total', { 'leader-top': i === 0 }]"
               ></v-list-item-subtitle>
             </v-list-item-content>
