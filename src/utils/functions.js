@@ -19,13 +19,15 @@ export function filterPlayers(players, filters) {
 export function filterStatLeaders(leaders, filters) {
   let leadersFiltered = [...leaders]
 
-  // filter: format
-  const filterFormat = filters.find(filter => filter.screen === 'stat' && filter.name === FILTERS.FORMAT)
-  if (filterFormat) {
-    if (filterFormat.value === 'men') {
-      leadersFiltered = leaders.filter(player => player.player.gender === 'm')
-    } else if (filterFormat.value === 'women') {
-      leadersFiltered = leaders.filter(player => player.player.gender === 'f')
+  if (filters && filters.length) {
+    // filter: format
+    const filterFormat = filters.find(filter => filter.screen === 'stat' && filter.name === FILTERS.FORMAT)
+    if (filterFormat) {
+      if (filterFormat.value === 'men') {
+        leadersFiltered = leaders.filter(player => player.player.gender === 'm')
+      } else if (filterFormat.value === 'women') {
+        leadersFiltered = leaders.filter(player => player.player.gender === 'f')
+      }
     }
   }
 

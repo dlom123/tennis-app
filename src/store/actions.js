@@ -108,7 +108,7 @@ export default {
 
     commit('setStat', stat)
   },
-  getTeam: async ({ commit, state }, teamId) => {
+  getTeam: async ({ commit }, teamId) => {
     const teams = playersData.doubles
     const team = await teams.filter(team => team.id.toString() === teamId.toString())[0]
 
