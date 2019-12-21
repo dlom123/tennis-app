@@ -21,7 +21,7 @@
 
         </v-row>
 
-        <FilterBarStat />
+        <FilterBar />
 
         <v-row no-gutters class="stat-leaders">
           <v-col cols="12" class="container-leaders">
@@ -72,7 +72,7 @@
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import FilterBarStat from '@/components/filters/FilterBarStat'
+import FilterBar from '@/components/filters/FilterBar'
 import Spinner from '@/components/Spinner'
 import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
 import { filterStatLeaders, getGenderBorderClass, getGenderTextClass } from '@/utils/functions'
@@ -81,7 +81,7 @@ export default {
   name: 'stat',
   components: {
     Breadcrumbs,
-    FilterBarStat,
+    FilterBar,
     Spinner,
     ToggleSinglesDoubles
   },

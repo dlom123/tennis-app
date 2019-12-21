@@ -4,12 +4,14 @@
     <v-col cols="1">Filters</v-col>
 
     <v-col cols="8">
+
       <v-chip
         v-if="isFilterSet(filterFormat)"
         close
         @click:close="clearFilterFormat"
         class="chip-header"
       >Format: {{ getFilterValueByName(filterFormat) }}</v-chip>
+
     </v-col>
 
   </v-row>
@@ -20,7 +22,7 @@ import { mapGetters, mapMutations } from 'vuex'
 import { FILTERS } from '@/utils/constants'
 
 export default {
-  name: 'filterBarHeaderPlayers',
+  name: 'filterBarHeader',
   computed: {
     ...mapGetters([
       'getFilterValue'

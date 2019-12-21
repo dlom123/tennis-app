@@ -90,7 +90,7 @@
 
             <v-col cols="9" class="col-stats">
 
-              <FilterBarPlayer />
+              <FilterBar />
 
               <v-row no-gutters class="section">
                 <PlayerStats :stats="player.stats" :view="view" />
@@ -115,7 +115,7 @@
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import FilterBarPlayer from '@/components/filters/FilterBarPlayer'
+import FilterBar from '@/components/filters/FilterBar'
 import PlayerMatches from '@/components/PlayerMatches'
 import PlayerStats from '@/components/PlayerStats'
 import Spinner from '@/components/Spinner'
@@ -126,7 +126,7 @@ export default {
   name: 'player',
   components: {
     Breadcrumbs,
-    FilterBarPlayer,
+    FilterBar,
     PlayerMatches,
     PlayerStats,
     Spinner,

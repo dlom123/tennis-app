@@ -12,7 +12,7 @@
           </v-col>
         </v-row>
 
-        <FilterBarTeams />
+        <FilterBar />
 
         <TeamRow
           v-for="team in teamsSorted"
@@ -27,7 +27,7 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
-import FilterBarTeams from '@/components/filters/FilterBarTeams'
+import FilterBar from '@/components/filters/FilterBar'
 import Spinner from '@/components/Spinner'
 import TeamRow from '@/components/TeamRow'
 import { filterTeams, sortTeams } from '@/utils/functions'
@@ -35,7 +35,7 @@ import { filterTeams, sortTeams } from '@/utils/functions'
 export default {
   name: 'teams',
   components: {
-    FilterBarTeams,
+    FilterBar,
     Spinner,
     TeamRow
   },

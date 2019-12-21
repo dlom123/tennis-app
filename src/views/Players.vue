@@ -20,7 +20,7 @@
 
         </v-row>
 
-        <FilterBarPlayers />
+        <FilterBar />
 
         <PlayerRow
           v-for="player in playersSorted"
@@ -36,7 +36,7 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
-import FilterBarPlayers from '@/components/filters/FilterBarPlayers'
+import FilterBar from '@/components/filters/FilterBar'
 import PlayerRow from '@/components/PlayerRow'
 import Spinner from '@/components/Spinner'
 import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
@@ -45,7 +45,7 @@ import { filterPlayers, sortPlayers } from '@/utils/functions'
 export default {
   name: 'players',
   components: {
-    FilterBarPlayers,
+    FilterBar,
     PlayerRow,
     Spinner,
     ToggleSinglesDoubles

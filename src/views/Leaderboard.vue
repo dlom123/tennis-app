@@ -20,7 +20,7 @@
 
         </v-row>
 
-        <FilterBarLeaderboard />
+        <FilterBar />
 
         <v-row no-gutters>
           <v-col cols="12">
@@ -43,7 +43,7 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
-import FilterBarLeaderboard from '@/components/filters/FilterBarLeaderboard'
+import FilterBar from '@/components/filters/FilterBar'
 import LeaderboardCard from '@/components/LeaderboardCard'
 import Spinner from '@/components/Spinner'
 import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
@@ -51,7 +51,7 @@ import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
 export default {
   name: 'leaderboard',
   components: {
-    FilterBarLeaderboard,
+    FilterBar,
     LeaderboardCard,
     Spinner,
     ToggleSinglesDoubles
