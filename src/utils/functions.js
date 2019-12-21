@@ -74,9 +74,6 @@ export function sortPlayers(players, sortBy) {
         ? ((a.firstName > b.firstName) ? 1 : -1)
         : -1
     )
-  } else if (sortBy === 'rank') {
-    // sort by ranking points descending
-    players.sort((a, b) => (a.points > b.points) ? -1 : 1)
   }
 
   return players

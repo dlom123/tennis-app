@@ -5,11 +5,6 @@
 
         <v-col sm="3" class="col-avatar" align="center">
 
-          <!-- <h1
-            :class="getTextHeaderClass(player.gender)"
-            class="ranking"
-          >{{ ranking }}</h1> -->
-
           <v-img
             :src="require(`../assets/images/headshots/placeholders/${player.gender === 'm' ? 'men' : 'women'}/${player.gender === 'm' ? 'federer' : 'halep'}.png`)"
             width="280"
@@ -28,15 +23,6 @@
             </v-col>
 
             <v-col sm="3">
-
-              <!-- <v-row no-gutters class="row-player-info">
-                <v-col sm="12">
-                  <h3>Ranking Points</h3>
-                </v-col>
-                <v-col sm="12">
-                  {{ player.points }}
-                </v-col>
-              </v-row> -->
 
               <v-row no-gutters class="row-player-info">
                 <v-col sm="12">
@@ -75,7 +61,6 @@ export default {
   name: 'playerRow',
   props: [
     'player',
-    'ranking',
     'type'
   ],
   methods: {

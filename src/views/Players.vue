@@ -15,18 +15,17 @@
           <v-spacer></v-spacer>
 
           <v-col align="right">
-            <ToggleSinglesDoubles/>
+            <ToggleSinglesDoubles />
           </v-col>
 
         </v-row>
 
-        <FilterBarPlayers/>
+        <FilterBarPlayers />
 
         <PlayerRow
-          v-for="(player, i) in playersSorted"
+          v-for="player in playersSorted"
           :key="player.id"
           :player="player"
-          :ranking="i + 1"
           type="singles"
         />
 
@@ -55,15 +54,14 @@ export default {
     ...mapState([
       'filters',
       'isLoading',
-      'players',
-      'sort'
+      'players'
     ]),
     playersSorted() {
       // apply filters
       const playersFiltered = filterPlayers(this.players, this.filters)
 
       // apply sorting
-      const playersSorted = sortPlayers(playersFiltered, this.sort)
+      const playersSorted = sortPlayers(playersFiltered)
 
       return playersSorted
     }
@@ -86,10 +84,8 @@ export default {
     await this.getPlayers()
     this.setLoading(false)
   },
-  beforeRouteLeave(to, from, next) {
+  destroyed() {
     this.setPlayers([])
-
-    next()
   }
 }
 </script>

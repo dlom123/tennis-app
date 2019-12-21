@@ -8,14 +8,7 @@ const HTTP = axios.create({
 })
 
 export default {
-  getLeaderboard: async ({ commit }, payload) => {
-    // TODO: get leaderboard data from the API
-    // const results = await HTTP.get('/leaderboard')
-    const leaderboard = leaderboardData
-
-    commit('setLeaderboard', leaderboard)
-  },
-  getLeaderboardTopThree: async ({ commit, state }, payload) => {
+  getLeaderboardTopThree: async ({ commit, state }) => {
     // TODO: get leaderboard data from the API
     // TODO: use filters from state to modify API request
     // const results = await HTTP.get('/leaderboard')
@@ -62,7 +55,7 @@ export default {
       }
     })
 
-    return leaderboardTopThree
+    commit('setLeaderboard', leaderboardTopThree)
   },
   getPlayer: async ({ commit }, playerId) => {
     // TODO: get player data from the API
@@ -73,13 +66,14 @@ export default {
     commit('setPlayer', player)
   },
   getPlayers: async ({ commit }) => {
-    // TODO: get player data from the API
+    // TODO: get players data from the API
     // const results = await HTTP.get('/players?isActive=true&sort=lastName')
     const players = playersData.singles
 
     commit('setPlayers', players)
   },
   getPlayerStats: async ({ commit }, payload) => {
+    // TODO: get player stats data from the API
     const results = await HTTP.get(`/players/${payload.playerId}/stats`)
 
     const stats = results.data.data
@@ -109,13 +103,14 @@ export default {
     commit('setStat', stat)
   },
   getTeam: async ({ commit }, teamId) => {
+    // TODO: get team data from the API
     const teams = playersData.doubles
     const team = await teams.filter(team => team.id.toString() === teamId.toString())[0]
 
     return commit('setTeam', team)
   },
-  getTeams: async ({ commit }, payload) => {
-    // TODO: get team data from the API
+  getTeams: async ({ commit }) => {
+    // TODO: get teams data from the API
     const teams = playersData.doubles
 
     commit('setTeams', teams)

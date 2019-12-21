@@ -17,7 +17,7 @@
             <v-spacer></v-spacer>
 
             <v-col align="right">
-              <ToggleSinglesDoubles/>
+              <ToggleSinglesDoubles />
             </v-col>
 
           </v-row>
@@ -41,28 +41,6 @@
                 <v-col sm="12">
                   <h1 :class="getTextHeaderClass(player.gender)">{{ fullName }}</h1>
                 </v-col>
-
-                <!-- <v-col sm="6">
-                  <v-row no-gutters class="row-player-info">
-                    <v-col sm="12">
-                      <h3>Rank</h3>
-                    </v-col>
-                    <v-col sm="12">
-                      1
-                    </v-col>
-                  </v-row>
-                </v-col> -->
-
-                <!-- <v-col sm="6">
-                  <v-row no-gutters class="row-player-info">
-                    <v-col sm="12">
-                      <h3>Ranking Points</h3>
-                    </v-col>
-                    <v-col sm="12">
-                      150
-                    </v-col>
-                  </v-row>
-                </v-col> -->
 
                 <v-col sm="6">
                   <v-row no-gutters class="row-player-info">
@@ -112,7 +90,7 @@
 
             <v-col cols="9" class="col-stats">
 
-              <FilterBarPlayer/>
+              <FilterBarPlayer />
 
               <v-row no-gutters class="section">
                 <PlayerStats :stats="player.stats" :view="view" />
@@ -177,7 +155,7 @@ export default {
     ...mapMutations([
       'removeAllFiltersExcept',
       'setLoading',
-      'setView'
+      'setPlayer'
     ]),
     getBorderClass(gender) {
       return getGenderBorderClass(gender)
@@ -193,6 +171,9 @@ export default {
     this.setLoading(true)
     await this.getPlayer(this.$route.params.playerId)
     this.setLoading(false)
+  },
+  destroyed() {
+    this.setPlayer({})
   }
 }
 </script>

@@ -3,8 +3,6 @@
     <v-col :key="`${team.id}`" sm="12" class="col-team">
       <v-row no-gutters>
 
-        <!-- <h1 class="ranking">{{ ranking }}</h1> -->
-
         <v-col
           v-for="player in team.players"
           :key="player.id"
@@ -23,10 +21,7 @@
 
           <v-row no-gutters>
 
-            <v-col
-              sm="12"
-              class="player-names"
-            >
+            <v-col sm="12" class="player-names">
               <h1>
                 <span
                   v-for="(player, i) in team.players"
@@ -40,16 +35,6 @@
             </v-col>
 
             <v-col sm="4">
-
-              <!-- <v-row no-gutters class="row-player-info">
-                <v-col sm="12">
-                  <h3>Ranking Points</h3>
-                </v-col>
-                <v-col sm="12">
-                  540
-                </v-col>
-              </v-row> -->
-
               <v-row no-gutters class="row-player-info">
                 <v-col sm="12">
                   <h3>Rating</h3>
@@ -58,11 +43,9 @@
                   8.0
                 </v-col>
               </v-row>
-
             </v-col>
 
             <v-col sm="4">
-
               <v-row no-gutters class="row-player-info">
                 <v-col sm="12">
                   <h3>Matches Played</h3>
@@ -71,7 +54,6 @@
                   35
                 </v-col>
               </v-row>
-
             </v-col>
 
           </v-row>
@@ -88,7 +70,7 @@ import { getGenderTextClass } from '@/utils/functions'
 
 export default {
   name: 'teamRow',
-  props: ['ranking', 'team'],
+  props: ['team'],
   methods: {
     getTextHeaderClass(gender) {
       return getGenderTextClass(gender)

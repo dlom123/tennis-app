@@ -15,19 +15,19 @@
           <v-spacer></v-spacer>
 
           <v-col align="right">
-            <ToggleSinglesDoubles/>
+            <ToggleSinglesDoubles />
           </v-col>
 
         </v-row>
 
-        <FilterBarLeaderboard/>
+        <FilterBarLeaderboard />
 
         <v-row no-gutters>
           <v-col cols="12">
 
             <v-row class="container-leaderboard-cards">
               <LeaderboardCard
-                v-for="stat in leaders"
+                v-for="stat in leaderboard"
                 :key="stat.name"
                 :stat="stat"
               />
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { mapActions, mapMutations } from 'vuex'
+import { mapActions, mapMutations, mapState } from 'vuex'
 import FilterBarLeaderboard from '@/components/filters/FilterBarLeaderboard'
 import LeaderboardCard from '@/components/LeaderboardCard'
 import Spinner from '@/components/Spinner'
@@ -59,9 +59,13 @@ export default {
   data() {
     return {
       isLoading: true,
-      leaders: [],
       unsubMutations: null
     }
+  },
+  computed: {
+    ...mapState([
+      'leaderboard'
+    ])
   },
   methods: {
     ...mapActions([
@@ -73,7 +77,7 @@ export default {
     ]),
     async loadData() {
       this.isLoading = true
-      this.leaders = await this.getLeaderboardTopThree()
+      await this.getLeaderboardTopThree()
       this.isLoading = false
     }
   },

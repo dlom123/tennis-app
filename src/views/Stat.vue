@@ -16,12 +16,12 @@
           <v-spacer></v-spacer>
 
           <v-col align="right">
-            <ToggleSinglesDoubles/>
+            <ToggleSinglesDoubles />
           </v-col>
 
         </v-row>
 
-        <FilterBarStat/>
+        <FilterBarStat />
 
         <v-row no-gutters class="stat-leaders">
           <v-col cols="12" class="container-leaders">

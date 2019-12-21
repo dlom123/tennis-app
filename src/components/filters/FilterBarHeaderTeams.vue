@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapState } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import { FILTERS } from '@/utils/constants'
 
 export default {
@@ -24,9 +24,6 @@ export default {
   computed: {
     ...mapGetters([
       'getFilterValue'
-    ]),
-    ...mapState([
-      'filters'
     ]),
     filterFormat() {
       return FILTERS.FORMAT

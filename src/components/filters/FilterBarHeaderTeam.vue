@@ -12,13 +12,6 @@
         class="chip-header"
       >Format: {{ getFilterValueByName(filterFormat) }}</v-chip>
 
-      <v-chip
-        v-if="isFilterSet(filterYear)"
-        close
-        @click:close="clearFilterYear"
-        class="chip-header"
-      >Format: {{ getFilterValueByName(filterYear) }}</v-chip>
-
     </v-col>
 
   </v-row>
@@ -36,9 +29,6 @@ export default {
     ]),
     filterFormat() {
       return FILTERS.FORMAT
-    },
-    filterYear() {
-      return FILTERS.YEAR
     }
   },
   methods: {
@@ -47,9 +37,6 @@ export default {
     ]),
     clearFilterFormat() {
       this.removeFilter({ screen: this.$route.name, name: this.filterFormat })
-    },
-    clearFilterYear() {
-      this.removeFilter({ screen: this.$route.name, name: this.filterYear })
     },
     getFilterValueByName(filterName) {
       return this.getFilterValue({ screen: this.$route.name, name: filterName })

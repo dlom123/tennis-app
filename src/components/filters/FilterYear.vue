@@ -29,11 +29,6 @@ import { mapMutations } from 'vuex'
 export default {
   name: 'filterYear',
   props: ['filterName'],
-  data() {
-    return {
-      year: ''
-    }
-  },
   computed: {
     optionsYears() {
       // generate the year options based on stats data and the current year

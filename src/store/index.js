@@ -9,7 +9,7 @@ import mutations from './mutations'
 Vue.use(Vuex)
 
 const vuexLocalStorage = new VuexPersist({
-  key: 'vuex',
+  key: 'vuex-tennisstats',
   storage: window.localStorage
 })
 
@@ -21,9 +21,8 @@ export default new Vuex.Store({
     leaderboard: [],
     player: {},
     players: [],
-    sort: undefined,
     stat: {},
-    team: [],
+    team: {},
     teams: [],
     view: 'singles'
   },

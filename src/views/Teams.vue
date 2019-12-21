@@ -12,13 +12,12 @@
           </v-col>
         </v-row>
 
-        <FilterBarTeams/>
+        <FilterBarTeams />
 
         <TeamRow
-          v-for="(team, i) in teamsSorted"
+          v-for="team in teamsSorted"
           :key="team.id"
           :team="team"
-          :ranking="i + 1"
         />
 
       </v-col>
@@ -44,7 +43,6 @@ export default {
     ...mapState([
       'filters',
       'isLoading',
-      'sort',
       'teams'
     ]),
     teamsSorted() {
@@ -52,7 +50,7 @@ export default {
       const teamsFiltered = filterTeams(this.teams, this.filters)
 
       // apply sorting
-      const teamsSorted = sortTeams(teamsFiltered, this.sort)
+      const teamsSorted = sortTeams(teamsFiltered)
 
       return teamsSorted
     }

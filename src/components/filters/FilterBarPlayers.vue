@@ -2,7 +2,7 @@
   <v-expansion-panels class="filter-bar">
     <v-expansion-panel>
       <v-expansion-panel-header class="header">
-        <FilterBarHeaderPlayers/>
+        <FilterBarHeaderPlayers />
       </v-expansion-panel-header>
       <v-expansion-panel-content>
         <v-container fluid class="filter-content">

@@ -1,7 +1,4 @@
 export default {
-  removeAllFilters: (state) => {
-    state.filters = []
-  },
   removeAllFiltersExcept: (state, payload) => {
     state.filters = state.filters.filter(f => {
       return payload.includes(f.screen)
@@ -10,20 +7,17 @@ export default {
   removeFilter: (state, payload) => {
     state.filters = state.filters.filter(f => f.screen !== payload.screen && f.name !== payload.name)
   },
-  setLoading: (state, payload) => {
-    state.isLoading = payload
-  },
   setLeaderboard: (state, payload) => {
     state.leaderboard = payload
+  },
+  setLoading: (state, payload) => {
+    state.isLoading = payload
   },
   setPlayer: (state, payload) => {
     state.player = payload
   },
   setPlayers: (state, payload) => {
     state.players = payload
-  },
-  setSort: (state, payload) => {
-    state.sort = payload
   },
   setStat: (state, payload) => {
     state.stat = payload
