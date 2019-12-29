@@ -25,7 +25,7 @@
         <v-row no-gutters>
           <v-col cols="12">
 
-            <v-row class="container-leaderboard-cards">
+            <v-row>
               <LeaderboardCard
                 v-for="stat in leaderboard"
                 :key="stat.name"
@@ -102,3 +102,10 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="sass">
+.container-main
+  background-color: #eeeeee
+  .row-title
+    margin: 10px 0 15px 0
+</style>

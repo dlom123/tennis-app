@@ -13,7 +13,6 @@
           <v-img
             :src="require(`../assets/images/headshots/placeholders/${player.gender === 'm' ? 'men' : 'women'}/${player.gender === 'm' ? 'federer' : 'halep'}.png`)"
             width="230"
-            class="avatar"
           ></v-img>
         </v-col>
 
@@ -21,7 +20,7 @@
 
           <v-row no-gutters>
 
-            <v-col sm="12" class="player-names">
+            <v-col sm="12">
               <h1>
                 <span
                   v-for="(player, i) in team.players"
@@ -81,3 +80,26 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="sass">
+.team-row
+  border-bottom: 2px solid #aaa
+  background-color: #fff
+  .col-team
+    margin-top: 20px
+    padding: 0
+    .col-avatars
+      position: relative
+    .col-info
+      padding-left: 50px
+      .text-men
+        color: #00b1ef
+      .text-women
+        color: #3313b5
+      .doubles-separator
+        color: #aaaaaa
+      .row-player-info
+        margin-top: 15px
+  &:hover
+    cursor: pointer
+</style>

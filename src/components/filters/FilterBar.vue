@@ -52,3 +52,12 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="sass">
+.filter-bar
+  margin-bottom: 10px
+  .header
+    height: 65px
+  .filter-content
+    padding: 0
+</style>

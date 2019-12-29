@@ -3,7 +3,7 @@
 
     <v-app-bar app short>
 
-      <v-toolbar-title @click="$router.push({ name: 'home' })" class="title-link">TennisStats</v-toolbar-title>
+      <v-toolbar-title>TennisStats</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -15,9 +15,14 @@
 
     </v-app-bar>
 
-    <v-content class="container-views">
+    <v-content>
       <router-view />
     </v-content>
 
   </v-app>
 </template>
+
+<style scoped lang="sass">
+.v-application
+  font-family: 'Staatliches', 'Open Sans', sans-serif
+</style>

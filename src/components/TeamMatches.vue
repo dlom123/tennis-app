@@ -63,3 +63,8 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="sass">
+.container-matches
+  padding: 0
+</style>

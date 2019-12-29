@@ -10,7 +10,6 @@
             width="280"
             max-height="230"
             contain
-            class="avatar"
           ></v-img>
 
         </v-col>
@@ -73,3 +72,23 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="sass">
+.player-row
+  border-bottom: 2px solid #aaa
+  background-color: #fff
+  .col-player
+    margin-top: 20px
+    padding: 0
+    .col-avatar
+      position: relative
+    .col-info
+      .text-men
+        color: #00b1ef
+      .text-women
+        color: #3313b5
+      .row-player-info
+        margin-top: 15px
+  &:hover
+    cursor: pointer
+</style>

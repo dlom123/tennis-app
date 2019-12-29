@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="grey lighten-5">
+  <v-container fluid class="container-main">
 
     <Spinner :isLoading="isLoading" />
 
@@ -20,14 +20,17 @@
             <v-col sm="3" class="col-info">
               <v-row v-for="player in team.players" :key="player.id" no-gutters class="row-player">
 
-                <v-col cols="12">
+                <v-col
+                  cols="12"
+                  :class="getBorderClass(player.gender)"
+                  class="container-avatar"
+                  align="center"
+                >
                   <v-img
                     :src="require(`../assets/images/headshots/placeholders/${player.gender === 'm' ? 'men' : 'women'}/${player.gender === 'm' ? 'federer' : 'halep'}.png`)"
                     width="280"
                     max-height="230"
                     contain
-                    :class="getBorderClass(player.gender)"
-                    class="avatar"
                   ></v-img>
                 </v-col>
 
@@ -178,3 +181,32 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="sass">
+.container-main
+  background-color: #eeeeee
+
+.container-team
+  padding: 0
+  .row-title
+    margin: 10px 0 15px 0
+  .col-info
+    .row-player
+      margin-bottom: 20px
+      .border-men
+        border: 2px solid #00b1ef
+      .border-women
+        border: 2px solid #3313b5
+      .text-men
+        color: #00b1ef
+      .text-women
+        color: #3313b5
+      .row-player-info
+        margin-bottom: 10px
+  .col-stats
+    .section
+      margin-bottom: 30px
+
+.container-avatar
+  background-color: white
+</style>

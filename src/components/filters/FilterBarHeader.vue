@@ -47,3 +47,8 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="sass">
+.chip-header
+  margin-left: 20px
+</style>

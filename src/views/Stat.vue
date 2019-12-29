@@ -146,3 +146,55 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="sass">
+.container-main
+  background-color: #eeeeee
+  .row-title
+    margin: 10px 0 15px 0
+
+.text-men
+  color: #00b1ef
+
+.text-women
+  color: #3313b5
+
+.stat-leaders
+  padding-top: 0
+  margin-bottom: 15px
+  .container-leaders
+    padding: 0
+    .list-leaders
+      padding: 0
+      .row-leader
+        padding: 0px 25px
+      .row-leader-divider
+        border-bottom: 1px solid #e0e0e0
+
+.container-rank
+  margin-left: -10px
+  .rank
+    padding: 0
+    font-size: 14pt
+  .rank-top
+    margin-top: 5px
+    font-size: 22pt
+
+.container-avatar
+  margin-left: -20px
+  .border-men
+    border: 2px solid #00b1ef
+  .border-women
+    border: 2px solid #3313b5
+  .avatar
+    margin: 0 20px
+
+.container-info
+  margin-left: 15px
+  .leader-name
+    font-size: 14pt
+  .leader-total
+    font-size: 14pt
+  .leader-top
+    font-size: 18pt
+</style>

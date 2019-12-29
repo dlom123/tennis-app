@@ -12,3 +12,8 @@ export default {
   props: ['items']
 }
 </script>
+
+<style scoped lang="sass">
+.breadcrumbs
+  padding: 0
+</style>

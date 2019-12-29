@@ -162,3 +162,11 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="sass">
+.container-stats
+  .stats-top
+    margin-bottom: 10px
+  .col-stat
+    padding-left: 15px
+</style>
