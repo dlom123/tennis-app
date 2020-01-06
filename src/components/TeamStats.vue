@@ -9,7 +9,7 @@
         <v-expansion-panel-header>
           <v-row no-gutters>
             <v-col sm="12">
-              <h1>Player Stats</h1>
+              <h1>Team Stats</h1>
             </v-col>
           </v-row>
         </v-expansion-panel-header>
@@ -35,11 +35,11 @@
               <v-row>
 
                 <v-col cols="12">
-                  {{ stats.aces }}
+                  22
                 </v-col>
 
                 <v-col cols="12">
-                  {{ stats.winners }}
+                  24
                 </v-col>
 
               </v-row>
@@ -63,11 +63,11 @@
               <v-row>
 
                 <v-col cols="12">
-                  {{ stats.doubleFaults }}
+                  13
                 </v-col>
 
                 <v-col cols="12">
-                  {{ stats.unforcedErrors }}
+                  19
                 </v-col>
 
               </v-row>
@@ -145,24 +145,14 @@
 import StatBar from '@/components/StatBar'
 
 export default {
-  name: 'playerStats',
+  name: 'teamStats',
   components: {
     StatBar
   },
-  props: ['stats', 'view'],
+  props: ['stats'],
   data() {
     return {
       showPercent: true
-    }
-  },
-  computed: {
-    statsDoubles() {
-      // TODO: filter stats by view type (singles/doubles) using 'view' prop
-      return this.stats
-    },
-    statsSingles() {
-      // TODO: filter stats by view type (singles/doubles) using 'view' prop
-      return this.stats
     }
   },
   methods: {
