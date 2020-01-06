@@ -1,18 +1,28 @@
 <template>
   <v-app>
+
+    <v-app-bar app short>
+
+      <v-toolbar-title>TennisStats</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-toolbar-items>
+        <v-btn text to="/players">Players</v-btn>
+        <v-btn text to="/teams">Teams</v-btn>
+        <v-btn text to="/leaderboard">Leaderboard</v-btn>
+      </v-toolbar-items>
+
+    </v-app-bar>
+
     <v-content>
-      <Home/>
+      <router-view />
     </v-content>
+
   </v-app>
 </template>
 
-<script>
-import Home from './views/Home'
-
-export default {
-  name: 'App',
-  components: {
-    Home
-  }
-}
-</script>
+<style scoped lang="sass">
+.v-application
+  font-family: 'Staatliches', 'Open Sans', sans-serif
+</style>

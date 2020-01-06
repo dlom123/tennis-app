@@ -1,16 +1,41 @@
 export default {
-  setCurrentPlayer: (state, payload) => {
-    state.currentPlayer = payload
+  removeAllFiltersExcept: (state, payload) => {
+    state.filters = state.filters.filter(f => {
+      return payload.includes(f.screen)
+    })
+  },
+  removeFilter: (state, payload) => {
+    state.filters = state.filters.filter(f => f.screen !== payload.screen && f.name !== payload.name)
+  },
+  setLeaderboard: (state, payload) => {
+    state.leaderboard = payload
+  },
+  setLoading: (state, payload) => {
+    state.isLoading = payload
+  },
+  setPlayer: (state, payload) => {
+    state.player = payload
   },
   setPlayers: (state, payload) => {
     state.players = payload
   },
-  setShowPlayerDialog: (state, payload) => {
-    state.showPlayerDialog = payload
+  setStat: (state, payload) => {
+    state.stat = payload
   },
-  updatePlayerStats: (state, payload) => {
-    state.players.map(player => {
-      player.stats = payload.stats
-    })
+  setTeam: (state, payload) => {
+    state.team = payload
+  },
+  setTeams: (state, payload) => {
+    state.teams = payload
+  },
+  setView: (state, payload) => {
+    state.view = payload
+  },
+  updateFilter: (state, payload) => {
+    // remove the filter
+    state.filters = state.filters.filter(f => !(f.screen === payload.screen && f.name === payload.name))
+
+    // re-add the filter with the new value
+    state.filters.push(payload)
   }
 }
