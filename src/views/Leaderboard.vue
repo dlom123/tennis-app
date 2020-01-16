@@ -105,7 +105,8 @@ export default {
 
 <style scoped lang="sass">
 .container-main
-  background-color: #eeeeee
+  height: 100%
+  background-color: #eee
   .row-title
     margin: 10px 0 15px 0
 </style>

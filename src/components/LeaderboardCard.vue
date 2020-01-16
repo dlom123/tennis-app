@@ -2,8 +2,8 @@
   <v-col cols="6" md="4" class="leaderboard-card">
     <v-card outlined>
 
-      <v-toolbar dark>
-        <v-toolbar-title v-html="stat.name" class="stat-name"></v-toolbar-title>
+      <v-toolbar>
+        <v-toolbar-title v-html="`<h2>${stat.name}</h2>`" class="stat-name"></v-toolbar-title>
       </v-toolbar>
 
       <v-divider></v-divider>
@@ -17,7 +17,7 @@
           >
 
             <v-list-item-icon class="container-rank">
-              <span :class="['rank', { 'rank-top': i === 0 }]">#{{ i + 1 }}</span>
+              <h3 :class="['rank', { 'rank-top': i === 0 }]">#{{ i + 1 }}</h3>
             </v-list-item-icon>
 
             <v-list-item-avatar :size="i === 0 ? 100 : 60" class="container-avatar">
@@ -35,7 +35,7 @@
                 :class="['leader-name', getTextHeaderClass(player.player.gender), { 'leader-top': i === 0 }]"
               ></v-list-item-title>
               <v-list-item-subtitle
-                v-html="player.hasOwnProperty('total') ? `${player.total}` : displayPercentage(player)"
+                v-html="`<p>${player.hasOwnProperty('total') ? player.total : displayPercentage(player)}</p>`"
                 :class="['leader-total', { 'leader-top': i === 0 }]"
               ></v-list-item-subtitle>
             </v-list-item-content>
@@ -52,7 +52,7 @@
           color="blue"
           class="btn-view-all"
           :to="{ name: 'stat', params: { statId: stat.id }}"
-        >View All</v-btn>
+        ><h4>View All</h4></v-btn>
       </v-card-actions>
 
     </v-card>
@@ -83,8 +83,6 @@ export default {
 .leaderboard-card
   padding-top: 0
   margin-bottom: 15px
-  .stat-name
-    font-size: 22pt
 
 .container-leaders
   padding: 0
@@ -122,7 +120,7 @@ export default {
   .leader-total
     font-size: 14pt
   .leader-top
-    font-size: 18pt
+    font-size: 22pt
 
 .container-view-all
   padding: 0

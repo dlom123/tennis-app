@@ -5,8 +5,8 @@
         height="25"
         :value="statPercent"
       >
-        <strong v-if="showPercent" @click="toggleShowPercent">{{ statPercent }}%</strong>
-        <strong v-else @click="toggleShowPercent">{{ statRatio }}</strong>
+        <p v-if="showPercent" @click="toggleShowPercent">{{ statPercent }}%</p>
+        <p v-else @click="toggleShowPercent">{{ statRatio }}</p>
       </v-progress-linear>
     </v-col>
   </v-row>

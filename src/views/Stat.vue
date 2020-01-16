@@ -34,7 +34,7 @@
               >
 
                 <v-list-item-icon class="container-rank">
-                  <span :class="['rank', { 'rank-top': i === 0 }]">#{{ i + 1 }}</span>
+                  <h3 :class="['rank', { 'rank-top': i === 0 }]">#{{ i + 1 }}</h3>
                 </v-list-item-icon>
 
                 <v-list-item-avatar :size="i === 0 ? 100 : 60" class="container-avatar">
@@ -149,7 +149,8 @@ export default {
 
 <style scoped lang="sass">
 .container-main
-  background-color: #eeeeee
+  height: 100%
+  background-color: #eee
   .row-title
     margin: 10px 0 15px 0
 
@@ -196,5 +197,5 @@ export default {
   .leader-total
     font-size: 14pt
   .leader-top
-    font-size: 18pt
+    font-size: 22pt
 </style>

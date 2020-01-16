@@ -22,12 +22,17 @@
 
         <FilterBar />
 
-        <PlayerRow
-          v-for="player in playersSorted"
-          :key="player.id"
-          :player="player"
-          type="singles"
-        />
+        <template v-if="playersSorted.length">
+          <PlayerRow
+            v-for="player in playersSorted"
+            :key="player.id"
+            :player="player"
+            type="singles"
+          />
+        </template>
+        <template v-else>
+          <EmptyRow text="No players to show." />
+        </template>
 
       </v-col>
     </v-row>
@@ -36,6 +41,7 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
+import EmptyRow from '@/components/EmptyRow'
 import FilterBar from '@/components/filters/FilterBar'
 import PlayerRow from '@/components/PlayerRow'
 import Spinner from '@/components/Spinner'
@@ -45,6 +51,7 @@ import { filterPlayers, sortPlayers } from '@/utils/functions'
 export default {
   name: 'players',
   components: {
+    EmptyRow,
     FilterBar,
     PlayerRow,
     Spinner,
@@ -92,7 +99,8 @@ export default {
 
 <style scoped lang="sass">
 .container-main
-  background-color: #eeeeee
+  height: 100%
+  background-color: #eee
   .row-title
     margin: 10px 0 15px 0
 </style>

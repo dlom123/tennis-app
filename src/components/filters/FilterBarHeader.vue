@@ -1,7 +1,9 @@
 <template>
   <v-row no-gutters align="center">
 
-    <v-col cols="1">Filters</v-col>
+    <v-col cols="1">
+      <h4>Filters</h4>
+    </v-col>
 
     <v-col cols="8">
 
@@ -11,6 +13,13 @@
         @click:close="clearFilterFormat"
         class="chip-header"
       >Format: {{ getFilterValueByName(filterFormat) }}</v-chip>
+
+      <v-chip
+        v-if="isFilterSet(filterRating)"
+        close
+        @click:close="clearFilterRating"
+        class="chip-header"
+      >Rating: {{ getFilterValueByName(filterRating) }}</v-chip>
 
     </v-col>
 
@@ -29,6 +38,9 @@ export default {
     ]),
     filterFormat() {
       return FILTERS.FORMAT
+    },
+    filterRating() {
+      return FILTERS.RATING
     }
   },
   methods: {
@@ -37,6 +49,9 @@ export default {
     ]),
     clearFilterFormat() {
       this.removeFilter({ screen: this.$route.name, name: this.filterFormat })
+    },
+    clearFilterRating() {
+      this.removeFilter({ screen: this.$route.name, name: this.filterRating })
     },
     getFilterValueByName(filterName) {
       return this.getFilterValue({ screen: this.$route.name, name: filterName })

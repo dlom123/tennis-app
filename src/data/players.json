@@ -6,6 +6,7 @@
       "lastName": "Fohl",
       "gender": "m",
       "avatarUrl": "",
+      "rating": "4.0",
       "points": 90,
       "stats": {
         "aces": 5,
@@ -331,6 +332,7 @@
       "lastName": "Lomelino",
       "gender": "m",
       "avatarUrl": "",
+      "rating": "4.0",
       "points": 150,
       "stats": {
         "aces": 5,
@@ -655,6 +657,7 @@
       "lastName": "Wandel",
       "gender": "f",
       "avatarUrl": "",
+      "rating": "3.5",
       "points": 40,
       "stats": {
         "aces": 5,
@@ -980,6 +983,7 @@
       "lastName": "Layton",
       "gender": "m",
       "avatarUrl": "",
+      "rating": "3.5",
       "points": 50,
       "stats": {
         "aces": 5,
@@ -1305,6 +1309,7 @@
       "lastName": "Winkler",
       "gender": "m",
       "avatarUrl": "",
+      "rating": "4.0",
       "points": 110,
       "stats": {
         "aces": 5,
@@ -1630,6 +1635,7 @@
       "lastName": "Brown",
       "gender": "m",
       "avatarUrl": "",
+      "rating": "4.0",
       "points": 60,
       "stats": {
         "aces": 5,
@@ -1955,6 +1961,7 @@
       "lastName": "Lowery",
       "gender": "m",
       "avatarUrl": "",
+      "rating": "4.0",
       "points": 140,
       "stats": {
         "aces": 5,
@@ -2280,6 +2287,7 @@
       "lastName": "Burkhardt",
       "gender": "f",
       "avatarUrl": "",
+      "rating": "4.5",
       "points": 120,
       "stats": {
         "aces": 5,
@@ -2605,6 +2613,7 @@
       "lastName": "Lee",
       "gender": "f",
       "avatarUrl": "",
+      "rating": "5.0",
       "points": 130,
       "stats": {
         "aces": 5,
@@ -2930,6 +2939,7 @@
       "lastName": "Somers",
       "gender": "f",
       "avatarUrl": "",
+      "rating": "3.5",
       "points": 70,
       "stats": {
         "aces": 5,
@@ -3255,6 +3265,7 @@
       "lastName": "Somers",
       "gender": "m",
       "avatarUrl": "",
+      "rating": "3.5",
       "points": 30,
       "stats": {
         "aces": 5,
@@ -3580,6 +3591,7 @@
       "lastName": "McNaught",
       "gender": "f",
       "avatarUrl": "",
+      "rating": "4.0",
       "points": 100,
       "stats": {
         "aces": 5,
@@ -3905,6 +3917,7 @@
       "lastName": "Strom",
       "gender": "m",
       "avatarUrl": "",
+      "rating": "4.0",
       "points": 80,
       "stats": {
         "aces": 5,
@@ -4230,6 +4243,7 @@
       "lastName": "Martin",
       "gender": "f",
       "avatarUrl": "",
+      "rating": "4.0",
       "points": 70,
       "stats": {
         "aces": 5,
@@ -4554,8 +4568,8 @@
     {
       "id": 1,
       "players": [
-        { "id": 3, "firstName": "Alex", "lastName": "Fohl", "gender": "m", "avatarUrl": "" },
-        { "id": 6, "firstName": "Daniel", "lastName": "Lomelino", "gender": "m", "avatarUrl": "" }
+        { "id": 3, "firstName": "Alex", "lastName": "Fohl", "gender": "m", "avatarUrl": "", "rating": "4.0" },
+        { "id": 6, "firstName": "Daniel", "lastName": "Lomelino", "gender": "m", "avatarUrl": "", "rating": "4.0" }
       ],
       "points": 150,
       "stats": {
@@ -4732,8 +4746,8 @@
     {
       "id": 4,
       "players": [
-        { "id": 7, "firstName": "Dax", "lastName": "Lowery", "gender": "m", "avatarUrl": "" },
-        { "id": 8, "firstName": "Kessa", "lastName": "McNaught", "gender": "f", "avatarUrl": "" }
+        { "id": 7, "firstName": "Dax", "lastName": "Lowery", "gender": "m", "avatarUrl": "", "rating": "4.0" },
+        { "id": 8, "firstName": "Kessa", "lastName": "McNaught", "gender": "f", "avatarUrl": "", "rating": "4.0" }
       ],
       "points": 60,
       "stats": {
@@ -4910,8 +4924,8 @@
     {
       "id": 2,
       "players": [
-        { "id": 9, "firstName": "Dan", "lastName": "Somers", "gender": "m", "avatarUrl": "" },
-        { "id": 4, "firstName": "Chris", "lastName": "Layton", "gender": "m", "avatarUrl": "" }
+        { "id": 9, "firstName": "Dan", "lastName": "Somers", "gender": "m", "avatarUrl": "", "rating": "3.5" },
+        { "id": 4, "firstName": "Chris", "lastName": "Layton", "gender": "m", "avatarUrl": "", "rating": "3.5" }
       ],
       "points": 120,
       "stats": {
@@ -5088,8 +5102,8 @@
     {
       "id": 3,
       "players": [
-        { "id": 13, "firstName": "Tony", "lastName": "Winkler", "gender": "m", "avatarUrl": "" },
-        { "id": 1, "firstName": "Doug", "lastName": "Brown", "gender": "m", "avatarUrl": "" }
+        { "id": 13, "firstName": "Tony", "lastName": "Winkler", "gender": "m", "avatarUrl": "", "rating": "4.0" },
+        { "id": 4, "firstName": "Chris", "lastName": "Layton", "gender": "m", "avatarUrl": "", "rating": "3.5" }
       ],
       "points": 90,
       "stats": {
@@ -5111,8 +5125,8 @@
           "location": "Park Tudor High School",
           "opponent": [
             {
-              "firstName": "Chris",
-              "lastName": "Layton"
+              "firstName": "Dax",
+              "lastName": "Lowery"
             },
             {
               "firstName": "Daniel",
@@ -5158,8 +5172,8 @@
               "lastName": "Martin"
             },
             {
-              "firstName": "Chris",
-              "lastName": "Layton"
+              "firstName": "Doug",
+              "lastName": "Brown"
             }
           ]
         },
@@ -5210,8 +5224,8 @@
           "location": "Carmel Racquet Club",
           "opponent": [
             {
-              "firstName": "Chris",
-              "lastName": "Layton"
+              "firstName": "Alex",
+              "lastName": "Fohl"
             },
             {
               "firstName": "Heidi",
@@ -5266,8 +5280,8 @@
     {
       "id": 6,
       "players": [
-        { "id": 12, "firstName": "Emily", "lastName": "Wandel", "gender": "f", "avatarUrl": "" },
-        { "id": 2, "firstName": "Andrea", "lastName": "Burkhardt", "gender": "f", "avatarUrl": "" }
+        { "id": 12, "firstName": "Emily", "lastName": "Wandel", "gender": "f", "avatarUrl": "", "rating": "3.5" },
+        { "id": 2, "firstName": "Andrea", "lastName": "Burkhardt", "gender": "f", "avatarUrl": "", "rating": "4.5" }
       ],
       "points": 30,
       "stats": {
@@ -5444,8 +5458,8 @@
     {
       "id": 5,
       "players": [
-        { "id": 5, "firstName": "Madelyn", "lastName": "Lee", "gender": "f", "avatarUrl": "" },
-        { "id": 11, "firstName": "David", "lastName": "Strom", "gender": "m", "avatarUrl": "" }
+        { "id": 5, "firstName": "Madelyn", "lastName": "Lee", "gender": "f", "avatarUrl": "", "rating": "5.0" },
+        { "id": 11, "firstName": "David", "lastName": "Strom", "gender": "m", "avatarUrl": "", "rating": "4.0" }
       ],
       "points": 50,
       "stats": {

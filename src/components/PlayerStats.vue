@@ -9,7 +9,7 @@
         <v-expansion-panel-header>
           <v-row no-gutters>
             <v-col sm="12">
-              <h1>Player Stats</h1>
+              <h2>Player Stats</h2>
             </v-col>
           </v-row>
         </v-expansion-panel-header>
@@ -21,11 +21,11 @@
               <v-row>
 
                 <v-col cols="12" align="right">
-                  <strong>Aces</strong>
+                  <h3>Aces</h3>
                 </v-col>
 
                 <v-col cols="12" align="right">
-                  <strong>Winners</strong>
+                  <h3>Winners</h3>
                 </v-col>
 
               </v-row>
@@ -35,11 +35,11 @@
               <v-row>
 
                 <v-col cols="12">
-                  {{ stats.aces }}
+                  <p>{{ stats.aces }}</p>
                 </v-col>
 
                 <v-col cols="12">
-                  {{ stats.winners }}
+                  <p>{{ stats.winners }}</p>
                 </v-col>
 
               </v-row>
@@ -49,11 +49,11 @@
               <v-row>
 
                 <v-col cols="12" align="right">
-                  <strong>Double Faults</strong>
+                  <h3>Double Faults</h3>
                 </v-col>
 
                 <v-col cols="12" align="right">
-                  <strong>Unforced Errors</strong>
+                  <h3>Unforced Errors</h3>
                 </v-col>
 
               </v-row>
@@ -63,11 +63,11 @@
               <v-row>
 
                 <v-col cols="12">
-                  {{ stats.doubleFaults }}
+                  <p>{{ stats.doubleFaults }}</p>
                 </v-col>
 
                 <v-col cols="12">
-                  {{ stats.unforcedErrors }}
+                  <p>{{ stats.unforcedErrors }}</p>
                 </v-col>
 
               </v-row>
@@ -80,43 +80,43 @@
 
               <v-row>
                 <v-col cols="12" align="right">
-                  <strong>1st Serve In</strong>
+                  <h3>1st Serve In</h3>
                 </v-col>
               </v-row>
 
               <v-row>
                 <v-col cols="12" align="right">
-                  <strong>1st Serve Return</strong>
+                  <h3>1st Serve Return</h3>
                 </v-col>
               </v-row>
 
               <v-row>
                 <v-col cols="12" align="right">
-                  <strong>2nd Serve Return</strong>
+                  <h3>2nd Serve Return</h3>
                 </v-col>
               </v-row>
 
               <v-row>
                 <v-col cols="12" align="right">
-                  <strong>1st Serve Points Won</strong>
+                  <h3>1st Serve Points Won</h3>
                 </v-col>
               </v-row>
 
               <v-row>
                 <v-col cols="12" align="right">
-                  <strong>2nd Serve Points Won</strong>
+                  <h3>2nd Serve Points Won</h3>
                 </v-col>
               </v-row>
 
               <v-row>
                 <v-col cols="12" align="right">
-                  <strong>Net Points Won</strong>
+                  <h3>Net Points Won</h3>
                 </v-col>
               </v-row>
 
               <v-row>
                 <v-col cols="12" align="right">
-                  <strong>Break Points Won</strong>
+                  <h3>Break Points Won</h3>
                 </v-col>
               </v-row>
 

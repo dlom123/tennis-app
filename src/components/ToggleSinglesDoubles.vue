@@ -4,8 +4,8 @@
     :value="view"
     @change="onChangeToggle"
   >
-    <v-btn value="singles">Singles</v-btn>
-    <v-btn value="doubles">Doubles</v-btn>
+    <v-btn value="singles"><h3>Singles</h3></v-btn>
+    <v-btn value="doubles"><h3>Doubles</h3></v-btn>
   </v-btn-toggle>
 </template>
 

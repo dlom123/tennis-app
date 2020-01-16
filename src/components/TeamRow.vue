@@ -27,8 +27,8 @@
                   :key="player.id"
                   :class="getTextHeaderClass(player.gender)"
                 >
-                  <span v-if="i > 0" class="doubles-separator">/</span>
-                  {{player.firstName}} {{player.lastName}}
+                  <span v-if="i > 0" class="doubles-separator"><h2 class="no-break">/</h2></span>
+                  <h2 class="no-break">{{ player.firstName }} {{ player.lastName }}</h2>
                 </span>
               </h1>
             </v-col>
@@ -39,7 +39,7 @@
                   <h3>Rating</h3>
                 </v-col>
                 <v-col sm="12">
-                  8.0
+                  <p>{{ combinedRating }}</p>
                 </v-col>
               </v-row>
             </v-col>
@@ -50,7 +50,7 @@
                   <h3>Matches Played</h3>
                 </v-col>
                 <v-col sm="12">
-                  35
+                  <p>35</p>
                 </v-col>
               </v-row>
             </v-col>
@@ -70,6 +70,16 @@ import { getGenderTextClass } from '@/utils/functions'
 export default {
   name: 'teamRow',
   props: ['team'],
+  computed: {
+    combinedRating() {
+      let rating = 0.0
+      this.team.players.forEach(player => {
+        rating += Number(player.rating)
+      })
+
+      return rating.toFixed(1)
+    }
+  },
   methods: {
     getTextHeaderClass(gender) {
       return getGenderTextClass(gender)
@@ -84,10 +94,9 @@ export default {
 <style scoped lang="sass">
 .team-row
   border-bottom: 2px solid #aaa
-  background-color: #fff
+  background-color: white
   .col-team
-    margin-top: 20px
-    padding: 0
+    padding: 20px 0 0 0
     .col-avatars
       position: relative
     .col-info
@@ -98,6 +107,8 @@ export default {
         color: #3313b5
       .doubles-separator
         color: #aaaaaa
+      .no-break
+        display: inline
       .row-player-info
         margin-top: 15px
   &:hover

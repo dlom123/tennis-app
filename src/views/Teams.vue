@@ -12,13 +12,18 @@
           </v-col>
         </v-row>
 
-        <FilterBar />
+        <FilterBar :isDoubles="true" />
 
-        <TeamRow
-          v-for="team in teamsSorted"
-          :key="team.id"
-          :team="team"
-        />
+        <template v-if="teamsSorted.length">
+          <TeamRow
+            v-for="team in teamsSorted"
+            :key="team.id"
+            :team="team"
+          />
+        </template>
+        <template v-else>
+          <EmptyRow text="No teams to show." />
+        </template>
 
       </v-col>
     </v-row>
@@ -27,6 +32,7 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
+import EmptyRow from '@/components/EmptyRow'
 import FilterBar from '@/components/filters/FilterBar'
 import Spinner from '@/components/Spinner'
 import TeamRow from '@/components/TeamRow'
@@ -35,6 +41,7 @@ import { filterTeams, sortTeams } from '@/utils/functions'
 export default {
   name: 'teams',
   components: {
+    EmptyRow,
     FilterBar,
     Spinner,
     TeamRow
@@ -81,7 +88,8 @@ export default {
 
 <style scoped lang="sass">
 .container-main
-  background-color: #eeeeee
+  height: 100%
+  background-color: #eee
   .row-title
     margin: 10px 0 15px 0
 </style>

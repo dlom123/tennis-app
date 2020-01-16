@@ -42,7 +42,7 @@
                 </v-col>
 
                 <v-col sm="12">
-                  <h1 :class="getTextHeaderClass(player.gender)">{{ fullName }}</h1>
+                  <h2 :class="getTextHeaderClass(player.gender)">{{ fullName }}</h2>
                 </v-col>
 
                 <v-col sm="6">
@@ -51,7 +51,7 @@
                       <h3>Rating</h3>
                     </v-col>
                     <v-col sm="12">
-                      4.0
+                      <p>4.0</p>
                     </v-col>
                   </v-row>
                 </v-col>
@@ -62,7 +62,7 @@
                       <h3>Height</h3>
                     </v-col>
                     <v-col sm="12">
-                      5'9"
+                      <p>5'9"</p>
                     </v-col>
                   </v-row>
                 </v-col>
@@ -83,7 +83,7 @@
                       <h3>Last Played</h3>
                     </v-col>
                     <v-col sm="12">
-                      8/1/2019
+                      <p>8/1/2019</p>
                     </v-col>
                   </v-row>
                 </v-col>
@@ -183,7 +183,8 @@ export default {
 
 <style scoped lang="sass">
 .container-main
-  background-color: #eeeeee
+  height: 100%
+  background-color: #eee
 
 .container-avatar
   background-color: white

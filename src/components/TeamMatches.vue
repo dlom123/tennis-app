@@ -9,7 +9,7 @@
         <v-expansion-panel-header>
           <v-row no-gutters>
             <v-col cols="2">
-              <h1>Matches</h1>
+              <h2>Matches</h2>
             </v-col>
           </v-row>
         </v-expansion-panel-header>

@@ -7,10 +7,16 @@ export function filterPlayers(players, filters) {
   const filterFormat = filters.find(filter => filter.screen === 'players' && filter.name === FILTERS.FORMAT)
   if (filterFormat) {
     if (filterFormat.value === 'men') {
-      playersFiltered = players.filter(player => player.gender === 'm')
+      playersFiltered = playersFiltered.filter(player => player.gender === 'm')
     } else if (filterFormat.value === 'women') {
-      playersFiltered = players.filter(player => player.gender === 'f')
+      playersFiltered = playersFiltered.filter(player => player.gender === 'f')
     }
+  }
+
+  // filter: rating
+  const filterRating = filters.find(filter => filter.screen === 'players' && filter.name === FILTERS.RATING)
+  if (filterRating) {
+    playersFiltered = playersFiltered.filter(player => player.rating === filterRating.value)
   }
 
   return playersFiltered
@@ -41,12 +47,25 @@ export function filterTeams(teams, filters) {
   const filterFormat = filters.find(filter => filter.screen === 'teams' && filter.name === FILTERS.FORMAT)
   if (filterFormat) {
     if (filterFormat.value === 'men') {
-      teamsFiltered = teams.filter(team => team.players.every(player => player.gender === 'm'))
+      teamsFiltered = teamsFiltered.filter(team => team.players.every(player => player.gender === 'm'))
     } else if (filterFormat.value === 'women') {
-      teamsFiltered = teams.filter(team => team.players.every(player => player.gender === 'f'))
+      teamsFiltered = teamsFiltered.filter(team => team.players.every(player => player.gender === 'f'))
     } else if (filterFormat.value === 'mixed') {
-      teamsFiltered = teams.filter(team => team.players.find(player => player.gender === 'm') && team.players.find(player => player.gender === 'f'))
+      teamsFiltered = teamsFiltered.filter(team => team.players.find(player => player.gender === 'm') && team.players.find(player => player.gender === 'f'))
     }
+  }
+
+  // filter: rating
+  const filterRating = filters.find(filter => filter.screen === 'teams' && filter.name === FILTERS.RATING)
+  if (filterRating) {
+    teamsFiltered = teamsFiltered.filter(team => {
+      let combinedRating = 0.0
+      team.players.forEach(player => {
+        combinedRating += Number(player.rating)
+      })
+
+      return combinedRating.toFixed(1) === filterRating.value
+    })
   }
 
   return teamsFiltered

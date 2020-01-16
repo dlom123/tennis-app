@@ -1,3 +1,4 @@
 export const FILTERS = {
-  FORMAT: 'format'
+  FORMAT: 'format',
+  RATING: 'rating'
 }

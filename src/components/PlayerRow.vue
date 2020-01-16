@@ -18,7 +18,7 @@
           <v-row no-gutters>
 
             <v-col sm="12">
-              <h1 :class="getTextHeaderClass(player.gender)">{{player.firstName}} {{player.lastName}}</h1>
+              <h2 :class="getTextHeaderClass(player.gender)">{{ player.firstName }} {{ player.lastName }}</h2>
             </v-col>
 
             <v-col sm="3">
@@ -28,7 +28,7 @@
                   <h3>Rating</h3>
                 </v-col>
                 <v-col sm="12">
-                  4.0
+                  <p>{{ player.rating }}</p>
                 </v-col>
               </v-row>
 
@@ -40,7 +40,7 @@
                   <h3>Matches Played</h3>
                 </v-col>
                 <v-col sm="12">
-                  35
+                  <p>35</p>
                 </v-col>
               </v-row>
             </v-col>
@@ -76,10 +76,9 @@ export default {
 <style scoped lang="sass">
 .player-row
   border-bottom: 2px solid #aaa
-  background-color: #fff
+  background-color: white
   .col-player
-    margin-top: 20px
-    padding: 0
+    padding: 20px 0 0
     .col-avatar
       position: relative
     .col-info

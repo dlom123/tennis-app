@@ -35,7 +35,7 @@
                 </v-col>
 
                 <v-col sm="12">
-                  <h1 :class="getTextHeaderClass(player.gender)">{{ getFullName(player) }}</h1>
+                  <h2 :class="getTextHeaderClass(player.gender)">{{ getFullName(player) }}</h2>
                 </v-col>
 
                 <v-col sm="6">
@@ -46,7 +46,7 @@
                     </v-col>
 
                     <v-col sm="12">
-                      4.0
+                      <p>4.0</p>
                     </v-col>
 
                   </v-row>
@@ -60,7 +60,7 @@
                     </v-col>
 
                     <v-col sm="12">
-                      5'9"
+                      <p>5'9"</p>
                     </v-col>
 
                   </v-row>
@@ -84,7 +84,7 @@
                     </v-col>
 
                     <v-col sm="12">
-                      8/1/2019
+                      <p>8/1/2019</p>
                     </v-col>
 
                   </v-row>
@@ -95,7 +95,7 @@
 
             <v-col cols="9" class="col-stats">
 
-              <FilterBar />
+              <FilterBar :isDoubles="true" />
 
               <v-row no-gutters class="section">
                 <TeamStats :stats="team.stats" />
@@ -184,7 +184,8 @@ export default {
 
 <style scoped lang="sass">
 .container-main
-  background-color: #eeeeee
+  height: 100%
+  background-color: #eee
 
 .container-team
   padding: 0

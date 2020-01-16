@@ -5,7 +5,10 @@ export default {
     })
   },
   removeFilter: (state, payload) => {
-    state.filters = state.filters.filter(f => f.screen !== payload.screen && f.name !== payload.name)
+    state.filters = state.filters.filter(f =>
+      f.screen !== payload.screen ||
+      (f.screen === payload.screen && f.name !== payload.name)
+    )
   },
   setLeaderboard: (state, payload) => {
     state.leaderboard = payload

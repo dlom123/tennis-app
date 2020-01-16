@@ -3,7 +3,7 @@
 
     <v-app-bar app short>
 
-      <v-toolbar-title>TennisStats</v-toolbar-title>
+      <v-toolbar-title>Tennis Stats</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -24,5 +24,5 @@
 
 <style scoped lang="sass">
 .v-application
-  font-family: 'Staatliches', 'Open Sans', sans-serif
+  font-family: 'Oswald', sans-serif
 </style>
