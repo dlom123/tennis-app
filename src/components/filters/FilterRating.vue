@@ -1,22 +1,20 @@
 <template>
-  <v-container fluid class="filter-body">
+  <v-container fluid class="filter-body pa-0">
     <v-row no-gutters>
 
-      <v-col sm="12">Rating</v-col>
+      <v-col cols="12">
+        <h4>Rating</h4>
+      </v-col>
 
-      <v-col sm="12">
-        <v-row no-gutters>
-          <v-col cols="4">
-            <v-select
-              hide-details
-              dense
-              outlined
-              :items="optionsRatings"
-              @change="onChangeRating"
-              :value="filterValue"
-            ></v-select>
-          </v-col>
-        </v-row>
+      <v-col cols="12" class="mt-1">
+        <v-select
+          hide-details
+          dense
+          outlined
+          :items="optionsRatings"
+          @change="onChangeRating"
+          :value="filterValue"
+        ></v-select>
       </v-col>
 
     </v-row>
@@ -68,8 +66,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="sass">
-.filter-body
-  padding-bottom: 0
-</style>

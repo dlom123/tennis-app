@@ -1,41 +1,100 @@
 <template>
-  <v-container fluid class="container-main">
+  <v-container v-if="!isLoading" fluid class="pa-0">
 
-    <Spinner :isLoading="isLoading" />
-
-    <v-row v-if="!isLoading" no-gutters>
-      <v-col sm="10" offset-sm="1">
-
-        <v-row no-gutters class="row-title">
-
-          <v-col>
-            <h1>Players</h1>
-          </v-col>
-
-          <v-spacer></v-spacer>
-
-          <v-col align="right">
-            <ToggleSinglesDoubles />
-          </v-col>
-
-        </v-row>
-
-        <FilterBar />
-
-        <template v-if="playersSorted.length">
-          <PlayerRow
-            v-for="player in playersSorted"
-            :key="player.id"
-            :player="player"
-            type="singles"
-          />
-        </template>
-        <template v-else>
-          <EmptyRow text="No players to show." />
-        </template>
-
+    <v-row
+      no-gutters
+      :class="{
+        'px-2 py-2': $vuetify.breakpoint.xsOnly,
+        'my-4': $vuetify.breakpoint.smAndUp
+      }"
+    >
+      <v-col>
+        <h1>Players</h1>
+      </v-col>
+      <v-spacer></v-spacer>
+      <v-col class="d-flex justify-end">
+        <ToggleSinglesDoubles class="align-self-end" />
       </v-col>
     </v-row>
+
+    <v-row no-gutters
+      :class="{
+        'px-2 pt-2': $vuetify.breakpoint.xsOnly,
+      }"
+    >
+    </v-row>
+
+    <v-row no-gutters class="mb-2">
+      <v-col
+        cols="6"
+        md="5" offset-md="3"
+        :class="['mb-1', { 'pl-2 mt-3': $vuetify.breakpoint.smAndDown }]"
+        class="align-self-end"
+      >
+        <p class="text-italic mb-0">{{ showingText }}</p>
+      </v-col>
+      <v-spacer></v-spacer>
+      <v-col
+        cols="6"
+        md="4"
+        :class="['align-self-center', { 'pr-2': $vuetify.breakpoint.xsOnly }]"
+      >
+        <v-text-field
+        solo
+        dense
+        hide-details
+        clearable
+        append-icon="mdi-magnify"
+        placeholder="Player Name"
+        v-debounce="onChangeSearch"
+        ></v-text-field>
+      </v-col>
+    </v-row>
+
+    <v-row
+      v-if="screenFilters.length > 0"
+      no-gutters
+      class="hidden-md-and-up mb-2"
+    >
+      <v-col
+        cols="12"
+      >
+        <FilterBar :screenFilters="screenFilters" />
+      </v-col>
+    </v-row>
+
+    <v-row no-gutters>
+
+      <v-col
+        class="hidden-sm-and-down"
+        md="3"
+      >
+        <FilterBar :screenFilters="screenFilters" />
+      </v-col>
+
+      <v-col
+        v-if="playersSorted.length > 0"
+        cols="12"
+        md="9"
+        :class="{'mb-6': $vuetify.breakpoint.smAndUp}"
+      >
+        <PlayerRow
+          v-for="player in playersSorted"
+          :key="player.id"
+          :player="player"
+          type="singles"
+        />
+      </v-col>
+      <v-col
+        v-else
+        cols="12"
+        md="9"
+      >
+        <EmptyRow text="No players to show." />
+      </v-col>
+
+    </v-row>
+
   </v-container>
 </template>
 
@@ -44,9 +103,9 @@ import { mapActions, mapMutations, mapState } from 'vuex'
 import EmptyRow from '@/components/EmptyRow'
 import FilterBar from '@/components/filters/FilterBar'
 import PlayerRow from '@/components/PlayerRow'
-import Spinner from '@/components/Spinner'
 import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
-import { filterPlayers, sortPlayers } from '@/utils/functions'
+import { FILTERS } from '@/utils/constants'
+import { filterPlayers, getShowingText, sortPlayers } from '@/utils/functions'
 
 export default {
   name: 'players',
@@ -54,8 +113,12 @@ export default {
     EmptyRow,
     FilterBar,
     PlayerRow,
-    Spinner,
     ToggleSinglesDoubles
+  },
+  data() {
+    return {
+      screenFilters: [FILTERS.GENDER, FILTERS.RATING]
+    }
   },
   computed: {
     ...mapState([
@@ -63,6 +126,9 @@ export default {
       'isLoading',
       'players'
     ]),
+    showingText() {
+      return getShowingText(this.playersSorted.length, this.players.length)
+    },
     playersSorted() {
       // apply filters
       const playersFiltered = filterPlayers(this.players, this.filters)
@@ -81,12 +147,16 @@ export default {
       'removeAllFiltersExcept',
       'setLoading',
       'setPlayers'
-    ])
+    ]),
+    onChangeSearch(value) {
+      this.getPlayers({
+        search: value
+      })
+    }
   },
   async created() {
     // clear all filters except for the ones for this screen (in case of a refresh)
     this.removeAllFiltersExcept(['players'])
-
     this.setLoading(true)
     await this.getPlayers()
     this.setLoading(false)
@@ -96,11 +166,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="sass">
-.container-main
-  height: 100%
-  background-color: #eee
-  .row-title
-    margin: 10px 0 15px 0
-</style>

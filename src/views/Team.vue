@@ -6,12 +6,11 @@
     <v-row v-if="!isLoading" no-gutters>
       <v-col cols="10" offset-sm="1">
 
-        <v-container class="container-team">
+        <v-container class="container-team pa-0">
 
           <v-row no-gutters class="row-title">
             <v-col>
-              <h1>{{ getFullNames(team) }}</h1>
-              <Breadcrumbs :items="breadcrumbItems"></Breadcrumbs>
+              <NavBack text="Back to Teams" routeName="teams" />
             </v-col>
           </v-row>
 
@@ -95,7 +94,7 @@
 
             <v-col cols="9" class="col-stats">
 
-              <FilterBar :isDoubles="true" />
+              <FilterBar :screenFilters="screenFilters" :isDoubles="true" />
 
               <v-row no-gutters class="section">
                 <TeamStats :stats="team.stats" />
@@ -116,33 +115,33 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
-import Breadcrumbs from '@/components/Breadcrumbs'
 import FilterBar from '@/components/filters/FilterBar'
+import NavBack from '@/components/NavBack'
 import Spinner from '@/components/Spinner'
 import TeamMatches from '@/components/TeamMatches'
 import TeamStats from '@/components/TeamStats'
+import { FILTERS } from '@/utils/constants'
 import { getGenderBorderClass, getGenderTextClass } from '@/utils/functions'
 
 export default {
   name: 'team',
   components: {
-    Breadcrumbs,
     FilterBar,
+    NavBack,
     Spinner,
     TeamMatches,
     TeamStats
+  },
+  data() {
+    return {
+      screenFilters: [FILTERS.FORMAT]
+    }
   },
   computed: {
     ...mapState([
       'isLoading',
       'team'
-    ]),
-    breadcrumbItems() {
-      return [
-        { text: 'Teams', to: { name: 'teams' }, exact: true },
-        { text: this.getFullNames(this.team), disabled: true }
-      ]
-    }
+    ])
   },
   methods: {
     ...mapActions([
@@ -158,11 +157,6 @@ export default {
     },
     getFullName(player) {
       return `${player.firstName} ${player.lastName}`
-    },
-    getFullNames(team) {
-      const names = team.players.map(player => `${player.firstName} ${player.lastName}`)
-
-      return names.join('/')
     },
     getTextHeaderClass(gender) {
       return getGenderTextClass(gender)
@@ -183,12 +177,7 @@ export default {
 </script>
 
 <style scoped lang="sass">
-.container-main
-  height: 100%
-  background-color: #eee
-
 .container-team
-  padding: 0
   .row-title
     margin: 10px 0 15px 0
   .col-info

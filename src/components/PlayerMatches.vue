@@ -1,33 +1,26 @@
 <template>
-  <v-col cols="12" class="container-matches">
-    <v-expansion-panels
-      multiple
-      :value="[0]"
-    >
-      <v-expansion-panel>
+  <v-expansion-panel>
 
-        <v-expansion-panel-header>
-          <v-row no-gutters>
-            <v-col cols="2">
-              <h2>Matches</h2>
-            </v-col>
-          </v-row>
-        </v-expansion-panel-header>
+    <v-expansion-panel-header color="primary">
+      <v-row no-gutters>
+        <v-col cols="2">
+          <h2 class="white--text">Matches</h2>
+        </v-col>
+      </v-row>
+    </v-expansion-panel-header>
 
-        <v-expansion-panel-content>
-          <v-row no-gutters>
-            <v-col cols="12">
-              <v-data-table
-                :headers="isViewSingles ? headersSingles : headersDoubles"
-                :items="isViewSingles ? itemsSingles : itemsDoubles"
-              ></v-data-table>
-            </v-col>
-          </v-row>
-        </v-expansion-panel-content>
-      </v-expansion-panel>
-    </v-expansion-panels>
+    <v-expansion-panel-content class="pt-2">
+      <v-row no-gutters>
+        <v-col cols="12">
+          <v-data-table
+            :headers="isViewSingles ? headersSingles : headersDoubles"
+            :items="isViewSingles ? itemsSingles : itemsDoubles"
+          ></v-data-table>
+        </v-col>
+      </v-row>
+    </v-expansion-panel-content>
 
-  </v-col>
+  </v-expansion-panel>
 </template>
 
 <script>

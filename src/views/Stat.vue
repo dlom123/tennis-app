@@ -1,94 +1,77 @@
 <template>
-  <v-container fluid class="container-main">
+  <v-container v-if="!isLoading" fluid class="pa-0">
 
-    <Spinner :isLoading="isLoading" />
-
-    <v-row v-if="!isLoading" no-gutters>
-      <v-col sm="10" offset-sm="1">
-
-        <v-row no-gutters class="row-title">
-
-          <v-col>
-            <h1>{{ stat.name }}</h1>
-            <Breadcrumbs :items="breadcrumbItems" />
-          </v-col>
-
-          <v-spacer></v-spacer>
-
-          <v-col align="right">
-            <ToggleSinglesDoubles />
-          </v-col>
-
-        </v-row>
-
-        <FilterBar />
-
-        <v-row no-gutters class="stat-leaders">
-          <v-col cols="12" class="container-leaders">
-
-            <v-list two-line class="list-leaders">
-              <v-list-item
-                v-for="(player, i) in leadersFiltered"
-                :key="`${player.player.firstName}${player.player.lastName}`"
-                :class="['row-leader', { 'row-leader-divider': i + 1 < stat.players.length }]"
-              >
-
-                <v-list-item-icon class="container-rank">
-                  <h3 :class="['rank', { 'rank-top': i === 0 }]">#{{ i + 1 }}</h3>
-                </v-list-item-icon>
-
-                <v-list-item-avatar :size="i === 0 ? 100 : 60" class="container-avatar">
-                  <v-img
-                    :src="require(`../assets/images/headshots/placeholders/${player.player.gender === 'm' ? 'men' : 'women'}/${player.player.gender === 'm' ? 'federer' : 'halep'}.png`)"
-                    width="280"
-                    max-height="230"
-                    :class="getBorderClass(player.player.gender)"
-                    class="avatar"
-                  ></v-img>
-                </v-list-item-avatar>
-
-                <v-list-item-content class="container-info">
-                  <v-list-item-title
-                    v-html="`${player.player.firstName} ${player.player.lastName}`"
-                    :class="['leader-name', getTextHeaderClass(player.player.gender), { 'leader-top': i === 0 }]"
-                  ></v-list-item-title>
-                  <v-list-item-subtitle
-                    v-html="player.hasOwnProperty('total') ? `${player.total}` : displayPercentage(player)"
-                    :class="['leader-total', { 'leader-top': i === 0 }]"
-                  ></v-list-item-subtitle>
-                </v-list-item-content>
-
-              </v-list-item>
-            </v-list>
-
-          </v-col>
-        </v-row>
-
+    <v-row
+      no-gutters
+      :class="{
+        'px-2 pt-3': $vuetify.breakpoint.xsOnly,
+        'my-4': $vuetify.breakpoint.smAndUp
+      }"
+    >
+      <v-col>
+        <NavBack text="Back to Leaderboard" routeName="leaderboard" />
+      </v-col>
+      <v-spacer></v-spacer>
+      <v-col class="d-flex justify-end">
+        <ToggleSinglesDoubles />
       </v-col>
     </v-row>
+
+    <v-row
+      v-if="screenFilters.length > 0"
+      no-gutters
+      class="hidden-md-and-up mt-4 mb-2"
+    >
+      <v-col cols="12">
+        <FilterBar :screenFilters="screenFilters" screenOverride="leaderboard" />
+      </v-col>
+    </v-row>
+
+    <v-row no-gutters>
+
+      <v-col class="hidden-sm-and-down" md="3">
+        <FilterBar :screenFilters="screenFilters" screenOverride="leaderboard" />
+      </v-col>
+
+      <v-col
+        v-if="statFiltered.players.length > 0"
+        cols="12"
+        md="9"
+        :class="{'mb-6': $vuetify.breakpoint.smAndUp}"
+      >
+        <LeaderboardCard :stat="statFiltered" />
+      </v-col>
+      <v-col v-else cols="12" md="9" class="pa-0">
+        <EmptyRow text="Nothing to show." />
+      </v-col>
+
+    </v-row>
+
   </v-container>
 </template>
 
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
-import Breadcrumbs from '@/components/Breadcrumbs'
+import EmptyRow from '@/components/EmptyRow'
 import FilterBar from '@/components/filters/FilterBar'
-import Spinner from '@/components/Spinner'
+import LeaderboardCard from '@/components/LeaderboardCard'
+import NavBack from '@/components/NavBack'
 import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
-import { filterStatLeaders, getGenderBorderClass, getGenderTextClass } from '@/utils/functions'
+import { FILTERS } from '@/utils/constants'
+import { filterStatLeaders } from '@/utils/functions'
 
 export default {
   name: 'stat',
   components: {
-    Breadcrumbs,
+    EmptyRow,
     FilterBar,
-    Spinner,
+    LeaderboardCard,
+    NavBack,
     ToggleSinglesDoubles
   },
   data() {
     return {
-      headers: [],
-      items: []
+      screenFilters: [FILTERS.GENDER]
     }
   },
   computed: {
@@ -97,17 +80,15 @@ export default {
       'isLoading',
       'stat'
     ]),
-    breadcrumbItems() {
-      return [
-        { text: 'Leaderboard', to: { name: 'leaderboard' }, exact: true },
-        { text: this.stat.name, disabled: true }
-      ]
-    },
-    leadersFiltered() {
+    statFiltered() {
       // apply filters
-      const leadersFiltered = filterStatLeaders(this.stat.players, this.filters)
+      const filteredPlayers = filterStatLeaders(this.stat.players, this.filters)
+      const statFiltered = {
+        ...this.stat,
+        players: filteredPlayers
+      }
 
-      return leadersFiltered
+      return statFiltered
     }
   },
   methods: {
@@ -118,20 +99,7 @@ export default {
       'removeAllFiltersExcept',
       'setLoading',
       'setStat'
-    ]),
-    displayPercentage(player) {
-      if (player.in === 0 || player.of === 0) {
-        return '0.00%'
-      }
-
-      return `${((player.in / player.of) * 100).toFixed(2)}%`
-    },
-    getBorderClass(gender) {
-      return getGenderBorderClass(gender)
-    },
-    getTextHeaderClass(gender) {
-      return getGenderTextClass(gender)
-    }
+    ])
   },
   async created() {
     // clear all filters except for the ones for this screen (in case of a refresh)
@@ -146,56 +114,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="sass">
-.container-main
-  height: 100%
-  background-color: #eee
-  .row-title
-    margin: 10px 0 15px 0
-
-.text-men
-  color: #00b1ef
-
-.text-women
-  color: #3313b5
-
-.stat-leaders
-  padding-top: 0
-  margin-bottom: 15px
-  .container-leaders
-    padding: 0
-    .list-leaders
-      padding: 0
-      .row-leader
-        padding: 0px 25px
-      .row-leader-divider
-        border-bottom: 1px solid #e0e0e0
-
-.container-rank
-  margin-left: -10px
-  .rank
-    padding: 0
-    font-size: 14pt
-  .rank-top
-    margin-top: 5px
-    font-size: 22pt
-
-.container-avatar
-  margin-left: -20px
-  .border-men
-    border: 2px solid #00b1ef
-  .border-women
-    border: 2px solid #3313b5
-  .avatar
-    margin: 0 20px
-
-.container-info
-  margin-left: 15px
-  .leader-name
-    font-size: 14pt
-  .leader-total
-    font-size: 14pt
-  .leader-top
-    font-size: 22pt
-</style>

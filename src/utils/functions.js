@@ -3,12 +3,12 @@ import { FILTERS } from '@/utils/constants'
 export function filterPlayers(players, filters) {
   let playersFiltered = [...players]
 
-  // filter: format
-  const filterFormat = filters.find(filter => filter.screen === 'players' && filter.name === FILTERS.FORMAT)
-  if (filterFormat) {
-    if (filterFormat.value === 'men') {
+  // filter: gender
+  const filterGender = filters.find(filter => filter.screen === 'players' && filter.name === FILTERS.GENDER)
+  if (filterGender) {
+    if (filterGender.value === 'male') {
       playersFiltered = playersFiltered.filter(player => player.gender === 'm')
-    } else if (filterFormat.value === 'women') {
+    } else if (filterGender.value === 'female') {
       playersFiltered = playersFiltered.filter(player => player.gender === 'f')
     }
   }
@@ -26,12 +26,12 @@ export function filterStatLeaders(leaders, filters) {
   let leadersFiltered = [...leaders]
 
   if (filters && filters.length) {
-    // filter: format
-    const filterFormat = filters.find(filter => filter.screen === 'stat' && filter.name === FILTERS.FORMAT)
-    if (filterFormat) {
-      if (filterFormat.value === 'men') {
+    // filter: gender (shares filter state with Leaderboard screen)
+    const filterGender = filters.find(filter => filter.screen === 'leaderboard' && filter.name === FILTERS.GENDER)
+    if (filterGender) {
+      if (filterGender.value === 'male') {
         leadersFiltered = leaders.filter(player => player.player.gender === 'm')
-      } else if (filterFormat.value === 'women') {
+      } else if (filterGender.value === 'female') {
         leadersFiltered = leaders.filter(player => player.player.gender === 'f')
       }
     }
@@ -77,6 +77,20 @@ export function getGenderBorderClass(gender) {
 
 export function getGenderTextClass(gender) {
   return { 'text-men': gender === 'm', 'text-women': gender === 'f' }
+}
+
+export function getPercentage(num, denom) {
+  // return integer percentage, rounded to the nearest whole number, without a decimal
+  return Math.round(num / denom * 100)
+}
+
+export function getPrecisionPercentage(num, denom) {
+  // return floating point percentage, with all decimal numbers preserved
+  return ((num / denom) * 100)
+}
+
+export function getShowingText(numShowing, numTotal) {
+  return `Showing ${numShowing} of ${numTotal}`
 }
 
 export function sortPlayers(players, sortBy) {

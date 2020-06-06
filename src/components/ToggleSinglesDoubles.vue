@@ -1,11 +1,11 @@
 <template>
   <v-btn-toggle
-    group
+    dense
     :value="view"
     @change="onChangeToggle"
   >
-    <v-btn value="singles"><h3>Singles</h3></v-btn>
-    <v-btn value="doubles"><h3>Doubles</h3></v-btn>
+    <v-btn value="singles" title="Show singles data only">Singles</v-btn>
+    <v-btn value="doubles" title="Show doubles data only">Doubles</v-btn>
   </v-btn-toggle>
 </template>
 

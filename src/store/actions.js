@@ -1,4 +1,5 @@
 import axios from 'axios'
+import router from '@/router'
 import leaderboardData from '@/data/leaderboard.json'
 import playersData from '@/data/players.json'
 import { FILTERS } from '@/utils/constants'
@@ -14,13 +15,13 @@ export default {
     // const results = await HTTP.get('/leaderboard')
     const leaderboard = JSON.parse(JSON.stringify(leaderboardData))
     const leaderboardFiltered = leaderboard.map(stat => {
-      const filterFormat = state.filters.find(filter => filter.screen === 'leaderboard' && filter.name === FILTERS.FORMAT)
-      if (filterFormat) {
-        switch (filterFormat.value) {
-          case 'men':
+      const filterGender = state.filters.find(filter => filter.screen === 'leaderboard' && filter.name === FILTERS.GENDER)
+      if (filterGender) {
+        switch (filterGender.value) {
+          case 'male':
             stat.players = stat.players.filter(player => player.player.gender === 'm')
             break
-          case 'women':
+          case 'female':
             stat.players = stat.players.filter(player => player.player.gender === 'f')
             break
         }
@@ -65,10 +66,11 @@ export default {
 
     commit('setPlayer', player)
   },
-  getPlayers: async ({ commit }) => {
+  getPlayers: async ({ commit }, payload) => {
     // TODO: get players data from the API
     // const results = await HTTP.get('/players?isActive=true&sort=lastName')
     const players = playersData.singles
+    console.log('here we are', payload)
 
     commit('setPlayers', players)
   },
@@ -87,11 +89,15 @@ export default {
     // TODO: get stat data from the API
     const stat = JSON.parse(JSON.stringify(leaderboardData)).find(stat => stat.id === parseInt(statId, 10))
 
+    if (!stat) {
+      router.push({ name: 'leaderboard' })
+    }
+
     // sort the list of players by stat rank, descending
-    if (stat.players.every(player => player.hasOwnProperty('total'))) {
+    if (stat.players && stat.players.every(player => player.hasOwnProperty('total'))) {
       // integer-based stat
       stat.players.sort((a, b) => (a.total > b.total) ? -1 : 1)
-    } else if (stat.players.every(player => player.hasOwnProperty('in') && player.hasOwnProperty('of'))) {
+    } else if (stat.players && stat.players.every(player => player.hasOwnProperty('in') && player.hasOwnProperty('of'))) {
       // percentage-based stat
       const zeros = stat.players.filter(player => player.of === 0)
       const nonzeros = stat.players.filter(player => player.of > 0)

@@ -93,8 +93,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="sass">
-.filter-body
-  padding-bottom: 0
-</style>

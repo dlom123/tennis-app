@@ -1,5 +1,5 @@
 <template>
-  <v-col cols="12" class="container-matches">
+  <v-col cols="12" class="container-matches pa-0">
     <v-expansion-panels
       multiple
       :value="[0]"
@@ -63,8 +63,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="sass">
-.container-matches
-  padding: 0
-</style>
