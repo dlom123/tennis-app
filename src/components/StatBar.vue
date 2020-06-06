@@ -4,24 +4,27 @@
       <v-progress-linear
         height="25"
         :value="statPercent"
+        @click="toggleShowPercent"
       >
-        <p v-if="showPercent" @click="toggleShowPercent">{{ statPercent }}%</p>
-        <p v-else @click="toggleShowPercent">{{ statRatio }}</p>
+        <span v-if="showPercent">{{ statPercent }}%</span>
+        <span v-else>{{ statRatio }}</span>
       </v-progress-linear>
     </v-col>
   </v-row>
 </template>
 
 <script>
+import { getPercentage } from '@/utils/functions'
+
 export default {
   name: 'statBar',
   props: ['stat', 'showPercent', 'toggleShowPercent'],
   computed: {
     statPercent() {
-      return Math.round(this.stat.in / this.stat.of * 100)
+      return getPercentage(this.stat.value.in, this.stat.value.of)
     },
     statRatio() {
-      return `${this.stat.in}/${this.stat.of}`
+      return `${this.stat.value.in}/${this.stat.value.of}`
     }
   }
 }

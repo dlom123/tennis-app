@@ -1,48 +1,44 @@
 <template>
-  <v-row no-gutters class="player-row" @click="goToPlayer">
-    <v-col :key="`${player.id}`" sm="12" class="col-player">
+  <v-row :key="player.id" no-gutters class="player-row pt-2" @click="goToPlayer">
+
+    <v-col cols="5" class="col-avatar pt-4">
+      <v-img
+        :src="require(`../assets/images/headshots/placeholders/${player.gender === 'm' ? 'men' : 'women'}/${player.gender === 'm' ? 'federer-xs' : 'halep-xs'}.png`)"
+        max-height="160"
+        contain
+      ></v-img>
+    </v-col>
+
+    <v-col cols="7" class="col-info px-2 pt-4">
       <v-row no-gutters>
 
-        <v-col sm="3" class="col-avatar" align="center">
-
-          <v-img
-            :src="require(`../assets/images/headshots/placeholders/${player.gender === 'm' ? 'men' : 'women'}/${player.gender === 'm' ? 'federer' : 'halep'}.png`)"
-            width="280"
-            max-height="230"
-            contain
-          ></v-img>
-
+        <v-col cols="12">
+          <h2 :class="getTextHeaderClass(player.gender)">{{ player.firstName }} {{ player.lastName }}</h2>
         </v-col>
 
-        <v-col sm="9" class="col-info">
-          <v-row no-gutters>
+        <v-col cols="6">
+          <v-row no-gutters class="row-player-info">
 
-            <v-col sm="12">
-              <h2 :class="getTextHeaderClass(player.gender)">{{ player.firstName }} {{ player.lastName }}</h2>
+            <v-col cols="12">
+              <h3>Rating</h3>
             </v-col>
 
-            <v-col sm="3">
-
-              <v-row no-gutters class="row-player-info">
-                <v-col sm="12">
-                  <h3>Rating</h3>
-                </v-col>
-                <v-col sm="12">
-                  <p>{{ player.rating }}</p>
-                </v-col>
-              </v-row>
-
+            <v-col cols="12">
+              <p>{{ player.rating }}</p>
             </v-col>
 
-            <v-col sm="3">
-              <v-row no-gutters class="row-player-info">
-                <v-col sm="12">
-                  <h3>Matches Played</h3>
-                </v-col>
-                <v-col sm="12">
-                  <p>35</p>
-                </v-col>
-              </v-row>
+          </v-row>
+        </v-col>
+
+        <v-col cols="6">
+          <v-row no-gutters class="row-player-info">
+
+            <v-col cols="12">
+              <h3>Gender</h3>
+            </v-col>
+
+            <v-col cols="12">
+              <p>{{ getDisplayGender(player.gender) }}</p>
             </v-col>
 
           </v-row>
@@ -50,6 +46,7 @@
 
       </v-row>
     </v-col>
+
   </v-row>
 </template>
 
@@ -63,6 +60,9 @@ export default {
     'type'
   ],
   methods: {
+    getDisplayGender(gender) {
+      return gender === 'm' ? 'male' : 'female'
+    },
     getTextHeaderClass(gender) {
       return getGenderTextClass(gender)
     },
@@ -75,19 +75,14 @@ export default {
 
 <style scoped lang="sass">
 .player-row
-  border-bottom: 2px solid #aaa
+  border-bottom: 1px solid #e0e0e0
   background-color: white
-  .col-player
-    padding: 20px 0 0
-    .col-avatar
-      position: relative
-    .col-info
-      .text-men
-        color: #00b1ef
-      .text-women
-        color: #3313b5
-      .row-player-info
-        margin-top: 15px
   &:hover
     cursor: pointer
+
+.text-men
+  color: #00b1ef
+
+.text-women
+  color: #3313b5
 </style>

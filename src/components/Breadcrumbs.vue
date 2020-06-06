@@ -1,5 +1,5 @@
 <template>
-  <v-breadcrumbs :items="items" class="breadcrumbs">
+  <v-breadcrumbs large :items="items" class="pa-0">
     <template v-slot:divider>
       <v-icon>mdi-chevron-right</v-icon>
     </template>
@@ -14,6 +14,6 @@ export default {
 </script>
 
 <style scoped lang="sass">
-.breadcrumbs
-  padding: 0
+ul
+  font-family: 'Oswald', sans-serif
 </style>

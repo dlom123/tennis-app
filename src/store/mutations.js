@@ -1,8 +1,13 @@
 export default {
+  removeAllFiltersByScreen: (state, payload) => {
+    state.filters = state.filters.filter(f =>
+      f.screen !== payload.screen
+    )
+  },
   removeAllFiltersExcept: (state, payload) => {
-    state.filters = state.filters.filter(f => {
-      return payload.includes(f.screen)
-    })
+    state.filters = state.filters.filter(f =>
+      payload.includes(f.screen)
+    )
   },
   removeFilter: (state, payload) => {
     state.filters = state.filters.filter(f =>

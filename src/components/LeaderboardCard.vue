@@ -1,129 +1,150 @@
 <template>
-  <v-col cols="6" md="4" class="leaderboard-card">
-    <v-card outlined>
+  <v-card outlined>
 
-      <v-toolbar>
-        <v-toolbar-title v-html="`<h2>${stat.name}</h2>`" class="stat-name"></v-toolbar-title>
-      </v-toolbar>
+    <v-toolbar dark color="primary">
+      <v-toolbar-title v-html="`<h2>${stat.name}</h2>`" class="stat-name"></v-toolbar-title>
+    </v-toolbar>
 
-      <v-divider></v-divider>
+    <v-divider></v-divider>
 
-      <v-card-text class="container-leaders">
-        <v-list two-line class="list-leaders">
+    <v-card-text class="pa-0">
+      <v-list two-line class="pa-0">
+
+        <div v-if="stat.players.length > 0">
           <v-list-item
             v-for="(player, i) in stat.players"
             :key="`${player.player.firstName}${player.player.lastName}`"
-            :class="['row-leader', { 'row-leader-divider': i + 1 < stat.players.length }]"
+            :class="{ 'row-leader-divider': i + 1 < stat.players.length }"
           >
 
-            <v-list-item-icon class="container-rank">
-              <h3 :class="['rank', { 'rank-top': i === 0 }]">#{{ i + 1 }}</h3>
+            <v-list-item-icon>
+              <h3 :class="{ 'rank-top mt-1': i === 0 }">#{{ i + 1 }}</h3>
             </v-list-item-icon>
 
-            <v-list-item-avatar :size="i === 0 ? 100 : 60" class="container-avatar">
+            <v-list-item-avatar :size="i === 0 ? 90 : 60">
               <v-img
-                :src="require(`../assets/images/headshots/placeholders/${player.player.gender === 'm' ? 'men' : 'women'}/${player.player.gender === 'm' ? 'federer' : 'halep'}.png`)"
+                :src="require(`../assets/images/headshots/placeholders/${player.player.gender === 'm' ? 'men' : 'women'}/${player.player.gender === 'm' ? 'federer-xs' : 'halep-xs'}.png`)"
                 width="280"
                 max-height="230"
                 :class="getBorderClass(player.player.gender)"
               ></v-img>
             </v-list-item-avatar>
 
-            <v-list-item-content class="container-info">
-              <v-list-item-title
-                v-html="`${player.player.firstName} ${player.player.lastName}`"
-                :class="['leader-name', getTextHeaderClass(player.player.gender), { 'leader-top': i === 0 }]"
-              ></v-list-item-title>
-              <v-list-item-subtitle
-                v-html="`<p>${player.hasOwnProperty('total') ? player.total : displayPercentage(player)}</p>`"
-                :class="['leader-total', { 'leader-top': i === 0 }]"
-              ></v-list-item-subtitle>
+            <v-list-item-content class="ml-4">
+
+              <v-list-item-title :class="[getTextHeaderClass(player.player.gender)]">
+                <h2 v-if="i === 0">{{ player.player.firstName }} {{ player.player.lastName }}</h2>
+                <h3 v-else>{{ player.player.firstName }} {{ player.player.lastName }}</h3>
+              </v-list-item-title>
+
+              <v-list-item-subtitle :class="['leader-total', {'leader-top': i === 0}]">
+                <span v-if="player.hasOwnProperty('total')">
+                  <span>{{ player.total }}</span>
+                </span>
+                <span v-else @click="toggleShowPercent">
+                  <span v-if="showPercent">{{ displayPercentage(player) }}%</span>
+                  <span v-else>{{ `${player.in}/${player.of}` }}</span>
+                </span>
+              </v-list-item-subtitle>
+
             </v-list-item-content>
 
           </v-list-item>
-        </v-list>
-      </v-card-text>
+        </div>
+        <div v-else>
+          <v-list-item>
+            <v-list-item-content class="ml-4">
+              <p class="text-info ma-0" align="center">No players to show.</p>
+            </v-list-item-content>
+          </v-list-item>
+        </div>
 
-      <v-divider></v-divider>
+      </v-list>
+    </v-card-text>
 
-      <v-card-actions class="container-view-all">
-        <v-btn
-          text
-          color="blue"
-          class="btn-view-all"
-          :to="{ name: 'stat', params: { statId: stat.id }}"
-        ><h4>View All</h4></v-btn>
-      </v-card-actions>
+    <v-divider></v-divider>
 
-    </v-card>
-  </v-col>
+    <v-card-actions
+      v-if="$route.name === 'leaderboard' && stat.players.length > 0"
+      class="container-view-all pa-0"
+    >
+      <v-btn
+        text
+        color="blue"
+        class="btn-view-all"
+        @click="goStat(stat.id)"
+      ><h4>View All</h4></v-btn>
+    </v-card-actions>
+
+  </v-card>
 </template>
 
 <script>
-import { getGenderBorderClass, getGenderTextClass } from '@/utils/functions'
+import { mapMutations, mapState } from 'vuex'
+import { getGenderBorderClass, getGenderTextClass, getPrecisionPercentage } from '@/utils/functions'
 
 export default {
   name: 'leaderboardCard',
   props: ['stat'],
+  data() {
+    return {
+      showPercent: true
+    }
+  },
+  computed: {
+    ...mapState([
+      'filters'
+    ])
+  },
   methods: {
+    ...mapMutations([
+      'updateFilter'
+    ]),
     displayPercentage(player) {
-      return `${((player.in / player.of) * 100).toFixed(2)}%`
+      return getPrecisionPercentage(player.in, player.of).toFixed(2)
     },
     getBorderClass(gender) {
       return getGenderBorderClass(gender)
     },
     getTextHeaderClass(gender) {
       return getGenderTextClass(gender)
+    },
+    goStat(statId) {
+      // any Leaderboard filters set should be maintained within the Stat screen
+      this.filters.forEach(f => {
+        if (f.screen === this.$route.name) {
+          this.updateFilter({ screen: 'stat', name: f.name, value: f.value })
+        }
+      })
+
+      this.$router.push({ name: 'stat', params: { statId } })
+    },
+    toggleShowPercent() {
+      this.showPercent = !this.showPercent
     }
   }
 }
 </script>
 
 <style scoped lang="sass">
-.leaderboard-card
-  padding-top: 0
-  margin-bottom: 15px
-
-.container-leaders
-  padding: 0
-  .list-leaders
-    padding: 0
-    .row-leader
-      padding: 0px 25px
-    .row-leader-divider
-      border-bottom: 1px solid #e0e0e0
-
-.container-rank
-  margin-left: -10px
-  .rank
-    padding: 0
-    font-size: 14pt
-  .rank-top
-    margin-top: 5px
-    font-size: 22pt
-
-.container-avatar
-  margin-left: -20px
-  .border-men
-    border: 2px solid #00b1ef
-  .border-women
-    border: 2px solid #3313b5
-
-.container-info
-  margin-left: 15px
-  .text-men
-    color: #00b1ef
-  .text-women
-    color: #3313b5
-  .leader-name
-    font-size: 14pt
-  .leader-total
-    font-size: 14pt
-  .leader-top
-    font-size: 22pt
+.row-leader-divider
+  border-bottom: 1px solid #e0e0e0
+.rank-top
+  font-size: 22pt
+.leader-total
+  font-size: 14pt
+.leader-top
+  font-size: 20pt
+  font-weight: bold
+  color: green
+.text-men
+  color: #00b1ef
+  white-space: normal
+.text-women
+  color: #3313b5
+  white-space: normal
 
 .container-view-all
-  padding: 0
   .btn-view-all
     width: 100%
     height: 50px

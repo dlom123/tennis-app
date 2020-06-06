@@ -3,7 +3,7 @@
     <v-row no-gutters>
 
       <v-col cols="12">
-        <h4>Format</h4>
+        <h4>Gender</h4>
       </v-col>
 
       <v-col cols="12">
@@ -13,19 +13,14 @@
           hide-details
           dense
           :value="filterValue"
-          @change="onChangeFormat">
+          @change="onChangeGender">
           <v-radio
-            label="men"
-            value="men"
+            label="male"
+            value="male"
           />
           <v-radio
-            label="women"
-            value="women"
-          />
-          <v-radio
-            v-if="isDoubles"
-            label="mixed"
-            value="mixed"
+            label="female"
+            value="female"
           />
         </v-radio-group>
       </v-col>
@@ -39,22 +34,27 @@ import { mapGetters, mapMutations } from 'vuex'
 import { FILTERS } from '@/utils/constants'
 
 export default {
-  name: 'filterFormat',
-  props: ['isDoubles'],
+  name: 'filterGender',
+  props: [
+    'screenOverride' // specify a route name with which to share filter state (e.g., Leaderboard + Stat)
+  ],
   computed: {
     ...mapGetters([
       'getFilterValue'
     ]),
     filterValue() {
-      return this.getFilterValue({ screen: this.$route.name, name: FILTERS.FORMAT })
+      return this.getFilterValue({ screen: this.screenName, name: FILTERS.GENDER })
+    },
+    screenName() {
+      return this.screenOverride ? this.screenOverride : this.$route.name
     }
   },
   methods: {
     ...mapMutations([
       'updateFilter'
     ]),
-    onChangeFormat(value) {
-      this.updateFilter({ screen: this.$route.name, name: FILTERS.FORMAT, value })
+    onChangeGender(value) {
+      this.updateFilter({ screen: this.screenName, name: FILTERS.GENDER, value })
     }
   }
 }

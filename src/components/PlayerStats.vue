@@ -1,144 +1,33 @@
 <template>
-  <v-col cols="12" class="container-stats">
-    <v-expansion-panels
-      multiple
-      :value="[0]"
-    >
-      <v-expansion-panel>
+  <v-expansion-panel>
 
-        <v-expansion-panel-header>
-          <v-row no-gutters>
-            <v-col sm="12">
-              <h2>Player Stats</h2>
-            </v-col>
-          </v-row>
-        </v-expansion-panel-header>
+    <v-expansion-panel-header color="primary">
+      <v-row no-gutters>
+        <v-col>
+          <h2 class="white--text">Player Stats</h2>
+        </v-col>
+      </v-row>
+    </v-expansion-panel-header>
 
-        <v-expansion-panel-content>
-          <v-row no-gutters class="stats-top">
+    <v-expansion-panel-content class="py-3">
 
-            <v-col sm="2">
-              <v-row>
+      <v-row no-gutters class="stats-top pt-3 pb-2">
+        <v-col v-for="stat in statsSimple" :key="stat.name" cols="6" align="center">
+          <h3 class="text-capitalize">{{ stat.name }}</h3>
+          <p>{{ stat.value }}</p>
+        </v-col>
+      </v-row>
 
-                <v-col cols="12" align="right">
-                  <h3>Aces</h3>
-                </v-col>
+      <v-row no-gutters>
+        <v-col v-for="stat in statsPercentages" :key="stat.name" cols="12">
+          <h3 class="text-capitalize">{{ stat.name }}</h3>
+          <StatBar :stat="stat" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
+        </v-col>
+      </v-row>
 
-                <v-col cols="12" align="right">
-                  <h3>Winners</h3>
-                </v-col>
+    </v-expansion-panel-content>
 
-              </v-row>
-            </v-col>
-
-            <v-col sm="4" class="col-stat">
-              <v-row>
-
-                <v-col cols="12">
-                  <p>{{ stats.aces }}</p>
-                </v-col>
-
-                <v-col cols="12">
-                  <p>{{ stats.winners }}</p>
-                </v-col>
-
-              </v-row>
-            </v-col>
-
-            <v-col sm="2">
-              <v-row>
-
-                <v-col cols="12" align="right">
-                  <h3>Double Faults</h3>
-                </v-col>
-
-                <v-col cols="12" align="right">
-                  <h3>Unforced Errors</h3>
-                </v-col>
-
-              </v-row>
-            </v-col>
-
-            <v-col sm="4" class="col-stat">
-              <v-row>
-
-                <v-col cols="12">
-                  <p>{{ stats.doubleFaults }}</p>
-                </v-col>
-
-                <v-col cols="12">
-                  <p>{{ stats.unforcedErrors }}</p>
-                </v-col>
-
-              </v-row>
-            </v-col>
-
-          </v-row>
-
-          <v-row no-gutters>
-            <v-col sm="2">
-
-              <v-row>
-                <v-col cols="12" align="right">
-                  <h3>1st Serve In</h3>
-                </v-col>
-              </v-row>
-
-              <v-row>
-                <v-col cols="12" align="right">
-                  <h3>1st Serve Return</h3>
-                </v-col>
-              </v-row>
-
-              <v-row>
-                <v-col cols="12" align="right">
-                  <h3>2nd Serve Return</h3>
-                </v-col>
-              </v-row>
-
-              <v-row>
-                <v-col cols="12" align="right">
-                  <h3>1st Serve Points Won</h3>
-                </v-col>
-              </v-row>
-
-              <v-row>
-                <v-col cols="12" align="right">
-                  <h3>2nd Serve Points Won</h3>
-                </v-col>
-              </v-row>
-
-              <v-row>
-                <v-col cols="12" align="right">
-                  <h3>Net Points Won</h3>
-                </v-col>
-              </v-row>
-
-              <v-row>
-                <v-col cols="12" align="right">
-                  <h3>Break Points Won</h3>
-                </v-col>
-              </v-row>
-
-            </v-col>
-
-            <v-col sm="10" class="col-stat">
-
-              <StatBar :stat="stats.firstServeIn" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
-              <StatBar :stat="stats.firstServeReturn" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
-              <StatBar :stat="stats.secondServeReturn" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
-              <StatBar :stat="stats.firstServePointsWon" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
-              <StatBar :stat="stats.secondServePointsWon" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
-              <StatBar :stat="stats.netPointsWon" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
-              <StatBar :stat="stats.breakPointsWon" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
-
-            </v-col>
-          </v-row>
-        </v-expansion-panel-content>
-
-      </v-expansion-panel>
-    </v-expansion-panels>
-  </v-col>
+  </v-expansion-panel>
 </template>
 
 <script>
@@ -160,6 +49,12 @@ export default {
       // TODO: filter stats by view type (singles/doubles) using 'view' prop
       return this.stats
     },
+    statsPercentages() {
+      return this.stats.filter(stat => typeof stat.value === 'object')
+    },
+    statsSimple() {
+      return this.stats.filter(stat => typeof stat.value === 'number')
+    },
     statsSingles() {
       // TODO: filter stats by view type (singles/doubles) using 'view' prop
       return this.stats
@@ -172,11 +67,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="sass">
-.container-stats
-  .stats-top
-    margin-bottom: 10px
-  .col-stat
-    padding-left: 15px
-</style>

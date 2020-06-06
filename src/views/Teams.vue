@@ -12,7 +12,7 @@
           </v-col>
         </v-row>
 
-        <FilterBar :isDoubles="true" />
+        <FilterBar :screenFilters="screenFilters" :isDoubles="true" />
 
         <template v-if="teamsSorted.length">
           <TeamRow
@@ -36,6 +36,7 @@ import EmptyRow from '@/components/EmptyRow'
 import FilterBar from '@/components/filters/FilterBar'
 import Spinner from '@/components/Spinner'
 import TeamRow from '@/components/TeamRow'
+import { FILTERS } from '@/utils/constants'
 import { filterTeams, sortTeams } from '@/utils/functions'
 
 export default {
@@ -45,6 +46,11 @@ export default {
     FilterBar,
     Spinner,
     TeamRow
+  },
+  data() {
+    return {
+      screenFilters: [FILTERS.FORMAT, FILTERS.RATING]
+    }
   },
   computed: {
     ...mapState([
