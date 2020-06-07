@@ -17,6 +17,24 @@
       </v-col>
     </v-row>
 
+    <v-row no-gutters
+      :class="{
+        'px-2 pt-2': $vuetify.breakpoint.xsOnly,
+      }"
+    >
+    </v-row>
+
+    <v-row no-gutters class="mb-2 justify-end">
+      <v-col
+        cols="12"
+        sm="6"
+        md="4"
+        :class="[{ 'px-2': $vuetify.breakpoint.xsOnly }]"
+      >
+        <SearchInput placeholder="Player Name" :onChange=onChangeSearch :onClear=onClearSearch />
+      </v-col>
+    </v-row>
+
     <v-row
       v-if="screenFilters.length > 0"
       no-gutters
@@ -56,6 +74,7 @@ import EmptyRow from '@/components/EmptyRow'
 import FilterBar from '@/components/filters/FilterBar'
 import LeaderboardCard from '@/components/LeaderboardCard'
 import NavBack from '@/components/NavBack'
+import SearchInput from '@/components/SearchInput'
 import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
 import { FILTERS } from '@/utils/constants'
 import { filterStatLeaders } from '@/utils/functions'
@@ -67,6 +86,7 @@ export default {
     FilterBar,
     LeaderboardCard,
     NavBack,
+    SearchInput,
     ToggleSinglesDoubles
   },
   data() {
@@ -99,14 +119,25 @@ export default {
       'removeAllFiltersExcept',
       'setLoading',
       'setStat'
-    ])
+    ]),
+    async onChangeSearch(value) {
+      await this.getStat({
+        statId: this.$route.params.statId,
+        search: value
+      })
+    },
+    async onClearSearch() {
+      await this.getStat({
+        statId: this.$route.params.statId
+      })
+    }
   },
   async created() {
     // clear all filters except for the ones for this screen (in case of a refresh)
     this.removeAllFiltersExcept(['stat', 'leaderboard'])
 
     this.setLoading(true)
-    await this.getStat(this.$route.params.statId)
+    await this.getStat({ statId: this.$route.params.statId })
     this.setLoading(false)
   },
   destroyed() {

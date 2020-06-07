@@ -17,6 +17,24 @@
       </v-col>
     </v-row>
 
+    <v-row no-gutters
+      :class="{
+        'px-2 pt-2': $vuetify.breakpoint.xsOnly,
+      }"
+    >
+    </v-row>
+
+    <v-row no-gutters class="mb-2 justify-end">
+      <v-col
+        cols="12"
+        sm="6"
+        md="4"
+        :class="[{ 'px-2': $vuetify.breakpoint.xsOnly }]"
+      >
+        <SearchInput placeholder="Player Name" :onChange=onChangeSearch :onClear=onClearSearch />
+      </v-col>
+    </v-row>
+
     <v-row
       v-if="screenFilters.length > 0"
       no-gutters
@@ -69,6 +87,7 @@ import { mapActions, mapMutations, mapState } from 'vuex'
 import EmptyRow from '@/components/EmptyRow'
 import FilterBar from '@/components/filters/FilterBar'
 import LeaderboardCard from '@/components/LeaderboardCard'
+import SearchInput from '@/components/SearchInput'
 import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
 import { FILTERS } from '@/utils/constants'
 
@@ -78,11 +97,13 @@ export default {
     EmptyRow,
     FilterBar,
     LeaderboardCard,
+    SearchInput,
     ToggleSinglesDoubles
   },
   data() {
     return {
       screenFilters: [FILTERS.GENDER],
+      searchValue: '',
       subMutations: null
     }
   },
@@ -102,10 +123,22 @@ export default {
       'setLeaderboard',
       'setLoading'
     ]),
-    async loadData() {
-      this.setLoading(true)
-      await this.getLeaderboardTopThree()
-      this.setLoading(false)
+    async loadData(searchValue) {
+      // this.setLoading(true)
+      await this.getLeaderboardTopThree({
+        search: searchValue
+      })
+      // this.setLoading(false)
+    },
+    async onChangeSearch(value) {
+      // this.setLoading(true)
+      this.searchValue = value
+      await this.loadData(value)
+      // this.setLoading(false)
+    },
+    async onClearSearch() {
+      this.searchValue = ''
+      await this.loadData()
     }
   },
   beforeRouteEnter(to, from, next) {
@@ -125,7 +158,7 @@ export default {
       if ((mutation.type === 'removeAllFiltersByScreen' && mutation.payload.screen === 'leaderboard') ||
         (mutation.type === 'updateFilter' && mutation.payload.screen === 'leaderboard')
       ) {
-        await this.loadData()
+        await this.loadData(this.searchValue)
       }
     })
 
