@@ -29,7 +29,7 @@
         cols="12"
         sm="6"
         md="4"
-        :class="[{ 'px-2': $vuetify.breakpoint.xsOnly }]"
+        :class="[{ 'px-2 mt-3': $vuetify.breakpoint.xsOnly }]"
       >
         <SearchInput placeholder="Player Name" :onChange=onChangeSearch :onClear=onClearSearch />
       </v-col>
