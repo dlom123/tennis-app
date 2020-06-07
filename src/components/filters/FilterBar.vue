@@ -48,7 +48,7 @@
             x-small
             :ripple="false"
             @click.stop="clearFilters"
-            class="mb-2"
+            class="mb-2 white"
           >
             Clear all filters
           </v-btn>

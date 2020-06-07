@@ -39,15 +39,7 @@
         md="4"
         :class="['align-self-center', { 'pr-2': $vuetify.breakpoint.xsOnly }]"
       >
-        <v-text-field
-        solo
-        dense
-        hide-details
-        clearable
-        append-icon="mdi-magnify"
-        placeholder="Player Name"
-        v-debounce="onChangeSearch"
-        ></v-text-field>
+        <SearchInput placeholder="Player Name" :onChange=onChangeSearch :onClear=onClearSearch />
       </v-col>
     </v-row>
 
@@ -103,6 +95,7 @@ import { mapActions, mapMutations, mapState } from 'vuex'
 import EmptyRow from '@/components/EmptyRow'
 import FilterBar from '@/components/filters/FilterBar'
 import PlayerRow from '@/components/PlayerRow'
+import SearchInput from '@/components/SearchInput'
 import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
 import { FILTERS } from '@/utils/constants'
 import { filterPlayers, getShowingText, sortPlayers } from '@/utils/functions'
@@ -113,6 +106,7 @@ export default {
     EmptyRow,
     FilterBar,
     PlayerRow,
+    SearchInput,
     ToggleSinglesDoubles
   },
   data() {
@@ -148,10 +142,13 @@ export default {
       'setLoading',
       'setPlayers'
     ]),
-    onChangeSearch(value) {
-      this.getPlayers({
+    async onChangeSearch(value) {
+      await this.getPlayers({
         search: value
       })
+    },
+    async onClearSearch() {
+      await this.getPlayers()
     }
   },
   async created() {

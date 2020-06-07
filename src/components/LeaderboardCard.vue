@@ -18,7 +18,7 @@
           >
 
             <v-list-item-icon>
-              <h3 :class="{ 'rank-top mt-1': i === 0 }">#{{ i + 1 }}</h3>
+              <h3 :class="{ 'rank-top mt-1': i === 0 }">#{{ player.rank }}</h3>
             </v-list-item-icon>
 
             <v-list-item-avatar :size="i === 0 ? 90 : 60">

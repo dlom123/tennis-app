@@ -9,7 +9,7 @@ const HTTP = axios.create({
 })
 
 export default {
-  getLeaderboardTopThree: async ({ commit, state }) => {
+  getLeaderboardTopThree: async ({ commit, state }, payload) => {
     // TODO: get leaderboard data from the API
     // TODO: use filters from state to modify API request
     // const results = await HTTP.get('/leaderboard')
@@ -45,6 +45,18 @@ export default {
         stat.players = [...nonzeros, ...zeros]
       }
 
+      // assign ranking to each pre-sorted player
+      for (let i = 0; i < stat.players.length; i++) {
+        stat.players[i].rank = i + 1
+      }
+
+      if (payload && payload.search) {
+        const searchString = payload.search.toLowerCase()
+        stat.players = stat.players.filter(player =>
+          player.player.firstName.toLowerCase().includes(searchString) ||
+          player.player.lastName.toLowerCase().includes(searchString))
+      }
+
       return stat
     })
 
@@ -69,8 +81,12 @@ export default {
   getPlayers: async ({ commit }, payload) => {
     // TODO: get players data from the API
     // const results = await HTTP.get('/players?isActive=true&sort=lastName')
-    const players = playersData.singles
-    console.log('here we are', payload)
+    let players = playersData.singles
+    if (payload && payload.search) {
+      const searchString = payload.search.toLowerCase()
+      players = players.filter(player => player.firstName.toLowerCase().includes(searchString) ||
+                                         player.lastName.toLowerCase().includes(searchString))
+    }
 
     commit('setPlayers', players)
   },
@@ -85,9 +101,10 @@ export default {
       stats
     })
   },
-  getStat: async ({ commit }, statId) => {
+  getStat: async ({ commit }, payload) => {
     // TODO: get stat data from the API
-    const stat = JSON.parse(JSON.stringify(leaderboardData)).find(stat => stat.id === parseInt(statId, 10))
+    const stat = JSON.parse(JSON.stringify(leaderboardData))
+      .find(stat => stat.id === parseInt(payload.statId, 10))
 
     if (!stat) {
       router.push({ name: 'leaderboard' })
@@ -97,13 +114,27 @@ export default {
     if (stat.players && stat.players.every(player => player.hasOwnProperty('total'))) {
       // integer-based stat
       stat.players.sort((a, b) => (a.total > b.total) ? -1 : 1)
-    } else if (stat.players && stat.players.every(player => player.hasOwnProperty('in') && player.hasOwnProperty('of'))) {
+    } else if (stat.players && stat.players.every(player => player.hasOwnProperty('in') &&
+                                                            player.hasOwnProperty('of'))) {
       // percentage-based stat
       const zeros = stat.players.filter(player => player.of === 0)
       const nonzeros = stat.players.filter(player => player.of > 0)
 
       nonzeros.sort((a, b) => ((a.in / a.of) > (b.in / b.of)) ? -1 : 1)
       stat.players = [...nonzeros, ...zeros]
+    }
+
+    // assign ranking to each pre-sorted player
+    for (let i = 0; i < stat.players.length; i++) {
+      stat.players[i].rank = i + 1
+    }
+
+    if (payload && payload.search) {
+      // filter by search input after rankings have already been established
+      const searchString = payload.search.toLowerCase()
+      stat.players = stat.players.filter(player =>
+        player.player.firstName.toLowerCase().includes(searchString) ||
+        player.player.lastName.toLowerCase().includes(searchString))
     }
 
     commit('setStat', stat)

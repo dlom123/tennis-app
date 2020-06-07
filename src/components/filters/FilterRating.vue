@@ -11,6 +11,7 @@
           hide-details
           dense
           outlined
+          background-color="white"
           :items="optionsRatings"
           @change="onChangeRating"
           :value="filterValue"
