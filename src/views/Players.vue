@@ -39,7 +39,7 @@
         md="4"
         :class="['align-self-center', { 'pr-2': $vuetify.breakpoint.xsOnly }]"
       >
-        <SearchInput placeholder="Player Name" :onChange=onChangeSearch :onClear=onClearSearch />
+        <SearchInput placeholder="Player name" :onChange=onChangeSearch :onClear=onClearSearch />
       </v-col>
     </v-row>
 

@@ -31,7 +31,7 @@
         md="4"
         :class="[{ 'px-2 mt-3': $vuetify.breakpoint.xsOnly }]"
       >
-        <SearchInput placeholder="Player Name" :onChange=onChangeSearch :onClear=onClearSearch />
+        <SearchInput placeholder="Player name" :onChange=onChangeSearch :onClear=onClearSearch />
       </v-col>
     </v-row>
 

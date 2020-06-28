@@ -31,7 +31,7 @@
         md="4"
         :class="[{ 'px-2 mt-3': $vuetify.breakpoint.xsOnly }]"
       >
-        <SearchInput placeholder="Player Name" :onChange=onChangeSearch :onClear=onClearSearch />
+        <SearchInput placeholder="Player name" :onChange=onChangeSearch :onClear=onClearSearch />
       </v-col>
     </v-row>
 
@@ -124,17 +124,17 @@ export default {
       'setLoading'
     ]),
     async loadData(searchValue) {
-      // this.setLoading(true)
+      this.setLoading(true)
       await this.getLeaderboardTopThree({
         search: searchValue
       })
-      // this.setLoading(false)
+      this.setLoading(false)
     },
     async onChangeSearch(value) {
-      // this.setLoading(true)
+      this.setLoading(true)
       this.searchValue = value
       await this.loadData(value)
-      // this.setLoading(false)
+      this.setLoading(false)
     },
     async onClearSearch() {
       this.searchValue = ''
