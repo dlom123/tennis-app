@@ -169,12 +169,13 @@
                       class="pa-0 mr-1"
                     >
                       <v-text-field
+                        type="number"
+                        maxlength="1"
                         outlined
                         flat
                         dense
                         hide-details
                         solo
-                        maxlength="1"
                         class="set-score-input"
                       ></v-text-field>
                     </v-col>
@@ -206,12 +207,13 @@
                       class="pa-0 mr-1"
                     >
                       <v-text-field
+                        type="number"
+                        maxlength="1"
                         outlined
                         flat
                         dense
                         hide-details
                         solo
-                        maxlength="1"
                       ></v-text-field>
                     </v-col>
                   </v-row>
