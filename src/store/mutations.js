@@ -21,6 +21,9 @@ export default {
   setLoading: (state, payload) => {
     state.isLoading = payload
   },
+  setLocations: (state, payload) => {
+    state.locations = payload
+  },
   setPlayer: (state, payload) => {
     state.player = payload
   },
