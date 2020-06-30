@@ -1,6 +1,8 @@
 <template>
   <v-btn-toggle
     dense
+    mandatory
+    color="blue"
     :value="view"
     @change="onChangeToggle"
   >
