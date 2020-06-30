@@ -1,0 +1,55 @@
+[
+  {
+    "id": 1,
+    "name": "Indianapolis Racquet Club",
+    "address": {
+      "street1": "8249 Dean Road",
+      "street2": "",
+      "city": "Indianapolis",
+      "state": "IN",
+      "zip": "46240"
+    },
+    "settings": [
+      "indoor"
+    ],
+    "surfaces": [
+      "hard"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Carmel Racquet Club",
+    "address": {
+      "street1": "225 E Carmel Dr",
+      "street2": "",
+      "city": "Carmel",
+      "state": "IN",
+      "zip": "46032"
+    },
+    "settings": [
+      "indoor",
+      "outdoor"
+    ],
+    "surfaces": [
+      "clay",
+      "hard"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Broad Ripple Park",
+    "address": {
+      "street1": "1550 Broad Ripple Ave",
+      "street2": "",
+      "city": "Indianapolis",
+      "state": "IN",
+      "zip": "46220"
+    },
+    "settings": [
+      "outdoor"
+    ],
+    "surfaces": [
+      "hard"
+    ]
+  }
+]

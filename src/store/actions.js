@@ -1,6 +1,7 @@
 import axios from 'axios'
 import router from '@/router'
 import leaderboardData from '@/data/leaderboard.json'
+import locationsData from '@/data/locations.json'
 import playersData from '@/data/players.json'
 import { FILTERS } from '@/utils/constants'
 
@@ -69,6 +70,16 @@ export default {
     })
 
     commit('setLeaderboard', leaderboardTopThree)
+  },
+  getLocations: async ({ commit }) => {
+    let locations = locationsData
+    commit('setLocations', locations)
+  },
+  getLocationSettings: async ({ commit }, locationId) => {
+    console.log('getting location surfaces for ', locationId)
+  },
+  getLocationSurfaces: async ({ commit }, locationId) => {
+    console.log('getting location surfaces for ', locationId)
   },
   getPlayer: async ({ commit }, playerId) => {
     // TODO: get player data from the API

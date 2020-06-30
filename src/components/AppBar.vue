@@ -12,6 +12,7 @@
         <v-btn text :to="{ name: 'players' }">Players</v-btn>
         <!-- <v-btn text :to="{ name: 'teams' }">Teams</v-btn> -->
         <v-btn text :to="{ name: 'leaderboard', params: { clearFilters: true } }">Leaderboard</v-btn>
+        <v-btn text :to="{ name: 'addMatch' }"><v-icon>mdi-plus</v-icon> Match</v-btn>
       </v-toolbar-items>
       <v-btn @click.stop="toggleDrawer" class="hidden-sm-and-up text-capitalize">
         Menu
@@ -48,7 +49,8 @@ export default {
       drawer: false,
       items: [
         { name: 'Players', icon: 'mdi-account-group', route: 'players' },
-        { name: 'Leaderboard', icon: 'mdi-clipboard-list', route: 'leaderboard' }
+        { name: 'Leaderboard', icon: 'mdi-clipboard-list', route: 'leaderboard' },
+        { name: 'Match', icon: 'mdi-plus', route: 'addMatch' }
       ]
     }
   },

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import AddMatch from '@/views/AddMatch'
 import Leaderboard from '@/views/Leaderboard'
 import Player from '@/views/Player'
 import Players from '@/views/Players'
@@ -20,6 +21,11 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: Players
+    },
+    {
+      path: '/add-match',
+      name: 'addMatch',
+      component: AddMatch
     },
     {
       path: '/leaderboard',
