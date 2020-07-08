@@ -23,7 +23,7 @@
 
             <v-list-item-avatar :size="i === 0 ? 90 : 60">
               <v-img
-                :src="require(`../assets/images/headshots/placeholders/${player.player.gender === 'm' ? 'men' : 'women'}/${player.player.gender === 'm' ? 'federer-xs' : 'halep-xs'}.png`)"
+                :src="require(`../assets/images/headshots/${player.player.gender === 'm' ? 'men' : 'women'}/silhouette.png`)"
                 width="280"
                 max-height="230"
                 :class="getBorderClass(player.player.gender)"

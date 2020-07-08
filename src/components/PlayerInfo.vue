@@ -8,7 +8,7 @@
         align="center"
       >
         <v-img
-          :src="require(`../assets/images/headshots/placeholders/${player.gender === 'm' ? 'men' : 'women'}/${player.gender === 'm' ? 'federer-xs' : 'halep-xs'}.png`)"
+          :src="require(`../assets/images/headshots/${player.gender === 'm' ? 'men' : 'women'}/silhouette.png`)"
           max-height="210"
           max-width="250"
           contain

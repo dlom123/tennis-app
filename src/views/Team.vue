@@ -26,7 +26,7 @@
                   align="center"
                 >
                   <v-img
-                    :src="require(`../assets/images/headshots/placeholders/${player.gender === 'm' ? 'men' : 'women'}/${player.gender === 'm' ? 'federer' : 'halep'}.png`)"
+                    :src="require(`../assets/images/headshots/${player.gender === 'm' ? 'men' : 'women'}/silhouette.png`)"
                     width="280"
                     max-height="230"
                     contain
