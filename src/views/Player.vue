@@ -17,8 +17,8 @@
       </v-col>
     </v-row>
 
-    <v-row v-if="$vuetify.breakpoint.smAndDown">
-      <v-col cols="12" :class="{ 'px-6': $vuetify.breakpoint.xsOnly }" class="pb-0">
+    <v-row no-gutters v-if="$vuetify.breakpoint.smAndDown" class="mt-3">
+      <v-col cols="12" :class="{ 'px-3': $vuetify.breakpoint.xsOnly }" class="pb-2">
         <PlayerInfo :player="player" />
       </v-col>
       <v-col cols="12">
