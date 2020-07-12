@@ -1,10 +1,11 @@
 <template>
   <v-container fluid class="pa-0">
-     <v-row no-gutters>
+    <v-row no-gutters>
       <v-col
         cols="12"
         md="10" offset-md="1"
-        lg="8" offset-lg="2">
+        lg="8" offset-lg="2"
+        class="pb-4">
 
         <v-row
           no-gutters
@@ -143,80 +144,40 @@
               class="mx-auto pb-2"
               outlined
             >
-              <v-toolbar flat color="blue" dark>
+              <v-toolbar flat color="blue" dark class="mb-4">
                 <v-toolbar-title><h2>Sets</h2></v-toolbar-title>
               </v-toolbar>
 
-              <v-row no-gutters class="pa-1 my-2">
-                <v-col cols="4" class="ml-2">
-                  <v-row no-gutters v-for="n in playersPerSide" :key="n">
-                    <v-autocomplete
-                      background-color="white"
-                      hide-details
-                      hide-selected
-                      dense
-                      placeholder="Select player"
-                      :items="itemsPlayers"
-                      @change="onChangePlayer(n)"
-                    ></v-autocomplete>
-                  </v-row>
-                </v-col>
-                <v-col class="py-0 my-auto ml-2">
-                  <v-row no-gutters>
-                    <v-col
-                      cols="2"
-                      v-for="n in 5" :key="n"
-                      class="pa-0 mr-1"
-                    >
-                      <v-text-field
-                        type="number"
-                        maxlength="1"
-                        outlined
-                        flat
-                        dense
-                        hide-details
-                        solo
-                        class="set-score-input"
-                      ></v-text-field>
-                    </v-col>
-                  </v-row>
-                </v-col>
-              </v-row>
+              <AddSetsRow
+                :numPlayersPerSide="numPlayersPerSide"
+                :showTiebreakerRows="showTiebreakerRows"
+                side="1" />
 
               <v-divider></v-divider>
 
-              <v-row no-gutters class="pa-1 mb-2">
-                <v-col cols="4" class="ml-2">
-                  <v-row no-gutters v-for="n in playersPerSide" :key="n">
-                    <v-autocomplete
-                      background-color="white"
-                      hide-details
-                      hide-selected
-                      dense
-                      placeholder="Select player"
-                      :items="itemsPlayers"
-                      @change="onChangePlayer(n)"
-                    ></v-autocomplete>
-                  </v-row>
-                </v-col>
-                <v-col class="py-0 my-auto ml-2">
-                  <v-row no-gutters>
-                    <v-col
-                      cols="2"
-                      v-for="n in 5" :key="n"
-                      class="pa-0 mr-1"
-                    >
-                      <v-text-field
-                        type="number"
-                        maxlength="1"
-                        outlined
-                        flat
-                        dense
-                        hide-details
-                        solo
-                      ></v-text-field>
-                    </v-col>
-                  </v-row>
+              <AddSetsRow
+                :numPlayersPerSide="numPlayersPerSide"
+                :showTiebreakerRows="showTiebreakerRows"
+                side="2"
+                class="pb-2" />
+
+              <v-divider></v-divider>
+
+              <v-row no-gutters>
+                <v-col class="pl-2 pt-1">
+                  <v-btn
+                    text
+                    x-small
+                    color="blue"
+                    @click="showTiebreakerRows = !showTiebreakerRows"
+                  >
+                    <template v-if="!showTiebreakerRows">
+                      Show tiebreaker scores
+                    </template>
+                    <template v-else>
+                      Hide tiebreaker scores
+                    </template>
+                  </v-btn>
                 </v-col>
               </v-row>
 
@@ -238,9 +199,13 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
+import AddSetsRow from '@/components/AddSetsRow'
 
 export default {
   name: 'player',
+  components: {
+    AddSetsRow
+  },
   data() {
     return {
       date: null,
@@ -252,6 +217,7 @@ export default {
       locationSurfaces: [],
       matchType: 'singles',
       showDateMenu: false,
+      showTiebreakerRows: false,
       showTimeMenu: false,
       time: null
     }
@@ -271,16 +237,7 @@ export default {
       })
       return locations
     },
-    itemsPlayers() {
-      const players = this.players.map(player => {
-        return {
-          text: `${player.firstName} ${player.lastName}`,
-          value: player
-        }
-      })
-      return players
-    },
-    playersPerSide() {
+    numPlayersPerSide() {
       return this.matchType === 'singles' ? 1 : 2
     }
   },
