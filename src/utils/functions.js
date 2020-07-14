@@ -89,10 +89,6 @@ export function getPrecisionPercentage(num, denom) {
   return ((num / denom) * 100)
 }
 
-export function getShowingText(numShowing, numTotal) {
-  return `Showing ${numShowing} of ${numTotal}`
-}
-
 export function sortPlayers(players, sortBy) {
   if (!sortBy) {
     // default sort order: name
