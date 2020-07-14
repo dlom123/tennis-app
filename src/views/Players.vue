@@ -31,7 +31,7 @@
         :class="['mb-1', { 'pl-2 mt-3': $vuetify.breakpoint.smAndDown }]"
         class="align-self-end"
       >
-        <p class="text-italic mb-0">{{ showingText }}</p>
+        <p class="text-italic mb-0">{{ this.playersSorted.length }} player{{ this.playersSorted.length !== 1 ? 's' : '' }}</p>
       </v-col>
       <v-spacer></v-spacer>
       <v-col
@@ -98,7 +98,7 @@ import PlayerRow from '@/components/PlayerRow'
 import SearchInput from '@/components/SearchInput'
 import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
 import { FILTERS } from '@/utils/constants'
-import { filterPlayers, getShowingText, sortPlayers } from '@/utils/functions'
+import { filterPlayers, sortPlayers } from '@/utils/functions'
 
 export default {
   name: 'players',
@@ -120,9 +120,6 @@ export default {
       'isLoading',
       'players'
     ]),
-    showingText() {
-      return getShowingText(this.playersSorted.length, this.players.length)
-    },
     playersSorted() {
       // apply filters
       const playersFiltered = filterPlayers(this.players, this.filters)

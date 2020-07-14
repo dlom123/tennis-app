@@ -90,16 +90,18 @@ export default {
     commit('setPlayer', player)
   },
   getPlayers: async ({ commit }, payload) => {
-    // TODO: get players data from the API
-    // const results = await HTTP.get('/players?isActive=true&sort=lastName')
-    let players = playersData.singles
-    if (payload && payload.search) {
-      const searchString = payload.search.toLowerCase()
-      players = players.filter(player => player.firstName.toLowerCase().includes(searchString) ||
-                                         player.lastName.toLowerCase().includes(searchString))
-    }
+    try {
+      let queryParams = ''
+      if (payload && payload.search) {
+        queryParams += `?search=${payload.search}`
+      }
+      const response = await HTTP.get(`/players${queryParams}`)
+      const players = response.data.data.players
 
-    commit('setPlayers', players)
+      commit('setPlayers', players)
+    } catch (e) {
+      console.error(e)
+    }
   },
   getPlayerStats: async ({ commit }, payload) => {
     // TODO: get player stats data from the API
