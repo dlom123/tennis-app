@@ -20,6 +20,7 @@ export default new Vuex.Store({
     isLoading: false,
     leaderboard: [],
     player: {},
+    playerMatches: [],
     players: [],
     stat: {},
     team: {},

@@ -15,7 +15,7 @@
         <!-- <v-col v-for="stat in statsSimple" :key="stat.name" cols="6" align="center"> -->
         <v-col cols="6" align="center">
           <h3 class="text-capitalize">Match Win %</h3>
-          <p>10/12 (50%)</p>
+          <p>{{ matchWinPercentage || 'N/A' }}</p>
         </v-col>
         <v-col cols="6" align="center">
           <h3 class="text-capitalize">Sets Played</h3>
@@ -31,51 +31,33 @@
         </v-col>
       </v-row>
 
-      <!-- <v-row no-gutters>
-        <v-col v-for="stat in statsPercentages" :key="stat.name" cols="12">
-          <h3 class="text-capitalize">{{ stat.name }}</h3>
-          <StatBar :stat="stat" :showPercent="showPercent" :toggleShowPercent="toggleShowPercent" />
-        </v-col>
-      </v-row> -->
-
     </v-expansion-panel-content>
 
   </v-expansion-panel>
 </template>
 
 <script>
-import StatBar from '@/components/StatBar'
+import { mapState } from 'vuex'
+import { calculateMatchWinsDoubles, calculateMatchWinsSingles } from '@/utils/functions'
 
 export default {
   name: 'playerStats',
-  components: {
-    StatBar
-  },
-  props: ['stats', 'view'],
-  data() {
-    return {
-      showPercent: true
-    }
-  },
   computed: {
-    statsDoubles() {
-      // TODO: filter stats by view type (singles/doubles) using 'view' prop
-      return this.stats
-    },
-    statsPercentages() {
-      return this.stats.filter(stat => typeof stat.value === 'object')
-    },
-    statsSimple() {
-      return this.stats.filter(stat => typeof stat.value === 'number')
-    },
-    statsSingles() {
-      // TODO: filter stats by view type (singles/doubles) using 'view' prop
-      return this.stats
-    }
-  },
-  methods: {
-    toggleShowPercent() {
-      this.showPercent = !this.showPercent
+    ...mapState([
+      'playerMatches',
+      'view'
+    ]),
+    matchWinPercentage() {
+      if (!this.playerMatches.length) {
+        return {}
+      }
+      let result = {}
+      if (this.view === 'singles') {
+        result = calculateMatchWinsSingles(this.playerMatches, this.$route.params.playerId)
+      } else {
+        result = calculateMatchWinsDoubles(this.playerMatches, this.$route.params.playerId)
+      }
+      return result
     }
   }
 }

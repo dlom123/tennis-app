@@ -1,5 +1,23 @@
 import { FILTERS } from '@/utils/constants'
 
+export function calculateMatchWinsDoubles(matches, playerId) {
+  // calculate how many of the given matches were won by the given player id
+  // TODO: get player's team id
+  console.log('MATCHES', matches)
+  console.log('PLYR', playerId)
+  // TODO: look through each set and compare team scores
+}
+
+export function calculateMatchWinsSingles(matches, playerId) {
+  // calculate how many of the given matches were won by the given player id
+  console.log('MATCHES', matches)
+  console.log('PLYR', playerId)
+  // TODO: look through each match's sets and compare player scores
+  matches.forEach(match => {
+    console.log(match.sets)
+  })
+}
+
 export function filterPlayers(players, filters) {
   let playersFiltered = [...players]
 
@@ -71,6 +89,10 @@ export function filterTeams(teams, filters) {
   return teamsFiltered
 }
 
+export function getDisplayGender(gender) {
+  return gender === 'm' ? 'male' : 'female'
+}
+
 export function getGenderBorderClass(gender) {
   return { 'border-men': gender === 'm', 'border-women': gender === 'f' }
 }
@@ -128,4 +150,15 @@ export function sortTeams(teams) {
   )
 
   return teams
+}
+
+function inchesToCentimeters(inches) {
+  return Math.floor(inches * 2.54)
+}
+
+export function translateHeight(totalInches) {
+  const feet = Math.floor(totalInches / 12)
+  const inches = Math.floor(totalInches % 12)
+  const cm = inchesToCentimeters(totalInches)
+  return `${feet}'${inches}" (${cm} cm)`
 }

@@ -19,16 +19,16 @@
 
     <v-row no-gutters v-if="$vuetify.breakpoint.smAndDown" class="mt-3">
       <v-col cols="12" :class="{ 'px-3': $vuetify.breakpoint.xsOnly }" class="pb-2">
-        <PlayerInfo :player="player" />
+        <PlayerInfo />
       </v-col>
       <v-col cols="12">
-        <PlayerData :player="player" />
+        <PlayerData />
       </v-col>
     </v-row>
     <v-row v-else>
 
       <v-col md="4">
-        <PlayerInfo :player="player" />
+        <PlayerInfo />
       </v-col>
 
       <v-col md="8">
@@ -39,7 +39,7 @@
           <!-- </v-col> -->
         <!-- </v-row> -->
 
-        <PlayerData :player="player" />
+        <PlayerData />
 
       </v-col>
 
@@ -73,18 +73,19 @@ export default {
   computed: {
     ...mapState([
       'isLoading',
-      'player',
       'view'
     ])
   },
   methods: {
     ...mapActions([
-      'getPlayer'
+      'getPlayer',
+      'getPlayerMatches'
     ]),
     ...mapMutations([
       'removeAllFiltersExcept',
       'setLoading',
-      'setPlayer'
+      'setPlayer',
+      'setPlayerMatches'
     ])
   },
   async created() {
@@ -93,10 +94,15 @@ export default {
 
     this.setLoading(true)
     await this.getPlayer(this.$route.params.playerId)
+    await this.getPlayerMatches({
+      playerId: this.$route.params.playerId,
+      type: this.view
+    })
     this.setLoading(false)
   },
   destroyed() {
     this.setPlayer({})
+    this.setPlayerMatches([])
   }
 }
 </script>

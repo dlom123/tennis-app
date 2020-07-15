@@ -27,6 +27,9 @@ export default {
   setPlayer: (state, payload) => {
     state.player = payload
   },
+  setPlayerMatches: (state, payload) => {
+    state.playerMatches = payload
+  },
   setPlayers: (state, payload) => {
     state.players = payload
   },

@@ -12,8 +12,8 @@
           multiple
           :value="[0,1]"
         >
-          <PlayerStats :stats="player.stats" :view="view" />
-          <PlayerMatches :matches="player.matches" :view="view" />
+          <PlayerStats />
+          <!-- <PlayerMatches /> -->
         </v-expansion-panels>
       </v-col>
     </v-row>
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import PlayerMatches from '@/components/PlayerMatches'
 import PlayerStats from '@/components/PlayerStats'
 
@@ -31,12 +30,6 @@ export default {
   components: {
     PlayerMatches,
     PlayerStats
-  },
-  props: ['player'],
-  computed: {
-    ...mapState([
-      'view'
-    ])
   }
 }
 </script>

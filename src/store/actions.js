@@ -82,12 +82,14 @@ export default {
     console.log('getting location surfaces for ', locationId)
   },
   getPlayer: async ({ commit }, playerId) => {
-    // TODO: get player data from the API
-    // const results = await HTTP.get('/player/1')
-    const players = playersData.singles
-    const player = await players.filter(player => player.id.toString() === playerId.toString())[0]
+    const response = await HTTP.get(`/players/${playerId}`)
 
-    commit('setPlayer', player)
+    commit('setPlayer', response.data.data.player)
+  },
+  getPlayerMatches: async ({ commit }, payload) => {
+    const response = await HTTP.get(`/players/${payload.playerId}/matches?type=${payload.type}`)
+    const playerMatches = response.data.data
+    commit('setPlayerMatches', playerMatches)
   },
   getPlayers: async ({ commit }, payload) => {
     try {
