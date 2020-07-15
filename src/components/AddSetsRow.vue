@@ -3,7 +3,7 @@
     <v-col>
 
       <AddSetsTiebreakerRow
-        v-show="showTiebreakerRows && side == 1"
+        v-show="showTiebreakerRows && Number(side) === 1"
         :side="side"
         :numSets="numSets"
         :onChangeTiebreakerSet="onChangeTiebreakerSet"
@@ -30,7 +30,7 @@
       </v-row>
 
       <AddSetsTiebreakerRow
-        v-show="showTiebreakerRows && side == 2"
+        v-show="showTiebreakerRows && Number(side) === 2"
         :side="side"
         :numSets="numSets"
         :onChangeTiebreakerSet="onChangeTiebreakerSet"

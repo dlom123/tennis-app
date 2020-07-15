@@ -120,7 +120,7 @@
               v-model="locationSetting"
               dense
               background-color="white"
-              :disabled="locationSettings.length == 1"
+              :disabled="locationSettings.length === 1"
               :items="locationSettings"
             ></v-select>
           </v-col>
@@ -132,7 +132,7 @@
               v-model="locationSurface"
               dense
               background-color="white"
-              :disabled="locationSurfaces.length == 1"
+              :disabled="locationSurfaces.length === 1"
               :items="locationSurfaces"
             ></v-select>
           </v-col>
