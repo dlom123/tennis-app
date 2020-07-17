@@ -1,5 +1,18 @@
 import { FILTERS } from '@/utils/constants'
 
+export function calculateGamesPlayed(matches, playerId) {
+  // calculate how many total games have been played by
+  // the given player id for the given matches
+  let totalGames = 0
+  matches.forEach(match => {
+    match.sets.forEach(set => {
+      totalGames += set.score
+    })
+  })
+
+  return totalGames
+}
+
 export function calculateMatchWinsDoubles(matches, playerId) {
   // calculate how many of the given matches were won by the given player id
   // TODO: get player's team id
@@ -10,12 +23,52 @@ export function calculateMatchWinsDoubles(matches, playerId) {
 
 export function calculateMatchWinsSingles(matches, playerId) {
   // calculate how many of the given matches were won by the given player id
-  console.log('MATCHES', matches)
-  console.log('PLYR', playerId)
-  // TODO: look through each match's sets and compare player scores
+  let totalMatchesPlayed = 0
+  let totalMatchesWon = 0
   matches.forEach(match => {
-    console.log(match.sets)
+    totalMatchesPlayed++
+    const winnerPlayerId = getMatchWinner(match)
+    if (winnerPlayerId === playerId) {
+      totalMatchesWon++
+    }
   })
+
+  return {
+    won: totalMatchesWon,
+    of: totalMatchesPlayed
+  }
+}
+
+export function calculateSetsPlayedSingles(matches, playerId) {
+  // calculate how many total sets have been played by
+  // the given player id for the given singles matches
+  let totalSets = 0
+  matches.forEach(match => {
+    match.sets.forEach(set => {
+      if (set.player.id === Number(playerId)) {
+        totalSets++
+      }
+    })
+  })
+
+  return totalSets
+}
+
+export function calculateSetsPlayedDoubles(matches, playerId) {
+  // calculate how many total sets have been played by
+  // the given player id for the given doubles matches
+  let totalSets = 0
+  matches.forEach(match => {
+    match.sets.forEach(set => {
+      set.team.players.forEach(player => {
+        if (player.player.id === Number(playerId)) {
+          totalSets++
+        }
+      })
+    })
+  })
+
+  return totalSets
 }
 
 export function filterPlayers(players, filters) {
@@ -99,6 +152,64 @@ export function getGenderBorderClass(gender) {
 
 export function getGenderTextClass(gender) {
   return { 'text-men': gender === 'm', 'text-women': gender === 'f' }
+}
+
+export function getMatchWinner(match) {
+  const players = {}
+
+  // build a sequential data structure of each player's set scores for each match
+  /*
+    players = {
+      <playerId>: {
+          games: [2, 6],
+          tiebreaker_points: [0, 7]
+        }
+    }
+  */
+  match.sets.forEach(set => {
+    if (!players.hasOwnProperty(set.player.id)) {
+      players[set.player.id] = {
+        games: [set.score],
+        tiebreakerPoints: [set.tiebreakerScore]
+      }
+    } else {
+      players[set.player.id].games.splice(set.seq, 0, set.score)
+      players[set.player.id].tiebreakerPoints.splice(set.seq, 0, set.tiebreakerScore)
+    }
+  })
+
+  // calculate who won the match
+  let winnerValue = 0 // used as a +/- tally to decide which playerId has won the match
+  const playerIds = Object.keys(players)
+  const playerOne = players[playerIds[0]]
+  const playerTwo = players[playerIds[1]]
+  // games array length will always be the same beween players
+  for (let i = 0; i < playerOne.games.length; i++) {
+    // tiebreaker score will be the first decider
+    if (playerOne.tiebreakerPoints[i] !== null) {
+      // this set is decided by a tiebreaker
+      if (playerOne.tiebreakerPoints[i] > playerTwo.tiebreakerPoints[i]) {
+        winnerValue--
+      } else if (playerTwo.tiebreakerPoints[i] > playerOne.tiebreakerPoints[i]) {
+        winnerValue++
+      }
+    } else {
+      // this set is not decided by a tiebreaker
+      if (playerOne.games[i] > playerTwo.games[i]) {
+        winnerValue--
+      } else if (playerTwo.games[i] > playerOne.games[i]) {
+        winnerValue++
+      }
+    }
+  }
+
+  // return the winning player id based on which way the +/- tally landed
+  // - this should never be 0 for a real match (no draws)
+  if (winnerValue < 0) {
+    return playerIds[0]
+  } else if (winnerValue > 0) {
+    return playerIds[1]
+  }
 }
 
 export function getPercentage(num, denom) {

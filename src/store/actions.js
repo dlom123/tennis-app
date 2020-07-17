@@ -87,9 +87,9 @@ export default {
     commit('setPlayer', response.data.data.player)
   },
   getPlayerMatches: async ({ commit }, payload) => {
-    const response = await HTTP.get(`/players/${payload.playerId}/matches?type=${payload.type}`)
-    const playerMatches = response.data.data
-    commit('setPlayerMatches', playerMatches)
+    const response = await HTTP.get(`/players/${payload.playerId}/matches`)
+    commit('setPlayerMatchesSingles', response.data.data.singles)
+    commit('setPlayerMatchesDoubles', response.data.data.doubles)
   },
   getPlayers: async ({ commit }, payload) => {
     try {
