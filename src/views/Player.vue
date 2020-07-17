@@ -94,15 +94,13 @@ export default {
 
     this.setLoading(true)
     await this.getPlayer(this.$route.params.playerId)
-    await this.getPlayerMatches({
-      playerId: this.$route.params.playerId,
-      type: this.view
-    })
+    await this.getPlayerMatches({ playerId: this.$route.params.playerId })
     this.setLoading(false)
   },
   destroyed() {
     this.setPlayer({})
-    this.setPlayerMatches([])
+    this.setPlayerMatchesDoubles([])
+    this.setPlayerMatchesSingles([])
   }
 }
 </script>

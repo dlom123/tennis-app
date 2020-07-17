@@ -27,8 +27,11 @@ export default {
   setPlayer: (state, payload) => {
     state.player = payload
   },
-  setPlayerMatches: (state, payload) => {
-    state.playerMatches = payload
+  setPlayerMatchesDoubles: (state, payload) => {
+    state.playerMatchesDoubles = payload
+  },
+  setPlayerMatchesSingles: (state, payload) => {
+    state.playerMatchesSingles = payload
   },
   setPlayers: (state, payload) => {
     state.players = payload
