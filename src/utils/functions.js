@@ -15,27 +15,12 @@ export function calculateGamesPlayed(matches) {
 
 export function calculateMatchWinsDoubles(matches, playerId) {
   // calculate how many of the given matches were won by the given player id's team
-  let playerTeamId = 0
   let totalMatchesPlayed = 0
   let totalMatchesWon = 0
   matches.forEach(match => {
     totalMatchesPlayed++
     // get the team id that the player was a part of for this match
-    for (let i = 0; i < match.sets.length; i++) {
-      const thisSet = match.sets[i]
-      for (let j = 0; j < thisSet.team.players.length; j++) {
-        const thisPlayer = thisSet.team.players[j]
-        if (thisPlayer.id === Number(playerId)) {
-          playerTeamId = thisSet.team.id
-          // found it...we can stop looking now
-          break
-        }
-      }
-      if (playerTeamId !== 0) {
-        // no, really...we got it...no need to iterate any further
-        break
-      }
-    }
+    const playerTeamId = getMatchTeamIdByPlayerId(match, playerId)
 
     // calculate the winner of the match
     const winnerTeamId = getMatchWinnerDoubles(match)
@@ -100,6 +85,43 @@ export function calculateSetsPlayedSingles(matches, playerId) {
   })
 
   return totalSets
+}
+
+export function calculateTiebreakerWinsDoubles(matches, playerId) {
+  // calculate how many of the given match's tiebreakers were won by the given player id's team
+  let totalTiebreakersPlayed = 0
+  let totalTiebreakersWon = 0
+  matches.forEach(match => {
+    // get the team id that the player was a part of for this match
+    const playerTeamId = getMatchTeamIdByPlayerId(match, playerId)
+
+    // calculate the total number of tiebreakers won by the given team id during this match
+    const tiebreakers = getNumTiebreakersWonDoubles(match, playerTeamId)
+    totalTiebreakersWon += tiebreakers.won
+    totalTiebreakersPlayed += tiebreakers.of
+  })
+
+  return {
+    won: totalTiebreakersWon,
+    of: totalTiebreakersPlayed
+  }
+}
+
+export function calculateTiebreakerWinsSingles(matches, playerId) {
+  // calculate how many of the given matches were won by the given player id
+  let totalTiebreakersPlayed = 0
+  let totalTiebreakersWon = 0
+  matches.forEach(match => {
+    // calculate the total number of tiebreakers won by the given player id during this match
+    const tiebreakers = getNumTiebreakersWonSingles(match, playerId)
+    totalTiebreakersWon += tiebreakers.won
+    totalTiebreakersPlayed += tiebreakers.of
+  })
+
+  return {
+    won: totalTiebreakersWon,
+    of: totalTiebreakersPlayed
+  }
 }
 
 export function filterPlayers(players, filters) {
@@ -185,6 +207,28 @@ export function getGenderTextClass(gender) {
   return { 'text-men': gender === 'm', 'text-women': gender === 'f' }
 }
 
+export function getMatchTeamIdByPlayerId(match, playerId) {
+  /* Returns the id of the team which the player belonged to for the given match */
+  let teamId = 0
+  for (let i = 0; i < match.sets.length; i++) {
+    const thisSet = match.sets[i]
+    for (let j = 0; j < thisSet.team.players.length; j++) {
+      const thisPlayer = thisSet.team.players[j]
+      if (thisPlayer.id === Number(playerId)) {
+        teamId = thisSet.team.id
+        // found it...we can stop looking now
+        break
+      }
+    }
+    if (teamId !== 0) {
+      // no, really...we got it...no need to iterate any further
+      break
+    }
+  }
+
+  return teamId
+}
+
 export function getMatchWinnerDoubles(match) {
   /* Returns the id of the team that won the match */
   const teams = {}
@@ -215,7 +259,7 @@ export function getMatchWinnerDoubles(match) {
   const teamIds = Object.keys(teams)
   const teamOne = teams[teamIds[0]]
   const teamTwo = teams[teamIds[1]]
-  // games array length will always be the same beween players
+  // games array length will always be the same beween teams
   for (let i = 0; i < teamOne.games.length; i++) {
     // tiebreaker score will be the first decider
     if (teamOne.tiebreakerPoints[i] !== null) {
@@ -300,6 +344,100 @@ export function getMatchWinnerSingles(match) {
     return playerIds[0]
   } else if (winnerValue > 0) {
     return playerIds[1]
+  }
+}
+
+export function getNumTiebreakersWonDoubles(match, teamId) {
+  /* Returns the total number of tiebreakers won by the team to which the given playerId belongs for the given match */
+  const teams = {}
+
+  // build a sequential data structure of each team's tiebreaker scores for each match
+  /*
+    teams = {
+      <teamId>: {
+          tiebreaker_points: [0, 7]
+        }
+    }
+  */
+  match.sets.forEach(set => {
+    if (!teams.hasOwnProperty(set.team.id)) {
+      teams[set.team.id] = {
+        tiebreakerPoints: [set.tiebreakerScore]
+      }
+    } else {
+      teams[set.team.id].tiebreakerPoints.splice(set.seq, 0, set.tiebreakerScore)
+    }
+  })
+
+  // calculate who won the tiebreakers
+  const teamIds = Object.keys(teams)
+  const teamOne = teams[teamIds[0]]
+  const teamTwo = teams[teamIds[1]]
+  let totalTiebreakersPlayed = 0
+  let totalTiebreakersWon = 0
+  // tiebreakers array length will always be the same beween teams
+  for (let i = 0; i < teamOne.tiebreakerPoints.length; i++) {
+    if (teamOne.tiebreakerPoints[i] !== null) {
+      totalTiebreakersPlayed++
+      // this set was decided by a tiebreaker
+      if (Number(teamIds[0]) === Number(teamId) && teamOne.tiebreakerPoints[i] > teamTwo.tiebreakerPoints[i]) {
+        totalTiebreakersWon++
+      } else if (Number(teamIds[1]) === Number(teamId) && teamTwo.tiebreakerPoints[i] > teamOne.tiebreakerPoints[i]) {
+        totalTiebreakersWon++
+      }
+    }
+  }
+
+  return {
+    won: totalTiebreakersWon,
+    of: totalTiebreakersPlayed
+  }
+}
+
+export function getNumTiebreakersWonSingles(match, playerId) {
+  /* Returns the total number of tiebreakers won by the given playerId for the given match */
+  const players = {}
+
+  // build a sequential data structure of each player's tiebreaker scores for each match
+  /*
+    players = {
+      <playerId>: {
+          tiebreaker_points: [0, 7]
+        }
+    }
+  */
+  match.sets.forEach(set => {
+    if (!players.hasOwnProperty(set.player.id)) {
+      players[set.player.id] = {
+        tiebreakerPoints: [set.tiebreakerScore]
+      }
+    } else {
+      players[set.player.id].tiebreakerPoints.splice(set.seq, 0, set.tiebreakerScore)
+    }
+  })
+
+  // calculate who won the tiebreakers
+  const playerIds = Object.keys(players)
+  const playerOne = players[playerIds[0]]
+  const playerTwo = players[playerIds[1]]
+  let totalTiebreakersPlayed = 0
+  let totalTiebreakersWon = 0
+  // tiebreakers array length will always be the same beween players
+  for (let i = 0; i < playerOne.tiebreakerPoints.length; i++) {
+    if (playerOne.tiebreakerPoints[i] !== null) {
+      totalTiebreakersPlayed++
+      // this set was decided by a tiebreaker
+      if (Number(playerIds[0]) === Number(playerId) && playerOne.tiebreakerPoints[i] > playerTwo.tiebreakerPoints[i]) {
+        totalTiebreakersWon++
+      } else if (Number(playerIds[1]) === Number(playerId) && playerTwo.tiebreakerPoints[i] > playerOne.tiebreakerPoints[i]) {
+        totalTiebreakersWon++
+      }
+    }
+  }
+
+  return {
+    won: totalTiebreakersWon,
+    of: totalTiebreakersPlayed
   }
 }
 

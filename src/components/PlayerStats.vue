@@ -15,7 +15,7 @@
         <!-- <v-col v-for="stat in statsSimple" :key="stat.name" cols="6" align="center"> -->
         <v-col cols="6" align="center">
           <h3 class="text-capitalize">Match Win %</h3>
-          <p>{{ displayMatchWinPercentage || 'N/A' }}</p>
+          <p>{{ displayMatchWinPercentage }}</p>
         </v-col>
         <v-col cols="6" align="center">
           <h3 class="text-capitalize">Sets Played</h3>
@@ -23,7 +23,7 @@
         </v-col>
         <v-col cols="6" align="center">
           <h3 class="text-capitalize">Tiebreaker Win %</h3>
-          <p>3/5 (60%)</p>
+          <p>{{ displayTiebreakerWinPercentage }}</p>
         </v-col>
         <v-col cols="6" align="center">
           <h3 class="text-capitalize">Games Played</h3>
@@ -44,6 +44,8 @@ import {
   calculateMatchWinsSingles,
   calculateSetsPlayedDoubles,
   calculateSetsPlayedSingles,
+  calculateTiebreakerWinsSingles,
+  calculateTiebreakerWinsDoubles,
   getPercentage
 } from '@/utils/functions'
 
@@ -56,8 +58,20 @@ export default {
       'view'
     ]),
     displayMatchWinPercentage() {
+      if (!this.matchWinPercentage.of) {
+        return 'N/A'
+      }
+
       const percentage = getPercentage(this.matchWinPercentage.won, this.matchWinPercentage.of)
       return `${this.matchWinPercentage.won}/${this.matchWinPercentage.of} (${percentage}%)`
+    },
+    displayTiebreakerWinPercentage() {
+      if (!this.tiebreakerWinPercentage.of) {
+        return 'N/A'
+      }
+
+      const percentage = getPercentage(this.tiebreakerWinPercentage.won, this.tiebreakerWinPercentage.of)
+      return `${this.tiebreakerWinPercentage.won}/${this.tiebreakerWinPercentage.of} (${percentage}%)`
     },
     gamesPlayed() {
       let matches = []
@@ -66,7 +80,6 @@ export default {
       } else {
         matches = this.playerMatchesDoubles
       }
-
       return calculateGamesPlayed(matches)
     },
     matchWinPercentage() {
@@ -86,6 +99,15 @@ export default {
         totalSets = calculateSetsPlayedDoubles(this.playerMatchesDoubles, this.$route.params.playerId)
       }
       return totalSets
+    },
+    tiebreakerWinPercentage() {
+      let tiebreakers = {}
+      if (this.view === 'singles') {
+        tiebreakers = calculateTiebreakerWinsSingles(this.playerMatchesSingles, this.$route.params.playerId)
+      } else {
+        tiebreakers = calculateTiebreakerWinsDoubles(this.playerMatchesDoubles, this.$route.params.playerId)
+      }
+      return tiebreakers
     }
   }
 }
