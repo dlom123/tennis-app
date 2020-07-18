@@ -1,6 +1,6 @@
 import { FILTERS } from '@/utils/constants'
 
-export function calculateGamesPlayed(matches, playerId) {
+export function calculateGamesPlayed(matches) {
   // calculate how many total games have been played by
   // the given player id for the given matches
   let totalGames = 0
@@ -14,21 +14,34 @@ export function calculateGamesPlayed(matches, playerId) {
 }
 
 export function calculateMatchWinsDoubles(matches, playerId) {
-  // calculate how many of the given matches were won by the given player id
-  // TODO: get player's team id
-  console.log('MATCHES', matches)
-  console.log('PLYR', playerId)
-  // TODO: look through each set and compare team scores
-}
-
-export function calculateMatchWinsSingles(matches, playerId) {
-  // calculate how many of the given matches were won by the given player id
+  // calculate how many of the given matches were won by the given player id's team
+  let playerTeamId = 0
   let totalMatchesPlayed = 0
   let totalMatchesWon = 0
   matches.forEach(match => {
     totalMatchesPlayed++
-    const winnerPlayerId = getMatchWinner(match)
-    if (winnerPlayerId === playerId) {
+    // get the team id that the player was a part of for this match
+    for (let i = 0; i < match.sets.length; i++) {
+      const thisSet = match.sets[i]
+      for (let j = 0; j < thisSet.team.players.length; j++) {
+        const thisPlayer = thisSet.team.players[j]
+        if (thisPlayer.id === Number(playerId)) {
+          playerTeamId = thisSet.team.id
+          // found it...we can stop looking now
+          break
+        }
+      }
+      if (playerTeamId !== 0) {
+        // no, really...we got it...no need to iterate any further
+        break
+      }
+    }
+
+    // calculate the winner of the match
+    const winnerTeamId = getMatchWinnerDoubles(match)
+
+    // check if the player's team won the match
+    if (Number(winnerTeamId) === playerTeamId) {
       totalMatchesWon++
     }
   })
@@ -39,19 +52,22 @@ export function calculateMatchWinsSingles(matches, playerId) {
   }
 }
 
-export function calculateSetsPlayedSingles(matches, playerId) {
-  // calculate how many total sets have been played by
-  // the given player id for the given singles matches
-  let totalSets = 0
+export function calculateMatchWinsSingles(matches, playerId) {
+  // calculate how many of the given matches were won by the given player id
+  let totalMatchesPlayed = 0
+  let totalMatchesWon = 0
   matches.forEach(match => {
-    match.sets.forEach(set => {
-      if (set.player.id === Number(playerId)) {
-        totalSets++
-      }
-    })
+    totalMatchesPlayed++
+    const winnerPlayerId = getMatchWinnerSingles(match)
+    if (Number(winnerPlayerId) === Number(playerId)) {
+      totalMatchesWon++
+    }
   })
 
-  return totalSets
+  return {
+    won: totalMatchesWon,
+    of: totalMatchesPlayed
+  }
 }
 
 export function calculateSetsPlayedDoubles(matches, playerId) {
@@ -65,6 +81,21 @@ export function calculateSetsPlayedDoubles(matches, playerId) {
           totalSets++
         }
       })
+    })
+  })
+
+  return totalSets
+}
+
+export function calculateSetsPlayedSingles(matches, playerId) {
+  // calculate how many total sets have been played by
+  // the given player id for the given singles matches
+  let totalSets = 0
+  matches.forEach(match => {
+    match.sets.forEach(set => {
+      if (set.player.id === Number(playerId)) {
+        totalSets++
+      }
     })
   })
 
@@ -154,7 +185,67 @@ export function getGenderTextClass(gender) {
   return { 'text-men': gender === 'm', 'text-women': gender === 'f' }
 }
 
-export function getMatchWinner(match) {
+export function getMatchWinnerDoubles(match) {
+  /* Returns the id of the team that won the match */
+  const teams = {}
+
+  // build a sequential data structure of each team's set scores for each match
+  /*
+    teams = {
+      <teamId>: {
+          games: [2, 6],
+          tiebreaker_points: [0, 7]
+        }
+    }
+  */
+  match.sets.forEach(set => {
+    if (!teams.hasOwnProperty(set.team.id)) {
+      teams[set.team.id] = {
+        games: [set.score],
+        tiebreakerPoints: [set.tiebreakerScore]
+      }
+    } else {
+      teams[set.team.id].games.splice(set.seq, 0, set.score)
+      teams[set.team.id].tiebreakerPoints.splice(set.seq, 0, set.tiebreakerScore)
+    }
+  })
+
+  // calculate who won the match
+  let winnerValue = 0 // used as a +/- tally to decide which playerId has won the match
+  const teamIds = Object.keys(teams)
+  const teamOne = teams[teamIds[0]]
+  const teamTwo = teams[teamIds[1]]
+  // games array length will always be the same beween players
+  for (let i = 0; i < teamOne.games.length; i++) {
+    // tiebreaker score will be the first decider
+    if (teamOne.tiebreakerPoints[i] !== null) {
+      // this set was decided by a tiebreaker
+      if (teamOne.tiebreakerPoints[i] > teamTwo.tiebreakerPoints[i]) {
+        winnerValue--
+      } else if (teamTwo.tiebreakerPoints[i] > teamOne.tiebreakerPoints[i]) {
+        winnerValue++
+      }
+    } else {
+      // this set was not decided by a tiebreaker
+      if (teamOne.games[i] > teamTwo.games[i]) {
+        winnerValue--
+      } else if (teamTwo.games[i] > teamOne.games[i]) {
+        winnerValue++
+      }
+    }
+  }
+
+  // return the winning player id based on which way the +/- tally landed
+  // - this should never be 0 for a real match (no draws)
+  if (winnerValue < 0) {
+    return teamIds[0]
+  } else if (winnerValue > 0) {
+    return teamIds[1]
+  }
+}
+
+export function getMatchWinnerSingles(match) {
+  /* Returns the id of the player that won the match */
   const players = {}
 
   // build a sequential data structure of each player's set scores for each match
@@ -187,14 +278,14 @@ export function getMatchWinner(match) {
   for (let i = 0; i < playerOne.games.length; i++) {
     // tiebreaker score will be the first decider
     if (playerOne.tiebreakerPoints[i] !== null) {
-      // this set is decided by a tiebreaker
+      // this set was decided by a tiebreaker
       if (playerOne.tiebreakerPoints[i] > playerTwo.tiebreakerPoints[i]) {
         winnerValue--
       } else if (playerTwo.tiebreakerPoints[i] > playerOne.tiebreakerPoints[i]) {
         winnerValue++
       }
     } else {
-      // this set is not decided by a tiebreaker
+      // this set was not decided by a tiebreaker
       if (playerOne.games[i] > playerTwo.games[i]) {
         winnerValue--
       } else if (playerTwo.games[i] > playerOne.games[i]) {

@@ -67,7 +67,7 @@ export default {
         matches = this.playerMatchesDoubles
       }
 
-      return calculateGamesPlayed(matches, this.$route.params.playerId)
+      return calculateGamesPlayed(matches)
     },
     matchWinPercentage() {
       let matches = {}
