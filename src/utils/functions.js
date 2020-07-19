@@ -23,10 +23,10 @@ export function calculateMatchWinsDoubles(matches, playerId) {
     const playerTeamId = getMatchTeamIdByPlayerId(match, playerId)
 
     // calculate the winner of the match
-    const winnerTeamId = getMatchWinnerDoubles(match)
+    const winner = getMatchWinnerDoubles(match)
 
     // check if the player's team won the match
-    if (Number(winnerTeamId) === playerTeamId) {
+    if (Number(winner.teamId) === playerTeamId) {
       totalMatchesWon++
     }
   })
@@ -43,8 +43,8 @@ export function calculateMatchWinsSingles(matches, playerId) {
   let totalMatchesWon = 0
   matches.forEach(match => {
     totalMatchesPlayed++
-    const winnerPlayerId = getMatchWinnerSingles(match)
-    if (Number(winnerPlayerId) === Number(playerId)) {
+    const winner = getMatchWinnerSingles(match)
+    if (Number(winner.playerId) === Number(playerId)) {
       totalMatchesWon++
     }
   })
@@ -313,13 +313,15 @@ export function getMatchTeamIdByPlayerId(match, playerId) {
 }
 
 export function getMatchWinnerDoubles(match) {
-  /* Returns the id of the team that won the match */
+  /* Returns the id of the team that won the match and the scoreline */
+
+  const result = {}
 
   // get the set scores, grouped by team id
   const teams = getMatchSetScoresDoubles(match.sets)
 
   // calculate who won the match
-  let winnerValue = 0 // used as a +/- tally to decide which playerId has won the match
+  let winnerValue = 0 // used as a +/- tally to decide which teamId has won the match
   const teamIds = Object.keys(teams)
   const teamOne = teams[teamIds[0]]
   const teamTwo = teams[teamIds[1]]
@@ -343,17 +345,24 @@ export function getMatchWinnerDoubles(match) {
     }
   }
 
-  // return the winning player id based on which way the +/- tally landed
-  // - this should never be 0 for a real match (no draws)
+  // return the winning team id based on which way the +/- tally landed
+  // - this should never be 0 for a match (no draws)
   if (winnerValue < 0) {
-    return teamIds[0]
+    result.teamId = teamIds[0]
   } else if (winnerValue > 0) {
-    return teamIds[1]
+    result.teamId = teamIds[1]
   }
+
+  // add the scoreline data to the resulting return value
+  result.scoreline = teams
+
+  return result
 }
 
 export function getMatchWinnerSingles(match) {
-  /* Returns the id of the player that won the match */
+  /* Returns the id of the player that won the match and the scoreline */
+
+  let result = {}
 
   // get the set scores, grouped by player id
   const players = getMatchSetScoresSingles(match.sets)
@@ -384,12 +393,17 @@ export function getMatchWinnerSingles(match) {
   }
 
   // return the winning player id based on which way the +/- tally landed
-  // - this should never be 0 for a real match (no draws)
+  // - this should never be 0 for a match (no draws)
   if (winnerValue < 0) {
-    return playerIds[0]
+    result.playerId = playerIds[0]
   } else if (winnerValue > 0) {
-    return playerIds[1]
+    result.playerId = playerIds[1]
   }
+
+  // add the scoreline data to the resulting return value
+  result.scoreline = players
+
+  return result
 }
 
 export function getNumTiebreakersWonDoubles(match, teamId) {

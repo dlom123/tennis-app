@@ -85,7 +85,8 @@ export default {
       'removeAllFiltersExcept',
       'setLoading',
       'setPlayer',
-      'setPlayerMatches'
+      'setPlayerMatchesDoubles',
+      'setPlayerMatchesSingles'
     ])
   },
   async created() {

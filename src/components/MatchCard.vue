@@ -53,7 +53,7 @@
 import { mapState } from 'vuex'
 import moment from 'moment'
 import SetsRow from '@/components/SetsRow'
-import { getMatchSetScoresDoubles, getMatchSetScoresSingles } from '@/utils/functions'
+import { getMatchWinnerDoubles, getMatchWinnerSingles } from '@/utils/functions'
 
 export default {
   name: 'matchCard',
@@ -74,15 +74,20 @@ export default {
       return moment(this.match.date).format(this.formatMatchDate)
     },
     sides() {
+      let winnerId = 0
       let scoreData = {}
       if (this.view === 'singles') {
-        scoreData = getMatchSetScoresSingles(this.match.sets)
+        scoreData = getMatchWinnerSingles(this.match)
+        winnerId = scoreData.playerId
       } else {
-        scoreData = getMatchSetScoresDoubles(this.match.sets)
+        scoreData = getMatchWinnerDoubles(this.match)
+        winnerId = scoreData.teamId
       }
-      const ids = Object.keys(scoreData)
-
-      return ids.map(id => scoreData[id])
+      const ids = Object.keys(scoreData.scoreline)
+      return ids.map(id => ({
+        ...scoreData.scoreline[id],
+        isWinner: id === winnerId
+      }))
     }
   }
 }
