@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="pa-0">
+  <v-container v-if="!isLoading" fluid class="pa-0">
     <v-row no-gutters>
       <v-col
         cols="12"
@@ -119,6 +119,7 @@ export default {
   },
   computed: {
     ...mapState([
+      'isLoading',
       'player',
       'playerMatchesDoubles',
       'playerMatchesSingles',

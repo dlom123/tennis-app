@@ -7,7 +7,7 @@
         <v-col cols="5" class="ml-2">
           <v-row no-gutters v-for="player in side.players" :key="player.id">
             <v-col>
-              <a :href="`/players/${player.id}`">{{ player.firstName }} {{ player.lastName }}</a>
+              <a :href="`/players/${player.id}`">{{ displayPlayerName(player.firstName, player.lastName) }}</a>
             </v-col>
           </v-row>
         </v-col>
@@ -25,7 +25,7 @@
 
       </v-row>
 
-      <v-divider v-if="$vnode.key < (side.players.length - 1)"></v-divider>
+      <v-divider v-if="showDivider($vnode.key)"></v-divider>
 
     </v-col>
   </v-row>
@@ -33,8 +33,23 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'setsRow',
-  props: ['side']
+  props: ['side'],
+  computed: {
+    ...mapState([
+      'view'
+    ])
+  },
+  methods: {
+    displayPlayerName(firstName, lastName) {
+      return `${firstName[0].toUpperCase()}. ${lastName}`
+    },
+    showDivider(key) {
+      return this.view === 'singles' ? key === 0 : key < (this.side.players.length - 1)
+    }
+  }
 }
 </script>

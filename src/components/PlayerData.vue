@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="pa-0">
+  <v-container v-if="!isLoading" fluid class="pa-0">
 
     <v-row no-gutters>
       <v-col
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import PlayerMatches from '@/components/PlayerMatches'
 import PlayerStats from '@/components/PlayerStats'
 
@@ -30,6 +31,11 @@ export default {
   components: {
     PlayerMatches,
     PlayerStats
+  },
+  computed: {
+    ...mapState([
+      'isLoading'
+    ])
   }
 }
 </script>
