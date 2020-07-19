@@ -199,12 +199,95 @@ export function getDisplayGender(gender) {
   return gender === 'm' ? 'male' : 'female'
 }
 
+export function getDoublesPartner(match, playerId) {
+  let partner = {}
+  for (let i = 0; i < match.sets.length; i++) {
+    const thisSet = match.sets[i]
+    const thisTeamPlayers = thisSet.team.players
+    let isPlayerOnTeam = false
+    let potentialPartner = {}
+    for (let j = 0; j < thisTeamPlayers.length; j++) {
+      if (Number(thisTeamPlayers[j].player.id) === Number(playerId)) {
+        // set flag telling us that this is the player's team
+        isPlayerOnTeam = true
+      } else {
+        // this could be the player's partner as long as the player was also on this team
+        potentialPartner = thisTeamPlayers[j].player
+      }
+    }
+    if (isPlayerOnTeam && Object.keys(potentialPartner).length !== 0) {
+      // we found the team that the player was on and identified their partner for the match
+      partner = potentialPartner
+      // no need to iterate any further
+      break
+    }
+  }
+
+  return partner
+}
+
 export function getGenderBorderClass(gender) {
   return { 'border-men': gender === 'm', 'border-women': gender === 'f' }
 }
 
 export function getGenderTextClass(gender) {
   return { 'text-men': gender === 'm', 'text-women': gender === 'f' }
+}
+
+export function getMatchSetScoresDoubles(sets) {
+  const teams = {}
+
+  // build a sequential data structure of each team's set scores for each match
+  /*
+    teams = {
+      <teamId>: {
+          games: [2, 6],
+          tiebreaker_points: [0, 7]
+        }
+    }
+  */
+  sets.forEach(set => {
+    if (!teams.hasOwnProperty(set.team.id)) {
+      teams[set.team.id] = {
+        players: set.team.players.map(teamPlayer => teamPlayer.player),
+        games: [set.score],
+        tiebreakerPoints: [set.tiebreakerScore]
+      }
+    } else {
+      teams[set.team.id].games.splice(set.seq, 0, set.score)
+      teams[set.team.id].tiebreakerPoints.splice(set.seq, 0, set.tiebreakerScore)
+    }
+  })
+
+  return teams
+}
+
+export function getMatchSetScoresSingles(sets) {
+  const players = {}
+
+  // build a sequential data structure of each player's set scores for each match
+  /*
+    players = {
+      <playerId>: {
+          games: [2, 6],
+          tiebreaker_points: [0, 7]
+        }
+    }
+  */
+  sets.forEach(set => {
+    if (!players.hasOwnProperty(set.player.id)) {
+      players[set.player.id] = {
+        players: [set.player],
+        games: [set.score],
+        tiebreakerPoints: [set.tiebreakerScore]
+      }
+    } else {
+      players[set.player.id].games.splice(set.seq, 0, set.score)
+      players[set.player.id].tiebreakerPoints.splice(set.seq, 0, set.tiebreakerScore)
+    }
+  })
+
+  return players
 }
 
 export function getMatchTeamIdByPlayerId(match, playerId) {
@@ -231,28 +314,9 @@ export function getMatchTeamIdByPlayerId(match, playerId) {
 
 export function getMatchWinnerDoubles(match) {
   /* Returns the id of the team that won the match */
-  const teams = {}
 
-  // build a sequential data structure of each team's set scores for each match
-  /*
-    teams = {
-      <teamId>: {
-          games: [2, 6],
-          tiebreaker_points: [0, 7]
-        }
-    }
-  */
-  match.sets.forEach(set => {
-    if (!teams.hasOwnProperty(set.team.id)) {
-      teams[set.team.id] = {
-        games: [set.score],
-        tiebreakerPoints: [set.tiebreakerScore]
-      }
-    } else {
-      teams[set.team.id].games.splice(set.seq, 0, set.score)
-      teams[set.team.id].tiebreakerPoints.splice(set.seq, 0, set.tiebreakerScore)
-    }
-  })
+  // get the set scores, grouped by team id
+  const teams = getMatchSetScoresDoubles(match.sets)
 
   // calculate who won the match
   let winnerValue = 0 // used as a +/- tally to decide which playerId has won the match
@@ -290,28 +354,9 @@ export function getMatchWinnerDoubles(match) {
 
 export function getMatchWinnerSingles(match) {
   /* Returns the id of the player that won the match */
-  const players = {}
 
-  // build a sequential data structure of each player's set scores for each match
-  /*
-    players = {
-      <playerId>: {
-          games: [2, 6],
-          tiebreaker_points: [0, 7]
-        }
-    }
-  */
-  match.sets.forEach(set => {
-    if (!players.hasOwnProperty(set.player.id)) {
-      players[set.player.id] = {
-        games: [set.score],
-        tiebreakerPoints: [set.tiebreakerScore]
-      }
-    } else {
-      players[set.player.id].games.splice(set.seq, 0, set.score)
-      players[set.player.id].tiebreakerPoints.splice(set.seq, 0, set.tiebreakerScore)
-    }
-  })
+  // get the set scores, grouped by player id
+  const players = getMatchSetScoresSingles(match.sets)
 
   // calculate who won the match
   let winnerValue = 0 // used as a +/- tally to decide which playerId has won the match
@@ -439,6 +484,47 @@ export function getNumTiebreakersWonSingles(match, playerId) {
     won: totalTiebreakersWon,
     of: totalTiebreakersPlayed
   }
+}
+
+export function getOpponentDoubles(match, playerId) {
+  /* return the opposing team for the given match based on the given playerId */
+  let opponent = {}
+  for (let i = 0; i < match.sets.length; i++) {
+    const thisSet = match.sets[i]
+    for (let j = 0; j < thisSet.team.players.length; j++) {
+      const thisPlayer = thisSet.team.players[j]
+      if (thisPlayer.id === Number(playerId)) {
+        opponent = thisSet.team
+        // found it...we can stop looking now
+        break
+      }
+    }
+    if (Object.keys(opponent).length !== 0) {
+      // no, really...we got it...no need to iterate any further
+      break
+    }
+  }
+
+  return opponent
+}
+
+export function getOpponentSingles(match, playerId) {
+  /* return the opposing player for the given match based on the given playerId */
+  let opponent = {}
+  for (let i = 0; i < match.sets.length; i++) {
+    const thisSet = match.sets[i]
+    if (Number(thisSet.player.id) !== Number(playerId)) {
+      opponent = thisSet.player
+      // found it...we can stop looking now
+      break
+    }
+    if (Object.keys(opponent).length !== 0) {
+      // no, really...we got it...no need to iterate any further
+      break
+    }
+  }
+
+  return opponent
 }
 
 export function getPercentage(num, denom) {
