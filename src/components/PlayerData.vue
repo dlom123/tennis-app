@@ -13,7 +13,7 @@
           :value="[0,1]"
         >
           <PlayerStats />
-          <!-- <PlayerMatches /> -->
+          <PlayerMatches />
         </v-expansion-panels>
       </v-col>
     </v-row>

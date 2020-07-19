@@ -60,8 +60,14 @@
           <v-col cols="12">
             <h3 v-if="player.isRightHanded">Right-handed</h3>
             <h3 v-else>Left-handed</h3>
-            <v-icon :color="!player.isRightHanded ? 'green' : ''">mdi-hand-left</v-icon>
-            <v-icon :color="player.isRightHanded ? 'green' : ''">mdi-hand-right</v-icon>
+            <v-icon
+              :color="!player.isRightHanded ? 'green' : ''"
+              :title="!player.isRightHanded ? 'Left-handed' : ''"
+            >mdi-hand-left</v-icon>
+            <v-icon
+              :color="player.isRightHanded ? 'green' : ''"
+              :title="player.isRightHanded ? 'Right-handed' : ''"
+            >mdi-hand-right</v-icon>
           </v-col>
         </v-row>
       </v-col>
@@ -70,8 +76,16 @@
         <v-row no-gutters>
           <v-col cols="12">
             <h3>Backhand</h3>
-            <v-icon v-if="!player.isRightHanded || (player.isRightHanded && player.backhand === 2)" color="green">mdi-hand-left</v-icon>
-            <v-icon v-if="player.isRightHanded || (!player.isRightHanded && player.backhand === 2)" color="green">mdi-hand-right</v-icon>
+            <v-icon
+              v-if="!player.isRightHanded || (player.isRightHanded && player.backhand === 2)"
+              color="green"
+              :title="player.backhand === 1 ? 'One-handed backhand' : 'Two-handed backhand'"
+            >mdi-hand-left</v-icon>
+            <v-icon
+              v-if="player.isRightHanded || (!player.isRightHanded && player.backhand === 2)"
+              color="green"
+              :title="player.backhand === 1 ? 'One-handed backhand' : 'Two-handed backhand'"
+            >mdi-hand-right</v-icon>
           </v-col>
         </v-row>
       </v-col>
@@ -106,7 +120,9 @@ export default {
   computed: {
     ...mapState([
       'player',
-      'playerMatches'
+      'playerMatchesDoubles',
+      'playerMatchesSingles',
+      'view'
     ]),
     fullName() {
       return `${this.player.firstName} ${this.player.lastName}`
@@ -115,12 +131,13 @@ export default {
       return translateHeight(this.player.height)
     },
     lastPlayedDate() {
-      // TODO: derive this from the most recent match involving the player (singles/doubles exclusive)
-      if (!this.playerMatches.length) {
+      const playerMatches = this.view === 'singles' ? this.playerMatchesSingles : this.playerMatchesDoubles
+
+      if (!playerMatches.length) {
         return 'N/A'
       }
-      let latestMatchDate = this.playerMatches[0].date
-      this.playerMatches.forEach(match => {
+      let latestMatchDate = playerMatches[0].date
+      playerMatches.forEach(match => {
         if (match.date > latestMatchDate) {
           latestMatchDate = match.date
         }

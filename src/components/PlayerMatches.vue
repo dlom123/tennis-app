@@ -3,19 +3,16 @@
 
     <v-expansion-panel-header color="primary">
       <v-row no-gutters>
-        <v-col cols="2">
+        <v-col>
           <h2 class="white--text">Matches</h2>
         </v-col>
       </v-row>
     </v-expansion-panel-header>
 
-    <v-expansion-panel-content class="pt-2">
+    <v-expansion-panel-content class="container-player-matches pt-2">
       <v-row no-gutters>
         <v-col cols="12">
-          <v-data-table
-            :headers="isViewSingles ? headersSingles : headersDoubles"
-            :items="isViewSingles ? itemsSingles : itemsDoubles"
-          ></v-data-table>
+          <MatchCard v-for="(match, i) in matches" :key="i" :match="match" />
         </v-col>
       </v-row>
     </v-expansion-panel-content>
@@ -24,58 +21,22 @@
 </template>
 
 <script>
-import moment from 'moment'
+import { mapState } from 'vuex'
+import MatchCard from '@/components/MatchCard'
 
 export default {
   name: 'playerMatches',
-  props: ['matches', 'view'],
-  data() {
-    return {
-      formatMatchDate: 'M/DD/YYYY',
-      headersDoubles: [
-        { text: 'Date', value: 'date' },
-        { text: 'Location', value: 'location' },
-        { text: 'Partner', value: 'partner' },
-        { text: 'Opponents', value: 'opponents' }
-      ],
-      headersSingles: [
-        { text: 'Date', value: 'date' },
-        { text: 'Location', value: 'location' },
-        { text: 'Opponent', value: 'opponent' }
-      ]
-    }
+  components: {
+    MatchCard
   },
   computed: {
-    isViewSingles() {
-      return this.view !== 'doubles'
-    },
-    itemsDoubles() {
-      const matches = this.matches.filter(match => match.type === 'doubles')
-      const items = matches.map(match => {
-        const opponentsFormatted = match.opponent.map(opponent => `${opponent.firstName} ${opponent.lastName}`)
-
-        return {
-          date: moment(match.date).format(this.formatMatchDate),
-          location: match.location,
-          partner: `${match.team[1].firstName} ${match.team[1].lastName}`,
-          opponents: `${opponentsFormatted[0]}/${opponentsFormatted[1]}`
-        }
-      })
-
-      return items
-    },
-    itemsSingles() {
-      const matches = this.matches.filter(match => match.type === 'singles')
-
-      const items = matches.map(match => {
-        return {
-          date: moment(match.date).format(this.formatMatchDate),
-          location: match.location,
-          opponent: `${match.opponent.firstName} ${match.opponent.lastName}`
-        }
-      })
-
-      return items
+    ...mapState([
+      'playerMatchesDoubles',
+      'playerMatchesSingles',
+      'view'
+    ]),
+    matches() {
+      return this.view === 'singles' ? this.playerMatchesSingles : this.playerMatchesDoubles
     }
   }
 }
