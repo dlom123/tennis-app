@@ -21,7 +21,6 @@ export function calculateMatchWinsDoubles(matches, playerId) {
     totalMatchesPlayed++
     // get the team id that the player was a part of for this match
     const playerTeamId = getMatchTeamIdByPlayerId(match, playerId)
-
     // calculate the winner of the match
     const winner = getMatchWinnerDoubles(match)
 
@@ -32,7 +31,7 @@ export function calculateMatchWinsDoubles(matches, playerId) {
   })
 
   return {
-    won: totalMatchesWon,
+    hits: totalMatchesWon,
     of: totalMatchesPlayed
   }
 }
@@ -50,7 +49,7 @@ export function calculateMatchWinsSingles(matches, playerId) {
   })
 
   return {
-    won: totalMatchesWon,
+    hits: totalMatchesWon,
     of: totalMatchesPlayed
   }
 }
@@ -97,12 +96,12 @@ export function calculateTiebreakerWinsDoubles(matches, playerId) {
 
     // calculate the total number of tiebreakers won by the given team id during this match
     const tiebreakers = getNumTiebreakersWonDoubles(match, playerTeamId)
-    totalTiebreakersWon += tiebreakers.won
+    totalTiebreakersWon += tiebreakers.hits
     totalTiebreakersPlayed += tiebreakers.of
   })
 
   return {
-    won: totalTiebreakersWon,
+    hits: totalTiebreakersWon,
     of: totalTiebreakersPlayed
   }
 }
@@ -114,12 +113,12 @@ export function calculateTiebreakerWinsSingles(matches, playerId) {
   matches.forEach(match => {
     // calculate the total number of tiebreakers won by the given player id during this match
     const tiebreakers = getNumTiebreakersWonSingles(match, playerId)
-    totalTiebreakersWon += tiebreakers.won
+    totalTiebreakersWon += tiebreakers.hits
     totalTiebreakersPlayed += tiebreakers.of
   })
 
   return {
-    won: totalTiebreakersWon,
+    hits: totalTiebreakersWon,
     of: totalTiebreakersPlayed
   }
 }
@@ -297,7 +296,7 @@ export function getMatchTeamIdByPlayerId(match, playerId) {
     const thisSet = match.sets[i]
     for (let j = 0; j < thisSet.team.players.length; j++) {
       const thisPlayer = thisSet.team.players[j]
-      if (thisPlayer.id === Number(playerId)) {
+      if (thisPlayer.player.id === Number(playerId)) {
         teamId = thisSet.team.id
         // found it...we can stop looking now
         break
@@ -448,7 +447,7 @@ export function getNumTiebreakersWonDoubles(match, teamId) {
   }
 
   return {
-    won: totalTiebreakersWon,
+    hits: totalTiebreakersWon,
     of: totalTiebreakersPlayed
   }
 }
@@ -495,7 +494,7 @@ export function getNumTiebreakersWonSingles(match, playerId) {
   }
 
   return {
-    won: totalTiebreakersWon,
+    hits: totalTiebreakersWon,
     of: totalTiebreakersPlayed
   }
 }
@@ -507,7 +506,7 @@ export function getOpponentDoubles(match, playerId) {
     const thisSet = match.sets[i]
     for (let j = 0; j < thisSet.team.players.length; j++) {
       const thisPlayer = thisSet.team.players[j]
-      if (thisPlayer.id === Number(playerId)) {
+      if (thisPlayer.player.id === Number(playerId)) {
         opponent = thisSet.team
         // found it...we can stop looking now
         break
@@ -547,8 +546,8 @@ export function getPercentage(num, denom) {
 }
 
 export function getPrecisionPercentage(num, denom) {
-  // return floating point percentage, with all decimal numbers preserved
-  return ((num / denom) * 100)
+  // return floating point percentage, with all decimal numbers preserved, avoiding division by zero
+  return denom === 0 ? 0 : ((num / denom) * 100)
 }
 
 export function sortPlayers(players, sortBy) {
@@ -568,6 +567,35 @@ export function sortPlayers(players, sortBy) {
   }
 
   return players
+}
+
+export function sortStat(stat, searchValue = '') {
+  // sort by stat rank, descending
+  if (stat.players.every(player => player.hasOwnProperty('total'))) {
+    // integer-based stat
+    stat.players.sort((a, b) => (a.total > b.total) ? -1 : 1)
+  } else if (stat.players.every(player => player.hasOwnProperty('hits') && player.hasOwnProperty('of'))) {
+    // percentage-based stat
+    const zeros = stat.players.filter(player => player.of === 0)
+    const nonzeros = stat.players.filter(player => player.of > 0)
+
+    nonzeros.sort((a, b) => ((a.hits / a.of) > (b.hits / b.of)) ? -1 : 1)
+    stat.players = [...nonzeros, ...zeros]
+  }
+
+  // assign ranking to each pre-sorted player
+  for (let i = 0; i < stat.players.length; i++) {
+    stat.players[i].rank = i + 1
+  }
+
+  if (searchValue) {
+    const searchString = searchValue.toLowerCase()
+    stat.players = stat.players.filter(player =>
+      player.player.firstName.toLowerCase().includes(searchString) ||
+          player.player.lastName.toLowerCase().includes(searchString))
+  }
+
+  return stat
 }
 
 export function sortTeams(teams) {

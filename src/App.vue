@@ -3,7 +3,7 @@
 
     <AppBar />
 
-    <v-content>
+    <v-main>
       <v-container fluid class="container-main pa-0">
         <v-row no-gutters>
           <v-col
@@ -20,7 +20,7 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-content>
+    </v-main>
 
   </v-app>
 </template>

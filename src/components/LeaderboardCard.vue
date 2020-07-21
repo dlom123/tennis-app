@@ -10,11 +10,11 @@
     <v-card-text class="pa-0">
       <v-list two-line class="pa-0">
 
-        <div v-if="stat.players.length > 0">
+        <div v-if="statPlayers.length > 0">
           <v-list-item
-            v-for="(player, i) in stat.players"
+            v-for="(player, i) in statPlayers"
             :key="`${player.player.firstName}${player.player.lastName}`"
-            :class="{ 'row-leader-divider': i + 1 < stat.players.length }"
+            :class="{ 'row-leader-divider': i + 1 < statPlayers.length }"
           >
 
             <v-list-item-icon>
@@ -42,8 +42,7 @@
                   <span>{{ player.total }}</span>
                 </span>
                 <span v-else @click="toggleShowPercent">
-                  <span v-if="showPercent">{{ displayPercentage(player) }}%</span>
-                  <span v-else>{{ `${player.in}/${player.of}` }}</span>
+                  <span>{{ getStatPercentage(player) }}</span>
                 </span>
               </v-list-item-subtitle>
 
@@ -65,7 +64,7 @@
     <v-divider></v-divider>
 
     <v-card-actions
-      v-if="$route.name === 'leaderboard' && stat.players.length > 0"
+      v-if="$route.name === 'leaderboard' && statPlayers.length > 0"
       class="container-view-all pa-0"
     >
       <v-btn
@@ -93,21 +92,32 @@ export default {
   },
   computed: {
     ...mapState([
-      'filters'
-    ])
+      'filters',
+      'isLoading',
+      'view'
+    ]),
+    statPlayers() {
+      if (this.view === 'singles') {
+        return this.stat.singles.players
+      } else {
+        return this.stat.doubles.players
+      }
+    }
   },
   methods: {
     ...mapMutations([
       'updateFilter'
     ]),
-    displayPercentage(player) {
-      return getPrecisionPercentage(player.in, player.of).toFixed(2)
-    },
     getBorderClass(gender) {
       return getGenderBorderClass(gender)
     },
     getTextHeaderClass(gender) {
       return getGenderTextClass(gender)
+    },
+    getStatPercentage(player) {
+      return this.showPercent
+        ? `${getPrecisionPercentage(player.hits, player.of).toFixed(2)}%`
+        : `${player.hits}/${player.of}`
     },
     goStat(statId) {
       // any Leaderboard filters set should be maintained within the Stat screen
