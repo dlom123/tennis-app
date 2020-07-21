@@ -62,16 +62,16 @@ export default {
         return 'N/A'
       }
 
-      const percentage = getPercentage(this.matchWinPercentage.won, this.matchWinPercentage.of)
-      return `${this.matchWinPercentage.won}/${this.matchWinPercentage.of} (${percentage}%)`
+      const percentage = getPercentage(this.matchWinPercentage.hits, this.matchWinPercentage.of)
+      return `${this.matchWinPercentage.hits}/${this.matchWinPercentage.of} (${percentage}%)`
     },
     displayTiebreakerWinPercentage() {
       if (!this.tiebreakerWinPercentage.of) {
         return 'N/A'
       }
 
-      const percentage = getPercentage(this.tiebreakerWinPercentage.won, this.tiebreakerWinPercentage.of)
-      return `${this.tiebreakerWinPercentage.won}/${this.tiebreakerWinPercentage.of} (${percentage}%)`
+      const percentage = getPercentage(this.tiebreakerWinPercentage.hits, this.tiebreakerWinPercentage.of)
+      return `${this.tiebreakerWinPercentage.hits}/${this.tiebreakerWinPercentage.of} (${percentage}%)`
     },
     gamesPlayed() {
       let matches = []

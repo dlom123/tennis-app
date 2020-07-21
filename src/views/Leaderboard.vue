@@ -115,7 +115,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getLeaderboardTopThree'
+      'getLeaderboard'
     ]),
     ...mapMutations([
       'removeAllFiltersByScreen',
@@ -124,17 +124,17 @@ export default {
       'setLoading'
     ]),
     async loadData(searchValue) {
-      this.setLoading(true)
-      await this.getLeaderboardTopThree({
+      // comment out setLoading for now since it causes the entire screen to refresh
+      // when the search input value is changed (the search input clears each time)
+      // this.setLoading(true)
+      await this.getLeaderboard({
         search: searchValue
       })
-      this.setLoading(false)
+      // this.setLoading(false)
     },
     async onChangeSearch(value) {
-      this.setLoading(true)
       this.searchValue = value
       await this.loadData(value)
-      this.setLoading(false)
     },
     async onClearSearch() {
       this.searchValue = ''
