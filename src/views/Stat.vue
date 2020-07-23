@@ -98,11 +98,13 @@ export default {
     ...mapState([
       'filters',
       'isLoading',
-      'stat'
+      'stat',
+      'view'
     ]),
     statFiltered() {
       // apply filters
-      const filteredPlayers = filterStatLeaders(this.stat.players, this.filters)
+      const stat = this.view === 'singles' ? this.stat.singles : this.stat.doubles
+      const filteredPlayers = filterStatLeaders(stat, this.filters)
       const statFiltered = {
         ...this.stat,
         players: filteredPlayers

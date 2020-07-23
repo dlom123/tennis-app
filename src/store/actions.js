@@ -1,6 +1,5 @@
 import axios from 'axios'
 import router from '@/router'
-import leaderboardData from '@/data/leaderboard.json'
 import locationsData from '@/data/locations.json'
 import playersData from '@/data/players.json'
 import { FILTERS } from '@/utils/constants'
@@ -12,6 +11,7 @@ import {
   calculateSetsPlayedDoubles,
   calculateSetsPlayedSingles,
   calculateGamesPlayed,
+  compileStat,
   sortStat
 } from '@/utils/functions'
 
@@ -21,82 +21,46 @@ const HTTP = axios.create({
 
 export default {
   getLeaderboard: async ({ commit, state }, payload) => {
-    const leaderboard = []
+    const statsResponse = await HTTP.get('/stats')
+    const stats = statsResponse.data.data
 
-    // get all player ids
-    const response = await HTTP.get(`/players`)
-    const players = response.data.data.players
+    // get all players
+    const playersResponse = await HTTP.get(`/players`)
+    const players = playersResponse.data.data.players
 
-    // get Match Win Percentage for each player
-    const statMatchWinPercentage = {
-      name: 'Match Win %',
-      doubles: { players: [] },
-      singles: { players: [] }
-    }
-
-    const statTiebreakerWinPercentage = {
-      name: 'Tiebreaker Win %',
-      doubles: { players: [] },
-      singles: { players: [] }
-    }
-
-    const statSetsPlayed = {
-      name: 'Sets Played',
-      doubles: { players: [] },
-      singles: { players: [] }
-    }
-
-    const statGamesPlayed = {
-      name: 'Games Played',
-      doubles: { players: [] },
-      singles: { players: [] }
-    }
+    // pre-populate an object with each stat's id and name
+    let leaderboard = stats.map(stat => ({
+      id: stat.id,
+      name: stat.name,
+      doubles: [],
+      singles: []
+    }))
 
     // compile all of the data
     for (const player of players) {
       const playerMatchesResponse = await HTTP.get(`/players/${player.id}/matches`)
       const playerMatches = playerMatchesResponse.data.data
-      const playerMatchesDoubles = calculateMatchWinsDoubles(playerMatches.doubles, player.id)
-      const playerMatchesSingles = calculateMatchWinsSingles(playerMatches.singles, player.id)
-      const playerTiebreakersDoubles = calculateTiebreakerWinsDoubles(playerMatches.doubles, player.id)
-      const playerTiebreakersSingles = calculateTiebreakerWinsSingles(playerMatches.singles, player.id)
-      const playerSetsPlayedDoubles = calculateSetsPlayedDoubles(playerMatches.doubles, player.id)
-      const playerSetsPlayedSingles = calculateSetsPlayedSingles(playerMatches.singles, player.id)
-      const playerGamesPlayedDoubles = calculateGamesPlayed(playerMatches.doubles)
-      const playerGamesPlayedSingles = calculateGamesPlayed(playerMatches.singles)
 
-      const playerData = {
-        firstName: player.firstName,
-        lastName: player.lastName,
-        gender: player.gender
-      }
-
-      statMatchWinPercentage.doubles.players.push({ player: playerData, ...playerMatchesDoubles })
-      statMatchWinPercentage.singles.players.push({ player: playerData, ...playerMatchesSingles })
-      statTiebreakerWinPercentage.doubles.players.push({ player: playerData, ...playerTiebreakersDoubles })
-      statTiebreakerWinPercentage.singles.players.push({ player: playerData, ...playerTiebreakersSingles })
-      statSetsPlayed.doubles.players.push({ player: playerData, total: playerSetsPlayedDoubles })
-      statSetsPlayed.singles.players.push({ player: playerData, total: playerSetsPlayedSingles })
-      statGamesPlayed.doubles.players.push({ player: playerData, total: playerGamesPlayedDoubles })
-      statGamesPlayed.singles.players.push({ player: playerData, total: playerGamesPlayedSingles })
+      leaderboard.forEach(stat => {
+        const playerStat = compileStat(stat, player, playerMatches)
+        if (stat.id === playerStat.statId) {
+          stat.doubles.push(playerStat.doubles)
+          stat.singles.push(playerStat.singles)
+        }
+      })
     }
-
-    leaderboard.push(statMatchWinPercentage)
-    leaderboard.push(statTiebreakerWinPercentage)
-    leaderboard.push(statSetsPlayed)
-    leaderboard.push(statGamesPlayed)
 
     const leaderboardFiltered = leaderboard.map(stat => {
       const filterGender = state.filters.find(filter => filter.screen === 'leaderboard' && filter.name === FILTERS.GENDER)
       if (filterGender) {
         switch (filterGender.value) {
           case 'male':
-            stat.doubles.players = stat.doubles.players.filter(player => player.player.gender === 'm')
-            stat.singles.players = stat.singles.players.filter(player => player.player.gender === 'm')
+            stat.doubles = stat.doubles.filter(player => player.gender === 'm')
+            stat.singles = stat.singles.filter(player => player.gender === 'm')
             break
           case 'female':
-            stat.doubles.players = stat.doubles.players.filter(player => player.player.gender === 'f')
-            stat.singles.players = stat.singles.players.filter(player => player.player.gender === 'f')
+            stat.doubles = stat.doubles.filter(player => player.gender === 'f')
+            stat.singles = stat.singles.filter(player => player.gender === 'f')
             break
         }
       }
@@ -109,24 +73,18 @@ export default {
       const doublesSorted = sortStat(stat.doubles, payload.search)
       const singlesSorted = sortStat(stat.singles, payload.search)
       return {
-        name: stat.name,
+        ...stat,
         doubles: doublesSorted,
         singles: singlesSorted
       }
     })
 
     // truncate the full list of players for each stat to just the top 3
-    const leaderboardTopThree = leaderboardSorted.map(stat => {
-      return {
-        name: stat.name,
-        doubles: {
-          players: stat.doubles.players.slice(0, 3)
-        },
-        singles: {
-          players: stat.singles.players.slice(0, 3)
-        }
-      }
-    })
+    const leaderboardTopThree = leaderboardSorted.map(stat => ({
+      ...stat,
+      doubles: stat.doubles.slice(0, 3),
+      singles: stat.singles.slice(0, 3)
+    }))
 
     commit('setLeaderboard', leaderboardTopThree)
   },
@@ -164,54 +122,62 @@ export default {
       console.error(e)
     }
   },
-  getPlayerStats: async ({ commit }, payload) => {
-    // TODO: get player stats data from the API
-    const results = await HTTP.get(`/players/${payload.playerId}/stats`)
-
-    const stats = results.data.data
-
-    commit('updatePlayerStats', {
-      playerId: payload,
-      stats
-    })
-  },
-  getStat: async ({ commit }, payload) => {
-    // TODO: get stat data from the API
-    const stat = JSON.parse(JSON.stringify(leaderboardData))
-      .find(stat => stat.id === parseInt(payload.statId, 10))
+  getStat: async ({ commit, state }, payload) => {
+    const response = await HTTP.get(`/stats/${payload.statId}`)
+    const stat = response.data.data
 
     if (!stat) {
       router.push({ name: 'leaderboard' })
     }
 
-    // sort the list of players by stat rank, descending
-    if (stat.players && stat.players.every(player => player.hasOwnProperty('total'))) {
-      // integer-based stat
-      stat.players.sort((a, b) => (a.total > b.total) ? -1 : 1)
-    } else if (stat.players && stat.players.every(player => player.hasOwnProperty('in') &&
-                                                            player.hasOwnProperty('of'))) {
-      // percentage-based stat
-      const zeros = stat.players.filter(player => player.of === 0)
-      const nonzeros = stat.players.filter(player => player.of > 0)
+    // get all players
+    const playersResponse = await HTTP.get(`/players`)
+    const players = playersResponse.data.data.players
 
-      nonzeros.sort((a, b) => ((a.hits / a.of) > (b.hits / b.of)) ? -1 : 1)
-      stat.players = [...nonzeros, ...zeros]
+    // pre-populate an object with each stat's id and name
+    let leaderboard = {
+      id: stat.id,
+      name: stat.name,
+      doubles: [],
+      singles: []
     }
 
-    // assign ranking to each pre-sorted player
-    for (let i = 0; i < stat.players.length; i++) {
-      stat.players[i].rank = i + 1
+    // compile all of the data
+    for (const player of players) {
+      const playerMatchesResponse = await HTTP.get(`/players/${player.id}/matches`)
+      const playerMatches = playerMatchesResponse.data.data
+
+      const playerStat = compileStat(stat, player, playerMatches)
+      if (stat.id === playerStat.statId) {
+        leaderboard.doubles.push(playerStat.doubles)
+        leaderboard.singles.push(playerStat.singles)
+      }
     }
 
-    if (payload && payload.search) {
-      // filter by search input after rankings have already been established
-      const searchString = payload.search.toLowerCase()
-      stat.players = stat.players.filter(player =>
-        player.player.firstName.toLowerCase().includes(searchString) ||
-        player.player.lastName.toLowerCase().includes(searchString))
+    const filterGender = state.filters.find(filter => filter.screen === 'stat' && filter.name === FILTERS.GENDER)
+    if (filterGender) {
+      switch (filterGender.value) {
+        case 'male':
+          leaderboard.doubles = leaderboard.doubles.filter(player => player.gender === 'm')
+          leaderboard.singles = leaderboard.singles.filter(player => player.gender === 'm')
+          break
+        case 'female':
+          leaderboard.doubles = leaderboard.doubles.filter(player => player.gender === 'f')
+          leaderboard.singles = leaderboard.singles.filter(player => player.gender === 'f')
+          break
+      }
     }
 
-    commit('setStat', stat)
+    // sort the filtered list of players for each stat
+    const doublesSorted = sortStat(leaderboard.doubles, payload.search)
+    const singlesSorted = sortStat(leaderboard.singles, payload.search)
+    const leaderboardSorted = {
+      ...leaderboard,
+      doubles: doublesSorted,
+      singles: singlesSorted
+    }
+
+    commit('setStat', leaderboardSorted)
   },
   getTeam: async ({ commit }, teamId) => {
     // TODO: get team data from the API

@@ -123,6 +123,46 @@ export function calculateTiebreakerWinsSingles(matches, playerId) {
   }
 }
 
+export function compileStat(stat, player, playerMatches) {
+  const statName = stat.name.toLowerCase()
+  const playerData = {
+    firstName: player.firstName,
+    lastName: player.lastName,
+    gender: player.gender
+  }
+  const playerStat = {
+    statId: stat.id
+  }
+
+  if (statName === 'match win %') {
+    const playerMatchesDoubles = calculateMatchWinsDoubles(playerMatches.doubles, player.id)
+    const playerMatchesSingles = calculateMatchWinsSingles(playerMatches.singles, player.id)
+
+    playerStat.doubles = { ...playerData, ...playerMatchesDoubles }
+    playerStat.singles = { ...playerData, ...playerMatchesSingles }
+  } else if (statName === 'tiebreaker win %') {
+    const playerTiebreakersDoubles = calculateTiebreakerWinsDoubles(playerMatches.doubles, player.id)
+    const playerTiebreakersSingles = calculateTiebreakerWinsSingles(playerMatches.singles, player.id)
+
+    playerStat.doubles = { ...playerData, ...playerTiebreakersDoubles }
+    playerStat.singles = { ...playerData, ...playerTiebreakersSingles }
+  } else if (statName === 'sets played') {
+    const playerSetsPlayedDoubles = calculateSetsPlayedDoubles(playerMatches.doubles, player.id)
+    const playerSetsPlayedSingles = calculateSetsPlayedSingles(playerMatches.singles, player.id)
+
+    playerStat.doubles = { ...playerData, total: playerSetsPlayedDoubles }
+    playerStat.singles = { ...playerData, total: playerSetsPlayedSingles }
+  } else if (statName === 'games played') {
+    const playerGamesPlayedDoubles = calculateGamesPlayed(playerMatches.doubles)
+    const playerGamesPlayedSingles = calculateGamesPlayed(playerMatches.singles)
+
+    playerStat.doubles = { ...playerData, total: playerGamesPlayedDoubles }
+    playerStat.singles = { ...playerData, total: playerGamesPlayedSingles }
+  }
+
+  return playerStat
+}
+
 export function filterPlayers(players, filters) {
   let playersFiltered = [...players]
 
@@ -571,28 +611,28 @@ export function sortPlayers(players, sortBy) {
 
 export function sortStat(stat, searchValue = '') {
   // sort by stat rank, descending
-  if (stat.players.every(player => player.hasOwnProperty('total'))) {
+  if (stat.every(player => player.hasOwnProperty('total'))) {
     // integer-based stat
-    stat.players.sort((a, b) => (a.total > b.total) ? -1 : 1)
-  } else if (stat.players.every(player => player.hasOwnProperty('hits') && player.hasOwnProperty('of'))) {
+    stat.sort((a, b) => (a.total > b.total) ? -1 : 1)
+  } else if (stat.every(player => player.hasOwnProperty('hits') && player.hasOwnProperty('of'))) {
     // percentage-based stat
-    const zeros = stat.players.filter(player => player.of === 0)
-    const nonzeros = stat.players.filter(player => player.of > 0)
+    const zeros = stat.filter(player => player.of === 0)
+    const nonzeros = stat.filter(player => player.of > 0)
 
     nonzeros.sort((a, b) => ((a.hits / a.of) > (b.hits / b.of)) ? -1 : 1)
-    stat.players = [...nonzeros, ...zeros]
+    stat = [...nonzeros, ...zeros]
   }
 
   // assign ranking to each pre-sorted player
-  for (let i = 0; i < stat.players.length; i++) {
-    stat.players[i].rank = i + 1
+  for (let i = 0; i < stat.length; i++) {
+    stat[i].rank = i + 1
   }
 
   if (searchValue) {
     const searchString = searchValue.toLowerCase()
-    stat.players = stat.players.filter(player =>
-      player.player.firstName.toLowerCase().includes(searchString) ||
-          player.player.lastName.toLowerCase().includes(searchString))
+    stat = stat.filter(player =>
+      player.firstName.toLowerCase().includes(searchString) ||
+          player.lastName.toLowerCase().includes(searchString))
   }
 
   return stat
