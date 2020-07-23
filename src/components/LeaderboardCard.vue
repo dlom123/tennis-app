@@ -13,7 +13,7 @@
         <div v-if="statPlayers.length > 0">
           <v-list-item
             v-for="(player, i) in statPlayers"
-            :key="`${player.player.firstName}${player.player.lastName}`"
+            :key="`${player.firstName}${player.lastName}`"
             :class="{ 'row-leader-divider': i + 1 < statPlayers.length }"
           >
 
@@ -23,18 +23,18 @@
 
             <v-list-item-avatar :size="i === 0 ? 90 : 60">
               <v-img
-                :src="require(`../assets/images/headshots/${player.player.gender === 'm' ? 'men' : 'women'}/silhouette.png`)"
+                :src="require(`../assets/images/headshots/${player.gender === 'm' ? 'men' : 'women'}/silhouette.png`)"
                 width="280"
                 max-height="230"
-                :class="getBorderClass(player.player.gender)"
+                :class="getBorderClass(player.gender)"
               ></v-img>
             </v-list-item-avatar>
 
             <v-list-item-content class="ml-4">
 
-              <v-list-item-title :class="[getTextHeaderClass(player.player.gender)]">
-                <h2 v-if="i === 0">{{ player.player.firstName }} {{ player.player.lastName }}</h2>
-                <h3 v-else>{{ player.player.firstName }} {{ player.player.lastName }}</h3>
+              <v-list-item-title :class="[getTextHeaderClass(player.gender)]">
+                <h2 v-if="i === 0">{{ player.firstName }} {{ player.lastName }}</h2>
+                <h3 v-else>{{ player.firstName }} {{ player.lastName }}</h3>
               </v-list-item-title>
 
               <v-list-item-subtitle :class="['leader-total', {'leader-top': i === 0}]">
@@ -98,9 +98,9 @@ export default {
     ]),
     statPlayers() {
       if (this.view === 'singles') {
-        return this.stat.singles.players
+        return this.stat.singles
       } else {
-        return this.stat.doubles.players
+        return this.stat.doubles
       }
     }
   },

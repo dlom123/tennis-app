@@ -6,7 +6,7 @@
         <v-expansion-panel-header>
           <v-row no-gutters align="center">
 
-            <v-col cols="2" class="mr-1">
+            <v-col cols="2">
               <h3>Filters</h3>
             </v-col>
 
@@ -24,7 +24,7 @@
           </v-row>
         </v-expansion-panel-header>
         <v-expansion-panel-content>
-          <v-container fluid class="pa-0">
+          <v-container fluid class="pa-0 pl-6 pb-2">
             <v-row no-gutters>
               <v-col cols="12" class="mb-3" v-if="hasFilter(filterFormat)">
                 <FilterFormat :isDoubles="isDoubles" :screenOverride="screenOverride" />
