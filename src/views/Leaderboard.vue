@@ -51,7 +51,7 @@
         <FilterBar :screenFilters="screenFilters" />
       </v-col>
 
-      <v-col cols="12" md="9" v-if="leaderboard.length > 0">
+      <v-col v-if="leaderboard.length > 0" cols="12" md="9">
         <v-row :no-gutters="$vuetify.breakpoint.xsOnly">
           <v-col
             cols="12"
@@ -67,11 +67,9 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col cols="12" md="9" v-else>
+      <v-col v-else cols="12" md="9">
         <v-row>
-          <v-col
-            cols="12"
-          >
+          <v-col cols="12">
             <EmptyRow text="Nothing to show." />
           </v-col>
         </v-row>

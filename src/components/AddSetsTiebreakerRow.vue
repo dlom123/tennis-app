@@ -4,21 +4,21 @@
       <div class="body-2">Tiebreaker</div>
     </v-col>
 
-    <SetBoxes :numSets="numSets" :onChangeSet="onChangeTiebreakerSet" />
+    <AddSetsBoxes :numSets="numSets" :onChangeSet="onChangeTiebreaker" />
   </v-row>
 </template>
 
 <script>
-import SetBoxes from '@/components/SetBoxes'
+import AddSetsBoxes from '@/components/AddSetsBoxes'
 
 export default {
   name: 'addSetsTiebreakerRow',
   components: {
-    SetBoxes
+    AddSetsBoxes
   },
   props: [
     'numSets',
-    'onChangeTiebreakerSet',
+    'onChangeTiebreaker',
     'side'
   ]
 }

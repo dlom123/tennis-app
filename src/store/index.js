@@ -19,6 +19,7 @@ export default new Vuex.Store({
     filters: [],
     isLoading: false,
     leaderboard: {},
+    locations: [],
     player: {},
     playerMatchesDoubles: [],
     playerMatchesSingles: [],

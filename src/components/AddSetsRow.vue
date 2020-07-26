@@ -6,7 +6,7 @@
         v-show="showTiebreakerRows && Number(side) === 1"
         :side="side"
         :numSets="numSets"
-        :onChangeTiebreakerSet="onChangeTiebreakerSet"
+        :onChangeTiebreaker="onChangeTiebreaker"
         class="mb-2" />
 
       <v-row no-gutters class="mb-2">
@@ -25,7 +25,7 @@
           </v-row>
         </v-col>
 
-        <SetBoxes :numSets="numSets" :onChangeSet="onChangeSet" />
+        <AddSetsBoxes :numSets="numSets" :onChangeSet="onChangeSet" />
 
       </v-row>
 
@@ -33,7 +33,7 @@
         v-show="showTiebreakerRows && Number(side) === 2"
         :side="side"
         :numSets="numSets"
-        :onChangeTiebreakerSet="onChangeTiebreakerSet"
+        :onChangeTiebreaker="onChangeTiebreaker"
         class="mt-2" />
 
     </v-col>
@@ -44,16 +44,19 @@
 <script>
 import { mapState } from 'vuex'
 import AddSetsTiebreakerRow from '@/components/AddSetsTiebreakerRow'
-import SetBoxes from '@/components/SetBoxes'
+import AddSetsBoxes from '@/components/AddSetsBoxes'
 
 export default {
   name: 'addSetsRow',
   components: {
-    AddSetsTiebreakerRow,
-    SetBoxes
+    AddSetsBoxes,
+    AddSetsTiebreakerRow
   },
   props: [
     'numPlayersPerSide',
+    'updatePlayer',
+    'updateSet',
+    'updateTiebreaker',
     'showTiebreakerRows',
     'side'
   ],
@@ -68,6 +71,7 @@ export default {
       'players'
     ]),
     itemsPlayers() {
+      // TODO: filter out players that have already been chosen for this match
       const players = this.players.map(player => {
         return {
           text: `${player.firstName} ${player.lastName}`,
@@ -79,13 +83,13 @@ export default {
   },
   methods: {
     onChangePlayer(n, player) {
-      console.log(this.side, n, player.lastName)
+      this.updatePlayer(this.side, n, player)
     },
     onChangeSet(n, score) {
-      console.log(`Side ${this.side}, set ${n}, ${score}`)
+      this.updateSet(this.side, n, score)
     },
-    onChangeTiebreakerSet(n, score) {
-      console.log(`Tiebreaker side ${this.side}, set ${n}, ${score}`)
+    onChangeTiebreaker(n, score) {
+      this.updateTiebreaker(this.side, n, score)
     }
   }
 }
