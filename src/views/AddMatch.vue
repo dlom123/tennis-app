@@ -49,6 +49,7 @@
                   prepend-icon="mdi-calendar"
                   v-bind="attrs"
                   v-on="on"
+                  readonly
                 ></v-text-field>
               </template>
               <v-date-picker v-model="date" @input="showDateMenu = false"></v-date-picker>
