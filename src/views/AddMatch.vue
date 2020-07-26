@@ -295,7 +295,7 @@ export default {
         }
       })
 
-      if (this.view === 'singles') {
+      if (this.matchType === 'singles') {
         // attach players data for a singles match
         matchData.players = this.matchSides
       } else {
@@ -310,7 +310,7 @@ export default {
     },
     updatePlayer(side, seq, player) {
       const thisSide = this.matchSides[side - 1]
-      if (this.view === 'singles') {
+      if (this.matchType === 'singles') {
         // update player in a singles context (player)
         thisSide.id = player.id
       } else {
