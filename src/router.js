@@ -20,7 +20,8 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Players
+      component: Players,
+      redirect: 'players'
     },
     {
       path: '/add-match',
