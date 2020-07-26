@@ -150,6 +150,9 @@
 
               <AddSetsRow
                 :numPlayersPerSide="numPlayersPerSide"
+                :updatePlayer="updatePlayer"
+                :updateSet="updateSet"
+                :updateTiebreaker="updateTiebreaker"
                 :showTiebreakerRows="showTiebreakerRows"
                 side="1" />
 
@@ -157,6 +160,9 @@
 
               <AddSetsRow
                 :numPlayersPerSide="numPlayersPerSide"
+                :updatePlayer="updatePlayer"
+                :updateSet="updateSet"
+                :updateTiebreaker="updateTiebreaker"
                 :showTiebreakerRows="showTiebreakerRows"
                 side="2"
                 class="pb-2" />
@@ -187,7 +193,7 @@
 
         <v-row no-gutters class="mt-4 mr-4">
           <v-col align="right">
-            <v-btn color="info">Submit</v-btn>
+            <v-btn color="info" @click="onSubmitMatch">Submit</v-btn>
           </v-col>
         </v-row>
 
@@ -202,7 +208,7 @@ import { mapActions, mapState } from 'vuex'
 import AddSetsRow from '@/components/AddSetsRow'
 
 export default {
-  name: 'player',
+  name: 'addMatch',
   components: {
     AddSetsRow
   },
@@ -215,6 +221,10 @@ export default {
       locationSettings: [],
       locationSurface: null,
       locationSurfaces: [],
+      matchSides: [
+        { sets: [{}, {}, {}, {}, {}] },
+        { sets: [{}, {}, {}, {}, {}] }
+      ],
       matchType: 'singles',
       showDateMenu: false,
       showTiebreakerRows: false,
@@ -225,7 +235,6 @@ export default {
   computed: {
     ...mapState([
       'locations',
-      'players',
       'view'
     ]),
     itemsLocations() {
@@ -243,9 +252,8 @@ export default {
   },
   methods: {
     ...mapActions([
+      'addMatch',
       'getLocations',
-      'getLocationSettings',
-      'getLocationSurfaces',
       'getPlayers'
     ]),
     onChangeLocation(location) {
@@ -267,14 +275,65 @@ export default {
           this.locationSurface = location.surfaces[0]
         }
       }
+    },
+    async onSubmitMatch() {
+      const matchData = {
+        type: this.matchType,
+        date: this.date,
+        locationId: this.location.id,
+        setting: this.locationSetting,
+        surface: this.locationSurface
+      }
+
+      // remove unused, blank placeholder sets
+      this.matchSides = this.matchSides.map(side => {
+        const filteredSets = side.sets.filter(set => set.hasOwnProperty('seq'))
+
+        return {
+          ...side,
+          sets: filteredSets
+        }
+      })
+
+      if (this.view === 'singles') {
+        // attach players data for a singles match
+        matchData.players = this.matchSides
+      } else {
+        // attach teams data for a doubles match
+        matchData.teams = this.matchSides
+      }
+
+      await this.addMatch(matchData)
+
+      // reload the screen
+      this.$router.go()
+    },
+    updatePlayer(side, seq, player) {
+      const thisSide = this.matchSides[side - 1]
+      if (this.view === 'singles') {
+        // update player in a singles context (player)
+        thisSide.id = player.id
+      } else {
+        // update player in a doubles context (team player)
+        if (!thisSide.hasOwnProperty('playerIds')) {
+          thisSide.playerIds = [null, null]
+        }
+        thisSide.playerIds[seq - 1] = player.id
+      }
+    },
+    updateSet(side, seq, score) {
+      const thisSet = this.matchSides[side - 1].sets[seq - 1]
+      thisSet.seq = seq
+      thisSet.score = score
+    },
+    updateTiebreaker(side, seq, score) {
+      this.matchSides[side - 1].sets[seq - 1].tiebreakerScore = score
     }
   },
-  created() {
+  async created() {
     this.matchType = this.view === 'singles' ? 'singles' : 'doubles'
-    this.getLocations()
-    this.getPlayers()
-  },
-  destroyed() {
+    await this.getLocations()
+    await this.getPlayers()
   }
 }
 </script>

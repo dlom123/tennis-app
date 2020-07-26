@@ -59,6 +59,7 @@ import ToggleSinglesDoubles from '@/components/ToggleSinglesDoubles'
 export default {
   name: 'player',
   components: {
+    // eslint-disable-next-line
     FilterBar,
     NavBack,
     PlayerData,

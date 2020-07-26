@@ -1,16 +1,8 @@
 import axios from 'axios'
 import router from '@/router'
-import locationsData from '@/data/locations.json'
 import playersData from '@/data/players.json'
 import { FILTERS } from '@/utils/constants'
 import {
-  calculateMatchWinsDoubles,
-  calculateMatchWinsSingles,
-  calculateTiebreakerWinsDoubles,
-  calculateTiebreakerWinsSingles,
-  calculateSetsPlayedDoubles,
-  calculateSetsPlayedSingles,
-  calculateGamesPlayed,
   compileStat,
   sortStat
 } from '@/utils/functions'
@@ -20,76 +12,90 @@ const HTTP = axios.create({
 })
 
 export default {
+  addMatch: async ({ commit }, payload) => {
+    try {
+      await HTTP.post('/matches', payload)
+    } catch (e) {
+      console.error(e)
+    }
+  },
   getLeaderboard: async ({ commit, state }, payload) => {
-    const statsResponse = await HTTP.get('/stats')
-    const stats = statsResponse.data.data
+    try {
+      const statsResponse = await HTTP.get('/stats')
+      const stats = statsResponse.data.data
 
-    // get all players
-    const playersResponse = await HTTP.get(`/players`)
-    const players = playersResponse.data.data.players
+      // get all players
+      const playersResponse = await HTTP.get(`/players`)
+      const players = playersResponse.data.data.players
 
-    // pre-populate an object with each stat's id and name
-    let leaderboard = stats.map(stat => ({
-      id: stat.id,
-      name: stat.name,
-      doubles: [],
-      singles: []
-    }))
+      // pre-populate an object with each stat's id and name
+      let leaderboard = stats.map(stat => ({
+        id: stat.id,
+        name: stat.name,
+        doubles: [],
+        singles: []
+      }))
 
-    // compile all of the data
-    for (const player of players) {
-      const playerMatchesResponse = await HTTP.get(`/players/${player.id}/matches`)
-      const playerMatches = playerMatchesResponse.data.data
+      // compile all of the data
+      for (const player of players) {
+        const playerMatchesResponse = await HTTP.get(`/players/${player.id}/matches`)
+        const playerMatches = playerMatchesResponse.data.data
 
-      leaderboard.forEach(stat => {
-        const playerStat = compileStat(stat, player, playerMatches)
-        if (stat.id === playerStat.statId) {
-          stat.doubles.push(playerStat.doubles)
-          stat.singles.push(playerStat.singles)
+        leaderboard.forEach(stat => {
+          const playerStat = compileStat(stat, player, playerMatches)
+          if (stat.id === playerStat.statId) {
+            stat.doubles.push(playerStat.doubles)
+            stat.singles.push(playerStat.singles)
+          }
+        })
+      }
+
+      const leaderboardFiltered = leaderboard.map(stat => {
+        const filterGender = state.filters.find(filter => filter.screen === 'leaderboard' && filter.name === FILTERS.GENDER)
+        if (filterGender) {
+          switch (filterGender.value) {
+            case 'male':
+              stat.doubles = stat.doubles.filter(player => player.gender === 'm')
+              stat.singles = stat.singles.filter(player => player.gender === 'm')
+              break
+            case 'female':
+              stat.doubles = stat.doubles.filter(player => player.gender === 'f')
+              stat.singles = stat.singles.filter(player => player.gender === 'f')
+              break
+          }
+        }
+        return stat
+      })
+
+      // sort the filtered list of players for each stat
+      const leaderboardSorted = leaderboardFiltered.map(stat => {
+        const doublesSorted = sortStat(stat.doubles, payload.search, false)
+        const singlesSorted = sortStat(stat.singles, payload.search, false)
+
+        return {
+          ...stat,
+          doubles: doublesSorted,
+          singles: singlesSorted
         }
       })
-    }
 
-    const leaderboardFiltered = leaderboard.map(stat => {
-      const filterGender = state.filters.find(filter => filter.screen === 'leaderboard' && filter.name === FILTERS.GENDER)
-      if (filterGender) {
-        switch (filterGender.value) {
-          case 'male':
-            stat.doubles = stat.doubles.filter(player => player.gender === 'm')
-            stat.singles = stat.singles.filter(player => player.gender === 'm')
-            break
-          case 'female':
-            stat.doubles = stat.doubles.filter(player => player.gender === 'f')
-            stat.singles = stat.singles.filter(player => player.gender === 'f')
-            break
-        }
-      }
-
-      return stat
-    })
-
-    // sort the filtered list of players for each stat
-    const leaderboardSorted = leaderboardFiltered.map(stat => {
-      const doublesSorted = sortStat(stat.doubles, payload.search)
-      const singlesSorted = sortStat(stat.singles, payload.search)
-      return {
+      // truncate the full list of players for each stat to just the top 3
+      const leaderboardTopThree = leaderboardSorted.map(stat => ({
         ...stat,
-        doubles: doublesSorted,
-        singles: singlesSorted
-      }
-    })
+        doubles: stat.doubles.slice(0, 3),
+        singles: stat.singles.slice(0, 3)
+      }))
 
-    // truncate the full list of players for each stat to just the top 3
-    const leaderboardTopThree = leaderboardSorted.map(stat => ({
-      ...stat,
-      doubles: stat.doubles.slice(0, 3),
-      singles: stat.singles.slice(0, 3)
-    }))
-
-    commit('setLeaderboard', leaderboardTopThree)
+      commit('setLeaderboard', leaderboardTopThree)
+    } catch (e) {
+      console.error(e)
+    }
   },
   getLocations: async ({ commit }) => {
-    let locations = locationsData
+    // get all locations
+    const locationsResponse = await HTTP.get(`/locations`)
+    const locations = locationsResponse.data.data
+
     commit('setLocations', locations)
   },
   getLocationSettings: async ({ commit }, locationId) => {
@@ -99,9 +105,14 @@ export default {
     console.log('getting location surfaces for ', locationId)
   },
   getPlayer: async ({ commit }, playerId) => {
-    const response = await HTTP.get(`/players/${playerId}`)
+    try {
+      const response = await HTTP.get(`/players/${playerId}`)
 
-    commit('setPlayer', response.data.data.player)
+      commit('setPlayer', response.data.data.player)
+    } catch (e) {
+      router.push({ name: 'players' })
+      console.error(e)
+    }
   },
   getPlayerMatches: async ({ commit }, payload) => {
     const response = await HTTP.get(`/players/${payload.playerId}/matches`)

@@ -9,7 +9,6 @@
 
     <v-card-text class="pa-0">
       <v-list two-line class="pa-0">
-
         <div v-if="statPlayers.length > 0">
           <v-list-item
             v-for="(player, i) in statPlayers"
