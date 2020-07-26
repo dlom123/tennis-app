@@ -3,7 +3,7 @@
     <v-app-bar app short>
 
       <v-toolbar-title>
-        <h3>Tennis Stats ({{ $vuetify.breakpoint.name }})</h3>
+        <h3>Tennis Stats</h3>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
