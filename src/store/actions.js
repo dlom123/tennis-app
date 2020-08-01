@@ -7,8 +7,17 @@ import {
   sortStat
 } from '@/utils/functions'
 
+let auth = {}
+
+if (process.env.NODE_ENV === 'production') {
+  auth.username = process.env.VUE_APP_API_USERNAME
+  auth.password = process.env.VUE_APP_API_PASSWORD
+}
+
 const HTTP = axios.create({
   baseURL: process.env.VUE_APP_API_BASE_URL
+}, {
+  auth
 })
 
 export default {
