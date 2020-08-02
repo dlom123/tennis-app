@@ -71,7 +71,7 @@ export default {
       'view'
     ]),
     displayMatchDate() {
-      return moment(this.match.date).format(this.formatMatchDate)
+      return moment.parseZone(this.match.date).format(this.formatMatchDate)
     },
     sides() {
       let winnerId = 0
