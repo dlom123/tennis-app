@@ -51,6 +51,7 @@ export default {
       items: [
         { name: 'Players', icon: 'mdi-account-group', route: 'players' },
         { name: 'Leaderboard', icon: 'mdi-clipboard-list', route: 'leaderboard' },
+        { name: 'Racquet Pile', icon: 'mdi-tennis', route: 'racquetPile' },
         { name: 'Match', icon: 'mdi-plus', route: 'addMatch' }
       ]
     }
