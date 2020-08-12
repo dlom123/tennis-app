@@ -4,6 +4,7 @@ import AddMatch from '@/views/AddMatch'
 import Leaderboard from '@/views/Leaderboard'
 import Player from '@/views/Player'
 import Players from '@/views/Players'
+import RacquetPile from '@/views/RacquetPile'
 import Stat from '@/views/Stat'
 import Team from '@/views/Team'
 import Teams from '@/views/Teams'
@@ -42,6 +43,11 @@ const router = new Router({
       path: '/players',
       name: 'players',
       component: Players
+    },
+    {
+      path: '/racquet-pile',
+      name: 'racquetPile',
+      component: RacquetPile
     },
     {
       path: '/stats/:statId',
