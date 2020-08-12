@@ -143,7 +143,7 @@ export default {
           latestMatchDate = match.date
         }
       })
-      return moment(latestMatchDate).format(this.formatMatchDate)
+      return moment.parseZone(latestMatchDate).format(this.formatMatchDate)
     },
     playerAvatar() {
       return this.player.avatarUrl || 'silhouette.png'
