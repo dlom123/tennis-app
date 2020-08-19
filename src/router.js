@@ -6,8 +6,7 @@ import Player from '@/views/Player'
 import Players from '@/views/Players'
 import RacquetPile from '@/views/RacquetPile'
 import Stat from '@/views/Stat'
-import Team from '@/views/Team'
-import Teams from '@/views/Teams'
+import Tournaments from '@/views/Tournaments'
 
 Vue.use(Router)
 
@@ -55,14 +54,9 @@ const router = new Router({
       component: Stat
     },
     {
-      path: '/teams/:teamId',
-      name: 'team',
-      component: Team
-    },
-    {
-      path: '/teams',
-      name: 'teams',
-      component: Teams
+      path: '/tournaments',
+      name: 'tournaments',
+      component: Tournaments
     }
   ]
 })

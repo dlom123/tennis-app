@@ -39,11 +39,8 @@ export default {
   setStat: (state, payload) => {
     state.stat = payload
   },
-  setTeam: (state, payload) => {
-    state.team = payload
-  },
-  setTeams: (state, payload) => {
-    state.teams = payload
+  setTournaments: (state, payload) => {
+    state.tournaments = payload
   },
   setView: (state, payload) => {
     state.view = payload

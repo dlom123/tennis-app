@@ -25,8 +25,7 @@ export default new Vuex.Store({
     playerMatchesSingles: [],
     players: [],
     stat: {},
-    team: {},
-    teams: [],
+    tournaments: [],
     view: 'singles'
   },
   actions,
