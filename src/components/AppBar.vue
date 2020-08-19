@@ -13,6 +13,7 @@
         <!-- <v-btn text :to="{ name: 'teams' }">Teams</v-btn> -->
         <v-btn text :to="{ name: 'leaderboard', params: { clearFilters: true } }">Leaderboard</v-btn>
         <v-btn text :to="{ name: 'racquetPile' }">Racquet Pile</v-btn>
+        <v-btn text :to="{ name: 'tournaments' }">Tournaments</v-btn>
         <v-btn text :to="{ name: 'addMatch' }"><v-icon>mdi-plus</v-icon> Match</v-btn>
       </v-toolbar-items>
       <v-btn @click.stop="toggleDrawer" class="hidden-sm-and-up text-capitalize">
@@ -52,6 +53,7 @@ export default {
         { name: 'Players', icon: 'mdi-account-group', route: 'players' },
         { name: 'Leaderboard', icon: 'mdi-clipboard-list', route: 'leaderboard' },
         { name: 'Racquet Pile', icon: 'mdi-tennis', route: 'racquetPile' },
+        { name: 'Tournaments', icon: 'mdi-tournament', route: 'tournaments' },
         { name: 'Match', icon: 'mdi-plus', route: 'addMatch' }
       ]
     }

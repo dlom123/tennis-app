@@ -1,6 +1,5 @@
 import axios from 'axios'
 import router from '@/router'
-import playersData from '@/data/players.json'
 import { FILTERS } from '@/utils/constants'
 import {
   compileStat,
@@ -199,17 +198,10 @@ export default {
 
     commit('setStat', leaderboardSorted)
   },
-  getTeam: async ({ commit }, teamId) => {
-    // TODO: get team data from the API
-    const teams = playersData.doubles
-    const team = await teams.filter(team => team.id.toString() === teamId.toString())[0]
+  getTournaments: async ({ commit }) => {
+    // TODO: get tournaments data from the API
+    const tournaments = []
 
-    return commit('setTeam', team)
-  },
-  getTeams: async ({ commit }) => {
-    // TODO: get teams data from the API
-    const teams = playersData.doubles
-
-    commit('setTeams', teams)
+    commit('setTournaments', tournaments)
   }
 }
