@@ -37,7 +37,10 @@
               </v-list-item-title>
 
               <v-list-item-subtitle :class="['leader-total', {'leader-top': i === 0}]">
-                <span v-if="player.hasOwnProperty('total')">
+                <span v-if="stat.name.toLowerCase() === 'games played'">
+                  <span>{{ player.of }}</span>
+                </span>
+                <span v-else-if="player.hasOwnProperty('total')">
                   <span>{{ player.total }}</span>
                 </span>
                 <span v-else @click="toggleShowPercent">

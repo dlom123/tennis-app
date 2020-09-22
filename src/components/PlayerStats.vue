@@ -27,7 +27,7 @@
         </v-col>
         <v-col cols="6" align="center">
           <h3 class="text-capitalize">Games Played</h3>
-          <p>{{ gamesPlayed }}</p>
+          <p>{{ gamesPlayed.of }}</p>
         </v-col>
       </v-row>
 
@@ -39,7 +39,8 @@
 <script>
 import { mapState } from 'vuex'
 import {
-  calculateGamesPlayed,
+  calculateGamesPlayedDoubles,
+  calculateGamesPlayedSingles,
   calculateMatchWinsDoubles,
   calculateMatchWinsSingles,
   calculateSetsPlayedDoubles,
@@ -76,11 +77,11 @@ export default {
     gamesPlayed() {
       let matches = []
       if (this.view === 'singles') {
-        matches = this.playerMatchesSingles
+        matches = calculateGamesPlayedSingles(this.playerMatchesSingles, this.$route.params.playerId)
       } else {
-        matches = this.playerMatchesDoubles
+        matches = calculateGamesPlayedDoubles(this.playerMatchesDoubles, this.$route.params.playerId)
       }
-      return calculateGamesPlayed(matches)
+      return matches
     },
     matchWinPercentage() {
       let matches = {}

@@ -9,11 +9,11 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items class="hidden-xs-only">
+        <v-btn text :to="{ name: 'tournament', params: { tournamentId: 1 }}">Lazy Cup 2020</v-btn>
         <v-btn text :to="{ name: 'players' }">Players</v-btn>
         <!-- <v-btn text :to="{ name: 'teams' }">Teams</v-btn> -->
         <v-btn text :to="{ name: 'leaderboard', params: { clearFilters: true } }">Leaderboard</v-btn>
         <v-btn text :to="{ name: 'racquetPile' }">Racquet Pile</v-btn>
-        <v-btn text :to="{ name: 'tournaments' }">Tournaments</v-btn>
         <v-btn text :to="{ name: 'addMatch' }"><v-icon>mdi-plus</v-icon> Match</v-btn>
       </v-toolbar-items>
       <v-btn @click.stop="toggleDrawer" class="hidden-sm-and-up text-capitalize">

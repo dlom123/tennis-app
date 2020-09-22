@@ -6,6 +6,7 @@ import Player from '@/views/Player'
 import Players from '@/views/Players'
 import RacquetPile from '@/views/RacquetPile'
 import Stat from '@/views/Stat'
+import Tournament from '@/views/Tournament'
 import Tournaments from '@/views/Tournaments'
 
 Vue.use(Router)
@@ -57,6 +58,11 @@ const router = new Router({
       path: '/tournaments',
       name: 'tournaments',
       component: Tournaments
+    },
+    {
+      path: '/tournaments/:tournamentId',
+      name: 'tournament',
+      component: Tournament
     }
   ]
 })
