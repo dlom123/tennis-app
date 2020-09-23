@@ -156,8 +156,8 @@ export default {
   data() {
     return {
       players: [
-        { id: 6, gender: 'm', firstName: 'Alex', lastName: 'Fohl' },
         { id: 8, gender: 'm', firstName: 'Tyler', lastName: 'Edmonds' },
+        { id: 6, gender: 'm', firstName: 'Alex', lastName: 'Fohl' },
         { id: 2, gender: 'm', firstName: 'George', lastName: 'Go' },
         { id: 7, gender: 'm', firstName: 'Chris', lastName: 'Layton' },
         { id: 1, gender: 'm', firstName: 'Daniel', lastName: 'Lomelino' },
@@ -177,16 +177,40 @@ export default {
       'tournamentNav'
     ]),
     standingsSorted() {
-      // TODO: sort players by matches won
-      // TODO: sort players by game percentage
       const sortedPlayers = []
       Object.assign(sortedPlayers, this.players)
-      sortedPlayers.sort((a, b) => (a.matchesWon < b.matchesWon)
-        ? 1
-        : (a.lastName === b.lastName)
-          ? ((a.firstName > b.firstName) ? 1 : -1)
-          : -1
-      )
+      sortedPlayers.sort((a, b) => {
+        // decide sort order by matches won
+        if (a.matchesWon > b.matchesWon) {
+          return -1
+        } else if (a.matchesWon < b.matchesWon) {
+          return 1
+        } else {
+          // decide sort order by games won
+          const pctA = a.gamesWon.won / a.gamesWon.of
+          const pctB = b.gamesWon.won / b.gamesWon.of
+          if (pctA > pctB) {
+            return -1
+          } else if (pctA < pctB) {
+            return 1
+          } else {
+            // same matches and games percentage - sort by name
+            if (a.lastName < b.lastName) {
+              return -1
+            } else if (a.lastName > b.lastName) {
+              return 1
+            } else {
+              // same last name - sort by first name
+              if (a.firstName < b.firstName) {
+                return -1
+              } else if (a.firstName > b.firstName) {
+                return 1
+              }
+            }
+          }
+        }
+      })
+
       return sortedPlayers
     },
     tournamentBottomNav: {
