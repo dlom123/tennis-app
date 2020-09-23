@@ -24,6 +24,9 @@ export default {
   setLocations: (state, payload) => {
     state.locations = payload
   },
+  setMatches: (state, payload) => {
+    state.playerMatchesDoubles = payload
+  },
   setPlayer: (state, payload) => {
     state.player = payload
   },
@@ -38,6 +41,12 @@ export default {
   },
   setStat: (state, payload) => {
     state.stat = payload
+  },
+  setTournament: (state, payload) => {
+    state.tournament = payload
+  },
+  setTournamentNav: (state, payload) => {
+    state.tournamentNav = payload
   },
   setTournaments: (state, payload) => {
     state.tournaments = payload

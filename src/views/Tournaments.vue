@@ -17,13 +17,6 @@
       </v-col> -->
     </v-row>
 
-    <v-row no-gutters
-      :class="{
-        'px-2 pt-2': $vuetify.breakpoint.xsOnly,
-      }"
-    >
-    </v-row>
-
     <v-row no-gutters class="mb-2 justify-end">
       <v-col
         cols="12"
@@ -35,7 +28,7 @@
       </v-col>
     </v-row>
 
-    <v-row
+    <!-- <v-row
       v-if="screenFilters.length > 0"
       no-gutters
       class="hidden-md-and-up mt-4 mb-2"
@@ -43,26 +36,52 @@
       <v-col cols="12">
         <FilterBar :screenFilters="screenFilters" />
       </v-col>
-    </v-row>
+    </v-row> -->
 
     <v-row no-gutters>
-
-      <v-col class="hidden-sm-and-down" md="3">
+      <!-- <v-col class="hidden-sm-and-down" md="3">
         <FilterBar :screenFilters="screenFilters" />
-      </v-col>
+      </v-col> -->
+    </v-row>
 
+    <v-row no-gutters class="pl-2 my-2">
+      <v-col><h2>Upcoming</h2></v-col>
+    </v-row>
+
+    <v-row v-if="tournamentsUpcoming.length > 0" no-gutters>
       <v-col
-        v-if="tournaments.length > 0"
         cols="12"
         md="9"
         :class="{'mb-6': $vuetify.breakpoint.smAndUp}"
       >
-        <!-- <TournamentCard /> -->
+        <TournamentCard v-for="(tournament, i) in tournamentsUpcoming" :key="i" :tournament="tournament"
+        />
       </v-col>
-      <v-col v-else cols="12" md="9" class="pa-0">
+    </v-row>
+    <v-row v-else no-gutters>
+      <v-col cols="12" md="9" class="pa-0">
         <EmptyRow text="Nothing to show." />
       </v-col>
+    </v-row>
 
+    <v-row no-gutters class="pl-2 my-2">
+      <v-col><h2>Past</h2></v-col>
+    </v-row>
+
+    <v-row v-if="tournamentsPast.length > 0" no-gutters>
+      <v-col
+        cols="12"
+        md="9"
+        :class="{'mb-6': $vuetify.breakpoint.smAndUp}"
+      >
+        <TournamentCard v-for="(tournament, i) in tournamentsPast" :key="i" :tournament="tournament"
+        />
+      </v-col>
+    </v-row>
+    <v-row v-else no-gutters>
+      <v-col cols="12" md="9" class="pa-0">
+        <EmptyRow text="Nothing to show." />
+      </v-col>
     </v-row>
 
   </v-container>
@@ -70,10 +89,11 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
+import moment from 'moment'
 import EmptyRow from '@/components/EmptyRow'
 import FilterBar from '@/components/filters/FilterBar'
 import SearchInput from '@/components/SearchInput'
-// import TournamentCard from '@/components/TournamentCard'
+import TournamentCard from '@/components/TournamentCard'
 import { FILTERS } from '@/utils/constants'
 
 export default {
@@ -81,8 +101,8 @@ export default {
   components: {
     EmptyRow,
     FilterBar,
-    SearchInput
-    // TournamentCard
+    SearchInput,
+    TournamentCard
   },
   data() {
     return {
@@ -95,7 +115,13 @@ export default {
       'isLoading',
       'tournaments',
       'view'
-    ])
+    ]),
+    tournamentsUpcoming() {
+      return this.tournaments.filter(tournament => moment().isBefore(tournament.date))
+    },
+    tournamentsPast() {
+      return []
+    }
   },
   methods: {
     ...mapActions([
