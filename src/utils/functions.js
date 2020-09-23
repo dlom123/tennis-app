@@ -1,16 +1,47 @@
 import { FILTERS } from '@/utils/constants'
 
-export function calculateGamesPlayed(matches) {
+export function calculateGamesPlayedDoubles(matches, playerId) {
   // calculate how many total games have been played by
   // the given player id for the given matches
-  let totalGames = 0
+  let totalGamesPlayed = 0
+  let totalGamesWon = 0
   matches.forEach(match => {
+    // get the team id that the player was a part of for this match
+    const playerTeamId = getMatchTeamIdByPlayerId(match, playerId)
     match.sets.forEach(set => {
-      totalGames += set.score
+      totalGamesPlayed += set.score
+      // add the number of games that the player's team won
+      if (Number(set.team.id) === playerTeamId) {
+        totalGamesWon += set.score
+      }
     })
   })
 
-  return totalGames
+  return {
+    hits: totalGamesWon,
+    of: totalGamesPlayed
+  }
+}
+
+export function calculateGamesPlayedSingles(matches, playerId) {
+  // calculate how many total games have been played by
+  // the given player id for the given matches
+  let totalGamesPlayed = 0
+  let totalGamesWon = 0
+  matches.forEach(match => {
+    match.sets.forEach(set => {
+      totalGamesPlayed += set.score
+      // add the number of games that the player won
+      if (Number(set.player.id) === playerId) {
+        totalGamesWon += set.score
+      }
+    })
+  })
+
+  return {
+    hits: totalGamesWon,
+    of: totalGamesPlayed
+  }
 }
 
 export function calculateMatchWinsDoubles(matches, playerId) {
@@ -126,6 +157,7 @@ export function calculateTiebreakerWinsSingles(matches, playerId) {
 export function compileStat(stat, player, playerMatches) {
   const statName = stat.name.toLowerCase()
   const playerData = {
+    id: player.id,
     firstName: player.firstName,
     lastName: player.lastName,
     gender: player.gender
@@ -153,11 +185,11 @@ export function compileStat(stat, player, playerMatches) {
     playerStat.doubles = { ...playerData, total: playerSetsPlayedDoubles }
     playerStat.singles = { ...playerData, total: playerSetsPlayedSingles }
   } else if (statName === 'games played') {
-    const playerGamesPlayedDoubles = calculateGamesPlayed(playerMatches.doubles)
-    const playerGamesPlayedSingles = calculateGamesPlayed(playerMatches.singles)
+    const playerGamesPlayedDoubles = calculateGamesPlayedDoubles(playerMatches.doubles, player.id)
+    const playerGamesPlayedSingles = calculateGamesPlayedSingles(playerMatches.singles, player.id)
 
-    playerStat.doubles = { ...playerData, total: playerGamesPlayedDoubles }
-    playerStat.singles = { ...playerData, total: playerGamesPlayedSingles }
+    playerStat.doubles = { ...playerData, ...playerGamesPlayedDoubles }
+    playerStat.singles = { ...playerData, ...playerGamesPlayedSingles }
   }
 
   return playerStat

@@ -1,6 +1,5 @@
 import axios from 'axios'
 import router from '@/router'
-import playersData from '@/data/players.json'
 import { FILTERS } from '@/utils/constants'
 import {
   compileStat,
@@ -113,6 +112,13 @@ export default {
   getLocationSurfaces: async ({ commit }, locationId) => {
     console.log('getting location surfaces for ', locationId)
   },
+  getMatches: async ({ commit }, type) => {
+    // get all locations
+    const matchesResponse = await HTTP.get(`/matches?type=${type}`)
+    const matches = matchesResponse.data.data
+
+    commit('setMatches', matches)
+  },
   getPlayer: async ({ commit }, playerId) => {
     try {
       const response = await HTTP.get(`/players/${playerId}`)
@@ -199,17 +205,100 @@ export default {
 
     commit('setStat', leaderboardSorted)
   },
-  getTeam: async ({ commit }, teamId) => {
-    // TODO: get team data from the API
-    const teams = playersData.doubles
-    const team = await teams.filter(team => team.id.toString() === teamId.toString())[0]
+  getTournament: async ({ commit }) => {
+    // TODO: get tournament data from the API
+    const tournament = {
+      id: 1,
+      name: 'Lazy Feet Invitational 2020',
+      date: '2020-09-26',
+      location: {
+        name: 'Park Tudor High School',
+        city: 'Indianapolis',
+        state: 'IN'
+      },
+      format: 'Round Robin',
+      divisions: [
+        {
+          'singles': [
+            'men\'s',
+            'women\'s',
+            'mixed'
+          ]
+        },
+        {
+          'doubles': [
+            'men\'s',
+            'women\'s',
+            'mixed'
+          ]
+        }
+      ],
+      maxPlayers: null,
+      players: [ // merge with divisions so that players are nested within their division
+        { id: 1, firstName: 'Daniel', lastName: 'Lomelino', gender: 'm' },
+        { id: 3, firstName: 'Dax', lastName: 'Lowery', gender: 'm' },
+        { id: 6, firstName: 'Alex', lastName: 'Fohl', gender: 'm' },
+        { id: 7, firstName: 'Chris', lastName: 'Layton', gender: 'm' },
+        { id: 2, firstName: 'George', lastName: 'Go', gender: 'm' },
+        { id: 5, firstName: 'Emily', lastName: 'Wandel', gender: 'f' },
+        { id: 4, firstName: 'Kessa', lastName: 'McNaught', gender: 'f' },
+        { id: 8, firstName: 'Tyler', lastName: 'Edmonds', gender: 'm' },
+        { id: 12, firstName: 'Myna', lastName: 'Simpson', gender: 'f' },
+        { id: 9, firstName: 'Lisa', lastName: 'Martin', gender: 'f' },
+        { id: 16, firstName: 'Madelyn', lastName: 'Lee', gender: 'f' },
+        { id: 10, firstName: 'Brandon', lastName: 'Wiley', gender: 'm' }
+      ]
+    }
 
-    return commit('setTeam', team)
+    commit('setTournament', tournament)
   },
-  getTeams: async ({ commit }) => {
-    // TODO: get teams data from the API
-    const teams = playersData.doubles
+  getTournaments: async ({ commit }) => {
+    // TODO: get tournaments data from the API
+    const tournaments = [
+      {
+        id: 1,
+        name: 'Lazy Feet Invitational 2020',
+        date: '2020-09-26',
+        location: {
+          name: 'Park Tudor High School',
+          city: 'Indianapolis',
+          state: 'IN'
+        },
+        format: 'Round Robin',
+        divisions: [
+          {
+            'singles': [
+              'men\'s',
+              'women\'s',
+              'mixed'
+            ]
+          },
+          {
+            'doubles': [
+              'men\'s',
+              'women\'s',
+              'mixed'
+            ]
+          }
+        ],
+        maxPlayers: null,
+        players: [ // merge with divisions so that players are nested within their division
+          { id: 1, firstName: 'Daniel', lastName: 'Lomelino', gender: 'm' },
+          { id: 3, firstName: 'Dax', lastName: 'Lowery', gender: 'm' },
+          { id: 6, firstName: 'Alex', lastName: 'Fohl', gender: 'm' },
+          { id: 7, firstName: 'Chris', lastName: 'Layton', gender: 'm' },
+          { id: 2, firstName: 'George', lastName: 'Go', gender: 'm' },
+          { id: 5, firstName: 'Emily', lastName: 'Wandel', gender: 'f' },
+          { id: 4, firstName: 'Kessa', lastName: 'McNaught', gender: 'f' },
+          { id: 8, firstName: 'Tyler', lastName: 'Edmonds', gender: 'm' },
+          { id: 12, firstName: 'Myna', lastName: 'Simpson', gender: 'f' },
+          { id: 9, firstName: 'Lisa', lastName: 'Martin', gender: 'f' },
+          { id: 16, firstName: 'Madelyn', lastName: 'Lee', gender: 'f' },
+          { id: 10, firstName: 'Brandon', lastName: 'Wiley', gender: 'm' }
+        ]
+      }
+    ]
 
-    commit('setTeams', teams)
+    commit('setTournaments', tournaments)
   }
 }
