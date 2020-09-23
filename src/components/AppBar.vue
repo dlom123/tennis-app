@@ -30,7 +30,7 @@
       disable-resize-watcher
     >
       <v-list nav>
-        <v-list-item v-for="item in items" :key="item.name" exact :to="{ name: item.route }" @click="goNav(item.route)">
+        <v-list-item v-for="item in items" :key="item.name" exact :to="item.route" @click="goNav(item.route)">
           <v-list-item-avatar>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-avatar>
@@ -50,18 +50,27 @@ export default {
     return {
       drawer: false,
       items: [
-        { name: 'Players', icon: 'mdi-account-group', route: 'players' },
-        { name: 'Leaderboard', icon: 'mdi-clipboard-list', route: 'leaderboard' },
-        { name: 'Racquet Pile', icon: 'mdi-tennis', route: 'racquetPile' },
-        { name: 'Tournaments', icon: 'mdi-tournament', route: 'tournaments' },
-        { name: 'Match', icon: 'mdi-plus', route: 'addMatch' }
+        { name: 'Players', icon: 'mdi-account-group', route: { name: 'players' } },
+        { name: 'Leaderboard', icon: 'mdi-clipboard-list', route: { name: 'leaderboard' } },
+        { name: 'Racquet Pile', icon: 'mdi-tennis', route: { name: 'racquetPile' } },
+        // { name: 'Tournaments', icon: 'mdi-tournament', route: { name: 'tournaments' } },
+        { name: 'Lazy Cup 2020',
+          icon: 'mdi-shoe-print',
+          route: {
+            name: 'tournament',
+            params: {
+              tournamentId: 1
+            }
+          }
+        },
+        { name: 'Match', icon: 'mdi-plus', route: { name: 'addMatch' } }
       ]
     }
   },
   methods: {
     goNav(route) {
       // close the nav drawer if clicking the already active item
-      if (this.$route.name === route) {
+      if (this.$route.name === route.name) {
         this.drawer = false
       }
     },
