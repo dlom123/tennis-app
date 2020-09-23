@@ -75,9 +75,9 @@
               <v-expansion-panel-content>
 
                 <v-row no-gutters>
-                  <v-col cols="5" offset="3" class="text-left header">Player</v-col>
-                  <v-col cols="2" class="text-left header">Matches Won</v-col>
-                  <v-col cols="2" class="text-left header">Games Won</v-col>
+                  <v-col cols="5" offset="1" class="text-left header">Player</v-col>
+                  <v-col cols="3" class="text-center header">Matches Won</v-col>
+                  <v-col cols="3" class="text-center header">Games Won</v-col>
                 </v-row>
 
                 <v-row
@@ -85,27 +85,29 @@
                   :key="`${player.firstName}${player.lastName}`"
                   :class="[{ 'player-row': i < standingsSorted.length-1 }, { 'winner-row': isTopPlayer(i) }, { 'top-row': isTopPlayer(i) }]"
                 >
-                  <v-col cols="1" class="data-rank">
+                  <v-col cols="1" class="data-rank justify-center" align="center">
                     <h3 :class="{ 'data-top mt-1': isTopPlayer(i) }">#{{ i + 1 }}</h3>
                   </v-col>
-                  <v-col cols="2">
+                  <!-- <v-col cols="2" class="justify-center">
                     <v-img
                       width="100"
                       :src="require(`../assets/images/headshots/${player.gender === 'm' ? 'men' : 'women'}/silhouette.png`)"
                     ></v-img>
+                  </v-col> -->
+                  <v-col cols="5" :class="['data-name justify-center', {'data-top mt-1': isTopPlayer(i) }]">
+                    <a :href="`/players/${player.id}`">{{ getFullName(player) }}</a>
                   </v-col>
-                  <v-col cols="4" :class="['data-name', {'data-top mt-1': isTopPlayer(i) }]">{{ getFullName(player) }}</v-col>
                   <v-col
-                    cols="2"
+                    cols="3"
                     align="center"
-                    :class="['data-score', {'data-top mt-1': isTopPlayer(i) }]"
+                    :class="['data-score justify-center', {'data-top mt-1': isTopPlayer(i) }]"
                   >
                     {{ player.matchesWon }}
                   </v-col>
                   <v-col
-                    cols="2"
+                    cols="3"
                     align="center"
-                    :class="['data-score', {'data-top mt-1': isTopPlayer(i) }]"
+                    :class="['data-score justify-center', {'data-top mt-1': isTopPlayer(i) }]"
                   >
                     {{ displayGamesWon(player.gamesWon.won, player.gamesWon.of) }}
                   </v-col>
@@ -205,7 +207,8 @@ export default {
     ...mapMutations([
       'setLoading',
       'setTournament',
-      'setTournamentNav'
+      'setTournamentNav',
+      'setView'
     ]),
     attachGamesWon() {
       this.stats[1].doubles.forEach(statPlayer => {
@@ -247,6 +250,8 @@ export default {
   },
   async created() {
     this.setLoading(true)
+    // force a doubles view since this tournament is only for doubles
+    this.setView('doubles')
     // Match Win %
     await this.getStat({ statId: 1 })
     this.stats.push(this.stat)
@@ -254,8 +259,8 @@ export default {
     await this.getStat({ statId: 4 })
     this.stats.push(this.stat)
     // Attach stats to each player
-    this.attachMatchesWon()
-    this.attachGamesWon()
+    await this.attachMatchesWon()
+    await this.attachGamesWon()
     // All matches
     await this.getMatches('doubles')
     this.setLoading(false)
@@ -268,6 +273,8 @@ export default {
 </script>
 
 <style scoped lang="sass">
+a
+  text-decoration: none
 .header
   font-size: 10pt !important
 .player-row
