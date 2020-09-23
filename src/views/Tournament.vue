@@ -74,82 +74,42 @@
 
               <v-expansion-panel-content>
 
-                <v-simple-table>
-                  <template v-slot:default>
-                    <thead>
-                      <tr>
-                        <th class="text-left"></th>
-                        <th class="text-left"></th>
-                        <th class="text-left header">Player</th>
-                        <th class="text-left header">Matches Won</th>
-                        <th class="text-left header">Games Won</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr
-                        v-for="(player, i) in standingsSorted"
-                        :key="`${player.firstName}${player.lastName}`"
-                        :class="[{ 'winner-row': isTopPlayer(i) }, { 'top-row': isTopPlayer(i) }]"
-                      >
-                        <td class="data-rank">
-                          <h3 :class="{ 'data-top mt-1': isTopPlayer(i) }">#{{ i + 1 }}</h3>
-                        </td>
-                        <td>
-                          <v-img
-                            width="100"
-                            :src="require(`../assets/images/headshots/${player.gender === 'm' ? 'men' : 'women'}/silhouette.png`)"
-                          ></v-img>
-                        </td>
-                        <td :class="['data-name', {'data-top mt-1': isTopPlayer(i) }]">{{ getFullName(player) }}</td>
-                        <td
-                          align="center"
-                          :class="['data-score', {'data-top mt-1': isTopPlayer(i) }]"
-                        >
-                          {{ player.matchesWon }}
-                        </td>
-                        <td
-                          align="center"
-                          :class="['data-score', {'data-top mt-1': isTopPlayer(i) }]"
-                        >
-                          {{ displayGamesWon(player.gamesWon.won, player.gamesWon.of) }}
-                        </td>
-                      </tr>
-                    </tbody>
-                  </template>
-                </v-simple-table>
-                <!-- <v-list subheader>
-                  <v-list-item
-                    v-for="(player, i) in players"
-                    :key="`${player.firstName}${player.lastName}`"
-                    :class="{ 'row-leader-divider': i + 1 < players.length }"
+                <v-row no-gutters>
+                  <v-col cols="5" offset="3" class="text-left header">Player</v-col>
+                  <v-col cols="2" class="text-left header">Matches Won</v-col>
+                  <v-col cols="2" class="text-left header">Games Won</v-col>
+                </v-row>
+
+                <v-row
+                  v-for="(player, i) in standingsSorted"
+                  :key="`${player.firstName}${player.lastName}`"
+                  :class="[{ 'player-row': i < standingsSorted.length-1 }, { 'winner-row': isTopPlayer(i) }, { 'top-row': isTopPlayer(i) }]"
+                >
+                  <v-col cols="1" class="data-rank">
+                    <h3 :class="{ 'data-top mt-1': isTopPlayer(i) }">#{{ i + 1 }}</h3>
+                  </v-col>
+                  <v-col cols="2">
+                    <v-img
+                      width="100"
+                      :src="require(`../assets/images/headshots/${player.gender === 'm' ? 'men' : 'women'}/silhouette.png`)"
+                    ></v-img>
+                  </v-col>
+                  <v-col cols="4" :class="['data-name', {'data-top mt-1': isTopPlayer(i) }]">{{ getFullName(player) }}</v-col>
+                  <v-col
+                    cols="2"
+                    align="center"
+                    :class="['data-score', {'data-top mt-1': isTopPlayer(i) }]"
                   >
-                    <v-list-item-icon>
-                      <h3 :class="{ 'rank-top mt-1': i === 0 }">#{{ i + 1 }}</h3>
-                    </v-list-item-icon>
-
-                    <v-list-item-avatar>
-                      <v-img
-                        :src="require(`../assets/images/headshots/${player.gender === 'm' ? 'men' : 'women'}/silhouette.png`)"
-                      ></v-img>
-                    </v-list-item-avatar>
-
-                    <v-list-item-content>
-                      <v-list-item-title v-text="getFullName(player)"></v-list-item-title>
-                    </v-list-item-content>
-
-                  </v-list-item>
-                </v-list> -->
-
-                <!-- <v-row no-gutters class="stats-top pt-3 pb-2">
-                  <v-col cols="6" align="center">
-                    <h3 class="text-capitalize">Matches Won</h3>
-                    <p>{{ displayMatchWinPercentage }}</p>
+                    {{ player.matchesWon }}
                   </v-col>
-                  <v-col cols="6" align="center">
-                    <h3 class="text-capitalize">Games Won</h3>
-                    <p>{{ gamesPlayed }}</p>
+                  <v-col
+                    cols="2"
+                    align="center"
+                    :class="['data-score', {'data-top mt-1': isTopPlayer(i) }]"
+                  >
+                    {{ displayGamesWon(player.gamesWon.won, player.gamesWon.of) }}
                   </v-col>
-                </v-row> -->
+                </v-row>
 
               </v-expansion-panel-content>
 
@@ -308,10 +268,10 @@ export default {
 </script>
 
 <style scoped lang="sass">
-.row-leader-divider
-  border-bottom: 1px solid #e0e0e0
 .header
-  font-size: 12pt !important
+  font-size: 10pt !important
+.player-row
+  border-bottom: 1px solid #aaa
 .winner-row
   background-color: darken(white, 10%) !important
   font-weight: bold
@@ -320,11 +280,11 @@ export default {
 //   color: white
 //   font-weight: bold
 .data-rank
-  font-size: 14pt !important
+  // font-size: 14pt !important
 .data-name
-  font-size: 14pt !important
+  // font-size: 14pt !important
 .data-score
-  font-size: 14pt !important
+  // font-size: 14pt !important
 .data-top
-  font-size: 18pt !important
+  // font-size: 18pt !important
 </style>
