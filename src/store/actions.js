@@ -152,10 +152,6 @@ export default {
     const response = await HTTP.get(`/stats/${payload.statId}`)
     const stat = response.data.data
 
-    if (!stat) {
-      router.push({ name: 'leaderboard' })
-    }
-
     // get all players
     const playersResponse = await HTTP.get(`/players`)
     const players = playersResponse.data.data.players

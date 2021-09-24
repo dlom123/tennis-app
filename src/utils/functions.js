@@ -618,6 +618,11 @@ export function getPercentage(num, denom) {
   return Math.round(num / denom * 100)
 }
 
+export function getPlayerAvatar(player) {
+  // const images = require.context('../assets/images/headshots/', false, /\.png$/)
+  return require(`../assets/images/headshots/${(player.gender === 'm' ? 'men' : 'women')}/${(player.avatarUrl ? player.avatarUrl : 'silhouette.png')}`)
+}
+
 export function getPrecisionPercentage(num, denom) {
   // return floating point percentage, with all decimal numbers preserved, avoiding division by zero
   return denom === 0 ? 0 : ((num / denom) * 100)
