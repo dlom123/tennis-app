@@ -9,7 +9,8 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items class="hidden-xs-only">
-        <v-btn text :to="{ name: 'tournament', params: { tournamentId: 1 }}">Lazy Cup 2020</v-btn>
+        <!-- <v-btn text :to="{ name: 'tournament', params: { tournamentId: 1 }}">Lazy Cup 2020</v-btn> -->
+        <v-btn text :to="{ name: 'tournament', params: { tournamentId: 2 }}">Lazy Cup 2021</v-btn>
         <v-btn text :to="{ name: 'players' }">Players</v-btn>
         <!-- <v-btn text :to="{ name: 'teams' }">Teams</v-btn> -->
         <v-btn text :to="{ name: 'leaderboard', params: { clearFilters: true } }">Leaderboard</v-btn>
@@ -53,13 +54,22 @@ export default {
         { name: 'Players', icon: 'mdi-account-group', route: { name: 'players' } },
         { name: 'Leaderboard', icon: 'mdi-clipboard-list', route: { name: 'leaderboard' } },
         { name: 'Racquet Pile', icon: 'mdi-tennis', route: { name: 'racquetPile' } },
-        // { name: 'Tournaments', icon: 'mdi-tournament', route: { name: 'tournaments' } },
-        { name: 'Lazy Cup 2020',
+        { name: 'Tournaments', icon: 'mdi-tournament', route: { name: 'tournaments' } },
+        // { name: 'Lazy Cup 2020',
+        //   icon: 'mdi-shoe-print',
+        //   route: {
+        //     name: 'tournament',
+        //     params: {
+        //       tournamentId: 1
+        //     }
+        //   }
+        // },
+        { name: 'Lazy Cup 2021',
           icon: 'mdi-shoe-print',
           route: {
             name: 'tournament',
             params: {
-              tournamentId: 1
+              tournamentId: 2
             }
           }
         },
