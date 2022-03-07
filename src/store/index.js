@@ -17,6 +17,7 @@ export default new Vuex.Store({
   plugins: [vuexLocalStorage.plugin],
   state: {
     filters: [],
+    isAuthenticated: true,
     isLoading: false,
     leaderboard: {},
     locations: [],

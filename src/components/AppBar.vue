@@ -2,37 +2,48 @@
   <div>
     <v-app-bar app short>
       <v-toolbar-title>
-        <h3>Tennis Stats</h3>
+        <h3>TennisApp</h3>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-toolbar-items class="hidden-xs-only">
-        <v-btn
-          text
-          :to="{ name: 'reserveCourt', params: { clearSelectedPlayers: true } }"
-        >
-          Reserve a Court
-        </v-btn>
-        <!-- <v-btn text :to="{ name: 'tournament', params: { tournamentId: 1 } }"
-          >Lazy Cup 2020</v-btn
-        > -->
-        <v-btn text :to="{ name: 'players' }">Players</v-btn>
-        <!-- <v-btn text :to="{ name: 'teams' }">Teams</v-btn> -->
-        <!-- <v-btn
-          text
-          :to="{ name: 'leaderboard', params: { clearFilters: true } }"
-          >Leaderboard</v-btn
-        > -->
-        <v-btn
-          text
-          :to="{ name: 'racquetPile', params: { clearSelectedPlayers: true } }"
-          >Racquet Pile</v-btn
-        >
-        <v-btn text :to="{ name: 'addMatch' }">
-          <v-icon>mdi-plus</v-icon> Match
-        </v-btn>
+      <v-toolbar-items v-if="!isAuthenticated" class="hidden-xs-only">
+        <v-btn text :to="{ name: 'home' }">Log In</v-btn>
       </v-toolbar-items>
+      <v-toolbar-items v-else class="hidden-xs-only">
+        <v-btn text :to="{ name: 'dashboard' }">Dashboard</v-btn>
+        <v-btn text :to="{ name: 'locations' }">Locations</v-btn>
+        <v-btn text :to="{ name: 'players' }">Players</v-btn>
+
+        <v-menu offset-y left>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn text v-bind="attrs" v-on="on">Tools</v-btn>
+          </template>
+
+          <v-list dense class="pa-0">
+            <v-list-item class="pa-0">
+              <v-btn text plain :to="{ name: 'racquetPile' }"
+                >Racquet Pile</v-btn
+              >
+            </v-list-item>
+          </v-list>
+        </v-menu>
+
+        <v-menu offset-y left>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn text v-bind="attrs" v-on="on">
+              <v-icon x-large>mdi-account-circle</v-icon>
+            </v-btn>
+          </template>
+
+          <v-list dense class="pa-0">
+            <v-list-item class="pa-0">
+              <v-btn text :to="{ name: 'userSettings' }">Settings</v-btn>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </v-toolbar-items>
+
       <v-btn
         @click.stop="toggleDrawer"
         class="hidden-sm-and-up text-capitalize"
@@ -69,6 +80,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'appBar',
   data() {
@@ -92,6 +105,11 @@ export default {
         { name: 'Match', icon: 'mdi-plus', route: { name: 'addMatch' } }
       ]
     }
+  },
+  computed: {
+    ...mapState([
+      'isAuthenticated'
+    ])
   },
   methods: {
     goNav(route) {
