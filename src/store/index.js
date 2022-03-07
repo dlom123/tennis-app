@@ -25,6 +25,7 @@ export default new Vuex.Store({
     playerMatchesDoubles: [],
     playerMatchesSingles: [],
     players: [],
+    selectedPlayers: [],
     stat: {},
     tournament: {},
     tournamentNav: 'details',

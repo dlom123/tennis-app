@@ -1,4 +1,10 @@
 export default {
+  addSelectedPlayer: (state, payload) => {
+    state.selectedPlayers.push(payload)
+  },
+  clearSelectedPlayers: (state) => {
+    state.selectedPlayers = []
+  },
   removeAllFiltersByScreen: (state, payload) => {
     state.filters = state.filters.filter(f =>
       f.screen !== payload.screen
@@ -13,6 +19,11 @@ export default {
     state.filters = state.filters.filter(f =>
       f.screen !== payload.screen ||
       (f.screen === payload.screen && f.name !== payload.name)
+    )
+  },
+  removeSelectedPlayer: (state, payload) => {
+    state.selectedPlayers = state.selectedPlayers.filter(p =>
+      p.id !== payload
     )
   },
   setLeaderboard: (state, payload) => {

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import AddMatch from '@/views/AddMatch'
+import ReserveCourt from '@/views/ReserveCourt'
 import Leaderboard from '@/views/Leaderboard'
 import Player from '@/views/Player'
 import Players from '@/views/Players'
@@ -48,6 +49,11 @@ const router = new Router({
       path: '/racquet-pile',
       name: 'racquetPile',
       component: RacquetPile
+    },
+    {
+      path: '/reserve-court',
+      name: 'reserveCourt',
+      component: ReserveCourt
     },
     {
       path: '/stats/:statId',

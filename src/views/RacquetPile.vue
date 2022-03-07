@@ -1,17 +1,12 @@
 <template>
   <v-container fluid class="pa-0">
     <v-row no-gutters>
-      <v-col
-        cols="12"
-        md="10" offset-md="1"
-        lg="8" offset-lg="2"
-        class="pb-4">
-
+      <v-col cols="12" md="10" offset-md="1" lg="8" offset-lg="2" class="pb-4">
         <v-row
           no-gutters
           :class="{
             'px-2 py-2': $vuetify.breakpoint.xsOnly,
-            'my-4': $vuetify.breakpoint.smAndUp
+            'my-4': $vuetify.breakpoint.smAndUp,
           }"
         >
           <v-col>
@@ -20,19 +15,19 @@
         </v-row>
 
         <v-row no-gutters class="mb-5">
-
-          <v-col cols="6" :class="['mt-3', {'pl-1': $vuetify.breakpoint.xsOnly}]">
-            <v-btn-toggle
-              v-model="matchType"
-              dense
-              mandatory
-              color="blue"
-            >
-              <v-btn value="singles" title="Singles racquet pile">Singles</v-btn>
-              <v-btn value="doubles" title="Doubles racquet pile">Doubles</v-btn>
+          <v-col
+            cols="6"
+            :class="['mt-3', { 'pl-1': $vuetify.breakpoint.xsOnly }]"
+          >
+            <v-btn-toggle v-model="matchType" dense mandatory color="blue">
+              <v-btn value="singles" title="Singles racquet pile"
+                >Singles</v-btn
+              >
+              <v-btn value="doubles" title="Doubles racquet pile"
+                >Doubles</v-btn
+              >
             </v-btn-toggle>
           </v-col>
-
         </v-row>
 
         <!-- <v-row no-gutters>
@@ -80,62 +75,15 @@
           </v-col>
         </v-row> -->
 
-        <v-row no-gutters class="px-1">
+        <v-row no-gutters class="px-1 pb-4">
           <v-col>
-            <v-autocomplete
-              ref="selectPlayers"
-              label="Players"
-              placeholder="Select players..."
-              :items="itemsPlayers"
-              :dense="$vuetify.breakpoint.xsOnly"
-              item-text="fullName"
-              item-value="id"
-              clearable
-              outlined
-              hide-selected
-              background-color="white"
-              @change="onChangeSelectPlayer"
-            >
-              <template v-slot:item="data">
-                <template>
-                  <v-list-item-avatar>
-                    <v-img
-                      :src="require(`../assets/images/headshots/${data.item.gender === 'm' ? 'men' : 'women'}/silhouette.png`)"
-                    ></v-img>
-                  </v-list-item-avatar>
-                  <v-list-item-content>
-                    <v-list-item-title v-html="data.item.fullName"></v-list-item-title>
-                  </v-list-item-content>
-                </template>
-              </template>
-            </v-autocomplete>
+            <SelectPlayers label="Players" />
           </v-col>
         </v-row>
 
         <v-row no-gutters>
           <v-col>
-            <v-list subheader>
-              <v-subheader>{{ numSelectedPlayersText }}</v-subheader>
-
-              <v-list-item
-                v-for="player in selectedPlayers"
-                :key="player.id"
-              >
-                <v-list-item-avatar>
-                  <v-img
-                    :src="require(`../assets/images/headshots/${player.gender === 'm' ? 'men' : 'women'}/silhouette.png`)"
-                  ></v-img>
-                </v-list-item-avatar>
-
-                <v-list-item-content>
-                  <v-list-item-title v-text="getFullName(player)"></v-list-item-title>
-                </v-list-item-content>
-
-                <v-list-item-icon @click="onClickRemovePlayer(player.id)">
-                  <v-icon>mdi-close</v-icon>
-                </v-list-item-icon>
-              </v-list-item>
-            </v-list>
+            <SelectedPlayers />
           </v-col>
         </v-row>
 
@@ -147,7 +95,7 @@
           <v-col>
             <v-card
               v-for="(matchup, i) in matchups"
-              :key=i
+              :key="i"
               outlined
               class="mb-2"
             >
@@ -159,28 +107,33 @@
                 </v-col>
               </v-row>
 
-                <v-row no-gutters class="mb-2" align="center">
+              <v-row no-gutters class="mb-2" align="center">
+                <v-col cols="5" class="pl-4">
+                  <v-row
+                    no-gutters
+                    v-for="player in matchup[0]"
+                    :key="player.id"
+                  >
+                    <v-col>
+                      {{ getPlayerFullName(player) }}
+                    </v-col>
+                  </v-row>
+                </v-col>
 
-                  <v-col cols="5" class="pl-4">
-                    <v-row no-gutters v-for="player in matchup[0]" :key="player.id">
-                      <v-col>
-                        {{ getFullName(player) }}
-                      </v-col>
-                    </v-row>
-                  </v-col>
+                <v-col align="center"> vs. </v-col>
 
-                  <v-col align="center">
-                    vs.
-                  </v-col>
-
-                  <v-col cols="5" class="ml-2 pr-4" align="right">
-                    <v-row no-gutters v-for="player in matchup[1]" :key="player.id">
-                      <v-col>
-                        {{ getFullName(player) }}
-                      </v-col>
-                    </v-row>
-                  </v-col>
-                </v-row>
+                <v-col cols="5" class="ml-2 pr-4" align="right">
+                  <v-row
+                    no-gutters
+                    v-for="player in matchup[1]"
+                    :key="player.id"
+                  >
+                    <v-col>
+                      {{ getPlayerFullName(player) }}
+                    </v-col>
+                  </v-row>
+                </v-col>
+              </v-row>
             </v-card>
           </v-col>
         </v-row>
@@ -192,22 +145,24 @@
         </v-row>
 
         <v-row no-gutters>
-          <v-col>
-
-          </v-col>
+          <v-col> </v-col>
         </v-row>
-
       </v-col>
     </v-row>
-
   </v-container>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapMutations, mapState } from 'vuex'
+import SelectPlayers from '@/components/SelectPlayers'
+import SelectedPlayers from '@/components/SelectedPlayers'
 
 export default {
   name: 'racquetPile',
+  components: {
+    SelectPlayers,
+    SelectedPlayers
+  },
   data() {
     return {
       location: {},
@@ -216,14 +171,14 @@ export default {
       locationSurface: null,
       locationSurfaces: [],
       matchType: 'singles',
-      matchups: [],
-      selectedPlayers: []
+      matchups: []
     }
   },
   computed: {
     ...mapState([
       'locations',
       'players',
+      'selectedPlayers',
       'view'
     ]),
     itemsLocations() {
@@ -234,20 +189,6 @@ export default {
         }
       })
       return locations
-    },
-    itemsPlayers() {
-      const players = this.players.filter(player => !this.selectedPlayers.includes(player))
-        .map(player => {
-          return {
-            ...player,
-            fullName: this.getFullName(player)
-          }
-        })
-      return players
-    },
-    numSelectedPlayersText() {
-      const numSelected = this.selectedPlayers.length
-      return `${numSelected || 'No '} player${numSelected !== 1 ? 's' : ''} selected`
     }
   },
   methods: {
@@ -255,11 +196,13 @@ export default {
       'getLocations',
       'getPlayers'
     ]),
+    ...mapMutations([
+      'addSelectedPlayer',
+      'clearSelectedPlayers',
+      'removeSelectedPlayer'
+    ]),
     displayPlayerName(player) {
       return `${player.firstName[0].toUpperCase()}. ${player.lastName}`
-    },
-    getFullName(player) {
-      return `${player.firstName} ${player.lastName}`
     },
     onChangeLocation(location) {
       this.locationSetting = null
@@ -280,16 +223,6 @@ export default {
           this.locationSurface = location.surfaces[0]
         }
       }
-    },
-    onChangeSelectPlayer(value) {
-      if (value) {
-        const player = this.players.find(player => player.id === value)
-        this.selectedPlayers.push(player)
-        this.$refs.selectPlayers.reset()
-      }
-    },
-    onClickRemovePlayer(playerId) {
-      this.selectedPlayers = this.selectedPlayers.filter(player => player.id !== playerId)
     },
     onGo() {
       let playersPerCourt = 0
@@ -316,6 +249,15 @@ export default {
         this.matchups.push(matchup)
       }
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      // reset selected players if specified through the router
+      if (to.params.clearSelectedPlayers) {
+        console.log('clearryyy')
+        vm.clearSelectedPlayers()
+      }
+    })
   },
   async created() {
     this.matchType = this.view === 'singles' ? 'singles' : 'doubles'

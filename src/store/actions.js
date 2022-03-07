@@ -5,6 +5,8 @@ import {
   compileStat,
   sortStat
 } from '@/utils/functions'
+import moment from 'moment'
+import locations from '@/data/locations.json'
 
 let auth = {}
 
@@ -98,6 +100,28 @@ export default {
     } catch (e) {
       console.error(e)
     }
+  },
+  getCourtAvailability: async ({ commit }, data) => {
+    // TODO: use the actual API
+    // TODO: move this logic to the backend so that it simply returns the 
+    //       location with its available time slots for the duration
+
+    const reqDayOfWeek = parseInt(moment(data.date).format('d'))
+    let location
+    try {
+      // 1. get the requested location with hours of operation for the requested day
+      location = locations.find(l => l.id === data.locationId)
+      location.hours = location.hours.filter(h => h.day === reqDayOfWeek).pop()
+    } catch {
+      return 'Error: invalid request'
+    }
+    console.log(`Hours of operation for ${location.name} on ${data.date}: `, location.hours)
+
+    // group available times 
+
+    return [
+      {}
+    ]
   },
   getLocations: async ({ commit }) => {
     // get all locations

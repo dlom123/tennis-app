@@ -1,20 +1,21 @@
 [
   {
     "id": 1,
-    "name": "Indianapolis Racquet Club",
+    "name": "Broad Ripple Park",
     "address": {
-      "street1": "8249 Dean Road",
+      "street1": "1550 Broad Ripple Ave",
       "street2": "",
       "city": "Indianapolis",
       "state": "IN",
-      "zip": "46240"
+      "zip": "46220"
     },
     "settings": [
-      "indoor"
+      "outdoor"
     ],
     "surfaces": [
       "hard"
-    ]
+    ],
+    "is_private": false
   },
   {
     "id": 2,
@@ -33,23 +34,196 @@
     "surfaces": [
       "clay",
       "hard"
+    ],
+    "is_private": true,
+    "hours": [
+      {
+        "day": 0,
+        "open_hour": 6,
+        "open_minute": 30,
+        "close_hour": 22,
+        "close_minute": 0
+      },
+      {
+        "day": 1,
+        "open_hour": 5,
+        "open_minute": 0,
+        "close_hour": 21,
+        "close_minute": 30
+      },
+      {
+        "day": 2,
+        "open_hour": 5,
+        "open_minute": 0,
+        "close_hour": 21,
+        "close_minute": 30
+      },
+      {
+        "day": 3,
+        "open_hour": 5,
+        "open_minute": 0,
+        "close_hour": 21,
+        "close_minute": 30
+      },
+      {
+        "day": 4,
+        "open_hour": 5,
+        "open_minute": 0,
+        "close_hour": 21,
+        "close_minute": 30
+      },
+      {
+        "day": 5,
+        "open_hour": 5,
+        "open_minute": 0,
+        "close_hour": 21,
+        "close_minute": 30
+      },
+      {
+        "day": 6,
+        "open_hour": 6,
+        "open_minute": 30,
+        "close_hour": 22,
+        "close_minute": 0
+      }
     ]
   },
   {
     "id": 3,
-    "name": "Broad Ripple Park",
+    "name": "Indianapolis Racquet Club (Dean Rd)",
     "address": {
-      "street1": "1550 Broad Ripple Ave",
+      "street1": "8249 Dean Road",
       "street2": "",
       "city": "Indianapolis",
       "state": "IN",
-      "zip": "46220"
+      "zip": "46240"
     },
     "settings": [
-      "outdoor"
+      "indoor"
     ],
     "surfaces": [
       "hard"
+    ],
+    "is_private": true,
+    "hours": [
+      {
+        "day": 0,
+        "open_hour": 6,
+        "open_minute": 30,
+        "close_hour": 22,
+        "close_minute": 0
+      },
+      {
+        "day": 1,
+        "open_hour": 5,
+        "open_minute": 0,
+        "close_hour": 21,
+        "close_minute": 30
+      },
+      {
+        "day": 2,
+        "open_hour": 5,
+        "open_minute": 0,
+        "close_hour": 21,
+        "close_minute": 30
+      },
+      {
+        "day": 3,
+        "open_hour": 5,
+        "open_minute": 0,
+        "close_hour": 21,
+        "close_minute": 30
+      },
+      {
+        "day": 4,
+        "open_hour": 5,
+        "open_minute": 0,
+        "close_hour": 21,
+        "close_minute": 30
+      },
+      {
+        "day": 5,
+        "open_hour": 5,
+        "open_minute": 0,
+        "close_hour": 21,
+        "close_minute": 30
+      },
+      {
+        "day": 6,
+        "open_hour": 6,
+        "open_minute": 30,
+        "close_hour": 22,
+        "close_minute": 0
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Indianapolis Racquet Club (East)",
+    "address": {
+      "street1": "4901 Shadeland Ave",
+      "street2": "",
+      "city": "Indianapolis",
+      "state": "IN",
+      "zip": "46226"
+    },
+    "settings": [
+      "indoor"
+    ],
+    "surfaces": [
+      "hard"
+    ],
+    "is_private": true,
+    "hours": [
+      {
+        "day": 0,
+        "open_hour": 6,
+        "open_minute": 30,
+        "close_hour": 22,
+        "close_minute": 0
+      },
+      {
+        "day": 1,
+        "open_hour": 5,
+        "open_minute": 0,
+        "close_hour": 21,
+        "close_minute": 30
+      },
+      {
+        "day": 2,
+        "open_hour": 5,
+        "open_minute": 0,
+        "close_hour": 21,
+        "close_minute": 30
+      },
+      {
+        "day": 3,
+        "open_hour": 5,
+        "open_minute": 0,
+        "close_hour": 21,
+        "close_minute": 30
+      },
+      {
+        "day": 4,
+        "open_hour": 5,
+        "open_minute": 0,
+        "close_hour": 21,
+        "close_minute": 30
+      },
+      {
+        "day": 5,
+        "open_hour": 5,
+        "open_minute": 0,
+        "close_hour": 21,
+        "close_minute": 30
+      },
+      {
+        "day": 6,
+        "open_hour": 6,
+        "open_minute": 30,
+        "close_hour": 22,
+        "close_minute": 0
+      }
     ]
   }
 ]

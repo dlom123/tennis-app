@@ -623,6 +623,10 @@ export function getPlayerAvatar(player) {
   return require(`../assets/images/headshots/${(player.gender === 'm' ? 'men' : 'women')}/${(player.avatarUrl ? player.avatarUrl : 'silhouette.png')}`)
 }
 
+export function getPlayerFullName(player) {
+  return `${player.firstName} ${player.lastName}`
+}
+
 export function getPrecisionPercentage(num, denom) {
   // return floating point percentage, with all decimal numbers preserved, avoiding division by zero
   return denom === 0 ? 0 : ((num / denom) * 100)
@@ -683,7 +687,7 @@ export function sortStat(stat, searchValue = '', includeZeros = true) {
     const searchString = searchValue.toLowerCase()
     stat = stat.filter(player =>
       player.firstName.toLowerCase().includes(searchString) ||
-          player.lastName.toLowerCase().includes(searchString))
+      player.lastName.toLowerCase().includes(searchString))
   }
 
   return stat
