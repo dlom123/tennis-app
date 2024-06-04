@@ -13,7 +13,7 @@
       <v-spacer></v-spacer>
     </v-row>
 
-    <v-row>
+    <v-row class="mb-4">
       <v-col cols="auto">
         <v-autocomplete
           ref="selectLocation"
@@ -74,8 +74,8 @@
       </v-col>
     </v-row>
 
-    <v-row>
-      <v-col cols="4" class="mb-4">
+    <v-row class="mb-6">
+      <v-col cols="4">
         <v-slider
           v-model="searchDuration"
           :tick-labels="durationsTicksLabels"
@@ -104,9 +104,9 @@
 
     <v-row>
       <v-col cols="auto">
-        <v-btn color="info" @click.prevent="onClickFindCourt"
-          >Find a Court</v-btn
-        >
+        <v-btn color="info" @click.prevent="onClickFindCourt">
+          Find a Court
+        </v-btn>
       </v-col>
     </v-row>
 

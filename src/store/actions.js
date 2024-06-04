@@ -103,7 +103,7 @@ export default {
   },
   getCourtAvailability: async ({ commit }, data) => {
     // TODO: use the actual API
-    // TODO: move this logic to the backend so that it simply returns the 
+    // TODO: move this logic to the backend so that it simply returns the
     //       location with its available time slots for the duration
 
     const reqDayOfWeek = parseInt(moment(data.date).format('d'))
@@ -117,7 +117,7 @@ export default {
     }
     console.log(`Hours of operation for ${location.name} on ${data.date}: `, location.hours)
 
-    // group available times 
+    // group available times
 
     return [
       {}
@@ -320,5 +320,14 @@ export default {
     ]
 
     commit('setTournaments', tournaments)
+  },
+  login: async ({ commit }) => {
+    localStorage.setItem('access_token', null)
+    commit('setIsAuthenticated', true)
+    router.push({ name: 'dashboard' })
+  },
+  logout: async ({ commit }) => {
+    commit('setIsAuthenticated', false)
+    router.push({ name: 'home' })
   }
 }

@@ -26,6 +26,9 @@ export default {
       p.id !== payload
     )
   },
+  setIsAuthenticated: (state, payload) => {
+    state.isAuthenticated = payload
+  },
   setLeaderboard: (state, payload) => {
     state.leaderboard = payload
   },

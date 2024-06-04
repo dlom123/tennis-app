@@ -8,7 +8,7 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items v-if="!isAuthenticated" class="hidden-xs-only">
-        <v-btn text :to="{ name: 'home' }">Log In</v-btn>
+        <v-btn text :to="{ name: 'login' }">Log In</v-btn>
       </v-toolbar-items>
       <v-toolbar-items v-else class="hidden-xs-only">
         <v-btn text :to="{ name: 'dashboard' }">Dashboard</v-btn>
@@ -26,6 +26,11 @@
                 >Racquet Pile</v-btn
               >
             </v-list-item>
+            <v-list-item class="pa-0">
+              <v-btn text plain :to="{ name: 'reserveCourt' }"
+                >Reserve a Court</v-btn
+              >
+            </v-list-item>
           </v-list>
         </v-menu>
 
@@ -39,6 +44,9 @@
           <v-list dense class="pa-0">
             <v-list-item class="pa-0">
               <v-btn text :to="{ name: 'userSettings' }">Settings</v-btn>
+            </v-list-item>
+            <v-list-item class="pa-0">
+              <v-btn text @click="onLogout">Log Out</v-btn>
             </v-list-item>
           </v-list>
         </v-menu>
@@ -80,7 +88,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'appBar',
@@ -112,11 +120,17 @@ export default {
     ])
   },
   methods: {
+    ...mapActions([
+      'logout'
+    ]),
     goNav(route) {
       // close the nav drawer if clicking the already active item
       if (this.$route.name === route.name) {
         this.drawer = false
       }
+    },
+    onLogout() {
+      this.logout()
     },
     toggleDrawer() {
       this.drawer = !this.drawer
