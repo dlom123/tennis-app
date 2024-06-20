@@ -235,18 +235,6 @@ export default {
       ],
       maxPlayers: null,
       players: [ // merge with divisions so that players are nested within their division
-        { id: 1, firstName: 'Daniel', lastName: 'Lomelino', gender: 'm' },
-        { id: 3, firstName: 'Dax', lastName: 'Lowery', gender: 'm' },
-        { id: 6, firstName: 'Alex', lastName: 'Fohl', gender: 'm' },
-        { id: 7, firstName: 'Chris', lastName: 'Layton', gender: 'm' },
-        { id: 2, firstName: 'George', lastName: 'Go', gender: 'm' },
-        { id: 5, firstName: 'Emily', lastName: 'Wandel', gender: 'f' },
-        { id: 4, firstName: 'Kessa', lastName: 'McNaught', gender: 'f' },
-        { id: 8, firstName: 'Tyler', lastName: 'Edmonds', gender: 'm' },
-        { id: 12, firstName: 'Myna', lastName: 'Simpson', gender: 'f' },
-        { id: 9, firstName: 'Lisa', lastName: 'Martin', gender: 'f' },
-        { id: 16, firstName: 'Madelyn', lastName: 'Lee', gender: 'f' },
-        { id: 10, firstName: 'Brandon', lastName: 'Wiley', gender: 'm' }
       ]
     }
 
@@ -283,18 +271,6 @@ export default {
         ],
         maxPlayers: null,
         players: [ // merge with divisions so that players are nested within their division
-          { id: 1, firstName: 'Daniel', lastName: 'Lomelino', gender: 'm' },
-          { id: 3, firstName: 'Dax', lastName: 'Lowery', gender: 'm' },
-          { id: 6, firstName: 'Alex', lastName: 'Fohl', gender: 'm' },
-          { id: 7, firstName: 'Chris', lastName: 'Layton', gender: 'm' },
-          { id: 2, firstName: 'George', lastName: 'Go', gender: 'm' },
-          { id: 5, firstName: 'Emily', lastName: 'Wandel', gender: 'f' },
-          { id: 4, firstName: 'Kessa', lastName: 'McNaught', gender: 'f' },
-          { id: 8, firstName: 'Tyler', lastName: 'Edmonds', gender: 'm' },
-          { id: 12, firstName: 'Myna', lastName: 'Simpson', gender: 'f' },
-          { id: 9, firstName: 'Lisa', lastName: 'Martin', gender: 'f' },
-          { id: 16, firstName: 'Madelyn', lastName: 'Lee', gender: 'f' },
-          { id: 10, firstName: 'Brandon', lastName: 'Wiley', gender: 'm' }
         ]
       }
     ]

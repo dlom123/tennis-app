@@ -1,13 +1,10 @@
 <template>
   <v-container v-if="!isLoading" fluid class="pa-0">
 
-    <v-row
-      no-gutters
-      :class="{
+    <v-row no-gutters :class="{
         'px-2 pt-2': $vuetify.breakpoint.xsOnly,
         'my-4': $vuetify.breakpoint.smAndUp
-      }"
-    >
+      }">
       <v-col>
         <h1>Leaderboard</h1>
       </v-col>
@@ -17,29 +14,18 @@
       </v-col>
     </v-row>
 
-    <v-row no-gutters
-      :class="{
+    <v-row no-gutters :class="{
         'px-2 pt-2': $vuetify.breakpoint.xsOnly,
-      }"
-    >
+      }">
     </v-row>
 
     <v-row no-gutters class="mb-2 justify-end">
-      <v-col
-        cols="12"
-        sm="6"
-        md="4"
-        :class="[{ 'px-2 mt-3': $vuetify.breakpoint.xsOnly }]"
-      >
+      <v-col cols="12" sm="6" md="4" :class="[{ 'px-2 mt-3': $vuetify.breakpoint.xsOnly }]">
         <SearchInput placeholder="Player name" :onChange=onChangeSearch :onClear=onClearSearch />
       </v-col>
     </v-row>
 
-    <v-row
-      v-if="screenFilters.length > 0"
-      no-gutters
-      class="hidden-md-and-up mt-4 mb-2"
-    >
+    <v-row v-if="screenFilters.length > 0" no-gutters class="hidden-md-and-up mt-4 mb-2">
       <v-col cols="12">
         <FilterBar :screenFilters="screenFilters" />
       </v-col>
@@ -53,17 +39,8 @@
 
       <v-col v-if="leaderboard.length > 0" cols="12" md="9">
         <v-row :no-gutters="$vuetify.breakpoint.xsOnly">
-          <v-col
-            cols="12"
-            lg="6"
-            v-for="stat in leaderboard"
-            :key="stat.name"
-            class="py-0"
-          >
-            <LeaderboardCard
-              :stat="stat"
-              class="mb-5"
-            />
+          <v-col cols="12" lg="6" v-for="stat in leaderboard" :key="stat.name" class="py-0">
+            <LeaderboardCard :stat="stat" class="mb-5" />
           </v-col>
         </v-row>
       </v-col>
