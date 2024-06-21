@@ -152,10 +152,6 @@ export default {
     const response = await HTTP.get(`/stats/${payload.statId}`)
     const stat = response.data.data
 
-    if (!stat) {
-      router.push({ name: 'leaderboard' })
-    }
-
     // get all players
     const playersResponse = await HTTP.get(`/players`)
     const players = playersResponse.data.data.players
@@ -209,12 +205,12 @@ export default {
     // TODO: get tournament data from the API
     const tournament = {
       id: 1,
-      name: 'Lazy Feet Invitational 2020',
-      date: '2020-09-26',
+      name: 'Tennis Tournament',
+      date: '2023-10-12',
       location: {
-        name: 'Park Tudor High School',
-        city: 'Indianapolis',
-        state: 'IN'
+        name: 'The Park',
+        city: 'Nowhereville',
+        state: 'ID'
       },
       format: 'Round Robin',
       divisions: [
@@ -245,12 +241,12 @@ export default {
     const tournaments = [
       {
         id: 1,
-        name: 'Lazy Feet Invitational 2020',
-        date: '2020-09-26',
+        name: 'Tennis Tournament',
+        date: '2023-10-12',
         location: {
-          name: 'Park Tudor High School',
-          city: 'Indianapolis',
-          state: 'IN'
+          name: 'The Park',
+          city: 'Nowhereville',
+          state: 'ID'
         },
         format: 'Round Robin',
         divisions: [

@@ -131,8 +131,7 @@ export default {
   },
   data() {
     return {
-      players: [
-      ],
+      players: [],
       standings: [],
       stats: []
     }
