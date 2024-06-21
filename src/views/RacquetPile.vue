@@ -1,19 +1,12 @@
 <template>
   <v-container fluid class="pa-0">
     <v-row no-gutters>
-      <v-col
-        cols="12"
-        md="10" offset-md="1"
-        lg="8" offset-lg="2"
-        class="pb-4">
+      <v-col cols="12" md="10" offset-md="1" lg="8" offset-lg="2" class="pb-4">
 
-        <v-row
-          no-gutters
-          :class="{
+        <v-row no-gutters :class="{
             'px-2 py-2': $vuetify.breakpoint.xsOnly,
             'my-4': $vuetify.breakpoint.smAndUp
-          }"
-        >
+          }">
           <v-col>
             <h1>Racquet Pile</h1>
           </v-col>
@@ -22,12 +15,7 @@
         <v-row no-gutters class="mb-5">
 
           <v-col cols="6" :class="['mt-3', {'pl-1': $vuetify.breakpoint.xsOnly}]">
-            <v-btn-toggle
-              v-model="matchType"
-              dense
-              mandatory
-              color="blue"
-            >
+            <v-btn-toggle v-model="matchType" dense mandatory color="blue">
               <v-btn value="singles" title="Singles racquet pile">Singles</v-btn>
               <v-btn value="doubles" title="Doubles racquet pile">Doubles</v-btn>
             </v-btn-toggle>
@@ -82,26 +70,13 @@
 
         <v-row no-gutters class="px-1">
           <v-col>
-            <v-autocomplete
-              ref="selectPlayers"
-              label="Players"
-              placeholder="Select players..."
-              :items="itemsPlayers"
-              :dense="$vuetify.breakpoint.xsOnly"
-              item-text="fullName"
-              item-value="id"
-              clearable
-              outlined
-              hide-selected
-              background-color="white"
-              @change="onChangeSelectPlayer"
-            >
+            <v-autocomplete ref="selectPlayers" label="Players" placeholder="Select players..." :items="itemsPlayers"
+              :dense="$vuetify.breakpoint.xsOnly" item-text="fullName" item-value="id" clearable outlined hide-selected
+              background-color="white" @change="onChangeSelectPlayer">
               <template v-slot:item="data">
                 <template>
                   <v-list-item-avatar>
-                    <v-img
-                      :src="require(`../assets/images/headshots/${data.item.gender === 'm' ? 'men' : 'women'}/silhouette.png`)"
-                    ></v-img>
+                    <v-img :src="getPlayerAvatar(data.item)"></v-img>
                   </v-list-item-avatar>
                   <v-list-item-content>
                     <v-list-item-title v-html="data.item.fullName"></v-list-item-title>
@@ -117,14 +92,9 @@
             <v-list subheader>
               <v-subheader>{{ numSelectedPlayersText }}</v-subheader>
 
-              <v-list-item
-                v-for="player in selectedPlayers"
-                :key="player.id"
-              >
+              <v-list-item v-for="player in selectedPlayers" :key="player.id">
                 <v-list-item-avatar>
-                  <v-img
-                    :src="require(`../assets/images/headshots/${player.gender === 'm' ? 'men' : 'women'}/silhouette.png`)"
-                  ></v-img>
+                  <v-img :src="getPlayerAvatar(player)"></v-img>
                 </v-list-item-avatar>
 
                 <v-list-item-content>
@@ -145,12 +115,7 @@
           </v-col>
 
           <v-col>
-            <v-card
-              v-for="(matchup, i) in matchups"
-              :key=i
-              outlined
-              class="mb-2"
-            >
+            <v-card v-for="(matchup, i) in matchups" :key=i outlined class="mb-2">
               <v-row no-gutters class="mb-3">
                 <v-col>
                   <v-row no-gutters class="blue white--text font-weight-bold">
@@ -159,28 +124,28 @@
                 </v-col>
               </v-row>
 
-                <v-row no-gutters class="mb-2" align="center">
+              <v-row no-gutters class="mb-2" align="center">
 
-                  <v-col cols="5" class="pl-4">
-                    <v-row no-gutters v-for="player in matchup[0]" :key="player.id">
-                      <v-col>
-                        {{ getFullName(player) }}
-                      </v-col>
-                    </v-row>
-                  </v-col>
+                <v-col cols="5" class="pl-4">
+                  <v-row no-gutters v-for="player in matchup[0]" :key="player.id">
+                    <v-col>
+                      {{ getFullName(player) }}
+                    </v-col>
+                  </v-row>
+                </v-col>
 
-                  <v-col align="center">
-                    vs.
-                  </v-col>
+                <v-col align="center">
+                  vs.
+                </v-col>
 
-                  <v-col cols="5" class="ml-2 pr-4" align="right">
-                    <v-row no-gutters v-for="player in matchup[1]" :key="player.id">
-                      <v-col>
-                        {{ getFullName(player) }}
-                      </v-col>
-                    </v-row>
-                  </v-col>
-                </v-row>
+                <v-col cols="5" class="ml-2 pr-4" align="right">
+                  <v-row no-gutters v-for="player in matchup[1]" :key="player.id">
+                    <v-col>
+                      {{ getFullName(player) }}
+                    </v-col>
+                  </v-row>
+                </v-col>
+              </v-row>
             </v-card>
           </v-col>
         </v-row>
@@ -205,6 +170,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
+import { getPlayerAvatar } from '@/utils/functions'
 
 export default {
   name: 'racquetPile',
@@ -261,6 +227,7 @@ export default {
     getFullName(player) {
       return `${player.firstName} ${player.lastName}`
     },
+    getPlayerAvatar,
     onChangeLocation(location) {
       this.locationSetting = null
       this.locationSurface = null
