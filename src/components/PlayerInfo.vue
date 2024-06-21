@@ -8,7 +8,7 @@
         align="center"
       >
         <v-img
-          :src="require(`../assets/images/headshots/${player.gender === 'm' ? 'men' : 'women'}/${playerAvatar}`)"
+          :src="getPlayerAvatar(player)"
           max-height="210"
           max-width="250"
           contain
@@ -28,7 +28,7 @@
             <h3>Rating</h3>
           </v-col>
           <v-col cols="12">
-            <p>{{ player.rating }}</p>
+            <p>{{ player.rating || '-' }}</p>
           </v-col>
         </v-row>
       </v-col>
@@ -39,7 +39,7 @@
             <h3>Gender</h3>
           </v-col>
           <v-col cols="12">
-            <p>{{ playerGender }}</p>
+            <p>{{ playerGender || '-' }}</p>
           </v-col>
         </v-row>
       </v-col>
@@ -50,24 +50,27 @@
             <h3>Height</h3>
           </v-col>
           <v-col cols="12">
-            <p>{{ heightString }}</p>
+            <p>{{ heightString || '-' }}</p>
           </v-col>
         </v-row>
       </v-col>
 
       <v-col cols="6">
         <v-row no-gutters>
-          <v-col cols="12">
-            <h3 v-if="player.isRightHanded">Right-handed</h3>
-            <h3 v-else>Left-handed</h3>
+          <v-col cols="12" v-if="player.isRightHanded === null">
+            <h3>Right/Left-handed</h3>
+            -
+          </v-col>
+          <v-col cols="12" v-else>
+            <h3>{{ player.isRightHanded ? 'Right-handed' : 'Left-handed' }}</h3>
             <v-icon
               :color="!player.isRightHanded ? 'green' : ''"
               :title="!player.isRightHanded ? 'Left-handed' : ''"
-            >mdi-hand-left</v-icon>
+            >mdi-hand-back-left</v-icon>
             <v-icon
               :color="player.isRightHanded ? 'green' : ''"
               :title="player.isRightHanded ? 'Right-handed' : ''"
-            >mdi-hand-right</v-icon>
+            >mdi-hand-back-right</v-icon>
           </v-col>
         </v-row>
       </v-col>
@@ -76,16 +79,21 @@
         <v-row no-gutters>
           <v-col cols="12">
             <h3>Backhand</h3>
-            <v-icon
-              v-if="!player.isRightHanded || (player.isRightHanded && player.backhand === 2)"
-              color="green"
-              :title="player.backhand === 1 ? 'One-handed backhand' : 'Two-handed backhand'"
-            >mdi-hand-left</v-icon>
-            <v-icon
-              v-if="player.isRightHanded || (!player.isRightHanded && player.backhand === 2)"
-              color="green"
-              :title="player.backhand === 1 ? 'One-handed backhand' : 'Two-handed backhand'"
-            >mdi-hand-right</v-icon>
+            <template v-if="player.backhand === null">
+              -
+            </template>
+            <template v-else>
+              <v-icon
+                v-if="!player.isRightHanded || (player.isRightHanded && player.backhand === 2)"
+                color="green"
+                :title="player.backhand === 1 ? 'One-handed backhand' : 'Two-handed backhand'"
+              >mdi-hand-back-left</v-icon>
+              <v-icon
+                v-if="player.isRightHanded || (!player.isRightHanded && player.backhand === 2)"
+                color="green"
+                :title="player.backhand === 1 ? 'One-handed backhand' : 'Two-handed backhand'"
+              >mdi-hand-back-right</v-icon>
+            </template>
           </v-col>
         </v-row>
       </v-col>
@@ -108,7 +116,7 @@
 <script>
 import { mapState } from 'vuex'
 import moment from 'moment'
-import { getDisplayGender, getGenderBorderClass, getGenderTextClass, translateHeight } from '@/utils/functions'
+import { getDisplayGender, getGenderBorderClass, getGenderTextClass, getPlayerAvatar, translateHeight } from '@/utils/functions'
 
 export default {
   name: 'playerInfo',
@@ -129,13 +137,13 @@ export default {
       return `${this.player.firstName} ${this.player.lastName}`
     },
     heightString() {
-      return translateHeight(this.player.height)
+      return this.player.height ? translateHeight(this.player.height) : '-'
     },
     lastPlayedDate() {
       const playerMatches = this.view === 'singles' ? this.playerMatchesSingles : this.playerMatchesDoubles
 
       if (!playerMatches.length) {
-        return 'N/A'
+        return '-'
       }
       let latestMatchDate = playerMatches[0].date
       playerMatches.forEach(match => {
@@ -145,14 +153,12 @@ export default {
       })
       return moment.parseZone(latestMatchDate).format(this.formatMatchDate)
     },
-    playerAvatar() {
-      return this.player.avatarUrl || 'silhouette.png'
-    },
     playerGender() {
       return getDisplayGender(this.player.gender)
     }
   },
   methods: {
+    getPlayerAvatar,
     getBorderClass(gender) {
       return getGenderBorderClass(gender)
     },

@@ -3,7 +3,7 @@
 
     <v-col cols="5" class="col-avatar pt-4">
       <v-img
-        :src="require(`../assets/images/headshots/${player.gender === 'm' ? 'men' : 'women'}/${playerAvatar}`)"
+        :src="getPlayerAvatar(player)"
         max-height="160"
         contain
       ></v-img>
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { getDisplayGender, getGenderTextClass } from '@/utils/functions'
+import { getDisplayGender, getGenderTextClass, getPlayerAvatar } from '@/utils/functions'
 
 export default {
   name: 'playerRow',
@@ -60,14 +60,12 @@ export default {
     'type'
   ],
   computed: {
-    playerAvatar() {
-      return this.player.avatarUrl || 'silhouette.png'
-    },
     playerGender() {
       return getDisplayGender(this.player.gender)
     }
   },
   methods: {
+    getPlayerAvatar,
     getTextHeaderClass(gender) {
       return getGenderTextClass(gender)
     },
