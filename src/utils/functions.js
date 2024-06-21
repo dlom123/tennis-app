@@ -158,6 +158,7 @@ export function compileStat(stat, player, playerMatches) {
   const statName = stat.name.toLowerCase()
   const playerData = {
     id: player.id,
+    avatarUrl: player.avatarUrl,
     firstName: player.firstName,
     lastName: player.lastName,
     gender: player.gender
@@ -683,7 +684,7 @@ export function sortStat(stat, searchValue = '', includeZeros = true) {
     const searchString = searchValue.toLowerCase()
     stat = stat.filter(player =>
       player.firstName.toLowerCase().includes(searchString) ||
-          player.lastName.toLowerCase().includes(searchString))
+      player.lastName.toLowerCase().includes(searchString))
   }
 
   return stat

@@ -10,23 +10,16 @@
     <v-card-text class="pa-0">
       <v-list two-line class="pa-0">
         <div v-if="statPlayers.length > 0">
-          <v-list-item
-            v-for="(player, i) in statPlayers"
-            :key="`${player.firstName}${player.lastName}`"
-            :class="{ 'row-leader-divider': i + 1 < statPlayers.length }"
-          >
+          <v-list-item v-for="(player, i) in statPlayers" :key="`${player.firstName}${player.lastName}`"
+            :class="{ 'row-leader-divider': i + 1 < statPlayers.length }">
 
             <v-list-item-icon>
               <h3 :class="{ 'rank-top mt-1': i === 0 }">#{{ player.rank }}</h3>
             </v-list-item-icon>
 
             <v-list-item-avatar :size="i === 0 ? 90 : 60">
-              <v-img
-                :src="require(`../assets/images/headshots/${player.gender === 'm' ? 'men' : 'women'}/silhouette.png`)"
-                width="280"
-                max-height="230"
-                :class="getBorderClass(player.gender)"
-              ></v-img>
+              <v-img :src="getPlayerAvatar(player)" width="280" max-height="230"
+                :class="getBorderClass(player.gender)"></v-img>
             </v-list-item-avatar>
 
             <v-list-item-content class="ml-4">
@@ -65,16 +58,10 @@
 
     <v-divider></v-divider>
 
-    <v-card-actions
-      v-if="$route.name === 'leaderboard' && statPlayers.length > 0"
-      class="container-view-all pa-0"
-    >
-      <v-btn
-        text
-        color="blue"
-        class="btn-view-all"
-        @click="goStat(stat.id)"
-      ><h4>View All</h4></v-btn>
+    <v-card-actions v-if="$route.name === 'leaderboard' && statPlayers.length > 0" class="container-view-all pa-0">
+      <v-btn text color="blue" class="btn-view-all" @click="goStat(stat.id)">
+        <h4>View All</h4>
+      </v-btn>
     </v-card-actions>
 
   </v-card>
@@ -82,7 +69,7 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex'
-import { getGenderBorderClass, getGenderTextClass, getPrecisionPercentage } from '@/utils/functions'
+import { getGenderBorderClass, getGenderTextClass, getPlayerAvatar, getPrecisionPercentage } from '@/utils/functions'
 
 export default {
   name: 'leaderboardCard',
@@ -113,6 +100,7 @@ export default {
     getBorderClass(gender) {
       return getGenderBorderClass(gender)
     },
+    getPlayerAvatar,
     getTextHeaderClass(gender) {
       return getGenderTextClass(gender)
     },
