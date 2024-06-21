@@ -26,104 +26,80 @@
     </v-bottom-navigation> -->
 
     <v-row no-gutters>
-      <v-col
-        cols="12"
-        md="10" offset-md="1"
-        lg="8" offset-lg="2"
-        class="pb-4">
+      <v-col cols="12" md="10" offset-md="1" lg="8" offset-lg="2" class="pb-4">
 
-      <v-row
-        no-gutters
-        :class="{
+        <v-row no-gutters :class="{
           'px-2 py-3': $vuetify.breakpoint.xsOnly,
           'my-4': $vuetify.breakpoint.smAndUp
-        }"
-      >
-        <!-- <v-col>
+        }">
+          <!-- <v-col>
           <NavBack text="Back to Tournaments" routeName="tournaments" />
         </v-col> -->
-        <v-col cols="auto">
-          <h2>Lazy Cup 2020</h2>
-        </v-col>
-        <v-spacer></v-spacer>
-        <v-col class="d-flex justify-end">
-          <v-btn color="info" :to="{ name: 'addMatch' }">+ Match</v-btn>
-        </v-col>
-      </v-row>
+          <v-col cols="auto">
+            <h2>Lazy Cup 2020</h2>
+          </v-col>
+          <v-spacer></v-spacer>
+          <v-col class="d-flex justify-end">
+            <v-btn color="info" :to="{ name: 'addMatch' }">+ Match</v-btn>
+          </v-col>
+        </v-row>
 
-      <v-row no-gutters>
-        <v-col
-          cols="12"
-          :class="{'mb-6': $vuetify.breakpoint.smAndUp}"
-          class="px-0"
-        >
-          <v-expansion-panels
-            accordion
-            multiple
-            :value="[0,1]"
-          >
-            <v-expansion-panel class="mb-6">
+        <v-row no-gutters>
+          <v-col cols="12" :class="{'mb-6': $vuetify.breakpoint.smAndUp}" class="px-0">
+            <v-expansion-panels accordion multiple :value="[0,1]">
+              <v-expansion-panel class="mb-6">
 
-              <v-expansion-panel-header color="primary">
-                <v-row no-gutters>
-                  <v-col>
-                    <h2 class="white--text">Standings</h2>
-                  </v-col>
-                </v-row>
-              </v-expansion-panel-header>
+                <v-expansion-panel-header color="primary">
+                  <v-row no-gutters>
+                    <v-col>
+                      <h2 class="white--text">Standings</h2>
+                    </v-col>
+                  </v-row>
+                </v-expansion-panel-header>
 
-              <v-expansion-panel-content>
+                <v-expansion-panel-content>
 
-                <v-row no-gutters>
-                  <v-col cols="5" offset="1" class="text-left header">Player</v-col>
-                  <v-col cols="3" class="text-center header">Matches Won</v-col>
-                  <v-col cols="3" class="text-center header">Games Won</v-col>
-                </v-row>
+                  <v-row no-gutters>
+                    <v-col cols="5" offset="1" class="text-left header">Player</v-col>
+                    <v-col cols="3" class="text-center header">Matches Won</v-col>
+                    <v-col cols="3" class="text-center header">Games Won</v-col>
+                  </v-row>
 
-                <v-row
-                  v-for="(player, i) in standingsSorted"
-                  :key="`${player.firstName}${player.lastName}`"
-                  :class="[{ 'player-row': i < standingsSorted.length-1 }, { 'winner-row': isTopPlayer(i) }, { 'top-row': isTopPlayer(i) }]"
-                >
-                  <v-col cols="1" class="data-rank justify-center" align="center">
-                    <h3 :class="{ 'data-top mt-1': isTopPlayer(i) }">#{{ i + 1 }}</h3>
-                  </v-col>
-                  <!-- <v-col cols="2" class="justify-center">
+                  <v-row v-for="(player, i) in standingsSorted" :key="`${player.firstName}${player.lastName}`"
+                    :class="[{ 'player-row': i < standingsSorted.length-1 }, { 'winner-row': isTopPlayer(i) }, { 'top-row': isTopPlayer(i) }]">
+                    <v-col cols="1" class="data-rank justify-center" align="center">
+                      <h3 :class="{ 'data-top mt-1': isTopPlayer(i) }">#{{ i + 1 }}</h3>
+                    </v-col>
+                    <!-- <v-col cols="2" class="justify-center">
                     <v-img
                       width="100"
                       :src="require(`../assets/images/headshots/${player.gender === 'm' ? 'men' : 'women'}/silhouette.png`)"
                     ></v-img>
                   </v-col> -->
-                  <v-col cols="5" :class="['data-name justify-center', {'data-top mt-1': isTopPlayer(i) }]">
-                    <a :href="`/players/${player.id}`">{{ getFullName(player) }}</a>
-                  </v-col>
-                  <v-col
-                    cols="3"
-                    align="center"
-                    :class="['data-score justify-center', {'data-top mt-1': isTopPlayer(i) }]"
-                  >
-                    {{ player.matchesWon }}
-                  </v-col>
-                  <v-col
-                    cols="3"
-                    align="center"
-                    :class="['data-score justify-center', {'data-top mt-1': isTopPlayer(i) }]"
-                  >
-                    {{ displayGamesWon(player.gamesWon.won, player.gamesWon.of) }}
-                  </v-col>
-                </v-row>
+                    <v-col cols="5" :class="['data-name justify-center', {'data-top mt-1': isTopPlayer(i) }]">
+                      <a :href="`/players/${player.id}`">{{ getFullName(player) }}</a>
+                    </v-col>
+                    <v-col cols="3" align="center"
+                      :class="['data-score justify-center', {'data-top mt-1': isTopPlayer(i) }]">
+                      {{ player.matchesWon }}
+                    </v-col>
+                    <v-col cols="3" align="center"
+                      :class="['data-score justify-center', {'data-top mt-1': isTopPlayer(i) }]">
+                      {{ displayGamesWon(player.gamesWon.won, player.gamesWon.of) }}
+                    </v-col>
+                  </v-row>
 
-              </v-expansion-panel-content>
+                </v-expansion-panel-content>
 
-            </v-expansion-panel>
+              </v-expansion-panel>
 
-            <PlayerMatches />
-          </v-expansion-panels>
+              <PlayerMatches />
+            </v-expansion-panels>
 
-        </v-col>
-      </v-row>
+          </v-col>
+        </v-row>
 
-      <!-- <TournamentDetails v-if="tournamentBottomNav === 'details'" :tournament="tournament" />
+        <!-- <TournamentDetails v-if="tournamentBottomNav === 'details'" :tournament="tournament" />
       <TournamentPlayers v-else-if="tournamentBottomNav === 'players'" :tournament="tournament" />
       <TournamentDraws v-else-if="tournamentBottomNav === 'draws'" :tournament="tournament" />
       <TournamentResults v-else-if="tournamentBottomNav === 'results'" :tournament="tournament" /> -->
@@ -155,16 +131,7 @@ export default {
   },
   data() {
     return {
-      players: [
-        { id: 8, gender: 'm', firstName: 'Tyler', lastName: 'Edmonds' },
-        { id: 6, gender: 'm', firstName: 'Alex', lastName: 'Fohl' },
-        { id: 2, gender: 'm', firstName: 'George', lastName: 'Go' },
-        { id: 7, gender: 'm', firstName: 'Chris', lastName: 'Layton' },
-        { id: 1, gender: 'm', firstName: 'Daniel', lastName: 'Lomelino' },
-        { id: 3, gender: 'm', firstName: 'Dax', lastName: 'Lowery' },
-        { id: 9, gender: 'f', firstName: 'Lisa', lastName: 'Martin' },
-        { id: 4, gender: 'f', firstName: 'Kessa', lastName: 'McNaught' }
-      ],
+      players: [],
       standings: [],
       stats: []
     }
